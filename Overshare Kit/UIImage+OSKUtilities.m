@@ -5,8 +5,7 @@
 //  Created by Jared on 10/29/13.
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
-
-//  Based on code by Ole Zorn (https://gist.github.com/1102091/b196c1ec001d1a69b9940f0f32043d62d5f596d4)
+//  Based on code by Ole Zorn (https://gist.github.com/omz/1102091)
 //
 
 #import "UIImage+OSKUtilities.h"

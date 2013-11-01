@@ -129,6 +129,25 @@ App.net: <a href="https://alpha.app.net/justin" target="_blank">@justin</a>
 
 Justin is an independent iOS and Mac app developer at [Second Gear](http://www.secondgearsoftware.com). He is a frequent public speaker at tech events.
 
+## Attributions
+
+Overshare contains portions of other open-source code, either verbatim or (more commonly) with some pruning and refactoring. The following projects were immensely helpful:
+
+- **DerpKit:** By Steve Streza. *Objective-C categories and subclasses of things that should be in Foundation and other frameworks* [On GitHub](https://github.com/stevestreza/DerpKit)
+
+- **AFNetworking:** By Mattt Thompson. *A delightful iOS and OS X networking framework.* [On GitHub](https://github.com/AFNetworking/AFNetworking)
+
+- **UIColor-Utilities:** By Erica Sadun. *Helpful utilities for UIColor for iPhone.* [On GitHub](https://github.com/erica/uicolor-utilities)
+
+- **TwitterText:** By Twitter. *An Objective-C implementation of Twitter's text processing library* [On GitHub](https://github.com/twitter/twitter-text-objc)
+
+- **Gist 1102091:** By Ole Zorn. *Creating arbitrarily-colored icons from a black-with-alpha master image (iOS).* [On GitHub](https://gist.github.com/omz/1102091)
+
+- **UIDevice-Hardware:** By InderKumarRathmore. *This category helps to check the hardware version[s] of [iOS devices].* [On GitHub](https://github.com/InderKumarRathore/UIDevice-Hardware)
+
+- **RPSTPasswordManagementAppService:** By Riposte LLC. *An iOS utility class for launching 1Password via URL schemes.* [On GitHub](https://github.com/Riposte/RPSTPasswordManagementAppService)
+
+
 ## License
 
 The MIT License (MIT)
