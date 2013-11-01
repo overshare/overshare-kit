@@ -1,6 +1,6 @@
 [submodule "Pocket-ObjC-SDK"]
 	path = Dependencies/Pocket-SDK
-	url = git@github.com:/Pocket/Pocket-ObjC-SDK.git
+	url = https://github.com/Pocket/Pocket-ObjC-SDK.git
 
 [submodule "ADNLogin-SDK-iOS"]
 	path = Dependencies/ADNLogin-SDK
