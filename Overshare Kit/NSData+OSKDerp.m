@@ -26,13 +26,13 @@
 
 #import "NSData+OSKDerp.h"
 
-NSUInteger DerpKitBase64encode_len(NSUInteger len);
-int DerpKitBase64encode(char * coded_dst, const char *plain_src, NSUInteger len_plain_src);
+NSUInteger OSKDerpKitBase64encode_len(NSUInteger len);
+int OSKDerpKitBase64encode(char * coded_dst, const char *plain_src, NSUInteger len_plain_src);
 
-NSUInteger DerpKitBase64decode_len(const char * coded_src);
-int DerpKitBase64decode(char * plain_dst, const char *coded_src);
+NSUInteger OSKDerpKitBase64decode_len(const char * coded_src);
+int OSKDerpKitBase64decode(char * plain_dst, const char *coded_src);
 
-static const char DerpKitBase64EncodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+static const char OSKDerpKitBase64EncodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 @implementation NSData (OSKDerp)
 
@@ -54,13 +54,13 @@ static const char DerpKitBase64EncodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcd
 			buffer[bufferLength++] = ((char *)[self bytes])[i++];
 		
 		//  Encode the bytes in the buffer to four characters, including padding "=" characters if necessary.
-		characters[length++] = DerpKitBase64EncodingTable[(buffer[0] & 0xFC) >> 2];
-		characters[length++] = DerpKitBase64EncodingTable[((buffer[0] & 0x03) << 4) | ((buffer[1] & 0xF0) >> 4)];
+		characters[length++] = OSKDerpKitBase64EncodingTable[(buffer[0] & 0xFC) >> 2];
+		characters[length++] = OSKDerpKitBase64EncodingTable[((buffer[0] & 0x03) << 4) | ((buffer[1] & 0xF0) >> 4)];
 		if (bufferLength > 1)
-			characters[length++] = DerpKitBase64EncodingTable[((buffer[1] & 0x0F) << 2) | ((buffer[2] & 0xC0) >> 6)];
+			characters[length++] = OSKDerpKitBase64EncodingTable[((buffer[1] & 0x0F) << 2) | ((buffer[2] & 0xC0) >> 6)];
 		else characters[length++] = '=';
 		if (bufferLength > 2)
-			characters[length++] = DerpKitBase64EncodingTable[buffer[2] & 0x3F];
+			characters[length++] = OSKDerpKitBase64EncodingTable[buffer[2] & 0x3F];
 		else characters[length++] = '=';
 	}
 	
@@ -70,9 +70,9 @@ static const char DerpKitBase64EncodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcd
 -(NSString *)osk_derp_stringByBase64DecodingData{
 	const void *inBytes = [self bytes];
 	
-	int outLength = (int)(DerpKitBase64decode_len(inBytes));
+	int outLength = (int)(OSKDerpKitBase64decode_len(inBytes));
 	void *outBytes = malloc(outLength);
-	DerpKitBase64decode(outBytes, inBytes);
+	OSKDerpKitBase64decode(outBytes, inBytes);
 	
 	NSData *outData = [NSData dataWithBytesNoCopy:outBytes length:outLength freeWhenDone:YES];
 	return [[NSString alloc] initWithData:outData encoding:NSASCIIStringEncoding];
@@ -86,7 +86,7 @@ static const char DerpKitBase64EncodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcd
 
 #include <string.h>
 
-static const unsigned char DerpKitBase64_pr2six[256] =
+static const unsigned char OSKDerpKitBase64_pr2six[256] =
 {
     /* ASCII table */
     64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64,
@@ -107,14 +107,14 @@ static const unsigned char DerpKitBase64_pr2six[256] =
     64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64
 };
 
-NSUInteger DerpKitBase64decode_len(const char *bufcoded)
+NSUInteger OSKDerpKitBase64decode_len(const char *bufcoded)
 {
     int nbytesdecoded;
     register const unsigned char *bufin;
     register int nprbytes;
 	
     bufin = (const unsigned char *) bufcoded;
-    while (DerpKitBase64_pr2six[*(bufin++)] <= 63);
+    while (OSKDerpKitBase64_pr2six[*(bufin++)] <= 63);
 	
     nprbytes = (int)((bufin - (const unsigned char *) bufcoded) - 1);
     nbytesdecoded = ((nprbytes + 3) / 4) * 3;
@@ -122,7 +122,7 @@ NSUInteger DerpKitBase64decode_len(const char *bufcoded)
     return nbytesdecoded + 1;
 }
 
-int DerpKitBase64decode(char *bufplain, const char *bufcoded)
+int OSKDerpKitBase64decode(char *bufplain, const char *bufcoded)
 {
     int nbytesdecoded;
     register const unsigned char *bufin;
@@ -130,7 +130,7 @@ int DerpKitBase64decode(char *bufplain, const char *bufcoded)
     register int nprbytes;
 	
     bufin = (const unsigned char *) bufcoded;
-    while (DerpKitBase64_pr2six[*(bufin++)] <= 63);
+    while (OSKDerpKitBase64_pr2six[*(bufin++)] <= 63);
     nprbytes = (int)((bufin - (const unsigned char *) bufcoded) - 1);
     nbytesdecoded = ((nprbytes + 3) / 4) * 3;
 	
@@ -139,11 +139,11 @@ int DerpKitBase64decode(char *bufplain, const char *bufcoded)
 	
     while (nprbytes > 4) {
 		*(bufout++) =
-        (unsigned char) (DerpKitBase64_pr2six[*bufin] << 2 | DerpKitBase64_pr2six[bufin[1]] >> 4);
+        (unsigned char) (OSKDerpKitBase64_pr2six[*bufin] << 2 | OSKDerpKitBase64_pr2six[bufin[1]] >> 4);
 		*(bufout++) =
-        (unsigned char) (DerpKitBase64_pr2six[bufin[1]] << 4 | DerpKitBase64_pr2six[bufin[2]] >> 2);
+        (unsigned char) (OSKDerpKitBase64_pr2six[bufin[1]] << 4 | OSKDerpKitBase64_pr2six[bufin[2]] >> 2);
 		*(bufout++) =
-        (unsigned char) (DerpKitBase64_pr2six[bufin[2]] << 6 | DerpKitBase64_pr2six[bufin[3]]);
+        (unsigned char) (OSKDerpKitBase64_pr2six[bufin[2]] << 6 | OSKDerpKitBase64_pr2six[bufin[3]]);
 		bufin += 4;
 		nprbytes -= 4;
     }
@@ -151,15 +151,15 @@ int DerpKitBase64decode(char *bufplain, const char *bufcoded)
     /* Note: (nprbytes == 1) would be an error, so just ingore that case */
     if (nprbytes > 1) {
 		*(bufout++) =
-        (unsigned char) (DerpKitBase64_pr2six[*bufin] << 2 | DerpKitBase64_pr2six[bufin[1]] >> 4);
+        (unsigned char) (OSKDerpKitBase64_pr2six[*bufin] << 2 | OSKDerpKitBase64_pr2six[bufin[1]] >> 4);
     }
     if (nprbytes > 2) {
 		*(bufout++) =
-        (unsigned char) (DerpKitBase64_pr2six[bufin[1]] << 4 | DerpKitBase64_pr2six[bufin[2]] >> 2);
+        (unsigned char) (OSKDerpKitBase64_pr2six[bufin[1]] << 4 | OSKDerpKitBase64_pr2six[bufin[2]] >> 2);
     }
     if (nprbytes > 3) {
 		*(bufout++) =
-        (unsigned char) (DerpKitBase64_pr2six[bufin[2]] << 6 | DerpKitBase64_pr2six[bufin[3]]);
+        (unsigned char) (OSKDerpKitBase64_pr2six[bufin[2]] << 6 | OSKDerpKitBase64_pr2six[bufin[3]]);
     }
 	
     *(bufout++) = '\0';
@@ -167,38 +167,38 @@ int DerpKitBase64decode(char *bufplain, const char *bufcoded)
     return nbytesdecoded;
 }
 
-static const char DerpKitBase64_basis64[] =
+static const char OSKDerpKitBase64_basis64[] =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-NSUInteger DerpKitBase64encode_len(NSUInteger len)
+NSUInteger OSKDerpKitBase64encode_len(NSUInteger len)
 {
     return ((len + 2) / 3 * 4) + 1;
 }
 
-int DerpKitBase64encode(char *encoded, const char *string, NSUInteger len)
+int OSKDerpKitBase64encode(char *encoded, const char *string, NSUInteger len)
 {
     int i;
     char *p;
 	
     p = encoded;
     for (i = 0; i < len - 2; i += 3) {
-		*p++ = DerpKitBase64_basis64[(string[i] >> 2) & 0x3F];
-		*p++ = DerpKitBase64_basis64[((string[i] & 0x3) << 4) |
+		*p++ = OSKDerpKitBase64_basis64[(string[i] >> 2) & 0x3F];
+		*p++ = OSKDerpKitBase64_basis64[((string[i] & 0x3) << 4) |
 									 ((int) (string[i + 1] & 0xF0) >> 4)];
-		*p++ = DerpKitBase64_basis64[((string[i + 1] & 0xF) << 2) |
+		*p++ = OSKDerpKitBase64_basis64[((string[i + 1] & 0xF) << 2) |
 									 ((int) (string[i + 2] & 0xC0) >> 6)];
-		*p++ = DerpKitBase64_basis64[string[i + 2] & 0x3F];
+		*p++ = OSKDerpKitBase64_basis64[string[i + 2] & 0x3F];
     }
     if (i < len) {
-		*p++ = DerpKitBase64_basis64[(string[i] >> 2) & 0x3F];
+		*p++ = OSKDerpKitBase64_basis64[(string[i] >> 2) & 0x3F];
 		if (i == (len - 1)) {
-			*p++ = DerpKitBase64_basis64[((string[i] & 0x3) << 4)];
+			*p++ = OSKDerpKitBase64_basis64[((string[i] & 0x3) << 4)];
 			*p++ = '=';
 		}
 		else {
-			*p++ = DerpKitBase64_basis64[((string[i] & 0x3) << 4) |
+			*p++ = OSKDerpKitBase64_basis64[((string[i] & 0x3) << 4) |
 										 ((int) (string[i + 1] & 0xF0) >> 4)];
-			*p++ = DerpKitBase64_basis64[((string[i + 1] & 0xF) << 2)];
+			*p++ = OSKDerpKitBase64_basis64[((string[i + 1] & 0xF) << 2)];
 		}
 		*p++ = '=';
     }
