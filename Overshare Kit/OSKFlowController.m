@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 
+@import Accounts;
+
 #import "OSKFlowController.h"
 
 #import "OSKActivitiesManager.h"
@@ -90,36 +92,81 @@
 - (void)handleSystemAccountAuthenticationStepForActivity:(OSKActivity *)activity {
     NSAssert([activity respondsToSelector:@selector(activeSystemAccount)], @"OSKActivity subclasses using the system account authentication method must conform to the OSKActivity_SystemAccounts protocol.");
     OSKActivity <OSKActivity_SystemAccounts> *theActivity = (OSKActivity <OSKActivity_SystemAccounts> *)activity;
-    OSKSystemAccountStore *accountStore = [OSKSystemAccountStore sharedInstance];
     
-    NSArray *existingAccounts = [accountStore accountsForAccountTypeIdentifier:[theActivity.class systemAccountTypeIdentifier]];
-    
-    if (existingAccounts.count > 0) {
-        ACAccount *account = [existingAccounts firstObject];
-        [theActivity setActiveSystemAccount:account];
-        [self handlePublishingStepForActivity:activity];
+    if ([[[theActivity class] activityType] isEqualToString:OSKActivityType_iOS_Facebook]) {
+        // Facebook accounts must request for read permissions before asking for write permissions
+        // (which is a maddening API decision). Thus, we must use a separate flow for Facebook authentication.
+        [self handleFacebookAccountAuthenticationStepForActivity:theActivity];
     }
     else {
-        NSDictionary *options = [theActivity.class accessRequestOptions];
-        
-        NSString *systemAccountTypeIdentifier = [theActivity.class systemAccountTypeIdentifier];
-        [accountStore requestAccessToAccountsWithAccountTypeIdentifier:systemAccountTypeIdentifier options:options completion:^(BOOL successful, NSError *error) {
-            if (successful) {
-                NSArray *systemAccounts = [accountStore accountsForAccountTypeIdentifier:systemAccountTypeIdentifier];
-                if (systemAccounts.count > 0) {
-                    ACAccount *account = [systemAccounts firstObject];
-                    [theActivity setActiveSystemAccount:account];
-                    [self handlePublishingStepForActivity:activity];
-                } else {
-                    [self showAlertForNoSystemAccounts];
-                    OSKLog(@"User has no existing system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+        OSKSystemAccountStore *accountStore = [OSKSystemAccountStore sharedInstance];
+        NSArray *existingAccounts = [accountStore accountsForAccountTypeIdentifier:[theActivity.class systemAccountTypeIdentifier]];
+
+        if (existingAccounts.count > 0) {
+            ACAccount *account = [existingAccounts firstObject];
+            [theActivity setActiveSystemAccount:account];
+            [self handlePublishingStepForActivity:activity];
+        }
+        else {
+            __weak OSKFlowController *weakSelf = self;
+            NSString *systemAccountTypeIdentifier = [theActivity.class systemAccountTypeIdentifier];
+            [accountStore requestAccessToAccountsWithAccountTypeIdentifier:systemAccountTypeIdentifier options:nil completion:^(BOOL successful, NSError *error) {
+                if (successful) {
+                    NSArray *systemAccounts = [accountStore accountsForAccountTypeIdentifier:systemAccountTypeIdentifier];
+                    if (systemAccounts.count > 0) {
+                        ACAccount *account = [systemAccounts firstObject];
+                        [theActivity setActiveSystemAccount:account];
+                        [weakSelf handlePublishingStepForActivity:activity];
+                    } else {
+                        [weakSelf showAlertForNoSystemAccounts];
+                        OSKLog(@"User has no existing system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+                    }
                 }
-            } else {
-                [self showAlertForSystemAccountAccessNotGranted];
-                OSKLog(@"User denied access to system accounts with account type identifier: %@", systemAccountTypeIdentifier);
-            }
-        }];
+                else {
+                    [weakSelf showAlertForSystemAccountAccessNotGranted];
+                    OSKLog(@"User denied access to system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+                }
+            }];
+        }
     }
+}
+
+- (void)handleFacebookAccountAuthenticationStepForActivity:(OSKActivity <OSKActivity_SystemAccounts>*)activity {
+    NSAssert([[[activity class] activityType] isEqualToString:OSKActivityType_iOS_Facebook], @"Attempting to authenticate a non-Facebook activity via the Facebook flow.");
+    OSKSystemAccountStore *accountStore = [OSKSystemAccountStore sharedInstance];
+
+    NSDictionary *readOptions = [activity.class readAccessRequestOptions];
+    NSDictionary *writeOptions = [activity.class writeAccessRequestOptions];
+    
+    __weak OSKFlowController *weakSelf = self;
+    
+    NSString *systemAccountTypeIdentifier = [activity.class systemAccountTypeIdentifier];
+    [accountStore requestAccessToAccountsWithAccountTypeIdentifier:systemAccountTypeIdentifier options:readOptions completion:^(BOOL successful, NSError *error) {
+        if (successful) {
+           [accountStore requestAccessToAccountsWithAccountTypeIdentifier:systemAccountTypeIdentifier options:writeOptions completion:^(BOOL successful, NSError *error) {
+               if (successful) {
+                   NSArray *systemAccounts = [accountStore accountsForAccountTypeIdentifier:systemAccountTypeIdentifier];
+                   if (systemAccounts.count > 0) {
+                       ACAccount *account = [systemAccounts firstObject];
+                       [activity setActiveSystemAccount:account];
+                       [weakSelf handlePublishingStepForActivity:activity];
+                   }
+                   else {
+                       [weakSelf showAlertForNoSystemAccounts];
+                       OSKLog(@"User has no existing system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+                   }
+               }
+               else {
+                   [weakSelf showAlertForSystemAccountAccessNotGranted];
+                   OSKLog(@"Access request failed for system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+               }
+           }];
+        }
+        else {
+            [weakSelf showAlertForSystemAccountAccessNotGranted];
+            OSKLog(@"Access request failed for system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+        }
+    }];
 }
 
 - (void)showAlertForNoSystemAccounts {

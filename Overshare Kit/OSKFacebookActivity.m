@@ -35,7 +35,14 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
     return ACAccountTypeIdentifierFacebook;
 }
 
-+ (NSDictionary *)accessRequestOptions {
++ (NSDictionary *)readAccessRequestOptions {
+    OSKApplicationCredential *appCredential = [self applicationCredential];
+    return @{ACFacebookPermissionsKey:@[@"email"],
+             ACFacebookAudienceKey:ACFacebookAudienceEveryone,
+             ACFacebookAppIdKey:appCredential.applicationKey};
+}
+
++ (NSDictionary *)writeAccessRequestOptions {
     OSKApplicationCredential *appCredential = [self applicationCredential];
     return @{ACFacebookPermissionsKey:@[@"publish_actions"],
              ACFacebookAudienceKey:ACFacebookAudienceEveryone,

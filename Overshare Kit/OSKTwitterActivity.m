@@ -42,10 +42,6 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
     return ACAccountTypeIdentifierTwitter;
 }
 
-+ (NSDictionary *)accessRequestOptions {
-    return nil;
-}
-
 #pragma mark - Methods for OSKActivity Subclasses
 
 + (NSString *)supportedContentItemType {
