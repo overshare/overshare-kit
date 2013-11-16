@@ -45,7 +45,7 @@
     SLRequestHandler requestHandler = ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if (responseData != nil) {
             
-            NSString *response = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+            __unused NSString *response = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
             OSKLog(@"%@", response);
             
             NSInteger statusCode = urlResponse.statusCode;
