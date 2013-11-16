@@ -293,6 +293,11 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
             [self dismissActivitySheet];
         }
     }
+    
+    if (self.delegate)
+    {
+        [self.delegate activitySheet:viewController didSelectActivity:activity];
+    }
 }
 
 - (void)activitySheetDidCancel:(OSKActivitySheetViewController *)viewController {
@@ -302,6 +307,11 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
         [self.flowControllers removeObjectForKey:flowController.sessionIdentifier];
     }
     [self dismissActivitySheet];
+    
+    if (self.delegate)
+    {
+        [self.delegate activitySheetDidCancel:viewController];
+    }
 }
 
 #pragma mark - Styles
