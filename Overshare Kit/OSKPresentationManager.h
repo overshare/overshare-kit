@@ -13,6 +13,7 @@
 @class OSKPresentationManager;
 @class OSKShareableContent;
 
+#import "OSKActivitySheetDelegate.h"
 #import "OSKPresentationStyle.h"
 #import "OSKPresentationColor.h"
 #import "OSKPresentationLocalization.h"
@@ -32,6 +33,9 @@ extern NSString * const OSKActivityOption_ActivitySheetDismissalHandler; // Call
 ///-----------------------------------------------
 /// @name Properties
 ///-----------------------------------------------
+
+
+@property (nonatomic, strong) id<OSKActivitySheetDelegate> delegate;
 
 /**
  Set this delegate to override the default colors.
