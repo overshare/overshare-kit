@@ -12,7 +12,7 @@
 
 @protocol OSKActivitySheetDelegate;
 
-typedef void(^OSKActivitySheetDismissalHandler)(void);
+typedef void(^OSKActivitySheetDismissalHandler)(BOOL canceled);
 
 @interface OSKActivitySheetViewController : UIViewController
 
