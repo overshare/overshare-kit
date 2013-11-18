@@ -440,6 +440,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 
 - (void)setText:(NSString *)text {
     [self.textView setText:text];
+    [self updateContentSize:YES delay:NO];
 }
 
 - (NSAttributedString *)attributedText {
