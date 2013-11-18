@@ -916,6 +916,7 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
 - (void)flowControllerDidCancel:(OSKFlowController *)controller {
     [self.flowControllers removeObjectForKey:controller.sessionIdentifier];
+    [self dismissActivitySheet];
 }
 
 @end
