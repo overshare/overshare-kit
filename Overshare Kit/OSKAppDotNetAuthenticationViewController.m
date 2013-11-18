@@ -15,10 +15,11 @@
 #import "OSKLogger.h"
 #import "OSKManagedAccount.h"
 #import "OSKManagedAccountCredential.h"
+#import "NSString+OSKDerp.h"
 
 static NSString * OSKAppDotNetAuthentication_URL = @"https://account.app.net/oauth/authenticate";
 static NSString * OSKAppDotNetAuthentication_ClientIDKey = @"client_id";
-static NSString * OSKAppDotNetAuthentication_RedirectURI_Value = @"overshareuriappdotnet";
+static NSString * OSKAppDotNetAuthentication_RedirectURI_Value = @"http://localhost:8000";
 static NSString * OSKAppDotNetAuthentication_RedirectURI_Key = @"redirect_uri";
 static NSString * OSKAppDotNetAuthentication_ResponseTypePair = @"response_type=token";
 static NSString * OSKAppDotNetAuthentication_ADNViewPair = @"adnview=appstore";
@@ -48,7 +49,8 @@ static NSString * OSKAppDotNetAuthentication_Scopes_Key = @"scope";
     NSMutableString *string = [[NSMutableString alloc] initWithString:OSKAppDotNetAuthentication_URL];
     [string appendFormat:@"?%@=%@", OSKAppDotNetAuthentication_ClientIDKey, credential.applicationKey];
     [string appendFormat:@"&%@", OSKAppDotNetAuthentication_ResponseTypePair];
-    [string appendFormat:@"&%@=%@://", OSKAppDotNetAuthentication_RedirectURI_Key, OSKAppDotNetAuthentication_RedirectURI_Value];
+    NSString *encodedRedirect = [OSKAppDotNetAuthentication_RedirectURI_Value osk_derp_stringByEscapingPercents];
+    [string appendFormat:@"&%@=%@", OSKAppDotNetAuthentication_RedirectURI_Key, encodedRedirect];
     [string appendFormat:@"&%@=%@", OSKAppDotNetAuthentication_Scopes_Key, OSKAppDotNetAuthentication_Scopes_Value];
     [string appendFormat:@"&%@", OSKAppDotNetAuthentication_ADNViewPair];
     return [NSURL URLWithString:string];
@@ -83,10 +85,9 @@ static NSString * OSKAppDotNetAuthentication_Scopes_Key = @"scope";
 - (BOOL)webViewController:(OSKWebViewController *)webViewController shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     BOOL should = YES;
     NSString *absoluteString = request.URL.absoluteString;
-    NSURLComponents *urlComps = [NSURLComponents componentsWithString:absoluteString];
-    NSString *scheme = [urlComps scheme];
-    if ([scheme rangeOfString:OSKAppDotNetAuthentication_RedirectURI_Value].length > 0) {
+    if ([absoluteString rangeOfString:OSKAppDotNetAuthentication_RedirectURI_Value].length > 0) {
         should = NO;
+        NSURLComponents *urlComps = [NSURLComponents componentsWithString:absoluteString];
         NSString *fragment = [urlComps fragment];
         NSArray *pair = [fragment componentsSeparatedByString:@"="];
         if (pair.count > 1) {

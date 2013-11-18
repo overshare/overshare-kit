@@ -114,7 +114,7 @@
             cell.textLabel.textColor = [presentationManager color_action];
             cell.backgroundColor = [presentationManager color_groupedTableViewCells];
             cell.selectedBackgroundView = [[UIView alloc] init];
-            cell.selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+            cell.selectedBackgroundView.backgroundColor = [presentationManager color_cancelButtonColor_BackgroundHighlighted];
         }
     }
     return cell;
