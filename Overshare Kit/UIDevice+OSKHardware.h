@@ -48,10 +48,14 @@ typedef NS_ENUM(NSInteger, OSKHardwareType) {
     OSKHardwareType_iPad_4,
     OSKHardwareType_iPad_4_WIFI,
     OSKHardwareType_iPad_4_GSM_CDMA,
+    OSKHardwareType_iPad_Air_WIFI,
+    OSKHardwareType_iPad_Air_CELLULAR,
     
-    OSKHardwareType_iPad_MINI,
-    OSKHardwareType_iPad_MINI_WIFI,
-    OSKHardwareType_iPad_MINI_WIFI_CDMA,
+    OSKHardwareType_iPad_Mini,
+    OSKHardwareType_iPad_Mini_WIFI,
+    OSKHardwareType_iPad_Mini_WIFI_CDMA,
+    OSKHardwareType_iPad_Mini_2G_WIFI,
+    OSKHardwareType_iPad_Mini_2G_CELLULAR,
     
     OSKHardwareType_Simulator
 };

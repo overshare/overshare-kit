@@ -53,15 +53,19 @@
     if ([hardware isEqualToString:@"iPad2,2"])      return OSKHardwareType_iPad_2;
     if ([hardware isEqualToString:@"iPad2,3"])      return OSKHardwareType_iPad_2_CDMA;
     if ([hardware isEqualToString:@"iPad2,4"])      return OSKHardwareType_iPad_2;
-    if ([hardware isEqualToString:@"iPad2,5"])      return OSKHardwareType_iPad_MINI_WIFI;
-    if ([hardware isEqualToString:@"iPad2,6"])      return OSKHardwareType_iPad_MINI;
-    if ([hardware isEqualToString:@"iPad2,7"])      return OSKHardwareType_iPad_MINI_WIFI_CDMA;
+    if ([hardware isEqualToString:@"iPad2,5"])      return OSKHardwareType_iPad_Mini_WIFI;
+    if ([hardware isEqualToString:@"iPad2,6"])      return OSKHardwareType_iPad_Mini;
+    if ([hardware isEqualToString:@"iPad2,7"])      return OSKHardwareType_iPad_Mini_WIFI_CDMA;
     if ([hardware isEqualToString:@"iPad3,1"])      return OSKHardwareType_iPad_3_WIFI;
     if ([hardware isEqualToString:@"iPad3,2"])      return OSKHardwareType_iPad_3_WIFI_CDMA;
     if ([hardware isEqualToString:@"iPad3,3"])      return OSKHardwareType_iPad_3;
     if ([hardware isEqualToString:@"iPad3,4"])      return OSKHardwareType_iPad_4_WIFI;
     if ([hardware isEqualToString:@"iPad3,5"])      return OSKHardwareType_iPad_4;
     if ([hardware isEqualToString:@"iPad3,6"])      return OSKHardwareType_iPad_4_GSM_CDMA;
+    if ([hardware isEqualToString:@"iPad4,1"])      return OSKHardwareType_iPad_Air_WIFI;
+    if ([hardware isEqualToString:@"iPad4,2"])      return OSKHardwareType_iPad_Air_CELLULAR;
+    if ([hardware isEqualToString:@"iPad4,4"])      return OSKHardwareType_iPad_Mini_2G_WIFI;
+    if ([hardware isEqualToString:@"iPad4,5"])      return OSKHardwareType_iPad_Mini_2G_CELLULAR;
     
     if ([hardware isEqualToString:@"i386"])         return OSKHardwareType_Simulator;
     if ([hardware isEqualToString:@"x86_64"])       return OSKHardwareType_Simulator;
@@ -72,16 +76,19 @@
 - (BOOL)osk_airDropIsAvailable {
     BOOL isAvailable = NO;
     OSKHardwareType hardwareType = [self osk_hardwareType];
-    NSString *hardwareString = [self osk_hardwareString];
-    if ([hardwareString hasPrefix:@"iPhone"]) {
-        isAvailable = (hardwareType >= OSKHardwareType_iPhone_5);
-    }
-    else if ([hardwareString hasPrefix:@"iPad"]) {
-        isAvailable = (hardwareType >= OSKHardwareType_iPad_4_WIFI
-                   || (hardwareType >= OSKHardwareType_iPad_MINI_WIFI && hardwareType <= OSKHardwareType_iPad_MINI_WIFI_CDMA));
-    }
-    else if ([hardwareString hasPrefix:@"iPod"]) {
-        isAvailable = (hardwareType >= OSKHardwareType_iPodTouch_5G);
+    if (OSKHardwareType_NotAvailable) {
+        isAvailable = YES;
+    } else {
+        NSString *hardwareString = [self osk_hardwareString];
+        if ([hardwareString hasPrefix:@"iPhone"]) {
+            isAvailable = (hardwareType >= OSKHardwareType_iPhone_5);
+        }
+        else if ([hardwareString hasPrefix:@"iPad"]) {
+            isAvailable = (hardwareType >= OSKHardwareType_iPad_4_WIFI);
+        }
+        else if ([hardwareString hasPrefix:@"iPod"]) {
+            isAvailable = (hardwareType >= OSKHardwareType_iPodTouch_5G);
+        }
     }
     return isAvailable;
 }
