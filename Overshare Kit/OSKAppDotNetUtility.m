@@ -17,6 +17,7 @@
 #import "OSKManagedAccount.h"
 #import "NSMutableURLRequest+OSKUtilities.h"
 #import "NSHTTPURLResponse+OSKUtilities.h"
+#import "UIImage+OSKUtilities.h"
 
 static NSString * OSKAppDotNetUtility_BaseURL = @"https://alpha-api.app.net/";
 static NSString * OSKAppDotNetUtility_URL_FetchMe = @"stream/0/users/me?access_token=%@";
@@ -245,7 +246,8 @@ static NSString * OSKAppDotNetUtility_URL_WriteNewPost = @"stream/0/posts?access
         NSString *mimeType = @"image/jpeg";
         NSString *suffix = @"jpg";
 		NSString *dateSuffix = [self _todaysDateSuffix];
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.25f);
+        CGFloat quality = [UIImage osk_recommendedUploadQuality:image];
+        NSData *imageData = UIImageJPEGRepresentation(image, quality);
         NSString *appName = appCredential.appName.copy;
         NSString *filename = [NSString stringWithFormat:@"Image_from_%@_%@.%@", appName, dateSuffix, suffix];
         
