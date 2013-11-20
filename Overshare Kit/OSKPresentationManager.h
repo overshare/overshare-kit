@@ -137,10 +137,10 @@ extern NSString * const OSKActivityOption_ActivitySheetDismissalHandler; // Call
 @end
 
 ///-----------------------------------------------
-/// @name Obtaining Colors
+/// @name Style Options
 ///-----------------------------------------------
 
-@interface OSKPresentationManager (ColorAndStyle)
+@interface OSKPresentationManager (Style)
 
 /**
  The style to be used for Overshare's view controllers. Dark mode FTW!
@@ -170,6 +170,22 @@ extern NSString * const OSKActivityOption_ActivitySheetDismissalHandler; // Call
  @return If non-nil, it returns a square, opaque image of size 60x60 points (for iPhone) or 76x76 points (for iPad).
  */
 - (UIImage *)alternateIconForActivityType:(NSString *)type idiom:(UIUserInterfaceIdiom)idiom;
+
+/**
+ Returning YES (the default OSK setting) will automatically shorten links when recommended, i.e., when
+ the user is editing a microblog post (Twitter, App.net, etc.) and a given URL is longer than a certain
+ threshold (around 30 characters or more). Links are shortened via Bit.ly. You can modify this via
+ the `styleDelegate`.
+ */
+- (BOOL)automaticallyShortenURLsWhenRecommended;
+
+@end
+
+///-----------------------------------------------
+/// @name Colors
+///-----------------------------------------------
+
+@interface OSKPresentationManager (Color)
 
 - (UIColor *)color_activitySheetTopLine;
 - (UIColor *)color_opaqueBackground;

@@ -332,6 +332,14 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
     return image;
 }
 
+- (BOOL)automaticallyShortenURLsWhenRecommended {
+    BOOL shorten = YES;
+    if ([self.styleDelegate respondsToSelector:@selector(osk_automaticallyShortenURLsWhenRecommended)]) {
+        shorten = [self.styleDelegate osk_automaticallyShortenURLsWhenRecommended];
+    }
+    return shorten;
+}
+
 #pragma mark - Colors
 
 - (UIColor *)color_activitySheetTopLine {

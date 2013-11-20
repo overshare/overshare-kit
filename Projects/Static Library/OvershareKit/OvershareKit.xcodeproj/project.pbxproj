@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F1DA9E0183C6B050082356D /* OSKLinkShorteningUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DA9DF183C6B050082356D /* OSKLinkShorteningUtility.m */; };
 		7F75BEFE1821539700D3681E /* OSKAccountManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F75BEF71821539700D3681E /* OSKAccountManagementViewController.m */; };
 		7F75BEFF1821539700D3681E /* OSKFacebookUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F75BEF91821539700D3681E /* OSKFacebookUtility.m */; };
 		7F75BF001821539700D3681E /* OSKPocketAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F75BEFB1821539700D3681E /* OSKPocketAccountViewController.m */; };
@@ -128,6 +129,8 @@
 		7F19F901181F228200E5EA52 /* osk-iap-badge-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-60@2x.png"; sourceTree = "<group>"; };
 		7F19F902181F228200E5EA52 /* osk-iap-badge-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-76.png"; sourceTree = "<group>"; };
 		7F19F903181F228200E5EA52 /* osk-iap-badge-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-76@2x.png"; sourceTree = "<group>"; };
+		7F1DA9DE183C6B050082356D /* OSKLinkShorteningUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKLinkShorteningUtility.h; sourceTree = "<group>"; };
+		7F1DA9DF183C6B050082356D /* OSKLinkShorteningUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKLinkShorteningUtility.m; sourceTree = "<group>"; };
 		7F75BEF61821539700D3681E /* OSKAccountManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAccountManagementViewController.h; sourceTree = "<group>"; };
 		7F75BEF71821539700D3681E /* OSKAccountManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAccountManagementViewController.m; sourceTree = "<group>"; };
 		7F75BEF81821539700D3681E /* OSKFacebookUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookUtility.h; sourceTree = "<group>"; };
@@ -535,6 +538,8 @@
 			children = (
 				7FEE77DD181ED8FE000F684A /* Images */,
 				7FE4109D1821994B00B13AB1 /* OvershareKit.h */,
+				7F1DA9DE183C6B050082356D /* OSKLinkShorteningUtility.h */,
+				7F1DA9DF183C6B050082356D /* OSKLinkShorteningUtility.m */,
 				7FEE7803181ED8FE000F684A /* NSCoder+OSKCoder.h */,
 				7FFCFFE91822CE23000BBCE9 /* OSKPresentationColor.h */,
 				7FFCFFEA1822CE23000BBCE9 /* OSKPresentationLocalization.h */,
@@ -940,6 +945,7 @@
 				7F75BF001821539700D3681E /* OSKPocketAccountViewController.m in Sources */,
 				7FEE78B5181ED8FE000F684A /* NSString+OSK_UUID.m in Sources */,
 				7FEE78B9181ED8FE000F684A /* OSK1PasswordSearchActivity.m in Sources */,
+				7F1DA9E0183C6B050082356D /* OSKLinkShorteningUtility.m in Sources */,
 				7FEE7675181ED867000F684A /* OvershareKit.m in Sources */,
 				7FEE78DE181ED8FE000F684A /* OSKMicroblogPublishingViewController.m in Sources */,
 				7FEE78C5181ED8FE000F684A /* OSKAirDropActivity.m in Sources */,

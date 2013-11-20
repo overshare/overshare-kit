@@ -22,6 +22,8 @@
 #import "OSKManagedAccount.h"
 #import "OSKAccountChooserViewController.h"
 #import "UIImage+OSKUtilities.h"
+#import "OSKLinkShorteningUtility.h"
+#import "OSKTwitterText.h"
 
 @interface OSKMicroblogPublishingViewController () <OSKTextViewDelegate, OSKAccountChooserViewControllerDelegate>
 
@@ -34,6 +36,7 @@
 @property (strong, nonatomic) UIColor *characterCount_redColor;
 @property (strong, nonatomic) UIColor *characterCount_normalColor;
 @property (strong, nonatomic) UIButton *accountButton; // Used on iPhone
+@property (assign, nonatomic) BOOL hasAttemptedURLShortening;
 
 @end
 
@@ -331,6 +334,7 @@
     [self setContentItem:(OSKMicroblogPostContentItem *)self.activity.contentItem];
     [self setOskPublishingDelegate:oskPublishingDelegate];
     self.title = [self.activity.class activityName];
+    [self shortenLinksIfPossible:self.contentItem];
 }
 
 #pragma mark - Account Chooser Delegate
@@ -345,6 +349,38 @@
     OSKActivity <OSKActivity_SystemAccounts> *activity = (OSKActivity <OSKActivity_SystemAccounts> *)self.activity;
     [activity setActiveSystemAccount:systemAccount];
     [self updateAccountButton];
+}
+
+#pragma mark - Link Shortening
+
+- (void)shortenLinksIfPossible:(OSKMicroblogPostContentItem *)item {
+    NSAssert(self.hasAttemptedURLShortening == NO, @"shortenLinksIfPossible: cannot be called more than once per editing session.");
+    BOOL isAllowed = [[OSKPresentationManager sharedInstance] automaticallyShortenURLsWhenRecommended];
+    if (self.contentItem.text.length > 0 && isAllowed) {
+        [self setHasAttemptedURLShortening:YES];
+        NSArray *urls = [OSKTwitterText URLsInText:item.text];
+        if (urls.count) {
+            __weak OSKMicroblogPublishingViewController *weakSelf = self;
+            for (OSKTwitterTextEntity *URLEntity in urls) {
+                NSString *longURL = [item.text substringWithRange:URLEntity.range];
+                if ([OSKLinkShorteningUtility shorteningRecommended:longURL]) {
+                    [OSKLinkShorteningUtility shortenURL:longURL completion:^(NSString *shortURL) {
+                        if (item == weakSelf.contentItem && shortURL.length) {
+                            NSMutableString *textViewText = weakSelf.contentItem.text.mutableCopy;
+                            NSRange rangeOfLongURL = [textViewText rangeOfString:longURL];
+                            if (rangeOfLongURL.length) {
+                                [textViewText replaceCharactersInRange:rangeOfLongURL withString:shortURL];
+                                [weakSelf.textView setText:textViewText];
+                                [weakSelf.contentItem setText:textViewText];
+                                [weakSelf updateRemainingCharacterCountLabel];
+                                [weakSelf updateDoneButton];
+                            }
+                        }
+                    }];
+                }
+            }
+        }
+    }
 }
 
 @end
