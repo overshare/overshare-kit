@@ -47,6 +47,9 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
     OSKActivitySheetDelegate,
     UIPopoverControllerDelegate
 >
+{
+    BOOL _canceledOnDismissed;
+}
 
 // GENERAL
 @property (strong, nonatomic, readwrite) NSMutableDictionary *flowControllers;
@@ -77,6 +80,7 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
     self = [super init];
     if (self) {
         _flowControllers = [[NSMutableDictionary alloc] init];
+        _canceledOnDismissed = NO;
     }
     return self;
 }
@@ -84,6 +88,7 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 #pragma mark - Public Methods
 
 - (void)presentActivitySheetForContent:(OSKShareableContent *)content presentingViewController:(UIViewController *)presentingViewController options:(NSDictionary *)options {
+    _canceledOnDismissed = NO;
     [self setPresentingViewController:presentingViewController];
     NSArray *activities = nil;
     OSKActivitiesManager *manager = [OSKActivitiesManager sharedInstance];
@@ -98,6 +103,7 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
 - (void)presentActivitySheetForContent:(OSKShareableContent *)content presentingViewController:(UIViewController *)presentingViewController popoverFromRect:(CGRect)rect inView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated options:(NSDictionary *)options {
     
+    _canceledOnDismissed = NO;
     [self setPresentingViewController:presentingViewController];
     
     NSArray *activities = nil;
@@ -122,6 +128,7 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
 - (void)presentActivitySheetForContent:(OSKShareableContent *)content presentingViewController:(UIViewController *)presentingViewController popoverFromBarButtonItem:(UIBarButtonItem *)item permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated options:(NSDictionary *)options {
     
+    _canceledOnDismissed = NO;
     [self setPresentingViewController:presentingViewController];
     NSArray *activities = nil;
     OSKActivitiesManager *manager = [OSKActivitiesManager sharedInstance];
@@ -199,7 +206,7 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
             [self setPresentingViewController:nil];
             [self setIsAnimating:NO];
             if (sheet.dismissalHandler) {
-                sheet.dismissalHandler();
+                sheet.dismissalHandler(_canceledOnDismissed);
             }
         }];
     }
@@ -216,7 +223,7 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
             [weakSelf setPresentingViewController:nil];
             [weakSelf setIsAnimating:NO];
             if (handler) {
-                handler();
+                handler(_canceledOnDismissed);
             }
         });
     }
@@ -225,12 +232,13 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 #pragma mark - Popover Delegate
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    _canceledOnDismissed = YES;
     OSKActivitySheetDismissalHandler handler = [self.activitySheetViewController.dismissalHandler copy];
     [self setPopoverController:nil];
     [self setActivitySheetViewController:nil];
     [self setIsAnimating:NO]; // just in case
     if (handler) {
-        handler();
+        handler(_canceledOnDismissed);
     }
 }
 
@@ -296,6 +304,7 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 }
 
 - (void)activitySheetDidCancel:(OSKActivitySheetViewController *)viewController {
+    _canceledOnDismissed = YES;
     OSKFlowController *flowController = [self.flowControllers objectForKey:viewController.sessionIdentifier];
     if (flowController) {
         [flowController dismissViewControllers];
@@ -907,6 +916,7 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
 - (void)flowControllerDidCancel:(OSKFlowController *)controller {
     [self.flowControllers removeObjectForKey:controller.sessionIdentifier];
+    [self dismissActivitySheet];
 }
 
 @end

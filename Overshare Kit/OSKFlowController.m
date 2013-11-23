@@ -345,6 +345,11 @@
 
 - (void)cancel {
     [self dismissViewControllers];
+    if (self.activityCompletionHandler)
+    {
+        NSError *error = [NSError errorWithDomain:@"Overshare" code:400 userInfo:@{NSLocalizedFailureReasonErrorKey:@"User Canceled Activity"}];
+        self.activityCompletionHandler(self.activity, NO, error);
+    }
     [self.delegate flowControllerDidCancel:self];
 }
 
