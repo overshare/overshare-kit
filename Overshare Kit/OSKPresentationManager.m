@@ -8,8 +8,6 @@
 
 #import "OSKPresentationManager.h"
 
-NSString * const OSKActivityOption_ActivitySheetDismissalHandler = @"OSKActivityOption_ActivitySheetDismissalHandler";
-
 @import MessageUI;
 
 #import "OSKColors.h"
@@ -25,9 +23,10 @@ NSString * const OSKActivityOption_ActivitySheetDismissalHandler = @"OSKActivity
 #import "OSKLogger.h"
 #import "OSKMicroblogPublishingViewController.h"
 #import "OSKPublishingViewController.h"
-#import "OSKFlowController.h"
-#import "OSKFlowController_Phone.h"
-#import "OSKFlowController_Pad.h"
+#import "OSKSessionController.h"
+#import "OSKSessionController_Phone.h"
+#import "OSKSessionController_Pad.h"
+#import "OSKSession.h"
 #import "OSKShareableContent.h"
 #import "OSKShareableContentItem.h"
 #import "OSKUsernamePasswordViewController.h"
@@ -38,18 +37,21 @@ NSString * const OSKActivityOption_ActivitySheetDismissalHandler = @"OSKActivity
 #import "UIViewController+OSKUtilities.h"
 #import "UIColor+OSKUtility.h"
 
+NSString * const OSKPresentationOption_ActivityCompletionHandler = @"OSKPresentationOption_ActivityCompletionHandler";
+NSString * const OSKPresentationOption_PresentationEndingHandler = @"OSKPresentationOption_PresentationEndingHandler";
+
 static CGFloat OSKPresentationManagerActivitySheetPresentationDuration = 0.3f;
 static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
 @interface OSKPresentationManager ()
 <
-    OSKFlowControllerDelegate,
+    OSKSessionControllerDelegate,
     OSKActivitySheetDelegate,
     UIPopoverControllerDelegate
 >
 
 // GENERAL
-@property (strong, nonatomic, readwrite) NSMutableDictionary *flowControllers;
+@property (strong, nonatomic, readwrite) NSMutableDictionary *sessionControllers;
 @property (strong, nonatomic, readwrite) OSKActivitySheetViewController *activitySheetViewController;
 @property (assign, nonatomic, readwrite) BOOL isAnimating;
 
@@ -76,27 +78,38 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _flowControllers = [[NSMutableDictionary alloc] init];
+        _sessionControllers = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 #pragma mark - Public Methods
 
-- (void)presentActivitySheetForContent:(OSKShareableContent *)content presentingViewController:(UIViewController *)presentingViewController options:(NSDictionary *)options {
+- (void)presentActivitySheetForContent:(OSKShareableContent *)content
+              presentingViewController:(UIViewController *)presentingViewController
+                               options:(NSDictionary *)options {
+    
     [self setPresentingViewController:presentingViewController];
+    
     NSArray *activities = nil;
     OSKActivitiesManager *manager = [OSKActivitiesManager sharedInstance];
     activities = [manager validActivitiesForContent:content options:options];
+    
+    OSKSession *session = [[OSKSession alloc] initWithPresentationEndingHandler:options[OSKPresentationOption_PresentationEndingHandler]
+                                                      activityCompletionHandler:options[OSKPresentationOption_ActivityCompletionHandler]];
     OSKActivitySheetViewController *sheet = nil;
-    sheet = [[OSKActivitySheetViewController alloc] initWithActivities:activities delegate:self usePopoverLayout:NO];
-    [sheet setActivityCompletionHandler:options[OSKActivityOption_ActivityCompletionHandler]];
-    [sheet setDismissalHandler:options[OSKActivityOption_ActivitySheetDismissalHandler]];
+    sheet = [[OSKActivitySheetViewController alloc] initWithSession:session activities:activities delegate:self usePopoverLayout:NO];
     [sheet setTitle:content.title];
+    
     [self presentSheet:sheet fromViewController:presentingViewController];
 }
 
-- (void)presentActivitySheetForContent:(OSKShareableContent *)content presentingViewController:(UIViewController *)presentingViewController popoverFromRect:(CGRect)rect inView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated options:(NSDictionary *)options {
+- (void)presentActivitySheetForContent:(OSKShareableContent *)content
+              presentingViewController:(UIViewController *)presentingViewController
+                       popoverFromRect:(CGRect)rect inView:(UIView *)view
+              permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections
+                              animated:(BOOL)animated
+                               options:(NSDictionary *)options {
     
     [self setPresentingViewController:presentingViewController];
     
@@ -104,10 +117,11 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
     OSKActivitiesManager *manager = [OSKActivitiesManager sharedInstance];
     activities = [manager validActivitiesForContent:content options:options];
     
+    OSKSession *session = [[OSKSession alloc] initWithPresentationEndingHandler:options[OSKPresentationOption_PresentationEndingHandler]
+                                                      activityCompletionHandler:options[OSKPresentationOption_ActivityCompletionHandler]];
+    
     OSKActivitySheetViewController *sheet = nil;
-    sheet = [[OSKActivitySheetViewController alloc] initWithActivities:activities delegate:self usePopoverLayout:YES];
-    [sheet setActivityCompletionHandler:options[OSKActivityOption_ActivityCompletionHandler]];
-    [sheet setDismissalHandler:options[OSKActivityOption_ActivitySheetDismissalHandler]];
+    sheet = [[OSKActivitySheetViewController alloc] initWithSession:session activities:activities delegate:self usePopoverLayout:YES];
     [sheet setTitle:content.title];
     
     [self setActivitySheetViewController:sheet];
@@ -120,17 +134,24 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
     [popover presentPopoverFromRect:rect inView:view permittedArrowDirections:arrowDirections animated:animated];
 }
 
-- (void)presentActivitySheetForContent:(OSKShareableContent *)content presentingViewController:(UIViewController *)presentingViewController popoverFromBarButtonItem:(UIBarButtonItem *)item permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated options:(NSDictionary *)options {
+- (void)presentActivitySheetForContent:(OSKShareableContent *)content
+              presentingViewController:(UIViewController *)presentingViewController
+              popoverFromBarButtonItem:(UIBarButtonItem *)item
+              permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections
+                              animated:(BOOL)animated
+                               options:(NSDictionary *)options {
     
     [self setPresentingViewController:presentingViewController];
+    
     NSArray *activities = nil;
     OSKActivitiesManager *manager = [OSKActivitiesManager sharedInstance];
     activities = [manager validActivitiesForContent:content options:options];
     
+    OSKSession *session = [[OSKSession alloc] initWithPresentationEndingHandler:options[OSKPresentationOption_PresentationEndingHandler]
+                                                      activityCompletionHandler:options[OSKPresentationOption_ActivityCompletionHandler]];
+    
     OSKActivitySheetViewController *sheet = nil;
-    sheet = [[OSKActivitySheetViewController alloc] initWithActivities:activities delegate:self usePopoverLayout:YES];
-    [sheet setActivityCompletionHandler:options[OSKActivityOption_ActivityCompletionHandler]];
-    [sheet setDismissalHandler:options[OSKActivityOption_ActivitySheetDismissalHandler]];
+    sheet = [[OSKActivitySheetViewController alloc] initWithSession:session activities:activities delegate:self usePopoverLayout:YES];
     [sheet setTitle:content.title];
     
     [self setActivitySheetViewController:sheet];
@@ -145,7 +166,9 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
 #pragma mark - Presentation & Dismissal
 
-- (void)presentSheet:(OSKActivitySheetViewController *)sheet fromViewController:(UIViewController *)presentingViewController {
+- (void)presentSheet:(OSKActivitySheetViewController *)sheet
+  fromViewController:(UIViewController *)presentingViewController {
+    
     if ([self isPresenting] == NO) {
         [self setActivitySheetViewController:sheet];
         [self setIsAnimating:YES];
@@ -173,15 +196,16 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
     }
 }
 
-- (void)dismissActivitySheet {
+- (void)dismissActivitySheet:(void(^)(void))completion {
+    
     if ([self isPresentingViaPopover]) {
-        [self dismissActivitySheet_Pad];
+        [self dismissActivitySheet_Pad:completion];
     } else {
-        [self dismissActivitySheet_Phone];
+        [self dismissActivitySheet_Phone:completion];
     }
 }
 
-- (void)dismissActivitySheet_Phone {
+- (void)dismissActivitySheet_Phone:(void(^)(void))completion {
     if ([self isAnimating] == NO && [self isPresenting] == YES) {
         [self setIsAnimating:YES];
         OSKActivitySheetViewController *sheet = self.activitySheetViewController;
@@ -198,43 +222,90 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
             [self setActivitySheetViewController:nil];
             [self setPresentingViewController:nil];
             [self setIsAnimating:NO];
-            if (sheet.dismissalHandler) {
-                sheet.dismissalHandler();
+            if (completion) {
+                completion();
             }
         }];
     }
 }
 
-- (void)dismissActivitySheet_Pad {
+- (void)dismissActivitySheet_Pad:(void(^)(void))completion {
     if (self.isAnimating == NO) {
         [self setIsAnimating:YES];
         [self.popoverController dismissPopoverAnimated:YES];
-        OSKActivitySheetDismissalHandler handler = [self.activitySheetViewController.dismissalHandler copy];
         __weak OSKPresentationManager *weakSelf = self;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [weakSelf setPopoverController:nil];
             [weakSelf setPresentingViewController:nil];
             [weakSelf setIsAnimating:NO];
-            if (handler) {
-                handler();
+            if (completion) {
+                completion();
             }
         });
+    }
+}
+
+#pragma mark - Sessions
+
+- (void)beginSessionWithSelectedActivity:(OSKActivity *)activity
+                presentingViewController:(UIViewController *)presentingViewController
+                                 options:(NSDictionary *)options {
+    
+    OSKSession *session = [[OSKSession alloc] initWithPresentationEndingHandler:options[OSKPresentationOption_PresentationEndingHandler]
+                                                      activityCompletionHandler:options[OSKPresentationOption_ActivityCompletionHandler]];
+    [self _proceedWithSession:session
+             selectedActivity:activity
+     presentingViewController:presentingViewController
+            popoverController:nil];
+}
+
+- (void)_proceedWithSession:(OSKSession *)session
+           selectedActivity:(OSKActivity *)activity
+   presentingViewController:(UIViewController *)presentingViewController
+          popoverController:(UIPopoverController *)popoverController {
+    
+    OSKSessionController *sessionController = nil;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        sessionController = [[OSKSessionController_Phone alloc] initWithActivity:activity
+                                                                      session:session
+                                                                     delegate:self
+                                                     presentingViewController:presentingViewController];
+    }
+    else {
+        sessionController = [[OSKSessionController_Pad alloc] initWithActivity:activity
+                                                                    session:session
+                                                                   delegate:self
+                                                          popoverController:popoverController
+                                                   presentingViewController:presentingViewController];
+    }
+    
+    [self.sessionControllers setObject:sessionController forKey:session.sessionIdentifier];
+    [sessionController start];
+    
+    if ([self isPresentingViaPopover]) {
+        if ([[activity.class activityType] isEqualToString:OSKActivityType_iOS_AirDrop] == NO) {
+            [self dismissActivitySheet:nil];
+        }
     }
 }
 
 #pragma mark - Popover Delegate
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-    OSKActivitySheetDismissalHandler handler = [self.activitySheetViewController.dismissalHandler copy];
+    
+    OSKPresentationEndingHandler handler = [self.activitySheetViewController.session.presentationEndingHandler copy];
     [self setPopoverController:nil];
     [self setActivitySheetViewController:nil];
     [self setIsAnimating:NO]; // just in case
     if (handler) {
-        handler();
+        handler(OSKPresentationEnding_Cancelled, nil);
     }
 }
 
-- (void)popoverController:(UIPopoverController *)popoverController willRepositionPopoverToRect:(inout CGRect *)rect inView:(inout UIView *__autoreleasing *)view {
+- (void)popoverController:(UIPopoverController *)popoverController
+willRepositionPopoverToRect:(inout CGRect *)rect
+                   inView:(inout UIView *__autoreleasing *)view {
+    
     if ([self.viewControllerDelegate respondsToSelector:@selector(presentationManager:willRepositionPopoverToRect:inView:)]) {
         [self.viewControllerDelegate presentationManager:self willRepositionPopoverToRect:rect inView:view];
     }
@@ -268,40 +339,24 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 #pragma mark - Activity Sheet Delegate
 
 - (void)activitySheet:(OSKActivitySheetViewController *)viewController didSelectActivity:(OSKActivity *)activity {
-    OSKFlowController *flowController = nil;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        flowController = [[OSKFlowController_Phone alloc] initWithActivity:activity
-                                                         sessionIdentifier:viewController.sessionIdentifier
-                                                 activityCompletionHandler:self.activitySheetViewController.activityCompletionHandler
-                                                                  delegate:self
-                                                  presentingViewController:self.presentingViewController];
-    }
-    else {
-        flowController = [[OSKFlowController_Pad alloc] initWithActivity:activity
-                                                       sessionIdentifier:viewController.sessionIdentifier
-                                               activityCompletionHandler:self.activitySheetViewController.activityCompletionHandler
-                                                                delegate:self
-                                                       popoverController:self.popoverController
-                                                presentingViewController:self.presentingViewController];
-    }
-    
-    [self.flowControllers setObject:flowController forKey:flowController.sessionIdentifier];
-    [flowController start];
-    
-    if ([self isPresentingViaPopover]) {
-        if ([[activity.class activityType] isEqualToString:OSKActivityType_iOS_AirDrop] == NO) {
-            [self dismissActivitySheet];
-        }
-    }
+
+    [self _proceedWithSession:viewController.session
+             selectedActivity:activity
+     presentingViewController:self.presentingViewController
+            popoverController:self.popoverController];
 }
 
 - (void)activitySheetDidCancel:(OSKActivitySheetViewController *)viewController {
-    OSKFlowController *flowController = [self.flowControllers objectForKey:viewController.sessionIdentifier];
-    if (flowController) {
-        [flowController dismissViewControllers];
-        [self.flowControllers removeObjectForKey:flowController.sessionIdentifier];
+    
+    OSKSession *session = viewController.session;
+    OSKSessionController *sessionController = [self.sessionControllers objectForKey:session.sessionIdentifier];
+    if (sessionController) {
+        [sessionController dismissViewControllers];
+        [self.sessionControllers removeObjectForKey:session.sessionIdentifier];
     }
-    [self dismissActivitySheet];
+    [self dismissActivitySheet:^{
+        session.presentationEndingHandler(OSKPresentationEnding_Cancelled, nil);
+    }];
 }
 
 #pragma mark - Styles
@@ -888,36 +943,89 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
 #pragma mark - Flow Controller Delegate
 
-- (void)flowController:(OSKFlowController *)controller willPresentViewController:(UIViewController *)viewController inNavigationController:(OSKNavigationController *)navigationController {
+- (void)sessionController:(OSKSessionController *)controller
+willPresentViewController:(UIViewController *)viewController
+   inNavigationController:(OSKNavigationController *)navigationController {
+    
     if ([self.viewControllerDelegate respondsToSelector:@selector(presentationManager:willPresentViewController:inNavigationController:)]) {
         [self.viewControllerDelegate presentationManager:self willPresentViewController:viewController inNavigationController:navigationController];
     }
 }
 
-- (void)flowController:(OSKFlowController *)controller willPresentSystemViewController:(UIViewController *)systemViewController {
+- (void)sessionController:(OSKSessionController *)controller willPresentSystemViewController:(UIViewController *)systemViewController {
     if ([self.viewControllerDelegate respondsToSelector:@selector(presentationManager:willPresentSystemViewController:)]) {
         [self.viewControllerDelegate presentationManager:self willPresentSystemViewController:systemViewController];
     }
 }
 
-- (void)flowControllerDidBeginActivity:(OSKFlowController *)controller shouldDismissActivitySheet:(BOOL)dismiss {
-    if (dismiss) {
-        [self dismissActivitySheet];
+- (void)sessionControllerDidBeginPerformingActivity:(OSKSessionController *)controller hasDismissedAllViewControllers:(BOOL)hasDismissed {
+    
+    if (hasDismissed) {
+        OSKSession *session = controller.session;
+        OSKActivity *selectedActivity = controller.activity;
+        if ([self isPresenting]) {
+            [self dismissActivitySheet:^{
+                if (session.presentationEndingHandler) {
+                    session.presentationEndingHandler(OSKPresentationEnding_ProceededWithActivity, selectedActivity);
+                }
+            }];
+        } else {
+            if (session.presentationEndingHandler) {
+                session.presentationEndingHandler(OSKPresentationEnding_ProceededWithActivity, selectedActivity);
+            }
+        }
     }
 }
 
-- (void)flowControllerDidFinish:(OSKFlowController *)controller {
-    [self.flowControllers removeObjectForKey:controller.sessionIdentifier];
-    if ([self isPresenting] && [controller.sessionIdentifier isEqualToString:self.activitySheetViewController.sessionIdentifier]) {
-        [self dismissActivitySheet];
+- (void)sessionControllerDidFinish:(OSKSessionController *)controller successful:(BOOL)successful error:(NSError *)error {
+    
+    OSKSession *session = controller.session;
+    OSKActivity *selectedActivity = controller.activity;
+    
+    [self.sessionControllers removeObjectForKey:session.sessionIdentifier];
+    
+    if (session.activityCompletionHandler) {
+        session.activityCompletionHandler(selectedActivity, successful, error);
+    }
+
+    // This check is not strictly necessary, since in practice the activity sheets are
+    // always dismissed when the activity *begins* to perform, or earlier (on iPad).
+    // In the interests of future changes, we'll check for a need to dismiss the activity
+    // sheet here.
+    if ([self isPresenting] && [session.sessionIdentifier isEqualToString:self.activitySheetViewController.session.sessionIdentifier]) {
+        [self dismissActivitySheet:^{
+            if (session.presentationEndingHandler) {
+                session.presentationEndingHandler(OSKPresentationEnding_ProceededWithActivity, selectedActivity);
+            }
+        }];
     }
 }
 
-- (void)flowControllerDidCancel:(OSKFlowController *)controller {
-    [self.flowControllers removeObjectForKey:controller.sessionIdentifier];
+- (void)sessionControllerDidCancel:(OSKSessionController *)controller {
+    [self.sessionControllers removeObjectForKey:controller.session.sessionIdentifier];
+    
+    if ([self isPresenting] == NO) {
+        // Don't perform the presentation ending block unless the activity sheet
+        // has already been dismissed. E.g., on iPad, the session controller
+        // continues to present authentication and publishing view controllers after
+        // the activity sheet popover has been dismissed.
+        OSKSession *session = controller.session;
+        if (session.presentationEndingHandler) {
+            OSKActivity *selectedActivity = controller.activity;
+            session.presentationEndingHandler(OSKPresentationEnding_Cancelled, selectedActivity);
+        }
+    }
 }
 
 @end
+
+
+
+
+
+
+
+
 
 
 

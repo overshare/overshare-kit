@@ -1,5 +1,5 @@
 //
-//  OSKFlowController.m
+//  OSKSessionController.m
 //  Overshare
 //
 //  Created by Jared Sinclair on 10/11/13.
@@ -8,7 +8,7 @@
 
 @import Accounts;
 
-#import "OSKFlowController.h"
+#import "OSKSessionController.h"
 
 #import "OSKActivitiesManager.h"
 #import "OSKActivity.h"
@@ -26,28 +26,30 @@
 #import "OSKManagedAccountStore.h"
 #import "OSKSystemAccountStore.h"
 #import "OSKAlertView.h"
+#import "OSKSession.h"
 
-@interface OSKFlowController ()
+@interface OSKSessionController ()
 <
     OSKPurchasingViewControllerDelegate,
     OSKAuthenticationViewControllerDelegate,
     OSKPublishingViewControllerDelegate
 >
 
-@property (strong, nonatomic, readwrite) NSString *sessionIdentifier;
-@property (copy, nonatomic, readwrite) OSKActivityCompletionHandler activityCompletionHandler;
-@property (  weak, nonatomic, readwrite) id <OSKFlowControllerDelegate> delegate;
+@property (strong, nonatomic, readwrite) OSKSession *session;
+@property (  weak, nonatomic, readwrite) id <OSKSessionControllerDelegate> delegate;
 @property (strong, nonatomic, readwrite) OSKActivity *activity;
 
 @end
 
-@implementation OSKFlowController
+@implementation OSKSessionController
 
-- (instancetype)initWithActivity:(OSKActivity *)activity sessionIdentifier:(NSString *)sessionIdentifier activityCompletionHandler:(OSKActivityCompletionHandler)completion delegate:(id<OSKFlowControllerDelegate>)delegate {
+- (instancetype)initWithActivity:(OSKActivity *)activity
+                         session:(OSKSession *)session
+                        delegate:(id<OSKSessionControllerDelegate>)delegate {
+    
     self = [super init];
     if (self) {
-        _sessionIdentifier = sessionIdentifier.copy;
-        _activityCompletionHandler = [completion copy];
+        _session = session;
         _delegate = delegate;
         _activity = activity;
     }
@@ -108,7 +110,7 @@
             [self handlePublishingStepForActivity:activity];
         }
         else {
-            __weak OSKFlowController *weakSelf = self;
+            __weak OSKSessionController *weakSelf = self;
             NSString *systemAccountTypeIdentifier = [theActivity.class systemAccountTypeIdentifier];
             [accountStore requestAccessToAccountsWithAccountTypeIdentifier:systemAccountTypeIdentifier options:nil completion:^(BOOL successful, NSError *error) {
                 if (successful) {
@@ -138,7 +140,7 @@
     NSDictionary *readOptions = [activity.class readAccessRequestOptions];
     NSDictionary *writeOptions = [activity.class writeAccessRequestOptions];
     
-    __weak OSKFlowController *weakSelf = self;
+    __weak OSKSessionController *weakSelf = self;
     
     NSString *systemAccountTypeIdentifier = [activity.class systemAccountTypeIdentifier];
     [accountStore requestAccessToAccountsWithAccountTypeIdentifier:systemAccountTypeIdentifier options:readOptions completion:^(BOOL successful, NSError *error) {
@@ -208,7 +210,7 @@
         [self showAuthenticationViewControllerForActivity:theActivity];
     }
     else {
-        __weak OSKFlowController *weakSelf = self;
+        __weak OSKSessionController *weakSelf = self;
         [theActivity authenticateNewAccountWithoutViewController:^(OSKManagedAccount *account, NSError *error) {
             if (account) {
                 [weakSelf finishUpAuthenticationWithFirstNewManagedAccount:account activity:theActivity];
@@ -226,7 +228,7 @@
     if ([theActivity isAuthenticated]) {
         [self handlePublishingStepForActivity:theActivity];
     } else {
-        __weak OSKFlowController *weakSelf = self;
+        __weak OSKSessionController *weakSelf = self;
         [theActivity authenticate:^(BOOL successful, NSError *error) {
             if (successful) {
                 [weakSelf handlePublishingStepForActivity:theActivity];
@@ -241,7 +243,6 @@
 - (void)handlePublishingStepForActivity:(OSKActivity *)activity {
     if ([activity.class publishingViewControllerType] == OSKPublishingViewControllerType_None) {
         [self dismissViewControllers];
-        [self.delegate flowControllerDidBeginActivity:self shouldDismissActivitySheet:YES];
         [self handlePerformStepForActivity:activity];
     } else {
         [self showPublishingViewControllerForActivity:activity];
@@ -249,11 +250,10 @@
 }
 
 - (void)handlePerformStepForActivity:(OSKActivity *)activity {
+    [self.delegate sessionControllerDidBeginPerformingActivity:self hasDismissedAllViewControllers:YES]; // Always YES for now...
+    __weak OSKSessionController *weakSelf = self;
     [activity performActivity:^(OSKActivity *theActivity, BOOL successful, NSError *error) {
-        if (self.activityCompletionHandler) {
-            self.activityCompletionHandler(activity, successful, error);
-        }
-        [self.delegate flowControllerDidFinish:self];
+        [weakSelf.delegate sessionControllerDidFinish:weakSelf successful:successful error:error];
     }];
 }
 
@@ -329,7 +329,6 @@
 - (void)publishingViewController:(UIViewController <OSKPublishingViewController> *)viewController didTapPublishActivity:(OSKActivity *)activity {
     if ([activity isReadyToPerform]) {
         [self dismissViewControllers];
-        [self.delegate flowControllerDidBeginActivity:self shouldDismissActivitySheet:YES];
         [self handlePerformStepForActivity:activity];
     } else {
         OSKLog(@"Publishing failed, not yet ready to perform: %@", activity);
@@ -345,7 +344,7 @@
 
 - (void)cancel {
     [self dismissViewControllers];
-    [self.delegate flowControllerDidCancel:self];
+    [self.delegate sessionControllerDidCancel:self];
 }
 
 @end

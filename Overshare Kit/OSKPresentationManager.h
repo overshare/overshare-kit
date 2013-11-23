@@ -17,8 +17,25 @@
 #import "OSKPresentationColor.h"
 #import "OSKPresentationLocalization.h"
 #import "OSKPresentationViewControllers.h"
+#import "OSKSession.h"
 
-extern NSString * const OSKActivityOption_ActivitySheetDismissalHandler; // Called when an activity sheet is dismissed, regardless why
+/**
+ Refers to an instance of `OSKActivityCompletionHandler` (See OSKActivity.h).
+ 
+ This key is used in the `options` dictionaries of the present... methods
+ listed below. The block specified by `OSKPresentationOption_ActivityCompletionHandler` is
+ called whenever the selected activity finishes or fails.
+ */
+extern NSString * const OSKPresentationOption_ActivityCompletionHandler;
+
+/**
+ Refers to an instance of `OSKPresentationEndingHandler` (See OSKSession.h).
+ 
+ This key is used in the `options` dictionaries of the present... methods
+ listed below. The block specified by `OSKPresentationOption_PresentationEndingHandler` is
+ called whenever the OSK UI is dismissed (via cancellation or otherwise)
+ */
+extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 
 ///-----------------------------------------------
 /// @name Presentation Manager
@@ -54,13 +71,17 @@ extern NSString * const OSKActivityOption_ActivitySheetDismissalHandler; // Call
 @property (weak, nonatomic) id <OSKPresentationViewControllers> viewControllerDelegate;
 
 ///-----------------------------------------------
-/// @name Methods
+/// @name Singleton Access
 ///-----------------------------------------------
 
 /**
  @return returns the singleton instance.
  */
 + (instancetype)sharedInstance;
+
+///-----------------------------------------------
+/// @name Presenting Default Activity Sheet
+///-----------------------------------------------
 
 /**
  Presents an activity sheet from the presenting view controller. Use this on iPhone.
@@ -69,8 +90,9 @@ extern NSString * const OSKActivityOption_ActivitySheetDismissalHandler; // Call
  
  @param presentingViewController Your app's presenting view controller.
  
- @param options See OSKActivity.h for other options you can pass here, in addition to the
- `OSKActivityOption_ActivitySheetDismissalHandler` option listed above.
+ @param options A dictionary of options. In addition to the options listed in OSKActivity.h, 
+ the accepted keys are `OSKPresentationOption_ActivityCompletionHandler` and 
+ `OSKPresentationOption_PresentationEndingHandler`.
  */
 - (void)presentActivitySheetForContent:(OSKShareableContent *)content
               presentingViewController:(UIViewController *)presentingViewController
@@ -83,8 +105,9 @@ extern NSString * const OSKActivityOption_ActivitySheetDismissalHandler; // Call
  
  @param presentingViewController Your app's presenting view controller.
  
- @param options See OSKActivity.h for other options you can pass here, in addition to the
- `OSKActivityOption_ActivitySheetDismissalHandler` option listed above.
+ @param options A dictionary of options. In addition to the options listed in OSKActivity.h,
+ the accepted keys are `OSKPresentationOption_ActivityCompletionHandler` and
+ `OSKPresentationOption_PresentationEndingHandler`.
  */
 - (void)presentActivitySheetForContent:(OSKShareableContent *)content
               presentingViewController:(UIViewController *)presentingViewController
@@ -101,8 +124,9 @@ extern NSString * const OSKActivityOption_ActivitySheetDismissalHandler; // Call
  
  @param presentingViewController Your app's presenting view controller.
  
- @param options See OSKActivity.h for other options you can pass here, in addition to the
- `OSKActivityOption_ActivitySheetDismissalHandler` option listed above.
+ @param options A dictionary of options. In addition to the options listed in OSKActivity.h,
+ the accepted keys are `OSKPresentationOption_ActivityCompletionHandler` and
+ `OSKPresentationOption_PresentationEndingHandler`.
  */
 - (void)presentActivitySheetForContent:(OSKShareableContent *)content
               presentingViewController:(UIViewController *)presentingViewController
@@ -110,6 +134,28 @@ extern NSString * const OSKActivityOption_ActivitySheetDismissalHandler; // Call
               permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections
                               animated:(BOOL)animated
                                options:(NSDictionary *)options;
+
+///---------------------------------------------------
+/// @name Skipping the Built-In Activity Sheet
+///---------------------------------------------------
+
+/**
+ Use this method to skip the activity sheet view controller and proceed straight to the built-in flow 
+ through purchasing, authentication, and publishing view controllers.
+ 
+ This method is for applications that wish to present their own activity sheet UI, but still wish
+ to use Overshare Kit for all the other view controllers & logic.
+ 
+ @param activity The user's selected activity. It's up to you to create & obtain this activity.
+ 
+ @param presentingViewController The view controller from which OSK will present it's view controllers.
+ 
+ @param options A dictionary of options. The accepted keys are `OSKPresentationOption_ActivityCompletionHandler` 
+ and `OSKPresentationOption_PresentationEndingHandler`.
+ */
+- (void)beginSessionWithSelectedActivity:(OSKActivity *)activity
+                presentingViewController:(UIViewController *)presentingViewController
+                                 options:(NSDictionary *)options;
 
 @end
 

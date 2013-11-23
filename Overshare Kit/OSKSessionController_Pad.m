@@ -1,17 +1,17 @@
 //
-//  OSKFlowController_Pad.m
+//  OSKSessionController_Pad.m
 //  Overshare
 //
 //  Created by Jared Sinclair on 10/11/13.
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 
-#import "OSKFlowController_Pad.h"
+#import "OSKSessionController_Pad.h"
 
 #import "OSKNavigationController.h"
 #import "OSKPresentationManager.h"
 
-@interface OSKFlowController_Pad ()
+@interface OSKSessionController_Pad ()
 
 @property (weak, nonatomic) UIPopoverController *popoverController;
 @property (weak, nonatomic) UIViewController *systemViewController;
@@ -20,10 +20,15 @@
 
 @end
 
-@implementation OSKFlowController_Pad
+@implementation OSKSessionController_Pad
 
-- (instancetype)initWithActivity:(OSKActivity *)activity sessionIdentifier:(NSString *)sessionIdentifier activityCompletionHandler:(OSKActivityCompletionHandler)completion delegate:(id<OSKFlowControllerDelegate>)delegate popoverController:(UIPopoverController *)popoverController presentingViewController:(UIViewController *)presentingViewController {
-    self = [super initWithActivity:activity sessionIdentifier:sessionIdentifier activityCompletionHandler:completion delegate:delegate];
+- (instancetype)initWithActivity:(OSKActivity *)activity
+                         session:(OSKSession *)session
+                        delegate:(id<OSKSessionControllerDelegate>)delegate
+               popoverController:(UIPopoverController *)popoverController
+        presentingViewController:(UIViewController *)presentingViewController {
+    
+    self = [super initWithActivity:activity session:session delegate:delegate];
     if (self) {
         _popoverController = popoverController;
         _presentingViewController = presentingViewController;
@@ -35,23 +40,23 @@
     if (self.navigationController == nil) {
         self.navigationController = [[OSKNavigationController alloc] initWithRootViewController:viewController];
         [self.navigationController setModalPresentationStyle:UIModalPresentationFormSheet];
-        [self.delegate flowController:self willPresentViewController:viewController inNavigationController:self.navigationController];
+        [self.delegate sessionController:self willPresentViewController:viewController inNavigationController:self.navigationController];
         [self.presentingViewController presentViewController:self.navigationController animated:YES completion:nil];
     }
     else if (isNewRoot) {
-        [self.delegate flowController:self willPresentViewController:viewController inNavigationController:self.navigationController];
+        [self.delegate sessionController:self willPresentViewController:viewController inNavigationController:self.navigationController];
         [self.navigationController setViewControllers:@[viewController] animated:YES];
     } else {
-        [self.delegate flowController:self willPresentViewController:viewController inNavigationController:self.navigationController];
+        [self.delegate sessionController:self willPresentViewController:viewController inNavigationController:self.navigationController];
         [self.navigationController pushViewController:viewController animated:YES];
     }
 }
 
 - (void)presentSystemViewControllerAppropriately:(UIViewController *)systemViewController {
-    [self.delegate flowController:self willPresentSystemViewController:systemViewController];
+    [self.delegate sessionController:self willPresentSystemViewController:systemViewController];
     if (self.systemViewController == nil) {
         [self setSystemViewController:systemViewController];
-        if ([systemViewController isKindOfClass:[UIActivityViewController class]]) {
+        if ([systemViewController isKindOfClass:[UIActivityViewController class]] && self.popoverController != nil) {
             [self.popoverController.contentViewController presentViewController:systemViewController animated:YES completion:nil];
         } else {
             [self.presentingViewController presentViewController:systemViewController animated:YES completion:nil];
@@ -61,13 +66,13 @@
 
 - (void)dismissViewControllers {
     if (self.systemViewController) {
-        __weak OSKFlowController_Pad *weakSelf = self;
+        __weak OSKSessionController_Pad *weakSelf = self;
         [self.systemViewController dismissViewControllerAnimated:YES completion:^{
             [weakSelf setSystemViewController:nil];
         }];
     }
     if (self.navigationController) {
-        __weak OSKFlowController_Pad *weakSelf = self;
+        __weak OSKSessionController_Pad *weakSelf = self;
         [self.navigationController dismissViewControllerAnimated:YES completion:^{
             [weakSelf setNavigationController:nil];
         }];
