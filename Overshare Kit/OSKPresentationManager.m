@@ -1004,6 +1004,12 @@ willPresentViewController:(UIViewController *)viewController
 - (void)sessionControllerDidCancel:(OSKSessionController *)controller {
     [self.sessionControllers removeObjectForKey:controller.session.sessionIdentifier];
     
+    /*
+     Do NOT dismiss the activity sheet here. The user may have cancelled the session controller
+     because they tapped the wrong activity. If they want to dismiss the activity sheet,
+     they will indicate this intention directly via the "Cancel" button on the activity sheet.
+     */
+    
     if ([self isPresenting] == NO) {
         // Don't perform the presentation ending block unless the activity sheet
         // has already been dismissed. E.g., on iPad, the session controller
