@@ -90,11 +90,11 @@
     
     // 2) Setup optional completion and dismissal handlers
     OSKActivityCompletionHandler completionHandler = [self activityCompletionHandler];
-    OSKActivitySheetDismissalHandler dismissalHandler = [self dismissalHandler];
+    OSKPresentationEndingHandler dismissalHandler = [self dismissalHandler];
     
     // 3) Create the options dictionary. See OSKActivity.h for more options.
-    NSDictionary *options = @{    OSKActivityOption_ActivityCompletionHandler : completionHandler,
-                              OSKActivityOption_ActivitySheetDismissalHandler : dismissalHandler};
+    NSDictionary *options = @{    OSKPresentationOption_ActivityCompletionHandler : completionHandler,
+                              OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
     
     // 4) Prep the iPad-specific presentation needs.
     CGRect presentationRect = [self presentationRectForCell:tappedCell];
@@ -125,11 +125,11 @@
     
     // 2) Setup optional completion and dismissal handlers
     OSKActivityCompletionHandler completionHandler = [self activityCompletionHandler];
-    OSKActivitySheetDismissalHandler dismissalHandler = [self dismissalHandler];
+    OSKPresentationEndingHandler dismissalHandler = [self dismissalHandler];
     
     // 3) Create the options dictionary. See OSKActivity.h for more options.
-    NSDictionary *options = @{    OSKActivityOption_ActivityCompletionHandler : completionHandler,
-                                  OSKActivityOption_ActivitySheetDismissalHandler : dismissalHandler};
+    NSDictionary *options = @{    OSKPresentationOption_ActivityCompletionHandler : completionHandler,
+                                  OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
     
     // 4) Present the activity sheet via the presentation manager.
     [[OSKPresentationManager sharedInstance] presentActivitySheetForContent:content
@@ -156,11 +156,11 @@
     
     // 2) Setup optional completion and dismissal handlers
     OSKActivityCompletionHandler completionHandler = [self activityCompletionHandler];
-    OSKActivitySheetDismissalHandler dismissalHandler = [self dismissalHandler];
+    OSKPresentationEndingHandler dismissalHandler = [self dismissalHandler];
     
     // 3) Create the options dictionary. See OSKActivity.h for more options.
-    NSDictionary *options = @{    OSKActivityOption_ActivityCompletionHandler : completionHandler,
-                              OSKActivityOption_ActivitySheetDismissalHandler : dismissalHandler};
+    NSDictionary *options = @{    OSKPresentationOption_ActivityCompletionHandler : completionHandler,
+                              OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
     
     // 4) Present the activity sheet via the presentation manager.
     [[OSKPresentationManager sharedInstance] presentActivitySheetForContent:content
@@ -295,9 +295,9 @@
     return activityCompletionHandler;
 }
 
-- (OSKActivitySheetDismissalHandler)dismissalHandler {
+- (OSKPresentationEndingHandler)dismissalHandler {
     __weak SampleTimelineViewController *weakSelf = self;
-    OSKActivitySheetDismissalHandler dismissalHandler = ^{
+    OSKPresentationEndingHandler dismissalHandler = ^(OSKPresentationEnding ending, OSKActivity *activityOrNil){
         OSKLog(@"Sheet dismissed.");
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             [weakSelf setIPadPresentingIndexPath:nil];

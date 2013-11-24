@@ -233,10 +233,11 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
     if (self.isAnimating == NO) {
         [self setIsAnimating:YES];
         [self.popoverController dismissPopoverAnimated:YES];
+        [self setActivitySheetViewController:nil];
+        [self setPopoverController:nil];
+        [self setPresentingViewController:nil];
         __weak OSKPresentationManager *weakSelf = self;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [weakSelf setPopoverController:nil];
-            [weakSelf setPresentingViewController:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.35 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [weakSelf setIsAnimating:NO];
             if (completion) {
                 completion();
@@ -279,14 +280,14 @@ static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
                                                    presentingViewController:presentingViewController];
     }
     
-    [self.sessionControllers setObject:sessionController forKey:session.sessionIdentifier];
-    [sessionController start];
-    
     if ([self isPresentingViaPopover]) {
         if ([[activity.class activityType] isEqualToString:OSKActivityType_iOS_AirDrop] == NO) {
             [self dismissActivitySheet:nil];
         }
     }
+    
+    [self.sessionControllers setObject:sessionController forKey:session.sessionIdentifier];
+    [sessionController start];
 }
 
 #pragma mark - Popover Delegate

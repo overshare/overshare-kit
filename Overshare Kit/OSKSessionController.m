@@ -122,11 +122,13 @@
                     } else {
                         [weakSelf showAlertForNoSystemAccounts];
                         OSKLog(@"User has no existing system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+                        [weakSelf cancel];
                     }
                 }
                 else {
                     [weakSelf showAlertForSystemAccountAccessNotGranted];
                     OSKLog(@"User denied access to system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+                    [weakSelf cancel];
                 }
             }];
         }
@@ -144,9 +146,19 @@
     
     NSString *systemAccountTypeIdentifier = [activity.class systemAccountTypeIdentifier];
     [accountStore requestAccessToAccountsWithAccountTypeIdentifier:systemAccountTypeIdentifier options:readOptions completion:^(BOOL successful, NSError *error) {
-        if (successful) {
+        if (successful == NO) {
+            [weakSelf showAlertForSystemAccountAccessNotGranted];
+            OSKLog(@"Access request failed for system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+            [weakSelf cancel];
+        }
+        else {
            [accountStore requestAccessToAccountsWithAccountTypeIdentifier:systemAccountTypeIdentifier options:writeOptions completion:^(BOOL successful, NSError *error) {
-               if (successful) {
+               if (successful == NO) {
+                   [weakSelf showAlertForSystemAccountAccessNotGranted];
+                   OSKLog(@"Access request failed for system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+                   [weakSelf cancel];
+               }
+               else {
                    NSArray *systemAccounts = [accountStore accountsForAccountTypeIdentifier:systemAccountTypeIdentifier];
                    if (systemAccounts.count > 0) {
                        ACAccount *account = [systemAccounts firstObject];
@@ -156,17 +168,10 @@
                    else {
                        [weakSelf showAlertForNoSystemAccounts];
                        OSKLog(@"User has no existing system accounts with account type identifier: %@", systemAccountTypeIdentifier);
+                       
                    }
                }
-               else {
-                   [weakSelf showAlertForSystemAccountAccessNotGranted];
-                   OSKLog(@"Access request failed for system accounts with account type identifier: %@", systemAccountTypeIdentifier);
-               }
            }];
-        }
-        else {
-            [weakSelf showAlertForSystemAccountAccessNotGranted];
-            OSKLog(@"Access request failed for system accounts with account type identifier: %@", systemAccountTypeIdentifier);
         }
     }];
 }
