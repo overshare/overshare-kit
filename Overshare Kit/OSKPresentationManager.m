@@ -1006,9 +1006,12 @@ willPresentViewController:(UIViewController *)viewController
     [self.sessionControllers removeObjectForKey:controller.session.sessionIdentifier];
     
     /*
-     Do NOT dismiss the activity sheet here. The user may have cancelled the session controller
+     On iPhone: Do NOT dismiss the activity sheet here. The user may have cancelled the session controller
      because they tapped the wrong activity. If they want to dismiss the activity sheet,
      they will indicate this intention directly via the "Cancel" button on the activity sheet.
+     
+     On iPad: The activity sheet popover will already have been dismissed by the time we get here, so there's
+     no need to dismiss it.
      */
     
     if ([self isPresenting] == NO) {
