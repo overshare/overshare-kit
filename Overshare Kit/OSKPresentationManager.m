@@ -356,7 +356,9 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         [self.sessionControllers removeObjectForKey:session.sessionIdentifier];
     }
     [self dismissActivitySheet:^{
-        session.presentationEndingHandler(OSKPresentationEnding_Cancelled, nil);
+        if (session.presentationEndingHandler) {
+            session.presentationEndingHandler(OSKPresentationEnding_Cancelled, nil);
+        }
     }];
 }
 
@@ -1028,14 +1030,6 @@ willPresentViewController:(UIViewController *)viewController
 }
 
 @end
-
-
-
-
-
-
-
-
 
 
 
