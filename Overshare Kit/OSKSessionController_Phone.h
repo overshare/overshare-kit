@@ -1,21 +1,20 @@
 //
-//  OSKFlowController_Phone.h
+//  OSKSessionController_Phone.h
 //  Overshare
 //
 //  Created by Jared Sinclair on 10/11/13.
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 
-#import "OSKFlowController.h"
+#import "OSKSessionController.h"
 
-@interface OSKFlowController_Phone : OSKFlowController
+@interface OSKSessionController_Phone : OSKSessionController
 
 @property (strong, nonatomic, readonly) UIViewController *presentingViewController;
 
 - (instancetype)initWithActivity:(OSKActivity *)activity
-               sessionIdentifier:(NSString *)sessionIdentifier
-       activityCompletionHandler:(OSKActivityCompletionHandler)completion
-                        delegate:(id<OSKFlowControllerDelegate>)delegate
+                         session:(OSKSession *)session
+                        delegate:(id <OSKSessionControllerDelegate>)delegate
         presentingViewController:(UIViewController *)presentingViewController;
 
 @end

@@ -25,24 +25,30 @@ static NSString * OSKInstapaperAPIAddURL = @"add";
     NSURLSession *sesh = [NSURLSession sharedSession];
     NSDictionary *params = @{@"username":username,@"password":password};
     NSString *path = [NSString stringWithFormat:@"%@%@", OSKInstapaperBaseURL, OSKInstapaperAPIAuthenticate];
-    NSMutableURLRequest *request = [NSMutableURLRequest osk_requestWithMethod:@"GET" URLString:path parameters:params serialization:OSKParameterSerializationType_HTTPBody_FormData];
+    NSMutableURLRequest *request = [NSMutableURLRequest osk_requestWithMethod:@"GET" URLString:path parameters:params serialization:OSKParameterSerializationType_Query];
     [[sesh dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSString *identifier = [OSKManagedAccount generateNewOvershareAccountIdentifier];
-            OSKManagedAccountCredential *accountCredential = [[OSKManagedAccountCredential alloc]
+            OSKManagedAccount *account = nil;
+            BOOL isValidResponse = [NSHTTPURLResponse statusCodeAcceptableForResponse:response];
+            NSError *theError = error;
+            
+            if (isValidResponse) {
+                NSString *identifier = [OSKManagedAccount generateNewOvershareAccountIdentifier];
+                OSKManagedAccountCredential *accountCredential = [[OSKManagedAccountCredential alloc]
                                                               initWithOvershareAccountIdentifier:identifier
                                                               username:username
                                                               password:password];
-            OSKManagedAccount *account = [[OSKManagedAccount alloc]
+                account = [[OSKManagedAccount alloc]
                                           initWithOvershareAccountIdentifier:identifier
                                           activityType:OSKActivityType_API_Instapaper
                                           credential:accountCredential];
-            account.username = username;
+                account.username = username;
+            }
+            else if (theError == nil) {
+                theError = [NSError errorWithDomain:@"OSKInstapaperUtility" code:400 userInfo:@{NSLocalizedFailureReasonErrorKey:[NSString stringWithFormat:@"Request failed: %@", response.description]}];
+            }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSError *theError = error;
-                if ([NSHTTPURLResponse statusCodeAcceptableForResponse:response] == NO && error == nil) {
-                    theError = [NSError errorWithDomain:@"OSKInstapaperUtility" code:400 userInfo:@{NSLocalizedFailureReasonErrorKey:[NSString stringWithFormat:@"Request failed: %@", response.description]}];
-                }
                 if (theError) {
                     OSKLog(@"Failed to sign into Instapaper: %@", error);
                 }

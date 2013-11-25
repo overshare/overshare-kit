@@ -13,7 +13,6 @@
 extern NSString * const OSKActivityOption_ExcludedTypes; // NSArray of activity types (strings)
 extern NSString * const OSKActivityOption_BespokeActivities; // NSArray of classes, each inheriting from OSKActivity
 extern NSString * const OSKActivityOption_RequireOperations; // Passing @(YES) filters out activities that can't perform via OSKActivityOperation
-extern NSString * const OSKActivityOption_ActivityCompletionHandler; // Called whenever an activity finishes or fails
 
 // BUILT-IN ACTIVITY TYPES (Your custom OSKActivity subclasses should have their own unique types.)
 extern NSString * const OSKActivityType_iOS_Twitter;

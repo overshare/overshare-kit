@@ -46,7 +46,7 @@ static CGFloat OSKActivitySheetViewControllerCollectionViewHeight_ThreeRows_Pad 
 @property (weak, nonatomic) IBOutlet OSKBorderedButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-@property (strong, nonatomic, readwrite) NSString *sessionIdentifier;
+@property (strong, nonatomic, readwrite) OSKSession *session;
 @property (strong, nonatomic) OSKShareableContent *content;
 @property (strong, nonatomic) NSArray *activities;
 @property (strong, nonatomic) OSKActivityCollectionViewController *collectionViewController;
@@ -58,21 +58,19 @@ static CGFloat OSKActivitySheetViewControllerCollectionViewHeight_ThreeRows_Pad 
 
 @implementation OSKActivitySheetViewController
 
-- (instancetype)initWithActivities:(NSArray *)activities delegate:(id<OSKActivitySheetDelegate>)delegate usePopoverLayout:(BOOL)usePopoverLayout {
+- (instancetype)initWithSession:(OSKSession *)session
+                     activities:(NSArray *)activities
+                       delegate:(id<OSKActivitySheetDelegate>)delegate
+               usePopoverLayout:(BOOL)usePopoverLayout {
+    
     self = [super initWithNibName:@"OSKActivitySheetViewController" bundle:nil];
     if (self) {
+        _session = session;
         _delegate = delegate;
         _activities = activities.copy;
         _usePopoverLayout = usePopoverLayout;
     }
     return self;
-}
-
-- (NSString *)sessionIdentifier {
-    if (_sessionIdentifier == nil) {
-        _sessionIdentifier = [NSString osk_stringWithNewUUID];
-    }
-    return _sessionIdentifier;
 }
 
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods {

@@ -48,4 +48,15 @@ typedef NS_ENUM(NSInteger, OSKActivitySheetViewControllerStyle) {
  */
 - (UIImage *)osk_alternateIconForActivityType:(NSString *)type idiom:(UIUserInterfaceIdiom)idiom;
 
+/**
+ Returning YES (the default OSK setting) will automatically shorten links when recommended, i.e., when
+ the user is editing a microblog post (Twitter, App.net, etc.) and a given URL is longer than a certain
+ threshold (around 30 characters or more). Links are shortened via Bit.ly
+ */
+- (BOOL)osk_automaticallyShortenURLsWhenRecommended;
+
 @end
+
+
+
+

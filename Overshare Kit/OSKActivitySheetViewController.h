@@ -8,24 +8,17 @@
 
 @import UIKit;
 
-#import "OSKActivity.h"
-
+@class OSKSession;
 @protocol OSKActivitySheetDelegate;
-
-typedef void(^OSKActivitySheetDismissalHandler)(void);
 
 @interface OSKActivitySheetViewController : UIViewController
 
-// Uniquely identifies a given activity sheet.
-@property (strong, nonatomic, readonly) NSString *sessionIdentifier;
+@property (strong, nonatomic, readonly) OSKSession *session;
 
-// The activityCompletionHandler is called when a tapped activity finishes or fails
-@property (copy, nonatomic) OSKActivityCompletionHandler activityCompletionHandler;
-
-// The dismissalHandler is called after the sheet is dismissed, regardless of when or why
-@property (copy, nonatomic) OSKActivitySheetDismissalHandler dismissalHandler;
-
-- (instancetype)initWithActivities:(NSArray *)activities delegate:(id <OSKActivitySheetDelegate>)delegate usePopoverLayout:(BOOL)usePopoverLayout;
+- (instancetype)initWithSession:(OSKSession *)session
+                     activities:(NSArray *)activities
+                       delegate:(id <OSKActivitySheetDelegate>)delegate
+               usePopoverLayout:(BOOL)usePopoverLayout;
 
 - (CGFloat)visibleSheetHeightForCurrentLayout;
 

@@ -20,12 +20,17 @@
 		7F19F91C181FF21C00E5EA52 /* osk-navbarButton-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F19F91A181FF21C00E5EA52 /* osk-navbarButton-disabled@2x.png */; };
 		7F19F9271820442800E5EA52 /* OSKFacebookUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F19F9261820442800E5EA52 /* OSKFacebookUtility.m */; };
 		7F19F92A1820A34F00E5EA52 /* OSKAccountManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F19F9291820A34F00E5EA52 /* OSKAccountManagementViewController.m */; };
+		7F1DA9E3183C6B280082356D /* OSKLinkShorteningUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DA9E2183C6B280082356D /* OSKLinkShorteningUtility.m */; };
 		7F43DEAD18215916003BE9B6 /* SampleTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F43DEAC18215916003BE9B6 /* SampleTimelineViewController.m */; };
 		7F43DEB01821596D003BE9B6 /* SampleTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F43DEAF1821596D003BE9B6 /* SampleTimelineCell.m */; };
 		7F43DEB21821597E003BE9B6 /* SampleTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F43DEB11821597E003BE9B6 /* SampleTimelineCell.xib */; };
 		7F43DEB818217986003BE9B6 /* OSKFacebookPublishingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F43DEB618217986003BE9B6 /* OSKFacebookPublishingViewController.m */; };
 		7F43DEB918217986003BE9B6 /* OSKFacebookPublishingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F43DEB718217986003BE9B6 /* OSKFacebookPublishingViewController.xib */; };
 		7F43DEBC1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F43DEBB1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.m */; };
+		7F55A2FF18425C46004A3BCC /* OSKSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A2F818425C46004A3BCC /* OSKSession.m */; };
+		7F55A30018425C46004A3BCC /* OSKSessionController_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A2FA18425C46004A3BCC /* OSKSessionController_Pad.m */; };
+		7F55A30118425C46004A3BCC /* OSKSessionController_Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A2FC18425C46004A3BCC /* OSKSessionController_Phone.m */; };
+		7F55A30218425C46004A3BCC /* OSKSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A2FE18425C46004A3BCC /* OSKSessionController.m */; };
 		7F75BF311821587E00D3681E /* ADNLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F75BF2E1821587E00D3681E /* ADNLogin.m */; };
 		7F75BF321821587E00D3681E /* ADNPassportLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F75BF301821587E00D3681E /* ADNPassportLaunchView.m */; };
 		7F75BF3D1821588700D3681E /* PocketAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F75BF341821588700D3681E /* PocketAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -172,9 +177,6 @@
 		7FEE77AE181ED8EF000F684A /* OSKEmailActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7707181ED8EE000F684A /* OSKEmailActivity.m */; };
 		7FEE77AF181ED8EF000F684A /* OSKFacebookActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7709181ED8EE000F684A /* OSKFacebookActivity.m */; };
 		7FEE77B0181ED8EF000F684A /* OSKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE770B181ED8EE000F684A /* OSKFileManager.m */; };
-		7FEE77B1181ED8EF000F684A /* OSKFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE770D181ED8EE000F684A /* OSKFlowController.m */; };
-		7FEE77B2181ED8EF000F684A /* OSKFlowController_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE770F181ED8EE000F684A /* OSKFlowController_Pad.m */; };
-		7FEE77B3181ED8EF000F684A /* OSKFlowController_Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7711181ED8EE000F684A /* OSKFlowController_Phone.m */; };
 		7FEE77B4181ED8EF000F684A /* OSKInMemoryImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7713181ED8EE000F684A /* OSKInMemoryImageCache.m */; };
 		7FEE77B5181ED8EF000F684A /* OSKInstapaperActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7715181ED8EE000F684A /* OSKInstapaperActivity.m */; };
 		7FEE77B6181ED8EF000F684A /* OSKInstapaperUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7717181ED8EE000F684A /* OSKInstapaperUtility.m */; };
@@ -234,6 +236,8 @@
 		7F19F9261820442800E5EA52 /* OSKFacebookUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookUtility.m; sourceTree = "<group>"; };
 		7F19F9281820A34F00E5EA52 /* OSKAccountManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAccountManagementViewController.h; sourceTree = "<group>"; };
 		7F19F9291820A34F00E5EA52 /* OSKAccountManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAccountManagementViewController.m; sourceTree = "<group>"; };
+		7F1DA9E1183C6B280082356D /* OSKLinkShorteningUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKLinkShorteningUtility.h; sourceTree = "<group>"; };
+		7F1DA9E2183C6B280082356D /* OSKLinkShorteningUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKLinkShorteningUtility.m; sourceTree = "<group>"; };
 		7F43DEAB18215916003BE9B6 /* SampleTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTimelineViewController.h; sourceTree = "<group>"; };
 		7F43DEAC18215916003BE9B6 /* SampleTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTimelineViewController.m; sourceTree = "<group>"; };
 		7F43DEAE1821596D003BE9B6 /* SampleTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTimelineCell.h; sourceTree = "<group>"; };
@@ -245,6 +249,14 @@
 		7F43DEB718217986003BE9B6 /* OSKFacebookPublishingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSKFacebookPublishingViewController.xib; sourceTree = "<group>"; };
 		7F43DEBA1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookAudienceChooserViewController.h; sourceTree = "<group>"; };
 		7F43DEBB1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookAudienceChooserViewController.m; sourceTree = "<group>"; };
+		7F55A2F718425C46004A3BCC /* OSKSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSession.h; sourceTree = "<group>"; };
+		7F55A2F818425C46004A3BCC /* OSKSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSession.m; sourceTree = "<group>"; };
+		7F55A2F918425C46004A3BCC /* OSKSessionController_Pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSessionController_Pad.h; sourceTree = "<group>"; };
+		7F55A2FA18425C46004A3BCC /* OSKSessionController_Pad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSessionController_Pad.m; sourceTree = "<group>"; };
+		7F55A2FB18425C46004A3BCC /* OSKSessionController_Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSessionController_Phone.h; sourceTree = "<group>"; };
+		7F55A2FC18425C46004A3BCC /* OSKSessionController_Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSessionController_Phone.m; sourceTree = "<group>"; };
+		7F55A2FD18425C46004A3BCC /* OSKSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSessionController.h; sourceTree = "<group>"; };
+		7F55A2FE18425C46004A3BCC /* OSKSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSessionController.m; sourceTree = "<group>"; };
 		7F75BF2D1821587E00D3681E /* ADNLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADNLogin.h; path = "../../../Dependencies/ADNLogin-SDK/SDK/ADNLogin.h"; sourceTree = "<group>"; };
 		7F75BF2E1821587E00D3681E /* ADNLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADNLogin.m; path = "../../../Dependencies/ADNLogin-SDK/SDK/ADNLogin.m"; sourceTree = "<group>"; };
 		7F75BF2F1821587E00D3681E /* ADNPassportLaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADNPassportLaunchView.h; path = "../../../Dependencies/ADNLogin-SDK/SDK/ADNPassportLaunchView.h"; sourceTree = "<group>"; };
@@ -449,12 +461,6 @@
 		7FEE7709181ED8EE000F684A /* OSKFacebookActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookActivity.m; sourceTree = "<group>"; };
 		7FEE770A181ED8EE000F684A /* OSKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFileManager.h; sourceTree = "<group>"; };
 		7FEE770B181ED8EE000F684A /* OSKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFileManager.m; sourceTree = "<group>"; };
-		7FEE770C181ED8EE000F684A /* OSKFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFlowController.h; sourceTree = "<group>"; };
-		7FEE770D181ED8EE000F684A /* OSKFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFlowController.m; sourceTree = "<group>"; };
-		7FEE770E181ED8EE000F684A /* OSKFlowController_Pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFlowController_Pad.h; sourceTree = "<group>"; };
-		7FEE770F181ED8EE000F684A /* OSKFlowController_Pad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFlowController_Pad.m; sourceTree = "<group>"; };
-		7FEE7710181ED8EE000F684A /* OSKFlowController_Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFlowController_Phone.h; sourceTree = "<group>"; };
-		7FEE7711181ED8EE000F684A /* OSKFlowController_Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFlowController_Phone.m; sourceTree = "<group>"; };
 		7FEE7712181ED8EE000F684A /* OSKInMemoryImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKInMemoryImageCache.h; sourceTree = "<group>"; };
 		7FEE7713181ED8EE000F684A /* OSKInMemoryImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKInMemoryImageCache.m; sourceTree = "<group>"; };
 		7FEE7714181ED8EE000F684A /* OSKInstapaperActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKInstapaperActivity.h; sourceTree = "<group>"; };
@@ -570,6 +576,21 @@
 			name = Facebook;
 			sourceTree = "<group>";
 		};
+		7F55A30318425C4E004A3BCC /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				7F55A2F718425C46004A3BCC /* OSKSession.h */,
+				7F55A2F818425C46004A3BCC /* OSKSession.m */,
+				7F55A2F918425C46004A3BCC /* OSKSessionController_Pad.h */,
+				7F55A2FA18425C46004A3BCC /* OSKSessionController_Pad.m */,
+				7F55A2FB18425C46004A3BCC /* OSKSessionController_Phone.h */,
+				7F55A2FC18425C46004A3BCC /* OSKSessionController_Phone.m */,
+				7F55A2FD18425C46004A3BCC /* OSKSessionController.h */,
+				7F55A2FE18425C46004A3BCC /* OSKSessionController.m */,
+			);
+			name = Sessions;
+			sourceTree = "<group>";
+		};
 		7FEE7626181ED83D000F684A = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +668,7 @@
 				7FEE790B181EDA26000F684A /* Managed Accounts */,
 				7FEE791C181EDBC9000F684A /* System Accounts */,
 				7FEE790D181EDA54000F684A /* Presentation Manager */,
+				7F55A30318425C4E004A3BCC /* Sessions */,
 				7FEE7900181ED97B000F684A /* View Controllers */,
 				7FEE7902181ED987000F684A /* Custom Views Etc. */,
 				7FEE78FC181ED929000F684A /* Utilities */,
@@ -762,6 +784,8 @@
 		7FEE78FC181ED929000F684A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7F1DA9E1183C6B280082356D /* OSKLinkShorteningUtility.h */,
+				7F1DA9E2183C6B280082356D /* OSKLinkShorteningUtility.m */,
 				7F19F916181FE99A00E5EA52 /* UIImage+OSKUtilities.h */,
 				7F19F917181FE99A00E5EA52 /* UIImage+OSKUtilities.m */,
 				7FEE7760181ED8EF000F684A /* UIDevice+OSKHardware.h */,
@@ -1032,12 +1056,6 @@
 				7FFCFFE51822C3DA000BBCE9 /* OSKPresentationColor.h */,
 				7FFCFFE61822C3E2000BBCE9 /* OSKPresentationLocalization.h */,
 				7FFCFFE81822C446000BBCE9 /* OSKPresentationViewControllers.h */,
-				7FEE770C181ED8EE000F684A /* OSKFlowController.h */,
-				7FEE770D181ED8EE000F684A /* OSKFlowController.m */,
-				7FEE770E181ED8EE000F684A /* OSKFlowController_Pad.h */,
-				7FEE770F181ED8EE000F684A /* OSKFlowController_Pad.m */,
-				7FEE7710181ED8EE000F684A /* OSKFlowController_Phone.h */,
-				7FEE7711181ED8EE000F684A /* OSKFlowController_Phone.m */,
 				7FEE7702181ED8EE000F684A /* OSKColors.h */,
 			);
 			name = "Presentation Manager";
@@ -1447,6 +1465,7 @@
 				7FEE7790181ED8EF000F684A /* NSMutableURLRequest+OSKUtilities.m in Sources */,
 				7FEE77C5181ED8EF000F684A /* OSKPocketActivity.m in Sources */,
 				7FEE77B6181ED8EF000F684A /* OSKInstapaperUtility.m in Sources */,
+				7F55A30118425C46004A3BCC /* OSKSessionController_Phone.m in Sources */,
 				7FEE7643181ED83D000F684A /* OSKAppDelegate.m in Sources */,
 				7FEE77AD181ED8EF000F684A /* OSKCopyToPasteboardActivity.m in Sources */,
 				7FEE77B4181ED8EF000F684A /* OSKInMemoryImageCache.m in Sources */,
@@ -1485,6 +1504,7 @@
 				7FEE778F181ED8EF000F684A /* NSHTTPURLResponse+OSKUtilities.m in Sources */,
 				7F75BF3E1821588700D3681E /* PocketAPILogin.m in Sources */,
 				7FEE77C7181ED8EF000F684A /* OSKReadabilityActivity.m in Sources */,
+				7F55A30218425C46004A3BCC /* OSKSessionController.m in Sources */,
 				7FEE77C1181ED8EF000F684A /* OSKOmnifocusActivity.m in Sources */,
 				7FEE7794181ED8EF000F684A /* OSK1PasswordBrowserActivity.m in Sources */,
 				7FEE77C6181ED8EF000F684A /* OSKPresentationManager.m in Sources */,
@@ -1502,12 +1522,11 @@
 				7F43DEAD18215916003BE9B6 /* SampleTimelineViewController.m in Sources */,
 				7FEE7792181ED8EF000F684A /* NSString+OSKDerp.m in Sources */,
 				7FEE77A8181ED8EF000F684A /* OSKAppDotNetAuthenticationViewController.m in Sources */,
+				7F1DA9E3183C6B280082356D /* OSKLinkShorteningUtility.m in Sources */,
 				7FEE77D5181ED8EF000F684A /* OSKUsernamePasswordCell.m in Sources */,
-				7FEE77B3181ED8EF000F684A /* OSKFlowController_Phone.m in Sources */,
 				7FEE77DB181ED8EF000F684A /* UIViewController+OSKUtilities.m in Sources */,
 				7FEE763F181ED83D000F684A /* main.m in Sources */,
 				7FEE779F181ED8EF000F684A /* OSKActivityIndicatorItem.m in Sources */,
-				7FEE77B2181ED8EF000F684A /* OSKFlowController_Pad.m in Sources */,
 				7FEE778D181ED8EF000F684A /* NSDate+OSK_ISO8601.m in Sources */,
 				7FEE77CF181ED8EF000F684A /* OSKTextView.m in Sources */,
 				7FEE77BD181ED8EF000F684A /* OSKMicroblogPublishingViewController.m in Sources */,
@@ -1527,10 +1546,11 @@
 				7FEE77D7181ED8EF000F684A /* OSKWebViewController.m in Sources */,
 				7FEE77A0181ED8EF000F684A /* OSKActivityOperation.m in Sources */,
 				7FEE77A9181ED8EF000F684A /* OSKAppDotNetUtility.m in Sources */,
+				7F55A30018425C46004A3BCC /* OSKSessionController_Pad.m in Sources */,
 				7FEE77C9181ED8EF000F684A /* OSKRPSTPasswordManagementAppService.m in Sources */,
 				7FEE77AC181ED8EF000F684A /* OSKChromeActivity.m in Sources */,
-				7FEE77B1181ED8EF000F684A /* OSKFlowController.m in Sources */,
 				7FEE7795181ED8EF000F684A /* OSK1PasswordSearchActivity.m in Sources */,
+				7F55A2FF18425C46004A3BCC /* OSKSession.m in Sources */,
 				7FEE77D2181ED8EF000F684A /* OSKTwitterText.m in Sources */,
 				7FEE7799181ED8EF000F684A /* OSKActivity.m in Sources */,
 				7FEE77C2181ED8EF000F684A /* OSKPagedHorizontalLayout.m in Sources */,

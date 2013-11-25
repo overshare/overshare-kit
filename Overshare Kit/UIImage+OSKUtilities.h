@@ -13,5 +13,7 @@
 @interface UIImage (OSKUtilities)
 
 + (UIImage *)osk_maskedImage:(UIImage *)image color:(UIColor *)color;
++ (CGFloat)osk_recommendedUploadQuality:(UIImage *)image;
++ (BOOL)osk_imageSizeIsLikelyADeviceScreenShot:(CGSize)size;
 
 @end
