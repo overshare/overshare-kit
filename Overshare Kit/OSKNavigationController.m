@@ -28,7 +28,7 @@
 - (void)setupUIAppearance {
     OSKPresentationManager *presentationManager = [OSKPresentationManager sharedInstance];
     self.navigationBar.tintColor = presentationManager.color_action;
-    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:presentationManager.color_text};
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:presentationManager.color_toolbarText};
     UIBarStyle barStyle;
     if (presentationManager.sheetStyle == OSKActivitySheetViewControllerStyle_Dark) {
         barStyle = UIBarStyleBlack;

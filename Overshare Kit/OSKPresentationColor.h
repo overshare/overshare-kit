@@ -22,6 +22,7 @@
 - (UIColor *)osk_color_opaqueBackground;
 - (UIColor *)osk_color_translucentBackground;
 - (UIColor *)osk_color_toolbarBackground;
+- (UIColor *)osk_color_toolbarText;
 - (UIColor *)osk_color_groupedTableViewBackground;
 - (UIColor *)osk_color_groupedTableViewCells;
 - (UIColor *)osk_color_separators;

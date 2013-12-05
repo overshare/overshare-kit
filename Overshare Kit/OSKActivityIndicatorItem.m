@@ -8,6 +8,8 @@
 
 #import "OSKActivityIndicatorItem.h"
 
+#import "OSKPresentationManager.h"
+
 // ================================================
 
 @interface OSKActivityIndicatorView : UIActivityIndicatorView
@@ -36,8 +38,8 @@
 
 @implementation OSKActivityIndicatorItem
 
-+ (instancetype)item {
-    OSKActivityIndicatorView *spinner = [[OSKActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
++ (instancetype)item:(UIActivityIndicatorViewStyle)style {
+    OSKActivityIndicatorView *spinner = [[OSKActivityIndicatorView alloc] initWithActivityIndicatorStyle:style];
     spinner.hidesWhenStopped = YES;
     OSKActivityIndicatorItem *item = [[OSKActivityIndicatorItem alloc] initWithCustomView:spinner];
     [item setSpinner:spinner];

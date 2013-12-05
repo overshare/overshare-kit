@@ -157,7 +157,10 @@
 }
 
 - (OSKActivityIndicatorItem *)spinnerViewItem {
-    return [OSKActivityIndicatorItem item];
+    UIActivityIndicatorViewStyle style = (self.navigationController.navigationBar.barStyle == UIBarStyleBlack)
+                                        ? UIActivityIndicatorViewStyleWhite
+                                        : UIActivityIndicatorViewStyleGray;
+    return [OSKActivityIndicatorItem item:style];
 }
 
 - (void)setIsAttemptingSignIn:(BOOL)isAttemptingSignIn {

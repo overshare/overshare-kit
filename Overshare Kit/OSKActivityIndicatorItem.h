@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, OSKActivityIndicatorItemPosition) {
 
 @property (assign, nonatomic) OSKActivityIndicatorItemPosition position;
 
-+ (instancetype)item;
++ (instancetype)item:(UIActivityIndicatorViewStyle)style;
 - (void)startSpinning;
 - (void)stopSpinning;
 

@@ -237,6 +237,7 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 - (UIColor *)color_opaqueBackground;
 - (UIColor *)color_translucentBackground;
 - (UIColor *)color_toolbarBackground;
+- (UIColor *)color_toolbarText;
 - (UIColor *)color_groupedTableViewBackground;
 - (UIColor *)color_groupedTableViewCells;
 - (UIColor *)color_separators;
