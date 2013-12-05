@@ -33,7 +33,8 @@
     if (self) {
         
         self.title = [[OSKPresentationManager sharedInstance] localizedText_Accounts];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(cancelButtonPressed:)];
+        NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_Done];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(cancelButtonPressed:)];
 
         NSMutableArray *classes = [[NSMutableArray alloc] init];
 
