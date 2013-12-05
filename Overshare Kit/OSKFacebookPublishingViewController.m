@@ -131,9 +131,9 @@
     
     UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
     if (descriptor) {
-        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:15]];
     } else {
-        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
     }
     
     accountButton.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -160,9 +160,9 @@
     
     UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
     if (descriptor) {
-        [audienceButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+        [audienceButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:15]];
     } else {
-        [audienceButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+        [audienceButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
     }
     
     audienceButton.autoresizingMask = UIViewAutoresizingFlexibleHeight;

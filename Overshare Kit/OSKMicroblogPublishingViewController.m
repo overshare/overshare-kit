@@ -157,10 +157,10 @@
     UIFontDescriptor *descriptor = [presManager normalFontDescriptor];
     if (descriptor) {
         countLabel.font = [UIFont fontWithDescriptor:descriptor size:15];
-        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:15]];
     } else {
         countLabel.font = [UIFont systemFontOfSize:15];
-        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
     }
     
     [self updateAccountButton];
