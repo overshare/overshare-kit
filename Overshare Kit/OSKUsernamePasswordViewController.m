@@ -61,7 +61,8 @@
     self.tableView.separatorColor = presentationManager.color_separators;
     [self.tableView registerClass:[OSKUsernamePasswordCell class] forCellReuseIdentifier:OSKUsernamePasswordCellIdentifier];
     self.navigationItem.rightBarButtonItem = [self doneButtonItem];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)];
+    NSString *cancelTitle = [[OSKPresentationManager sharedInstance] localizedText_Cancel];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cancelTitle style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed:)];
     [self updateDoneButton];
 }
 

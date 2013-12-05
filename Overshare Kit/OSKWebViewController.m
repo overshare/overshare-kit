@@ -35,7 +35,8 @@
     
     self.view.backgroundColor = [[OSKPresentationManager sharedInstance] color_opaqueBackground];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)];
+    NSString *cancelTitle = [[OSKPresentationManager sharedInstance] localizedText_Cancel];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cancelTitle style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed:)];
     self.activityIndicatorView = [self spinnerViewItem];
     self.navigationItem.rightBarButtonItem = self.activityIndicatorView;
     

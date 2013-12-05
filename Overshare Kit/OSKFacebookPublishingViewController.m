@@ -165,14 +165,16 @@
 }
 
 - (void)setupNavigationItems_Phone {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)];
+    NSString *cancelTitle = [[OSKPresentationManager sharedInstance] localizedText_Cancel];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cancelTitle style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed:)];
     
     NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_ActionButtonTitleForPublishingActivity:[self.activity.class activityType]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed:)];
 }
 
 - (void)setupNavigationItems_Pad {
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)];
+    NSString *cancelTitle = [[OSKPresentationManager sharedInstance] localizedText_Cancel];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:cancelTitle style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed:)];
     
     NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_ActionButtonTitleForPublishingActivity:[self.activity.class activityType]];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed:)];
