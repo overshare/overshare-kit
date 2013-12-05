@@ -225,6 +225,22 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
  */
 - (BOOL)automaticallyShortenURLsWhenRecommended;
 
+/**
+ OvershareKit will attempt to initialize all normal weight, user-facing fonts based on this alternate font descriptor if one is supplied.
+ Otherwise, default system fonts will be used.
+ 
+ @return Returns nil if the `styleDelegate` does not return a non-nil UIFontDescriptor from osk_normalFontDescriptor.
+ */
+- (UIFontDescriptor *)normalFontDescriptor;
+
+/**
+ OvershareKit will attempt to initialize all bold weight, user-facing fonts based on this alternate font descriptor if one is supplied.
+ Otherwise, default system fonts will be used.
+ 
+ @return Returns nil if the `styleDelegate` does not return a non-nil UIFontDescriptor from osk_boldFontDescriptor.
+ */
+- (UIFontDescriptor *)boldFontDescriptor;
+
 @end
 
 ///-----------------------------------------------
@@ -238,6 +254,7 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 - (UIColor *)color_translucentBackground;
 - (UIColor *)color_toolbarBackground;
 - (UIColor *)color_toolbarText;
+- (UIColor *)color_toolbarBorders;
 - (UIColor *)color_groupedTableViewBackground;
 - (UIColor *)color_groupedTableViewCells;
 - (UIColor *)color_separators;

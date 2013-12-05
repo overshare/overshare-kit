@@ -116,7 +116,7 @@
     UIView *borderedView = [[UIView alloc] initWithFrame:borderedViewFrame];
     borderedView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     borderedView.backgroundColor = [UIColor clearColor];
-    borderedView.layer.borderColor = presManager.color_separators.CGColor;
+    borderedView.layer.borderColor = presManager.color_toolbarBorders.CGColor;
     borderedView.layer.borderWidth = ([[UIScreen mainScreen] scale] > 1) ? 0.5f : 1.0f;
     [self.keyboardToolbar addSubview:borderedView];
     
@@ -128,7 +128,6 @@
     countLabel.clipsToBounds = NO;
     countLabel.textAlignment = NSTextAlignmentRight;
     countLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin  | UIViewAutoresizingFlexibleHeight;
-    countLabel.font = [UIFont systemFontOfSize:15];
     countLabel.textColor = presManager.color_characterCounter_normal;
     [self.keyboardToolbar addSubview:countLabel];
     [self setCharacterCountLabel:countLabel];
@@ -142,11 +141,9 @@
         accountButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
         accountButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         accountButton.contentEdgeInsets = UIEdgeInsetsMake(0, 12, 0, 13);
-        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
     } else {
         accountButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [accountButton setTitleColor:presManager.color_action forState:UIControlStateNormal];
-        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
         accountButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
     }
     
@@ -156,6 +153,16 @@
     [accountButton addTarget:self action:@selector(accountButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.keyboardToolbar addSubview:accountButton];
     [self setAccountButton:accountButton];
+    
+    UIFontDescriptor *descriptor = [presManager normalFontDescriptor];
+    if (descriptor) {
+        countLabel.font = [UIFont fontWithDescriptor:descriptor size:15];
+        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+    } else {
+        countLabel.font = [UIFont systemFontOfSize:15];
+        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+    }
+    
     [self updateAccountButton];
 }
 
@@ -181,7 +188,12 @@
     countLabel.clipsToBounds = NO;
     countLabel.textAlignment = NSTextAlignmentCenter;
     countLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin  | UIViewAutoresizingFlexibleHeight;
-    countLabel.font = [UIFont systemFontOfSize:17];
+    UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+    if (descriptor) {
+        countLabel.font = [UIFont fontWithDescriptor:descriptor size:17];
+    } else {
+        countLabel.font = [UIFont systemFontOfSize:17];
+    }
     countLabel.textColor = [OSKPresentationManager sharedInstance].color_characterCounter_normal;
     [self setCharacterCountLabel:countLabel];
     [self updateRemainingCharacterCountLabel];

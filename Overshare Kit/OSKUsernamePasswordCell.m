@@ -64,6 +64,12 @@ CGFloat const OSKUsernamePasswordCellHeight = 44.0f;
     
     [self addTextFieldObservations];
     
+    UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+    if (descriptor) {
+        [fakeTextField setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+        [textField setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+    }
+    
     [self updateColors];
 }
 

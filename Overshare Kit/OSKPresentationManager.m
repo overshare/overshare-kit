@@ -33,7 +33,7 @@
 #import "OSKMessageComposeViewController.h"
 #import "OSKMailComposeViewController.h"
 #import "OSKNavigationController.h"
-
+#import "OSKPresentationManager_Protected.h"
 #import "UIViewController+OSKUtilities.h"
 #import "UIColor+OSKUtility.h"
 
@@ -398,6 +398,22 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     return shorten;
 }
 
+- (UIFontDescriptor *)normalFontDescriptor {
+    UIFontDescriptor *descriptor = nil;
+    if ([self.styleDelegate respondsToSelector:@selector(osk_normalFontDescriptor)]) {
+        descriptor = [self.styleDelegate osk_normalFontDescriptor];
+    }
+    return descriptor;
+}
+
+- (UIFontDescriptor *)boldFontDescriptor {
+    UIFontDescriptor *descriptor = nil;
+    if ([self.styleDelegate respondsToSelector:@selector(osk_boldFontDescriptor)]) {
+        descriptor = [self.styleDelegate osk_boldFontDescriptor];
+    }
+    return descriptor;
+}
+
 #pragma mark - Colors
 
 - (UIColor *)color_activitySheetTopLine {
@@ -473,6 +489,23 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         }
     }
     return color;
+}
+
+- (UIColor *)color_toolbarBorders {
+    UIColor *lineColor = nil;
+    if ([self.colorDelegate respondsToSelector:@selector(osk_color_toolbarBorders)]) {
+        lineColor = [self.colorDelegate osk_color_toolbarBorders];
+    } else {
+        UIColor *backgroundColor = [self color_toolbarBackground];
+        UIColor *contrastingColor = [backgroundColor osk_contrastingColor]; // either b or w
+        OSKActivitySheetViewControllerStyle style = [self sheetStyle];
+        if (style == OSKActivitySheetViewControllerStyle_Light) {
+            lineColor = [contrastingColor osk_colorByInterpolatingToColor:backgroundColor byFraction:0.90];
+        } else {
+            lineColor = [contrastingColor osk_colorByInterpolatingToColor:backgroundColor byFraction:0.90];
+        }
+    }
+    return lineColor;
 }
 
 - (UIColor *)color_groupedTableViewBackground {
@@ -1041,6 +1074,18 @@ willPresentViewController:(UIViewController *)viewController
             OSKActivity *selectedActivity = controller.activity;
             session.presentationEndingHandler(OSKPresentationEnding_Cancelled, selectedActivity);
         }
+    }
+}
+
+#pragma mark - Protected
+
+- (BOOL)_navigationControllersShouldManageTheirOwnAppearanceCustomization {
+    return ![self.styleDelegate respondsToSelector:@selector(osk_customizeNavigationControllerAppearance:)];
+}
+
+- (void)_customizeNavigationControllerAppearance:(OSKNavigationController *)navigationController {
+    if ([self.styleDelegate respondsToSelector:@selector(osk_customizeNavigationControllerAppearance:)]) {
+        [self.styleDelegate osk_customizeNavigationControllerAppearance:navigationController];
     }
 }
 

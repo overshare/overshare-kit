@@ -32,6 +32,12 @@ NSString * const OSKAccountTypeCellIdentifier = @"OSKAccountTypeCellIdentifier";
         self.backgroundColor = bgColor;
         self.backgroundView.backgroundColor = bgColor;
         self.textLabel.textColor = [presentationManager color_text];
+        UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+        if (descriptor) {
+            [self.textLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+        } else {
+            [self.textLabel setFont:[UIFont systemFontOfSize:17]];
+        }
         self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
         self.selectedBackgroundView.backgroundColor = presentationManager.color_cancelButtonColor_BackgroundHighlighted;
         self.tintColor = presentationManager.color_action;

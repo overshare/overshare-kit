@@ -129,6 +129,12 @@
         cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds];
         cell.selectedBackgroundView.backgroundColor = presentationManager.color_cancelButtonColor_BackgroundHighlighted;
         cell.tintColor = presentationManager.color_action;
+        UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+        if (descriptor) {
+            [cell.textLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+        } else {
+            [cell.textLabel setFont:[UIFont systemFontOfSize:17]];
+        }
     }
     if (self.authenticationMethod == OSKAuthenticationMethod_SystemAccounts) {
         ACAccount *account = [self.accounts objectAtIndex:indexPath.row];

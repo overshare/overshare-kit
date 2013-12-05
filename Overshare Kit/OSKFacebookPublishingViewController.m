@@ -107,7 +107,7 @@
     UIView *borderedView = [[UIView alloc] initWithFrame:borderedViewFrame];
     borderedView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     borderedView.backgroundColor = [UIColor clearColor];
-    borderedView.layer.borderColor = presManager.color_separators.CGColor;
+    borderedView.layer.borderColor = presManager.color_toolbarBorders.CGColor;
     borderedView.layer.borderWidth = ([[UIScreen mainScreen] scale] > 1) ? 0.5f : 1.0f;
     [self.keyboardToolbar addSubview:borderedView];
     
@@ -123,12 +123,17 @@
         accountButton = [OSKBorderedButton buttonWithType:UIButtonTypeCustom];
         accountButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         accountButton.contentEdgeInsets = UIEdgeInsetsMake(0, 12, 0, 13);
-        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
     } else {
         accountButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [accountButton setTitleColor:presManager.color_action forState:UIControlStateNormal];
-        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
         accountButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
+    }
+    
+    UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+    if (descriptor) {
+        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+    } else {
+        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
     }
     
     accountButton.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -147,12 +152,17 @@
     if ([presManager toolbarsUseUnjustifiablyBorderlessButtons] == NO) {
         audienceButton = [OSKBorderedButton buttonWithType:UIButtonTypeCustom];
         audienceButton.contentEdgeInsets = UIEdgeInsetsMake(0, 13, 0, 12);
-        [audienceButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
     } else {
         audienceButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [audienceButton setTitleColor:presManager.color_action forState:UIControlStateNormal];
-        [audienceButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
         audienceButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
+    }
+    
+    UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+    if (descriptor) {
+        [audienceButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+    } else {
+        [audienceButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
     }
     
     audienceButton.autoresizingMask = UIViewAutoresizingFlexibleHeight;

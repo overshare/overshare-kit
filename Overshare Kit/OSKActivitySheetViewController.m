@@ -82,6 +82,7 @@ static CGFloat OSKActivitySheetViewControllerCollectionViewHeight_ThreeRows_Pad 
     [self.pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
     [self setupGestureRecognizers];
     [self setupCollectionViews];
+    [self adjustFonts];
     [self updateColors];
     [self.titleLabel setText:self.title];
     [self setupLocalizationAndAccessibility];
@@ -171,6 +172,14 @@ static CGFloat OSKActivitySheetViewControllerCollectionViewHeight_ThreeRows_Pad 
     
     NSString *cancelTitle = [presManager localizedText_Cancel];
     [self.cancelButton setTitle:cancelTitle forState:UIControlStateNormal];
+}
+
+- (void)adjustFonts {
+    UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+    if (descriptor) {
+        [self.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:14]];
+        [self.cancelButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:19]];
+    }
 }
 
 - (void)updateColors {

@@ -14,7 +14,7 @@
 
 static CGFloat OSKTextViewAttachmentViewWidth_Phone = 78.0f; // 2 points larger than visual appearance, due to anti-aliasing technique
 static CGFloat OSKTextViewAttachmentViewWidth_Pad = 96.0f; // 2 points larger than visual appearance, due to anti-aliasing technique
-static NSInteger OSKTextViewFontSize_Phone = 17.0f;
+static NSInteger OSKTextViewFontSize_Phone = 16.0f;
 static NSInteger OSKTextViewFontSize_Pad = 19.0f;
 
 // OSKTextViewAttachment ============================================================
@@ -229,8 +229,24 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     } else {
         fontSize = OSKTextViewFontSize_Pad;
     }
-    UIFont *normalFont = [UIFont systemFontOfSize:fontSize];
-    UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
+    
+    UIFont *normalFont = nil;
+    UIFont *boldFont = nil;
+    UIFontDescriptor *normalDescriptor = [manager normalFontDescriptor];
+    UIFontDescriptor *boldDescriptor = [manager boldFontDescriptor];
+    
+    if (normalDescriptor) {
+        normalFont = [UIFont fontWithDescriptor:normalDescriptor size:fontSize];
+    } else {
+        normalFont = [UIFont systemFontOfSize:fontSize];
+    }
+    
+    if (boldDescriptor) {
+        boldFont = [UIFont fontWithDescriptor:boldDescriptor size:fontSize];
+    } else {
+        boldFont = [UIFont systemFontOfSize:fontSize];
+    }
+    
     UIColor *normalColor = manager.color_text;
     UIColor *actionColor = manager.color_action;
     UIColor *hashtagColor = [UIColor colorWithWhite:0.5 alpha:1.0];

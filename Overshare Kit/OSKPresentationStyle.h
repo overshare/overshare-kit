@@ -55,6 +55,23 @@ typedef NS_ENUM(NSInteger, OSKActivitySheetViewControllerStyle) {
  */
 - (BOOL)osk_automaticallyShortenURLsWhenRecommended;
 
+/**
+ OvershareKit will attempt to initialize all normal weight, user-facing fonts based on this alternate font descriptor if one is supplied.
+ Otherwise, default system fonts will be used.
+ */
+- (UIFontDescriptor *)osk_normalFontDescriptor;
+
+/**
+ OvershareKit will attempt to initialize all bold weight, user-facing fonts based on this alternate font descriptor if one is supplied.
+ Otherwise, default system fonts will be used.
+ */
+- (UIFontDescriptor *)osk_boldFontDescriptor;
+
+/**
+ Override this method to customize the appearance of OvershareKit modal navigation controllers prior to their presentation.
+ */
+- (void)osk_customizeNavigationControllerAppearance:(OSKNavigationController *)navigationController;
+
 @end
 
 

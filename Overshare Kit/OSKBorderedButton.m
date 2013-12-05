@@ -42,7 +42,7 @@
     
     [self setTitleColor:actionColor forState:UIControlStateNormal];
 
-    UIColor *borderColor = [presentationManager color_separators];
+    UIColor *borderColor = [presentationManager color_toolbarBorders];
     self.layer.borderColor = borderColor.CGColor;
     
     UIColor *highlightedColor = [presentationManager color_cancelButtonColor_BackgroundHighlighted];

@@ -85,8 +85,16 @@ static CGFloat OSKActivityIconBadgeWidth_Pad = 96.0f;
     
     CGFloat fontSize = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? 12.0f : 11.0f;
     
+    UIFont *font = nil;
+    UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+    if (descriptor) {
+        font = [UIFont fontWithDescriptor:descriptor size:fontSize];
+    } else {
+        font = [UIFont systemFontOfSize:fontSize];
+    }
+    
     _textAttributes = @{NSForegroundColorAttributeName:textColor,
-                        NSFontAttributeName:[UIFont systemFontOfSize:fontSize],
+                        NSFontAttributeName:font,
                         NSParagraphStyleAttributeName:paragraph};
 }
 

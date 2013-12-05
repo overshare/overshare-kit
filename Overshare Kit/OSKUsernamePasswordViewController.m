@@ -116,6 +116,10 @@
             cell.backgroundColor = [presentationManager color_groupedTableViewCells];
             cell.selectedBackgroundView = [[UIView alloc] init];
             cell.selectedBackgroundView.backgroundColor = [presentationManager color_cancelButtonColor_BackgroundHighlighted];
+            UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+            if (descriptor) {
+                [cell.textLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+            }
         }
     }
     return cell;
