@@ -22,6 +22,8 @@ extern CGFloat const OSKUsernamePasswordCellHeight;
 @interface OSKUsernamePasswordCell : UITableViewCell
 
 @property (weak, nonatomic, readwrite) id <OSKUsernamePasswordCellDelegate> delegate;
+@property (strong, nonatomic, readonly) UITextField *textField;
+@property (strong, nonatomic, readonly) UITextField *textFieldForFakingPlaceholderText;
 
 - (void)setText:(NSString *)text;
 - (void)setPlaceholder:(NSString *)placeholder;
