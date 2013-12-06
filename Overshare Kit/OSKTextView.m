@@ -14,8 +14,6 @@
 
 static CGFloat OSKTextViewAttachmentViewWidth_Phone = 78.0f; // 2 points larger than visual appearance, due to anti-aliasing technique
 static CGFloat OSKTextViewAttachmentViewWidth_Pad = 96.0f; // 2 points larger than visual appearance, due to anti-aliasing technique
-static NSInteger OSKTextViewFontSize_Phone = 16.0f;
-static NSInteger OSKTextViewFontSize_Pad = 19.0f;
 
 // OSKTextViewAttachment ============================================================
 
@@ -223,12 +221,8 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 
 - (void)setupAttributes {
     OSKPresentationManager *manager = [OSKPresentationManager sharedInstance];
-    CGFloat fontSize;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        fontSize = OSKTextViewFontSize_Phone;
-    } else {
-        fontSize = OSKTextViewFontSize_Pad;
-    }
+    
+    CGFloat fontSize = [manager textViewFontSize];
     
     UIFont *normalFont = nil;
     UIFont *boldFont = nil;
@@ -250,14 +244,26 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     UIColor *normalColor = manager.color_text;
     UIColor *actionColor = manager.color_action;
     UIColor *hashtagColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineHeightMultiple:1.125];
+    [paragraphStyle setBaseWritingDirection:NSWritingDirectionNatural];
+    
     _attributes_normal = @{NSFontAttributeName:normalFont,
-                           NSForegroundColorAttributeName:normalColor};
+                           NSForegroundColorAttributeName:normalColor,
+                           NSParagraphStyleAttributeName:paragraphStyle};
+    
     _attributes_mentions = @{NSFontAttributeName:boldFont,
-                             NSForegroundColorAttributeName:actionColor};
+                             NSForegroundColorAttributeName:actionColor,
+                             NSParagraphStyleAttributeName:paragraphStyle};
+    
     _attributes_hashtags = @{NSFontAttributeName:normalFont,
-                             NSForegroundColorAttributeName:hashtagColor};
+                             NSForegroundColorAttributeName:hashtagColor,
+                             NSParagraphStyleAttributeName:paragraphStyle};
+    
     _attributes_links = @{NSFontAttributeName:normalFont,
-                          NSForegroundColorAttributeName:actionColor};
+                          NSForegroundColorAttributeName:actionColor,
+                          NSParagraphStyleAttributeName:paragraphStyle};
     
     [self.textView setTypingAttributes:_attributes_normal];
     

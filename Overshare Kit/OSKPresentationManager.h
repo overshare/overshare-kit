@@ -241,6 +241,12 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
  */
 - (UIFontDescriptor *)boldFontDescriptor;
 
+/**
+ Returns the desired font size to be used in OvershareKit’s text views. You can provide an alternate size
+ via the corresponding delegate method of the `styleDelegate`.
+ */
+- (CGFloat)textViewFontSize;
+
 @end
 
 ///-----------------------------------------------

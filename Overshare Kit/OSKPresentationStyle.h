@@ -68,6 +68,11 @@ typedef NS_ENUM(NSInteger, OSKActivitySheetViewControllerStyle) {
 - (UIFontDescriptor *)osk_boldFontDescriptor;
 
 /**
+ Return the desired font size to be used in OvershareKit’s text views.
+ */
+- (CGFloat)osk_textViewFontSize;
+
+/**
  Override this method to customize the appearance of OvershareKit modal navigation controllers prior to their presentation.
  */
 - (void)osk_customizeNavigationControllerAppearance:(OSKNavigationController *)navigationController;

@@ -43,6 +43,9 @@ NSString * const OSKPresentationOption_PresentationEndingHandler = @"OSKPresenta
 static CGFloat OSKPresentationManagerActivitySheetPresentationDuration = 0.3f;
 static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
+static NSInteger OSKTextViewFontSize_Phone = 16.0f;
+static NSInteger OSKTextViewFontSize_Pad = 19.0f;
+
 @interface OSKPresentationManager ()
 <
     OSKSessionControllerDelegate,
@@ -412,6 +415,20 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         descriptor = [self.styleDelegate osk_boldFontDescriptor];
     }
     return descriptor;
+}
+
+- (CGFloat)textViewFontSize {
+    CGFloat fontSize;
+    if ([self.styleDelegate respondsToSelector:@selector(osk_textViewFontSize)]) {
+        fontSize = [self.styleDelegate osk_textViewFontSize];
+    } else {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            fontSize = OSKTextViewFontSize_Phone;
+        } else {
+            fontSize = OSKTextViewFontSize_Pad;
+        }
+    }
+    return fontSize;
 }
 
 #pragma mark - Colors
