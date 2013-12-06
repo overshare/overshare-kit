@@ -100,6 +100,7 @@ static NSString * OSKPinboardActivity_TokenParamValue = @"%@:%@"; // username an
 
 + (NSDictionary *)_bookmarkParamsWithItem:(OSKLinkBookmarkContentItem *)item credential:(OSKManagedAccountCredential *)credential {
     NSString *title = item.title.copy;
+    
     if (title.length == 0) {
         NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
         title = [NSString stringWithFormat:@"Saved with %@", appName];
@@ -113,7 +114,6 @@ static NSString * OSKPinboardActivity_TokenParamValue = @"%@:%@"; // username an
     mutableParams[@"description"] = title;
     mutableParams[@"format"] = @"json";
     mutableParams[OSKPinboardActivity_TokenParamKey] = tokenString;
-    mutableParams[@"extended"] = item.notes.copy;
     mutableParams[@"toread"] = (item.markToRead) ? @"yes" : @"no";
     if (item.tags.count) {
         mutableParams[@"tags"] = [item.tags componentsJoinedByString:@","];
