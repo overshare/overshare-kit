@@ -246,7 +246,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     UIColor *hashtagColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineHeightMultiple:1.125];
+    [paragraphStyle setLineHeightMultiple:1.1];
     [paragraphStyle setBaseWritingDirection:NSWritingDirectionNatural];
     
     _attributes_normal = @{NSFontAttributeName:normalFont,
