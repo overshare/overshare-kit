@@ -21,6 +21,7 @@
 		7F19F9271820442800E5EA52 /* OSKFacebookUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F19F9261820442800E5EA52 /* OSKFacebookUtility.m */; };
 		7F19F92A1820A34F00E5EA52 /* OSKAccountManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F19F9291820A34F00E5EA52 /* OSKAccountManagementViewController.m */; };
 		7F1DA9E3183C6B280082356D /* OSKLinkShorteningUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DA9E2183C6B280082356D /* OSKLinkShorteningUtility.m */; };
+		7F339D72185361AF0020CF9C /* Chrome-Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F339D71185361AF0020CF9C /* Chrome-Icon-29.png */; };
 		7F43DEAD18215916003BE9B6 /* SampleTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F43DEAC18215916003BE9B6 /* SampleTimelineViewController.m */; };
 		7F43DEB01821596D003BE9B6 /* SampleTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F43DEAF1821596D003BE9B6 /* SampleTimelineCell.m */; };
 		7F43DEB21821597E003BE9B6 /* SampleTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F43DEB11821597E003BE9B6 /* SampleTimelineCell.xib */; };
@@ -238,6 +239,7 @@
 		7F19F9291820A34F00E5EA52 /* OSKAccountManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAccountManagementViewController.m; sourceTree = "<group>"; };
 		7F1DA9E1183C6B280082356D /* OSKLinkShorteningUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKLinkShorteningUtility.h; sourceTree = "<group>"; };
 		7F1DA9E2183C6B280082356D /* OSKLinkShorteningUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKLinkShorteningUtility.m; sourceTree = "<group>"; };
+		7F339D71185361AF0020CF9C /* Chrome-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chrome-Icon-29.png"; sourceTree = "<group>"; };
 		7F43DEAB18215916003BE9B6 /* SampleTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTimelineViewController.h; sourceTree = "<group>"; };
 		7F43DEAC18215916003BE9B6 /* SampleTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTimelineViewController.m; sourceTree = "<group>"; };
 		7F43DEAE1821596D003BE9B6 /* SampleTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTimelineCell.h; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 				7FE467241821E9650054D2BC /* osk-readabilityIcon-76.png */,
 				7FE467251821E9650054D2BC /* osk-readabilityIcon-76@2x.png */,
 				7FE466D31821C9F20054D2BC /* 1Password-Icon-60@2x.png */,
+				7F339D71185361AF0020CF9C /* Chrome-Icon-29.png */,
 				7FE466D41821C9F20054D2BC /* Chrome-Icon-29@2x.png */,
 				7FE466D51821C9F20054D2BC /* Chrome-Icon-76@2x.png */,
 				7FE466D61821C9F20054D2BC /* Instapaper-Icon-29@2x.png */,
@@ -1360,6 +1363,7 @@
 				7FEE7773181ED8EF000F684A /* osk-copyIcon-purple-60@2x.png in Resources */,
 				7F77F4301822F7FC0019452C /* Pocket-Icon-29.png in Resources */,
 				7F77F4261822F60B0019452C /* osk-iconMask-bw-29.png in Resources */,
+				7F339D72185361AF0020CF9C /* Chrome-Icon-29.png in Resources */,
 				7F77F4391822FAC60019452C /* Icon-76.png in Resources */,
 				7FEE777C181ED8EF000F684A /* osk-iconMask-bw-76@2x.png in Resources */,
 				7F19F907181F4C0A00E5EA52 /* osk-iap-badge-60.png in Resources */,

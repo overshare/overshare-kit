@@ -135,6 +135,7 @@
 		7F19F903181F228200E5EA52 /* osk-iap-badge-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-76@2x.png"; sourceTree = "<group>"; };
 		7F1DA9DE183C6B050082356D /* OSKLinkShorteningUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKLinkShorteningUtility.h; sourceTree = "<group>"; };
 		7F1DA9DF183C6B050082356D /* OSKLinkShorteningUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKLinkShorteningUtility.m; sourceTree = "<group>"; };
+		7F339D73185361C10020CF9C /* Chrome-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chrome-Icon-29.png"; sourceTree = "<group>"; };
 		7F4FF50E18516A5A00BFFF2B /* OSKPresentationManager_Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPresentationManager_Protected.h; sourceTree = "<group>"; };
 		7F55A30418425C6C004A3BCC /* OSKSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSession.h; sourceTree = "<group>"; };
 		7F55A30518425C6C004A3BCC /* OSKSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSession.m; sourceTree = "<group>"; };
@@ -785,6 +786,7 @@
 				7F19F901181F228200E5EA52 /* osk-iap-badge-60@2x.png */,
 				7FE466BA1821C9E70054D2BC /* 1Password-Icon-60@2x.png */,
 				7FE466BB1821C9E70054D2BC /* Chrome-Icon-29@2x.png */,
+				7F339D73185361C10020CF9C /* Chrome-Icon-29.png */,
 				7FE466BC1821C9E70054D2BC /* Chrome-Icon-76@2x.png */,
 				7FE466BD1821C9E70054D2BC /* Instapaper-Icon-29@2x.png */,
 				7FE466BE1821C9E70054D2BC /* Instapaper-Icon-60@2x.png */,
