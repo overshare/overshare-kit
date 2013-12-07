@@ -47,6 +47,7 @@
 		7F77F4391822FAC60019452C /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F77F4371822FAC60019452C /* Icon-76.png */; };
 		7F77F43A1822FAC60019452C /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F77F4381822FAC60019452C /* Icon-76@2x.png */; };
 		7F78E9AC1820E5630042CF02 /* OSKPocketAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F78E9AB1820E5630042CF02 /* OSKPocketAccountViewController.m */; };
+		7FCD027F18539735005C5931 /* OSKActivityToggleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD027E18539735005C5931 /* OSKActivityToggleCell.m */; };
 		7FDCDE96181EE1BA00AC2985 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8E181EE1BA00AC2985 /* Icon-60@2x.png */; };
 		7FDCDE97181EE1BA00AC2985 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8F181EE1BA00AC2985 /* rain.jpg */; };
 		7FDCDE9A181EE1BA00AC2985 /* soda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE93181EE1BA00AC2985 /* soda.jpg */; };
@@ -284,6 +285,8 @@
 		7F77F4381822FAC60019452C /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
 		7F78E9AA1820E5630042CF02 /* OSKPocketAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPocketAccountViewController.h; sourceTree = "<group>"; };
 		7F78E9AB1820E5630042CF02 /* OSKPocketAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKPocketAccountViewController.m; sourceTree = "<group>"; };
+		7FCD027D18539735005C5931 /* OSKActivityToggleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityToggleCell.h; sourceTree = "<group>"; };
+		7FCD027E18539735005C5931 /* OSKActivityToggleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityToggleCell.m; sourceTree = "<group>"; };
 		7FDCDE8E181EE1BA00AC2985 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		7FDCDE8F181EE1BA00AC2985 /* rain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rain.jpg; sourceTree = "<group>"; };
 		7FDCDE93181EE1BA00AC2985 /* soda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soda.jpg; sourceTree = "<group>"; };
@@ -903,6 +906,8 @@
 				7F78E9AB1820E5630042CF02 /* OSKPocketAccountViewController.m */,
 				7FE467371821F4010054D2BC /* OSKAccountTypeCell.h */,
 				7FE467381821F4010054D2BC /* OSKAccountTypeCell.m */,
+				7FCD027D18539735005C5931 /* OSKActivityToggleCell.h */,
+				7FCD027E18539735005C5931 /* OSKActivityToggleCell.m */,
 			);
 			name = "Account Management";
 			sourceTree = "<group>";
@@ -1484,6 +1489,7 @@
 				7FEE77BC181ED8EF000F684A /* OSKMessageComposeViewController.m in Sources */,
 				7FEE77BA181ED8EF000F684A /* OSKManagedAccountCredential.m in Sources */,
 				7F75BF321821587E00D3681E /* ADNPassportLaunchView.m in Sources */,
+				7FCD027F18539735005C5931 /* OSKActivityToggleCell.m in Sources */,
 				7FEE778C181ED8EF000F684A /* NSData+OSKDerp.m in Sources */,
 				7F75BF311821587E00D3681E /* ADNLogin.m in Sources */,
 				7FEE77D0181ED8EF000F684A /* OSKThingsActivity.m in Sources */,
