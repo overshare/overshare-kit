@@ -34,6 +34,46 @@
 #import "OSKThingsActivity.h"
 #import "OSKTwitterActivity.h"
 
+@interface OSKAccountManagementHeaderView : UITableViewHeaderFooterView
+
+@property (strong, nonatomic) UILabel *label;
+
+@end
+
+static CGFloat OSKAccountManagementHeaderViewTopPadding = 20.0f;
+static NSString * OSKAccountManagementHeaderViewIdentifier = @"OSKAccountManagementHeaderViewIdentifier";
+
+@implementation OSKAccountManagementHeaderView
+
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithReuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self setFrame:CGRectMake(0, 0, 320.0f, 44.0f)]; // to make sure it's non-zero.
+        CGFloat padding = OSKAccountManagementHeaderViewTopPadding;
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16.0f, padding, self.bounds.size.width - 32.0f, self.bounds.size.height - padding)];
+        label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        label.backgroundColor = [UIColor clearColor];
+        label.textAlignment = NSTextAlignmentLeft;
+        UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
+        if (descriptor) {
+            [label setFont:[UIFont fontWithDescriptor:descriptor size:14]];
+        } else {
+            [label setFont:[UIFont systemFontOfSize:14]];
+        }
+        [label setTextColor:[[OSKPresentationManager sharedInstance] color_hashtags]];
+        [self addSubview:label];
+        
+        _label = label;
+    }
+    return self;
+}
+
+@end
+
+
+// ======================================================================
+
+
 @interface OSKAccountManagementViewController ()
 
 @property (strong, nonatomic) NSArray *managedAccountClasses;
@@ -155,6 +195,7 @@
     self.tableView.separatorColor = presentationManager.color_separators;
     [self.tableView registerClass:[OSKAccountTypeCell class] forCellReuseIdentifier:OSKAccountTypeCellIdentifier];
     [self.tableView registerClass:[OSKActivityToggleCell class] forCellReuseIdentifier:OSKActivityToggleCellIdentifier];
+    [self.tableView registerClass:[OSKAccountManagementHeaderView class] forHeaderFooterViewReuseIdentifier:OSKAccountManagementHeaderViewIdentifier];
 }
 
 - (void)cancelButtonPressed:(id)sender {
@@ -199,7 +240,12 @@
     return 45.0f;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 56.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    OSKAccountManagementHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OSKAccountManagementHeaderViewIdentifier];
     NSString *title = nil;
     if (section == ACCOUNTS_SECTION) {
         title = [[OSKPresentationManager sharedInstance] localizedText_Accounts];
@@ -207,15 +253,8 @@
     else if (section == TOGGLE_SECTION) {
         title = [[OSKPresentationManager sharedInstance] localizedText_OptionalActivities];
     }
-    return title;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    NSString *title = nil;
-    if (section == ACCOUNTS_SECTION) {
-        title = [[OSKPresentationManager sharedInstance] localizedText_YouCanSignIntoYourAccountsViaTheSettingsApp];
-    }
-    return title;
+    [view.label setText:title.uppercaseString];
+    return view;
 }
 
 #pragma mark - Table view delegate
@@ -235,6 +274,13 @@
 }
 
 @end
+
+
+
+
+
+
+
 
 
 

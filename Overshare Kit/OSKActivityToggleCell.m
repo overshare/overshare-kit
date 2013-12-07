@@ -37,11 +37,11 @@ static UIBezierPath *clippingPath;
         self.detailTextLabel.textColor = [presentationManager color_hashtags];
         UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
         if (descriptor) {
-            [self.textLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
-            [self.detailTextLabel setFont:[UIFont fontWithDescriptor:descriptor size:12]];
+            [self.textLabel setFont:[UIFont fontWithDescriptor:descriptor size:16]];
+            [self.detailTextLabel setFont:[UIFont fontWithDescriptor:descriptor size:11]];
         } else {
-            [self.textLabel setFont:[UIFont systemFontOfSize:17]];
-            [self.detailTextLabel setFont:[UIFont systemFontOfSize:12]];
+            [self.textLabel setFont:[UIFont systemFontOfSize:16]];
+            [self.detailTextLabel setFont:[UIFont systemFontOfSize:11]];
         }
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.tintColor = presentationManager.color_action;

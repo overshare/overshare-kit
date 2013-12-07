@@ -39,10 +39,10 @@ static UIBezierPath *clippingPath;
         self.detailTextLabel.textColor = [presentationManager color_hashtags];
         UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
         if (descriptor) {
-            [self.textLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+            [self.textLabel setFont:[UIFont fontWithDescriptor:descriptor size:16]];
             [self.detailTextLabel setFont:[UIFont fontWithDescriptor:descriptor size:12]];
         } else {
-            [self.textLabel setFont:[UIFont systemFontOfSize:17]];
+            [self.textLabel setFont:[UIFont systemFontOfSize:16]];
             [self.detailTextLabel setFont:[UIFont systemFontOfSize:12]];
         }
         self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
