@@ -13,6 +13,7 @@
 #import "OSKPresentationManager.h"
 #import "OSKManagedAccountStore.h"
 #import "OSKManagedAccount.h"
+#import "OSKActivity_GenericAuthentication.h"
 
 static NSString * OSKActivitySettingsIconMaskImageKey = @"OSKActivitySettingsIconMaskImageKey";
 
@@ -21,6 +22,7 @@ NSString * const OSKAccountTypeCellIdentifier = @"OSKAccountTypeCellIdentifier";
 @interface OSKAccountTypeCell()
 
 @property (copy, nonatomic) NSString *imageKey;
+@property (strong, nonatomic) OSKActivity <OSKActivity_GenericAuthentication> *genericActivity;
 
 @end
 
@@ -53,11 +55,25 @@ NSString * const OSKAccountTypeCellIdentifier = @"OSKAccountTypeCellIdentifier";
 }
 
 - (void)setActivityClass:(Class)activityClass {
-    _activityClass = activityClass;
-    NSString *name = [activityClass activityName];
-    [self.textLabel setText:name];
-    [self updateIcon:activityClass];
-    
+    if ([_activityClass isEqual:activityClass] == NO) {
+        _activityClass = activityClass;
+        NSString *name = [activityClass activityName];
+        [self.textLabel setText:name];
+        [self updateIcon:activityClass];
+        
+        OSKAuthenticationMethod method = [_activityClass authenticationMethod];
+        if (method == OSKAuthenticationMethod_ManagedAccounts) {
+            [self setGenericActivity:nil];
+            [self updateExistingAccountsDescription];
+        }
+        else if (method == OSKAuthenticationMethod_Generic) {
+            _genericActivity = [[_activityClass alloc] initWithContentItem:nil];
+            [self updateGenericAccountDescription];
+        }
+    }
+}
+
+- (void)updateExistingAccountsDescription {
     NSArray *accounts = [[OSKManagedAccountStore sharedInstance] accountsForActivityType:[_activityClass activityType]];
     NSMutableString *detailText = nil;
     if (accounts.count) {
@@ -70,6 +86,14 @@ NSString * const OSKAccountTypeCellIdentifier = @"OSKAccountTypeCellIdentifier";
         }
     }
     [self.detailTextLabel setText:detailText];
+}
+
+- (void)updateGenericAccountDescription {
+    if ([_genericActivity isAuthenticated]) {
+        [self.detailTextLabel setText:@"Connected"];
+    } else {
+        [self.detailTextLabel setText:nil];
+    }
 }
 
 - (UIImage *)maskImage {
