@@ -49,6 +49,10 @@
     return image;
 }
 
++ (UIImage *)settingsIcon {
+    return [self iconForIdiom:UIUserInterfaceIdiomPhone];
+}
+
 + (OSKAuthenticationMethod)authenticationMethod {
     return OSKAuthenticationMethod_None;
 }

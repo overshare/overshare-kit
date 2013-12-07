@@ -1,32 +1,30 @@
 //
-//  OSKAccountTypeself.m
+//  OSKActivityToggleCell.m
 //  Overshare
 //
-//  Created by Jared on 10/30/13.
+//  Created by Jared Sinclair on 10/30/13.
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 
-#import "OSKAccountTypeCell.h"
+#import "OSKActivityToggleCell.h"
 
-#import "OSKInMemoryImageCache.h"
-#import "OSKActivity.h"
 #import "OSKPresentationManager.h"
-#import "OSKManagedAccountStore.h"
-#import "OSKManagedAccount.h"
-#import "OSKActivity_GenericAuthentication.h"
+#import "OSKActivity.h"
+#import "OSKActivitiesManager.h"
+#import "OSKInMemoryImageCache.h"
 
-NSString * const OSKAccountTypeCellIdentifier = @"OSKAccountTypeCellIdentifier";
+NSString * const OSKActivityToggleCellIdentifier = @"OSKActivityToggleCellIdentifier";
 
 static UIBezierPath *clippingPath;
 
-@interface OSKAccountTypeCell()
+@interface OSKActivityToggleCell ()
 
 @property (copy, nonatomic) NSString *imageKey;
-@property (strong, nonatomic) OSKActivity <OSKActivity_GenericAuthentication> *genericActivity;
+@property (strong, nonatomic) UISwitch *toggle;
 
 @end
 
-@implementation OSKAccountTypeCell
+@implementation OSKActivityToggleCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
@@ -45,11 +43,18 @@ static UIBezierPath *clippingPath;
             [self.textLabel setFont:[UIFont systemFontOfSize:17]];
             [self.detailTextLabel setFont:[UIFont systemFontOfSize:12]];
         }
-        self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
-        self.selectedBackgroundView.backgroundColor = presentationManager.color_cancelButtonColor_BackgroundHighlighted;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.tintColor = presentationManager.color_action;
-        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         self.imageView.image = [UIImage imageNamed:@"osk-settingsPlaceholder.png"]; // fixes UIKit bug.
+        _toggle = [[UISwitch alloc] init];
+        [_toggle setThumbTintColor:presentationManager.color_groupedTableViewCells];
+        [_toggle setTintColor:presentationManager.color_pageIndicatorColor_other];
+        [_toggle setOnTintColor:presentationManager.color_action];
+        [_toggle setBackgroundColor:presentationManager.color_pageIndicatorColor_other];
+        [_toggle.layer setCornerRadius:16.0f];
+        [_toggle setClipsToBounds:YES];
+        [_toggle addTarget:self action:@selector(toggleChanged:) forControlEvents:UIControlEventValueChanged];
+        self.accessoryView = _toggle;
     }
     return self;
 }
@@ -57,42 +62,12 @@ static UIBezierPath *clippingPath;
 - (void)setActivityClass:(Class)activityClass {
     if ([_activityClass isEqual:activityClass] == NO) {
         _activityClass = activityClass;
-        NSString *name = [activityClass activityName];
+        NSString *name = [_activityClass activityName];
         [self.textLabel setText:name];
-        [self updateIcon:activityClass];
+        [self updateIcon:_activityClass];
     }
-    OSKAuthenticationMethod method = [_activityClass authenticationMethod];
-    if (method == OSKAuthenticationMethod_ManagedAccounts) {
-        [self setGenericActivity:nil];
-        [self updateExistingAccountsDescription];
-    }
-    else if (method == OSKAuthenticationMethod_Generic) {
-        _genericActivity = [[_activityClass alloc] initWithContentItem:nil];
-        [self updateGenericAccountDescription];
-    }
-}
-
-- (void)updateExistingAccountsDescription {
-    NSArray *accounts = [[OSKManagedAccountStore sharedInstance] accountsForActivityType:[_activityClass activityType]];
-    NSMutableString *detailText = nil;
-    if (accounts.count) {
-        detailText = [[NSMutableString alloc] init];
-        for (OSKManagedAccount *account in accounts) {
-            [detailText appendString:[account nonNilDisplayName]];
-            if (account != accounts.lastObject) {
-                [detailText appendFormat:@", "];
-            }
-        }
-    }
-    [self.detailTextLabel setText:detailText];
-}
-
-- (void)updateGenericAccountDescription {
-    if ([_genericActivity isAuthenticated]) {
-        [self.detailTextLabel setText:@"Connected"];
-    } else {
-        [self.detailTextLabel setText:nil];
-    }
+    BOOL activityEnabled = ![[OSKActivitiesManager sharedInstance] activityTypeIsAlwaysExcluded:[_activityClass activityType]];
+    [self.toggle setOn:activityEnabled];
 }
 
 - (void)maskImage:(UIImage *)image completion:(void(^)(UIImage *maskedImage))completion {
@@ -132,8 +107,8 @@ static UIBezierPath *clippingPath;
             if (settingsIcon == nil) {
                 settingsIcon = [[OSKInMemoryImageCache sharedInstance] settingsIconMaskImage];
             }
-
-            __weak OSKAccountTypeCell *weakSelf = self;
+            
+            __weak OSKActivityToggleCell *weakSelf = self;
             [self maskImage:settingsIcon completion:^(UIImage *maskedImage) {
                 if ([weakSelf.imageKey isEqualToString:imageKey]) { // May have changed during processing
                     [weakSelf.imageView setImage:maskedImage];
@@ -144,9 +119,9 @@ static UIBezierPath *clippingPath;
     }
 }
 
+- (void)toggleChanged:(UISwitch *)toggle {
+    BOOL enabled = ![toggle isOn];
+    [[OSKActivitiesManager sharedInstance] markActivityTypes:@[[_activityClass activityType]] alwaysExcluded:enabled];
+}
+
 @end
-
-
-
-
-

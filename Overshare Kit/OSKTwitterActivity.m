@@ -70,6 +70,10 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
     return image;
 }
 
++ (UIImage *)settingsIcon {
+    return [self iconForIdiom:UIUserInterfaceIdiomPhone];
+}
+
 + (OSKAuthenticationMethod)authenticationMethod {
     return OSKAuthenticationMethod_SystemAccounts;
 }

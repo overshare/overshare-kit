@@ -51,6 +51,10 @@ static NSString * OSKThingsActivity_AddEntryWithNoteURL = @"add?title=%@&notes=%
     return image;
 }
 
++ (UIImage *)settingsIcon {
+    return [self iconForIdiom:UIUserInterfaceIdiomPhone];
+}
+
 + (OSKAuthenticationMethod)authenticationMethod {
     return OSKAuthenticationMethod_None;
 }

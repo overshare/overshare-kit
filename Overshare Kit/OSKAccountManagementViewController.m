@@ -10,21 +10,39 @@
 
 #import "OSKPresentationManager.h"
 #import "OSKActivity.h"
-#import "OSKAppDotNetActivity.h"
-#import "OSKInstapaperActivity.h"
-#import "OSKPocketActivity.h"
-#import "OSKReadabilityActivity.h"
-#import "OSKPinboardActivity.h"
 #import "OSKAccountChooserViewController.h"
 #import "UIColor+OSKUtility.h"
 #import "OSKPocketAccountViewController.h"
 #import "OSKAccountTypeCell.h"
+#import "OSKActivityToggleCell.h"
+
+#import "OSK1PasswordSearchActivity.h"
+#import "OSK1PasswordBrowserActivity.h"
+#import "OSKAirDropActivity.h"
+#import "OSKAppDotNetActivity.h"
+#import "OSKChromeActivity.h"
+#import "OSKCopyToPasteboardActivity.h"
+#import "OSKEmailActivity.h"
+#import "OSKFacebookActivity.h"
+#import "OSKInstapaperActivity.h"
+#import "OSKOmnifocusActivity.h"
+#import "OSKPinboardActivity.h"
+#import "OSKPocketActivity.h"
+#import "OSKReadabilityActivity.h"
+#import "OSKSafariActivity.h"
+#import "OSKSMSActivity.h"
+#import "OSKThingsActivity.h"
+#import "OSKTwitterActivity.h"
 
 @interface OSKAccountManagementViewController ()
 
-@property (strong, nonatomic) NSArray *activityClasses;
+@property (strong, nonatomic) NSArray *managedAccountClasses;
+@property (strong, nonatomic) NSArray *toggleClasses;
 
 @end
+
+#define ACCOUNTS_SECTION 0
+#define TOGGLE_SECTION 1
 
 @implementation OSKAccountManagementViewController
 
@@ -32,47 +50,99 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         
-        self.title = [[OSKPresentationManager sharedInstance] localizedText_Accounts];
+        self.title = @"Sharing";
         NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_Done];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(cancelButtonPressed:)];
 
-        NSMutableArray *classes = [[NSMutableArray alloc] init];
-
-        NSMutableSet *defaultClasses = [NSMutableSet set];
-        [defaultClasses addObject:[OSKAppDotNetActivity class]];
-        [defaultClasses addObject:[OSKInstapaperActivity class]];
-        [defaultClasses addObject:[OSKPocketActivity class]];
-        [defaultClasses addObject:[OSKReadabilityActivity class]];
-        [defaultClasses addObject:[OSKPinboardActivity class]];
-        
-        for (Class ignoredClass in ignoredActivityClasses) {
-            if ([defaultClasses containsObject:ignoredClass]) {
-                [defaultClasses removeObject:ignoredClass];
-            }
-        }
-        
-        [classes addObjectsFromArray:defaultClasses.allObjects];
-        
-        if (arrayOfClasses.count) {
-            for (Class activityClass in arrayOfClasses) {
-                NSAssert([activityClass isSubclassOfClass:[OSKActivity class]], @"OSKAccountChooserViewController requires an OSKActivity subclass passed to initForManagingAccountsOfActivityClass:");
-                BOOL usesAppropriateAuthentication = NO;
-                if ([activityClass authenticationMethod] == OSKAuthenticationMethod_ManagedAccounts
-                    || [activityClass authenticationMethod] == OSKAuthenticationMethod_Generic) {
-                    usesAppropriateAuthentication = YES;
-                }
-                NSAssert(usesAppropriateAuthentication, @"OSKAccountChooserViewController requires a subclass of OSKActivity that conforms to OSKActivity_ManagedAccounts");
-            }
-            [classes addObjectsFromArray:arrayOfClasses];
-        }
-        
-        [classes sortUsingComparator:^NSComparisonResult(Class class1, Class class2) {
-            return [(NSString *)[class1 activityName] compare:(NSString *)[class2 activityName] options:NSCaseInsensitiveSearch];
-        }];
-        
-        [self setActivityClasses:classes];
+        [self setupManagedAccountClasses:ignoredActivityClasses optionalBespokeActivityClasses:arrayOfClasses];
+        [self setupToggleClasses:ignoredActivityClasses optionalBespokeActivityClasses:arrayOfClasses];
     }
     return self;
+}
+
+- (void)setupManagedAccountClasses:(NSArray *)ignoredActivityClasses optionalBespokeActivityClasses:(NSArray *)bespokeClasses {
+    NSMutableArray *classes = [[NSMutableArray alloc] init];
+    
+    NSMutableSet *defaultClasses = [NSMutableSet set];
+    [defaultClasses addObject:[OSKAppDotNetActivity class]];
+    [defaultClasses addObject:[OSKInstapaperActivity class]];
+    [defaultClasses addObject:[OSKPocketActivity class]];
+    [defaultClasses addObject:[OSKReadabilityActivity class]];
+    [defaultClasses addObject:[OSKPinboardActivity class]];
+    
+    for (Class ignoredClass in ignoredActivityClasses) {
+        if ([defaultClasses containsObject:ignoredClass]) {
+            [defaultClasses removeObject:ignoredClass];
+        }
+    }
+    
+    [classes addObjectsFromArray:defaultClasses.allObjects];
+    
+    if (bespokeClasses.count) {
+        for (Class activityClass in bespokeClasses) {
+            NSAssert([activityClass isSubclassOfClass:[OSKActivity class]], @"OSKAccountChooserViewController requires an OSKActivity subclass passed to initForManagingAccountsOfActivityClass:");
+            BOOL usesAppropriateAuthentication = NO;
+            if ([activityClass authenticationMethod] == OSKAuthenticationMethod_ManagedAccounts
+                || [activityClass authenticationMethod] == OSKAuthenticationMethod_Generic) {
+                usesAppropriateAuthentication = YES;
+            }
+            NSAssert(usesAppropriateAuthentication, @"OSKAccountChooserViewController requires a subclass of OSKActivity that conforms to OSKActivity_ManagedAccounts");
+        }
+        [classes addObjectsFromArray:bespokeClasses];
+    }
+    
+    [classes sortUsingComparator:^NSComparisonResult(Class class1, Class class2) {
+        return [(NSString *)[class1 activityName] compare:(NSString *)[class2 activityName] options:NSCaseInsensitiveSearch];
+    }];
+    
+    [self setManagedAccountClasses:classes];
+
+}
+
+- (void)setupToggleClasses:(NSArray *)ignoredActivityClasses optionalBespokeActivityClasses:(NSArray *)bespokeClasses {
+    NSMutableArray *classes = [[NSMutableArray alloc] init];
+    
+    NSMutableSet *defaultClasses = [NSMutableSet set];
+    [defaultClasses addObject:[OSKAppDotNetActivity class]];
+    [defaultClasses addObject:[OSKInstapaperActivity class]];
+    [defaultClasses addObject:[OSKPocketActivity class]];
+    [defaultClasses addObject:[OSKReadabilityActivity class]];
+    [defaultClasses addObject:[OSKPinboardActivity class]];
+    [defaultClasses addObject:[OSKTwitterActivity class]];
+    [defaultClasses addObject:[OSKFacebookActivity class]];
+    [defaultClasses addObject:[OSK1PasswordSearchActivity class]];
+    [defaultClasses addObject:[OSK1PasswordBrowserActivity class]];
+    [defaultClasses addObject:[OSKChromeActivity class]];
+    [defaultClasses addObject:[OSKOmnifocusActivity class]];
+    [defaultClasses addObject:[OSKThingsActivity class]];
+    [defaultClasses addObject:[OSKPocketActivity class]];
+    
+    for (Class ignoredClass in ignoredActivityClasses) {
+        if ([defaultClasses containsObject:ignoredClass]) {
+            [defaultClasses removeObject:ignoredClass];
+        }
+    }
+    
+    [classes addObjectsFromArray:defaultClasses.allObjects];
+    
+    if (bespokeClasses.count) {
+        for (Class activityClass in bespokeClasses) {
+            NSAssert([activityClass isSubclassOfClass:[OSKActivity class]], @"OSKAccountChooserViewController requires an OSKActivity subclass passed to initForManagingAccountsOfActivityClass:");
+            BOOL usesAppropriateAuthentication = NO;
+            if ([activityClass authenticationMethod] == OSKAuthenticationMethod_ManagedAccounts
+                || [activityClass authenticationMethod] == OSKAuthenticationMethod_Generic) {
+                usesAppropriateAuthentication = YES;
+            }
+            NSAssert(usesAppropriateAuthentication, @"OSKAccountChooserViewController requires a subclass of OSKActivity that conforms to OSKActivity_ManagedAccounts");
+        }
+        [classes addObjectsFromArray:bespokeClasses];
+    }
+    
+    [classes sortUsingComparator:^NSComparisonResult(Class class1, Class class2) {
+        return [(NSString *)[class1 activityName] compare:(NSString *)[class2 activityName] options:NSCaseInsensitiveSearch];
+    }];
+    
+    [self setToggleClasses:classes];
 }
 
 - (void)viewDidLoad {
@@ -84,6 +154,7 @@
     self.tableView.backgroundView.backgroundColor = bgColor;
     self.tableView.separatorColor = presentationManager.color_separators;
     [self.tableView registerClass:[OSKAccountTypeCell class] forCellReuseIdentifier:OSKAccountTypeCellIdentifier];
+    [self.tableView registerClass:[OSKActivityToggleCell class] forCellReuseIdentifier:OSKActivityToggleCellIdentifier];
 }
 
 - (void)cancelButtonPressed:(id)sender {
@@ -93,35 +164,73 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.activityClasses.count;
+    NSInteger count = 0;
+    if (section == ACCOUNTS_SECTION) {
+        count = self.managedAccountClasses.count;
+    }
+    else if (section == TOGGLE_SECTION) {
+        count = self.toggleClasses.count;
+    }
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    OSKAccountTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:OSKAccountTypeCellIdentifier forIndexPath:indexPath];
-    Class activityClass = self.activityClasses[indexPath.row];
-    [cell setActivityClass:activityClass];
+    UITableViewCell *cell = nil;
+    if (indexPath.section == ACCOUNTS_SECTION) {
+        OSKAccountTypeCell *accountCell = [tableView dequeueReusableCellWithIdentifier:OSKAccountTypeCellIdentifier forIndexPath:indexPath];
+        Class activityClass = self.managedAccountClasses[indexPath.row];
+        [accountCell setActivityClass:activityClass];
+        cell = accountCell;
+    }
+    else if (indexPath.section == TOGGLE_SECTION) {
+        OSKActivityToggleCell *toggleCell = [tableView dequeueReusableCellWithIdentifier:OSKActivityToggleCellIdentifier forIndexPath:indexPath];
+        Class activityClass = self.toggleClasses[indexPath.row];
+        [toggleCell setActivityClass:activityClass];
+        cell = toggleCell;
+    }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 49.0f;
+    return 45.0f;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *title = nil;
+    if (section == ACCOUNTS_SECTION) {
+        title = [[OSKPresentationManager sharedInstance] localizedText_Accounts];
+    }
+    else if (section == TOGGLE_SECTION) {
+        title = [[OSKPresentationManager sharedInstance] localizedText_OptionalActivities];
+    }
+    return title;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    NSString *title = nil;
+    if (section == ACCOUNTS_SECTION) {
+        title = [[OSKPresentationManager sharedInstance] localizedText_YouCanSignIntoYourAccountsViaTheSettingsApp];
+    }
+    return title;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    Class activityClass = self.activityClasses[indexPath.row];
-    if ([activityClass authenticationMethod] == OSKAuthenticationMethod_ManagedAccounts) {
-        OSKAccountChooserViewController *chooser = [[OSKAccountChooserViewController alloc] initForManagingAccountsOfActivityClass:activityClass];
-        [self.navigationController pushViewController:chooser animated:YES];
-    } else {
-        OSKPocketAccountViewController *pocketVC = [[OSKPocketAccountViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        [self.navigationController pushViewController:pocketVC animated:YES];
+    if (indexPath.section == ACCOUNTS_SECTION) {
+        Class activityClass = self.managedAccountClasses[indexPath.row];
+        if ([activityClass authenticationMethod] == OSKAuthenticationMethod_ManagedAccounts) {
+            OSKAccountChooserViewController *chooser = [[OSKAccountChooserViewController alloc] initForManagingAccountsOfActivityClass:activityClass];
+            [self.navigationController pushViewController:chooser animated:YES];
+        } else {
+            OSKPocketAccountViewController *pocketVC = [[OSKPocketAccountViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            [self.navigationController pushViewController:pocketVC animated:YES];
+        }
     }
 }
 

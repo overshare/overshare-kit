@@ -11,5 +11,6 @@
 @interface OSKInMemoryImageCache : NSCache
 
 + (id)sharedInstance;
+- (UIImage *)settingsIconMaskImage;
 
 @end

@@ -834,7 +834,7 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         text = [self.localizationDelegate osk_localizedText_YouCanSignIntoYourAccountsViaTheSettingsApp];
     }
     if (text == nil) {
-        text = @"You can sign into your accounts via the settings app.";
+        text = @"You can sign into system accounts like Twitter and Facebook via the settings app.";
     }
     return text;
 }
@@ -934,6 +934,17 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     }
     if (text == nil) {
         text = @"Audience";
+    }
+    return text;
+}
+
+- (NSString *)localizedText_OptionalActivities {
+    NSString *text = nil;
+    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_OptionalActivities)]) {
+        text = [self.localizationDelegate osk_localizedText_OptionalActivities];
+    }
+    if (text == nil) {
+        text = @"Optional Activities";
     }
     return text;
 }

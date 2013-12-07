@@ -88,6 +88,10 @@ static NSString * kGoogleChromeHTTPSScheme = @"googlechromes:";
     return image;
 }
 
++ (UIImage *)settingsIcon {
+    return [UIImage imageNamed:@"Chrome-Icon-29.png"];
+}
+
 + (OSKAuthenticationMethod)authenticationMethod {
     return OSKAuthenticationMethod_None;
 }

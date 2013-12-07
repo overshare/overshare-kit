@@ -51,6 +51,10 @@ static NSString * OSKOmnifocusActivity_AddEntryWithNoteURL = @"/add?name=%@&note
     return image;
 }
 
++ (UIImage *)settingsIcon {
+    return [self iconForIdiom:UIUserInterfaceIdiomPhone];
+}
+
 + (OSKAuthenticationMethod)authenticationMethod {
     return OSKAuthenticationMethod_None;
 }

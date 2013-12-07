@@ -77,6 +77,10 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
     return image;
 }
 
++ (UIImage *)settingsIcon {
+    return [self iconForIdiom:UIUserInterfaceIdiomPhone];
+}
+
 + (OSKAuthenticationMethod)authenticationMethod {
     return OSKAuthenticationMethod_SystemAccounts;
 }
