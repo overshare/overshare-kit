@@ -11,6 +11,8 @@
 #import "OSKInMemoryImageCache.h"
 #import "OSKActivity.h"
 #import "OSKPresentationManager.h"
+#import "OSKManagedAccountStore.h"
+#import "OSKManagedAccount.h"
 
 static NSString * OSKActivitySettingsIconMaskImageKey = @"OSKActivitySettingsIconMaskImageKey";
 
@@ -25,18 +27,21 @@ NSString * const OSKAccountTypeCellIdentifier = @"OSKAccountTypeCellIdentifier";
 @implementation OSKAccountTypeCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
         OSKPresentationManager *presentationManager = [OSKPresentationManager sharedInstance];
         UIColor *bgColor = [presentationManager color_groupedTableViewCells];
         self.backgroundColor = bgColor;
         self.backgroundView.backgroundColor = bgColor;
         self.textLabel.textColor = [presentationManager color_text];
+        self.detailTextLabel.textColor = [presentationManager color_hashtags];
         UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
         if (descriptor) {
             [self.textLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+            [self.detailTextLabel setFont:[UIFont fontWithDescriptor:descriptor size:12]];
         } else {
             [self.textLabel setFont:[UIFont systemFontOfSize:17]];
+            [self.detailTextLabel setFont:[UIFont systemFontOfSize:12]];
         }
         self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
         self.selectedBackgroundView.backgroundColor = presentationManager.color_cancelButtonColor_BackgroundHighlighted;
@@ -52,6 +57,19 @@ NSString * const OSKAccountTypeCellIdentifier = @"OSKAccountTypeCellIdentifier";
     NSString *name = [activityClass activityName];
     [self.textLabel setText:name];
     [self updateIcon:activityClass];
+    
+    NSArray *accounts = [[OSKManagedAccountStore sharedInstance] accountsForActivityType:[_activityClass activityType]];
+    NSMutableString *detailText = nil;
+    if (accounts.count) {
+        detailText = [[NSMutableString alloc] init];
+        for (OSKManagedAccount *account in accounts) {
+            [detailText appendString:[account nonNilDisplayName]];
+            if (account != accounts.lastObject) {
+                [detailText appendFormat:@", "];
+            }
+        }
+    }
+    [self.detailTextLabel setText:detailText];
 }
 
 - (UIImage *)maskImage {
