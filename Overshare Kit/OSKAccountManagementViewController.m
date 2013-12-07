@@ -40,7 +40,7 @@
 
 @end
 
-static CGFloat OSKAccountManagementHeaderViewTopPadding = 20.0f;
+static CGFloat OSKAccountManagementHeaderViewTopPadding = 22.0f;
 static NSString * OSKAccountManagementHeaderViewIdentifier = @"OSKAccountManagementHeaderViewIdentifier";
 
 @implementation OSKAccountManagementHeaderView
@@ -241,7 +241,7 @@ static NSString * OSKAccountManagementHeaderViewIdentifier = @"OSKAccountManagem
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 56.0f;
+    return 52.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
