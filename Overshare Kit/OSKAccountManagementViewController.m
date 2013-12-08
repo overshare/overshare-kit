@@ -198,6 +198,11 @@ static NSString * OSKAccountManagementHeaderViewIdentifier = @"OSKAccountManagem
     [self.tableView registerClass:[OSKAccountManagementHeaderView class] forHeaderFooterViewReuseIdentifier:OSKAccountManagementHeaderViewIdentifier];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void)cancelButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
