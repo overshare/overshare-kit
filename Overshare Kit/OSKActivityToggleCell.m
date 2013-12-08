@@ -47,12 +47,8 @@ static UIBezierPath *clippingPath;
         self.tintColor = presentationManager.color_action;
         self.imageView.image = [UIImage imageNamed:@"osk-settingsPlaceholder.png"]; // fixes UIKit bug.
         _toggle = [[UISwitch alloc] init];
-        [_toggle setThumbTintColor:presentationManager.color_groupedTableViewCells];
         [_toggle setTintColor:presentationManager.color_pageIndicatorColor_other];
         [_toggle setOnTintColor:presentationManager.color_action];
-        [_toggle setBackgroundColor:presentationManager.color_pageIndicatorColor_other];
-        [_toggle.layer setCornerRadius:16.0f];
-        [_toggle setClipsToBounds:YES];
         [_toggle addTarget:self action:@selector(toggleChanged:) forControlEvents:UIControlEventValueChanged];
         self.accessoryView = _toggle;
     }
