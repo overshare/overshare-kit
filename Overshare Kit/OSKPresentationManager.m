@@ -944,7 +944,7 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         text = [self.localizationDelegate osk_localizedText_OptionalActivities];
     }
     if (text == nil) {
-        text = @"Optional Activities";
+        text = @"Visible Activities";
     }
     return text;
 }
