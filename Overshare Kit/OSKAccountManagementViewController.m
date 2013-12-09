@@ -150,12 +150,20 @@ static NSString * OSKAccountManagementHeaderViewIdentifier = @"OSKAccountManagem
     [defaultClasses addObject:[OSKPinboardActivity class]];
     [defaultClasses addObject:[OSKTwitterActivity class]];
     [defaultClasses addObject:[OSKFacebookActivity class]];
-    [defaultClasses addObject:[OSK1PasswordSearchActivity class]];
-    [defaultClasses addObject:[OSK1PasswordBrowserActivity class]];
-    [defaultClasses addObject:[OSKChromeActivity class]];
-    [defaultClasses addObject:[OSKOmnifocusActivity class]];
-    [defaultClasses addObject:[OSKThingsActivity class]];
-    [defaultClasses addObject:[OSKPocketActivity class]];
+    
+    if ([OSK1PasswordSearchActivity isAvailable]) {
+        [defaultClasses addObject:[OSK1PasswordSearchActivity class]];
+        [defaultClasses addObject:[OSK1PasswordBrowserActivity class]];
+    }
+    if ([OSKChromeActivity isAvailable]) {
+        [defaultClasses addObject:[OSKChromeActivity class]];
+    }
+    if ([OSKOmnifocusActivity isAvailable]) {
+        [defaultClasses addObject:[OSKOmnifocusActivity class]];
+    }
+    if ([OSKThingsActivity isAvailable]) {
+        [defaultClasses addObject:[OSKThingsActivity class]];
+    }
     
     for (Class ignoredClass in ignoredActivityClasses) {
         if ([defaultClasses containsObject:ignoredClass]) {
