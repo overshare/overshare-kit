@@ -43,8 +43,8 @@
 #define NUM_ROWS 1
 #define ROW_TEXT_VIEW 0
 #define ROW_ACTIVE_ACCOUNT 1
-
 #define ACCOUNT_BUTTON_INDEX 2
+#define TOOLBAR_FONT_SIZE 15
 
 @implementation OSKMicroblogPublishingViewController
 
@@ -156,11 +156,11 @@
     
     UIFontDescriptor *descriptor = [presManager normalFontDescriptor];
     if (descriptor) {
-        countLabel.font = [UIFont fontWithDescriptor:descriptor size:17];
-        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+        countLabel.font = [UIFont fontWithDescriptor:descriptor size:TOOLBAR_FONT_SIZE];
+        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:TOOLBAR_FONT_SIZE]];
     } else {
-        countLabel.font = [UIFont systemFontOfSize:17];
-        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+        countLabel.font = [UIFont systemFontOfSize:TOOLBAR_FONT_SIZE];
+        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:TOOLBAR_FONT_SIZE]];
     }
     
     [self updateAccountButton];
