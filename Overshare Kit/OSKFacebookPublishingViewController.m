@@ -41,6 +41,8 @@
 #define ACCOUNT_BUTTON_INDEX 2
 #define AUDIENCE_BUTTON_INDEX 2
 
+#define TOOLBAR_FONT_SIZE 15
+
 @implementation OSKFacebookPublishingViewController
 
 @synthesize oskPublishingDelegate = _oskPublishingDelegate;
@@ -131,9 +133,9 @@
     
     UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
     if (descriptor) {
-        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+        [accountButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:TOOLBAR_FONT_SIZE]];
     } else {
-        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+        [accountButton.titleLabel setFont:[UIFont systemFontOfSize:TOOLBAR_FONT_SIZE]];
     }
     
     accountButton.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -160,9 +162,9 @@
     
     UIFontDescriptor *descriptor = [[OSKPresentationManager sharedInstance] normalFontDescriptor];
     if (descriptor) {
-        [audienceButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:17]];
+        [audienceButton.titleLabel setFont:[UIFont fontWithDescriptor:descriptor size:TOOLBAR_FONT_SIZE]];
     } else {
-        [audienceButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+        [audienceButton.titleLabel setFont:[UIFont systemFontOfSize:TOOLBAR_FONT_SIZE]];
     }
     
     audienceButton.autoresizingMask = UIViewAutoresizingFlexibleHeight;
