@@ -2,7 +2,7 @@
 //  OSKFacebookUtility.m
 //  Overshare
 //
-//  Created by Jared on 10/29/13.
+//  Created by Jared Sinclair 10/29/13.
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 

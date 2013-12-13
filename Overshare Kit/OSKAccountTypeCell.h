@@ -2,7 +2,7 @@
 //  OSKAccountTypeCell.h
 //  Overshare
 //
-//  Created by Jared on 10/30/13.
+//  Created by Jared Sinclair 10/30/13.
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 

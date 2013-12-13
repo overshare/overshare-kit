@@ -2,7 +2,7 @@
 //  OSKPresentationLocalization.h
 //  Overshare
 //
-//  Created by Jared on 10/31/13.
+//  Created by Jared Sinclair 10/31/13.
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 

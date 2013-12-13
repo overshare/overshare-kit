@@ -2,7 +2,7 @@
 //  OSKLinkShorteningUtility.m
 //  Unread
 //
-//  Created by Jared on 11/19/13.
+//  Created by Jared Sinclair 11/19/13.
 //  Copyright (c) 2013 Nice Boy LLC. All rights reserved.
 //
 
