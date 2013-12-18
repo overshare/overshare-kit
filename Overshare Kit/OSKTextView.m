@@ -766,9 +766,14 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 
 - (void)updateBottomContentInset:(CGRect)keyboardFrame {
     CGRect intersection = CGRectIntersection(self.frame, keyboardFrame);
+    
     UIEdgeInsets insets = self.contentInset;
     insets.bottom = intersection.size.height;
     [self setContentInset:insets];
+    
+    UIEdgeInsets indicatorInsets = self.scrollIndicatorInsets;
+    indicatorInsets.bottom = insets.bottom;
+    [self setScrollIndicatorInsets:indicatorInsets];
 }
 
 - (void)setAutomaticallyAdjustsContentInsetForKeyboard:(BOOL)automaticallyAdjustsContentInsetForKeyboard {

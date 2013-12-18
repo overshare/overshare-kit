@@ -234,6 +234,10 @@
     UIEdgeInsets insets = self.textView.contentInset;
     insets.top = [self.topLayoutGuide length];
     self.textView.contentInset = insets;
+    
+    UIEdgeInsets indicatorInsets = self.textView.scrollIndicatorInsets;
+    indicatorInsets.top = [self.topLayoutGuide length];
+    [self.textView setScrollIndicatorInsets:indicatorInsets];
 }
 
 #pragma mark - Done Button
