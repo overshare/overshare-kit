@@ -149,6 +149,22 @@
     [self updateDoneButton];
 }
 
+- (void)usernamePasswordCellDidTapReturn:(OSKUsernamePasswordCell *)cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    if (indexPath.section == TEXT_FIELD_SECTION) {
+        if (indexPath.row == USERNAME_ROW) {
+            NSIndexPath *passwordIndexPath = [NSIndexPath indexPathForRow:PASSWORD_ROW inSection:TEXT_FIELD_SECTION];
+            OSKUsernamePasswordCell *passwordCell = (OSKUsernamePasswordCell *)[self.tableView cellForRowAtIndexPath:passwordIndexPath];
+            [passwordCell.textField becomeFirstResponder];
+        }
+        else if (indexPath.row == PASSWORD_ROW) {
+            if (self.username.length && self.password.length && self.isAttemptingSignIn == NO) {
+                [self doneButtonPressed:nil];
+            }
+        }
+    }
+}
+
 #pragma mark - Buttons
 
 - (void)updateDoneButton {

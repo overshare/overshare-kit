@@ -16,6 +16,7 @@ extern CGFloat const OSKUsernamePasswordCellHeight;
 @protocol OSKUsernamePasswordCellDelegate <NSObject>
 
 - (void)usernamePasswordCell:(OSKUsernamePasswordCell *)cell didChangeText:(NSString *)text;
+- (void)usernamePasswordCellDidTapReturn:(OSKUsernamePasswordCell *)cell;
 
 @end
 
