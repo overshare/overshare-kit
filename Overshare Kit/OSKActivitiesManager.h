@@ -102,6 +102,29 @@ extern NSString * const OSKActivitiesManagerActivityTypesKey;
  */
 - (BOOL)activityTypeIsAlwaysExcluded:(NSString *)type;
 
+/**
+ Setting `syncActivityTypeExclusionsViaiCloud` to `YES` will sync the activity 
+ types marked/unmarked via the `markActivityTypes:alwaysExcluded:` method via 
+ iCloud key-value storage.
+ 
+ @discussion Enabling iCloud sync is helpful if your application uses 
+ `markActivityTypes:alwaysExcluded` as the logic behind user-facing switches to 
+ control which activities she never wants to see in a share sheet. For example,
+ a user may never want to use Facebook or the 1Password web browser.
+ 
+ See the sample OvershareKit app for an example (tap the left navigation bar
+ button to show the options screen).
+ 
+ If you wish to enable iCloud key value syncing, it is recommended
+ that you set this property on OSKActivitiesManager in your app delegate's
+ implementation of `application:didFinishLaunchingWithOptions`. Please note that
+ in-app purchase activity settings (see below) will *not* be synced via iCloud.
+ 
+ @warning Your app must have the appropriate entitlements for iCloud key value storage. 
+ See the iCloud documentation for more information.
+ */
+@property (assign, nonatomic) BOOL syncActivityTypeExclusionsViaiCloud;
+
 @end
 
 ///-------------------------------------

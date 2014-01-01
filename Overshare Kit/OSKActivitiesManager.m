@@ -15,6 +15,7 @@
 #import "OSKFileManager.h"
 #import "OSKShareableContent.h"
 #import "OSKShareableContentItem.h"
+#import "OSKLogger.h"
 
 #import "OSK1PasswordSearchActivity.h"
 #import "OSK1PasswordBrowserActivity.h"
@@ -67,6 +68,15 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
     static OSKActivitiesManager * sharedInstance;
     dispatch_once(&once, ^ { sharedInstance = [[self alloc] init]; });
     return sharedInstance;
+}
+
+- (void)dealloc {
+    if (_syncActivityTypeExclusionsViaiCloud) {
+        [[NSNotificationCenter defaultCenter]
+         removeObserver:self
+         name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
+         object:[NSUbiquitousKeyValueStore defaultStore]];
+    }
 }
 
 - (id)init {
@@ -469,14 +479,20 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
             [_persistentExclusions removeObject:type];
         }
     }
-    [self savePersistentExclusions];
+    [self savePersistentExclusions:YES];
 }
 
-- (void)savePersistentExclusions {
+- (void)savePersistentExclusions:(BOOL)writeToiCloudIfEnabled {
     [[OSKFileManager sharedInstance] saveObject:_persistentExclusions.allObjects
                                          forKey:OSKActivitiesManagerPersistentExclusionsKey
                                      completion:nil
                                 completionQueue:nil];
+    
+    if (_syncActivityTypeExclusionsViaiCloud && writeToiCloudIfEnabled) {
+        NSArray *excludedTypes = _persistentExclusions.allObjects;
+        [[NSUbiquitousKeyValueStore defaultStore] setObject:excludedTypes forKey:OSKActivitiesManagerPersistentExclusionsKey];
+        [[NSUbiquitousKeyValueStore defaultStore] synchronize];
+    }
 }
 
 - (void)loadSavedPersistentExclusions {
@@ -490,6 +506,60 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
 
 - (BOOL)activityTypeIsAlwaysExcluded:(NSString *)type {
     return [_persistentExclusions containsObject:type];
+}
+
+- (void)setSyncActivityTypeExclusionsViaiCloud:(BOOL)syncActivityTypeExclusionsViaiCloud {
+    if (_syncActivityTypeExclusionsViaiCloud != syncActivityTypeExclusionsViaiCloud) {
+        _syncActivityTypeExclusionsViaiCloud = syncActivityTypeExclusionsViaiCloud;
+        if (_syncActivityTypeExclusionsViaiCloud) {
+            [self startObservingKeyValueStoreChanges];
+            [self savePersistentExclusions:YES];
+        } else {
+            [self stopObservingKeyValueStoreChanges];
+        }
+    }
+}
+
+- (void)startObservingKeyValueStoreChanges {
+    [[NSNotificationCenter defaultCenter]
+     addObserver: self
+     selector: @selector(handleUbiquitousKeyValueChanges:)
+     name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification
+     object: [NSUbiquitousKeyValueStore defaultStore]];
+    
+    // get changes that might have happened while this
+    // instance of your app wasn't running
+    [[NSUbiquitousKeyValueStore defaultStore] synchronize];
+}
+
+- (void)stopObservingKeyValueStoreChanges {
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
+     object:[NSUbiquitousKeyValueStore defaultStore]];
+}
+
+- (void)handleUbiquitousKeyValueChanges:(NSNotification *)notification {
+    if (_syncActivityTypeExclusionsViaiCloud) {
+        NSArray *changedKeys = notification.userInfo[NSUbiquitousKeyValueStoreChangedKeysKey];
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        if ([changedKeys containsObject:OSKActivitiesManagerPersistentExclusionsKey]) {
+            NSArray *exclusionsToAdd = [store objectForKey:OSKActivitiesManagerPersistentExclusionsKey];
+            if (exclusionsToAdd) {
+                NSMutableSet *exclusionsToRemove = [_persistentExclusions mutableCopy];
+                [exclusionsToRemove minusSet:[NSSet setWithArray:exclusionsToAdd]];
+                OSKLog(@"Updating activity exclusions with iCloud data:\n%@\n\nBased on userInfo: %@",
+                       exclusionsToAdd,
+                       notification.userInfo);
+                if (exclusionsToRemove.count) {
+                    [self markActivityTypes:exclusionsToRemove.allObjects alwaysExcluded:NO];
+                }
+                if (exclusionsToAdd.count) {
+                    [self markActivityTypes:exclusionsToAdd alwaysExcluded:YES];
+                }
+            }
+        }
+    }
 }
 
 #pragma mark - App Credentials
