@@ -36,15 +36,33 @@
 @property (strong, nonatomic) UIColor *characterCount_redColor;
 @property (strong, nonatomic) UIColor *characterCount_normalColor;
 @property (strong, nonatomic) UIButton *accountButton; // Used on iPhone
-@property (assign, nonatomic) BOOL hasAttemptedURLShortening;
+@property (assign, nonatomic) BOOL shouldShowLinkShorteningButton;
+@property (strong, nonatomic) NSMutableSet *shortenedLinks;
+@property (strong, nonatomic) UIBarButtonItem *cancelItem;
+@property (strong, nonatomic) UIBarButtonItem *doneItem;
+@property (strong, nonatomic) UIBarButtonItem *characterCountItem; // iPad only
+@property (strong, nonatomic) UIBarButtonItem *accountItem; // iPad only
+@property (strong, nonatomic) UIBarButtonItem *leftSpaceItemA;
+@property (strong, nonatomic) UIBarButtonItem *leftSpaceItemB; // iPad only
+@property (strong, nonatomic) UIBarButtonItem *rightSpaceItemA;
+@property (strong, nonatomic) UIBarButtonItem *rightSpaceItemB;
+@property (strong, nonatomic) UIBarButtonItem *rightSpaceItemC;
+@property (strong, nonatomic) UIBarButtonItem *linkShorteningItem;
+@property (strong, nonatomic) UIButton *linkShorteningButton;
+@property (strong, nonatomic) UIActivityIndicatorView *linkShorteningActivityIndicator;
+@property (assign, nonatomic) NSInteger activeLinkShorteningCount;
 
 @end
 
 #define NUM_ROWS 1
 #define ROW_TEXT_VIEW 0
 #define ROW_ACTIVE_ACCOUNT 1
-#define ACCOUNT_BUTTON_INDEX 2
 #define TOOLBAR_FONT_SIZE 15
+
+#define CANCEL_ITEM_INDEX_IPAD 0
+#define ACCOUNT_ITEM_INDEX_IPAD 2
+#define DONE_ITEM_INDEX_IPAD 0
+#define CHARACTER_COUNT_ITEM_INDEX_IPAD 2
 
 @implementation OSKMicroblogPublishingViewController
 
@@ -87,6 +105,7 @@
     
     [self updateRemainingCharacterCountLabel];
     [self updateDoneButton];
+    [self updateLinkShorteningButton];
     
     if (self.contentItem.images.count) {
         NSMutableArray *attachments = [[NSMutableArray alloc] init];
@@ -168,18 +187,20 @@
 
 - (void)setupNavigationItems_Phone {
     NSString *cancelTitle = [[OSKPresentationManager sharedInstance] localizedText_Cancel];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cancelTitle style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed:)];
+    _cancelItem = [[UIBarButtonItem alloc] initWithTitle:cancelTitle style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed:)];
+    self.navigationItem.leftBarButtonItems = @[_cancelItem];
     
     NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_ActionButtonTitleForPublishingActivity:[self.activity.class activityType]];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed:)];
+    _doneItem = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed:)];
+    self.navigationItem.rightBarButtonItems = @[_doneItem];
 }
 
 - (void)setupNavigationItems_Pad {
     NSString *cancelTitle = [[OSKPresentationManager sharedInstance] localizedText_Cancel];
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:cancelTitle style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed:)];
+    _cancelItem = [[UIBarButtonItem alloc] initWithTitle:cancelTitle style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed:)];
     
     NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_ActionButtonTitleForPublishingActivity:[self.activity.class activityType]];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed:)];
+    _doneItem = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed:)];
     
     // CHARACTER COUNT LABEL
     CGRect countLabelFrame = CGRectMake(0, 0, 72.0f, 44.0f);
@@ -197,17 +218,17 @@
     countLabel.textColor = [OSKPresentationManager sharedInstance].color_characterCounter_normal;
     [self setCharacterCountLabel:countLabel];
     [self updateRemainingCharacterCountLabel];
-    UIBarButtonItem *countLabelItem = [[UIBarButtonItem alloc] initWithCustomView:countLabel];
+    _characterCountItem = [[UIBarButtonItem alloc] initWithCustomView:countLabel];
     
-    UIBarButtonItem *accountButton = [[UIBarButtonItem alloc] initWithTitle:@"account" style:UIBarButtonItemStylePlain target:self action:@selector(accountButtonPressed:)];
+    _accountItem = [[UIBarButtonItem alloc] initWithTitle:@"account" style:UIBarButtonItemStylePlain target:self action:@selector(accountButtonPressed:)];
     
-    UIBarButtonItem *space_1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *space_2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *space_3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *space_4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    _leftSpaceItemA = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    _leftSpaceItemB = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    _rightSpaceItemA = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    _rightSpaceItemB = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    [self.navigationItem setLeftBarButtonItems:@[cancelButton, space_1, accountButton, space_2]];
-    [self.navigationItem setRightBarButtonItems:@[doneButton, space_3, countLabelItem, space_4]];
+    [self.navigationItem setLeftBarButtonItems:@[_cancelItem, _leftSpaceItemA, _accountItem, _leftSpaceItemB]];
+    [self.navigationItem setRightBarButtonItems:@[_doneItem, _rightSpaceItemA, _characterCountItem, _rightSpaceItemB]];
     
     [self updateAccountButton];
 }
@@ -218,6 +239,7 @@
     [self.contentItem setText:textView.attributedText.string];
     [self updateRemainingCharacterCountLabel];
     [self updateDoneButton];
+    [self updateLinkShorteningButton];
 }
 
 #pragma mark - Autorotation
@@ -249,12 +271,168 @@
 #pragma mark - Done Button
 
 - (void)updateDoneButton {
-    [self.navigationItem.rightBarButtonItem setEnabled:[self.activity isReadyToPerform]];
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        [self.navigationItem.rightBarButtonItems[DONE_ITEM_INDEX_IPAD] setEnabled:[self.activity isReadyToPerform]];
+    } else {
+        [self.navigationItem.rightBarButtonItem setEnabled:[self.activity isReadyToPerform]];
+    }
 }
 
 - (void)doneButtonPressed:(id)sender {
     if ([self.activity isReadyToPerform]) {
         [self.oskPublishingDelegate publishingViewController:self didTapPublishActivity:self.activity];
+    }
+}
+
+#pragma mark - Link Shortening Button
+
+- (void)updateLinkShorteningButton {
+    if ([OSKPresentationManager sharedInstance].allowLinkShorteningButton) {
+        NSArray *links = _textView.detectedLinks;
+        BOOL shouldShow = NO;
+        for (OSKTwitterTextEntity *link in links) {
+            NSString *urlString = [self.contentItem.text substringWithRange:link.range];
+            if ([OSKLinkShorteningUtility shorteningRecommended:urlString]) {
+                shouldShow = YES;
+                break;
+            }
+        }
+        [self setShouldShowLinkShorteningButton:shouldShow];
+    } else {
+        [self setShouldShowLinkShorteningButton:NO];
+    }
+}
+
+- (void)setShouldShowLinkShorteningButton:(BOOL)shouldShowLinkShorteningButton {
+    if (_shouldShowLinkShorteningButton != shouldShowLinkShorteningButton) {
+        _shouldShowLinkShorteningButton = shouldShowLinkShorteningButton;
+        [self setupLinkShorteningBarButtonItemSpaces];
+        if (_shouldShowLinkShorteningButton) {
+            [self setupLinkShorteningBarButtonItem];
+            if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                [self.navigationItem setRightBarButtonItems:@[_doneItem, _rightSpaceItemA, _characterCountItem,
+                                                              _rightSpaceItemB, _linkShorteningItem, _rightSpaceItemC]];
+            } else {
+                [self.navigationItem setRightBarButtonItems:@[_doneItem, _rightSpaceItemB, _linkShorteningItem, _rightSpaceItemC]];
+                [self.navigationItem setLeftBarButtonItems:@[_cancelItem, _leftSpaceItemA]];
+            }
+        }
+        else {
+            if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                [self.navigationItem setRightBarButtonItems:@[_doneItem, _rightSpaceItemA, _characterCountItem, _rightSpaceItemB]];
+            } else {
+                [self.navigationItem setRightBarButtonItems:@[_doneItem]];
+                [self.navigationItem setLeftBarButtonItems:@[_cancelItem]];
+            }
+        }
+    }
+}
+
+- (void)setupLinkShorteningBarButtonItem {
+    if (_linkShorteningItem == nil) {
+        UIImage *linkButtonImage = [[UIImage imageNamed:@"link-button.png"]
+                                    imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        _linkShorteningButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_linkShorteningButton setFrame:CGRectMake(0, 0, 44.0f, 30.0f)];
+        [_linkShorteningButton setImage:linkButtonImage forState:UIControlStateNormal];
+        [_linkShorteningButton addTarget:self
+                                  action:@selector(shortenLinkButtonTapped:)
+                        forControlEvents:UIControlEventTouchUpInside];
+        
+        UIView *buttonContainerView = [[UIView alloc] initWithFrame:_linkShorteningButton.bounds];
+        [buttonContainerView addSubview:_linkShorteningButton];
+        
+        UIActivityIndicatorViewStyle style = (self.navigationController.navigationBar.barStyle == UIBarStyleBlack)
+        ? UIActivityIndicatorViewStyleWhite
+        : UIActivityIndicatorViewStyleGray;
+        _linkShorteningActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:style];
+        _linkShorteningActivityIndicator.hidesWhenStopped = YES;
+        _linkShorteningActivityIndicator.center = _linkShorteningButton.center;
+        [buttonContainerView addSubview:_linkShorteningActivityIndicator];
+        
+        _linkShorteningItem = [[UIBarButtonItem alloc]
+                               initWithCustomView:buttonContainerView];
+    }
+}
+
+- (void)setupLinkShorteningBarButtonItemSpaces {
+    if (_rightSpaceItemC == nil) {
+        _rightSpaceItemC = [[UIBarButtonItem alloc]
+                            initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                            target:nil
+                            action:nil];
+    }
+    if (_rightSpaceItemB == nil) {
+        _rightSpaceItemB = [[UIBarButtonItem alloc]
+                            initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                            target:nil
+                            action:nil];
+    }
+    if (_leftSpaceItemA == nil) {
+        _leftSpaceItemA = [[UIBarButtonItem alloc]
+                            initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                            target:nil
+                            action:nil];
+    }
+}
+
+- (void)shortenLinkButtonTapped:(id)sender {
+    
+    if (_textView.detectedLinks.count) {
+        
+        for (OSKTwitterTextEntity *URLEntity in _textView.detectedLinks) {
+            
+            NSString *longURL = [self.contentItem.text substringWithRange:URLEntity.range];
+            
+            if ([OSKLinkShorteningUtility shorteningRecommended:longURL] && [self.shortenedLinks containsObject:longURL] == NO) {
+                
+                __weak OSKMicroblogPostContentItem *item = self.contentItem;
+                __weak OSKMicroblogPublishingViewController *weakSelf = self;
+
+                [self pushLinkShorteningActivity];
+                [OSKLinkShorteningUtility shortenURL:longURL completion:^(NSString *shortURL) {
+                    [weakSelf popLinkShorteningActivity];
+                    if (item == weakSelf.contentItem && shortURL.length) {
+                        NSMutableString *textViewText = weakSelf.contentItem.text.mutableCopy;
+                        NSRange rangeOfLongURL = [textViewText rangeOfString:longURL];
+                        if (rangeOfLongURL.length) {
+                            [textViewText replaceCharactersInRange:rangeOfLongURL withString:shortURL];
+                            if (weakSelf.shortenedLinks == nil) {
+                                weakSelf.shortenedLinks = [NSMutableSet set];
+                            }
+                            [weakSelf.shortenedLinks addObject:shortURL];
+                            [weakSelf.textView setText:textViewText];
+                            [weakSelf.contentItem setText:textViewText];
+                            [weakSelf updateRemainingCharacterCountLabel];
+                            [weakSelf updateDoneButton];
+                            [weakSelf updateLinkShorteningButton];
+                        }
+                    }
+                }];
+            }
+        }
+    }
+}
+
+- (void)pushLinkShorteningActivity {
+    _activeLinkShorteningCount++;
+    if (_activeLinkShorteningCount > 0) {
+        [_linkShorteningActivityIndicator startAnimating];
+        __weak OSKMicroblogPublishingViewController *weakSelf = self;
+        [UIView animateWithDuration:0.12f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            [weakSelf.linkShorteningButton setAlpha:0];
+        } completion:nil];
+    }
+}
+
+- (void)popLinkShorteningActivity {
+    _activeLinkShorteningCount--;
+    if (_activeLinkShorteningCount <= 0) {
+        [_linkShorteningActivityIndicator stopAnimating];
+        __weak OSKMicroblogPublishingViewController *weakSelf = self;
+        [UIView animateWithDuration:0.12f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            [weakSelf.linkShorteningButton setAlpha:1];
+        } completion:nil];
     }
 }
 
@@ -292,7 +470,7 @@
 }
 
 - (void)updateAccountButton_Pad:(NSString *)accountName {
-    UIBarButtonItem *item = self.navigationItem.leftBarButtonItems[ACCOUNT_BUTTON_INDEX];
+    UIBarButtonItem *item = self.navigationItem.leftBarButtonItems[ACCOUNT_ITEM_INDEX_IPAD];
     [item setTitle:accountName];
 }
 
@@ -352,7 +530,6 @@
     [self setContentItem:(OSKMicroblogPostContentItem *)self.activity.contentItem];
     [self setOskPublishingDelegate:oskPublishingDelegate];
     self.title = [self.activity.class activityName];
-    [self shortenLinksIfPossible:self.contentItem];
 }
 
 #pragma mark - Account Chooser Delegate
@@ -367,38 +544,6 @@
     OSKActivity <OSKActivity_SystemAccounts> *activity = (OSKActivity <OSKActivity_SystemAccounts> *)self.activity;
     [activity setActiveSystemAccount:systemAccount];
     [self updateAccountButton];
-}
-
-#pragma mark - Link Shortening
-
-- (void)shortenLinksIfPossible:(OSKMicroblogPostContentItem *)item {
-    NSAssert(self.hasAttemptedURLShortening == NO, @"shortenLinksIfPossible: cannot be called more than once per editing session.");
-    BOOL isAllowed = [[OSKPresentationManager sharedInstance] automaticallyShortenURLsWhenRecommended];
-    if (self.contentItem.text.length > 0 && isAllowed) {
-        [self setHasAttemptedURLShortening:YES];
-        NSArray *urls = [OSKTwitterText URLsInText:item.text];
-        if (urls.count) {
-            __weak OSKMicroblogPublishingViewController *weakSelf = self;
-            for (OSKTwitterTextEntity *URLEntity in urls) {
-                NSString *longURL = [item.text substringWithRange:URLEntity.range];
-                if ([OSKLinkShorteningUtility shorteningRecommended:longURL]) {
-                    [OSKLinkShorteningUtility shortenURL:longURL completion:^(NSString *shortURL) {
-                        if (item == weakSelf.contentItem && shortURL.length) {
-                            NSMutableString *textViewText = weakSelf.contentItem.text.mutableCopy;
-                            NSRange rangeOfLongURL = [textViewText rangeOfString:longURL];
-                            if (rangeOfLongURL.length) {
-                                [textViewText replaceCharactersInRange:rangeOfLongURL withString:shortURL];
-                                [weakSelf.textView setText:textViewText];
-                                [weakSelf.contentItem setText:textViewText];
-                                [weakSelf updateRemainingCharacterCountLabel];
-                                [weakSelf updateDoneButton];
-                            }
-                        }
-                    }];
-                }
-            }
-        }
-    }
 }
 
 @end

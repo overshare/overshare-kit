@@ -393,10 +393,10 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     return image;
 }
 
-- (BOOL)automaticallyShortenURLsWhenRecommended {
+- (BOOL)allowLinkShorteningButton {
     BOOL shorten = YES;
-    if ([self.styleDelegate respondsToSelector:@selector(osk_automaticallyShortenURLsWhenRecommended)]) {
-        shorten = [self.styleDelegate osk_automaticallyShortenURLsWhenRecommended];
+    if ([self.styleDelegate respondsToSelector:@selector(osk_allowLinkShorteningButton)]) {
+        shorten = [self.styleDelegate osk_allowLinkShorteningButton];
     }
     return shorten;
 }

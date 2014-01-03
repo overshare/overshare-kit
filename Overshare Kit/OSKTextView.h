@@ -43,8 +43,6 @@
 
 @end
 
-
-
 // OSKTextView INTERFACE PROPER ===============================================================================================
 
 @interface OSKTextView : UIScrollView
@@ -54,8 +52,8 @@
 @property (copy, nonatomic) NSString *text;
 @property (strong, nonatomic) NSArray *oskAttachments;
 @property (assign, nonatomic) OSKMicroblogSyntaxHighlightingStyle syntaxHighlighting;
-
 @property (assign, nonatomic) BOOL automaticallyAdjustsContentInsetForKeyboard; // Defaults to YES
+@property (strong, nonatomic, readonly) NSArray *detectedLinks; // array of OSKTwitterTextEntities
 
 @property(nonatomic,retain) UIFont *font;
 @property(nonatomic,retain) UIColor *textColor;

@@ -158,6 +158,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 @property (assign, nonatomic) NSRange previousSelectedRange;
 @property (assign, nonatomic) BOOL useLinearNextScrollAnimation;
 @property (assign, nonatomic) BOOL ignoreNextTextSelectionAnimation;
+@property (strong, nonatomic, readwrite) NSArray *detectedLinks;
 
 @end
 
@@ -801,6 +802,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     if (self.syntaxHighlighting == OSKMicroblogSyntaxHighlightingStyle_Twitter) {
         // Apply syntax highlighting for entities
         NSArray *allEntities = [OSKTwitterText entitiesInText:textStorage.string];
+        NSMutableArray *links = [[NSMutableArray alloc] init];
         for (OSKTwitterTextEntity *anEntity in allEntities) {
             switch (anEntity.type) {
                 case OSKTwitterTextEntityHashtag: {
@@ -815,17 +817,23 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
                     
                 case OSKTwitterTextEntityURL: {
                     [textStorage addAttributes:self.attributes_links range:anEntity.range];
+                    [links addObject:anEntity];
                 } break;
                 default:
                     break;
             }
         }
+        [self setDetectedLinks:links];
     }
     else if (self.syntaxHighlighting == OSKMicroblogSyntaxHighlightingStyle_LinksOnly) {
         NSArray *allURLEntities = [OSKTwitterText URLsInText:textStorage.string];
         for (OSKTwitterTextEntity *urlEntitiy in allURLEntities) {
             [textStorage addAttributes:self.attributes_links range:urlEntitiy.range];
         }
+        [self setDetectedLinks:allURLEntities];
+    }
+    else {
+        [self setDetectedLinks:nil];
     }
 }
 

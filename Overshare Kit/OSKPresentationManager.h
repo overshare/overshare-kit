@@ -218,12 +218,12 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 - (UIImage *)alternateIconForActivityType:(NSString *)type idiom:(UIUserInterfaceIdiom)idiom;
 
 /**
- Returning YES (the default OSK setting) will automatically shorten links when recommended, i.e., when
+ Returning YES (the default OSK setting) will show a link-shortening button when recommended, i.e., when
  the user is editing a microblog post (Twitter, App.net, etc.) and a given URL is longer than a certain
- threshold (around 30 characters or more). Links are shortened via Bit.ly. You can modify this via
- the `styleDelegate`.
+ threshold (around 30 characters or more). Links are shortened via Bit.ly. You can prevent this button from
+ appearing via OSKPresentationManager's `styleDelegate`.
  */
-- (BOOL)automaticallyShortenURLsWhenRecommended;
+- (BOOL)allowLinkShorteningButton;
 
 /**
  OvershareKit will attempt to initialize all normal weight, user-facing fonts based on this alternate font descriptor if one is supplied.
