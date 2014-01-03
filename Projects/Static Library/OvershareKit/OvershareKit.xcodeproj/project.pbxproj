@@ -180,6 +180,8 @@
 		7F77F4361822F91A0019452C /* Pocket-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pocket-Icon-29.png"; sourceTree = "<group>"; };
 		7FCD02801853975D005C5931 /* OSKActivityToggleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityToggleCell.h; sourceTree = "<group>"; };
 		7FCD02811853975D005C5931 /* OSKActivityToggleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityToggleCell.m; sourceTree = "<group>"; };
+		7FD16DB1187636850035960C /* link-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-button.png"; sourceTree = "<group>"; };
+		7FD16DB2187636850035960C /* link-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-button@2x.png"; sourceTree = "<group>"; };
 		7FE410981821994B00B13AB1 /* OSKFacebookAudienceChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookAudienceChooserViewController.h; sourceTree = "<group>"; };
 		7FE410991821994B00B13AB1 /* OSKFacebookAudienceChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookAudienceChooserViewController.m; sourceTree = "<group>"; };
 		7FE4109A1821994B00B13AB1 /* OSKFacebookPublishingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookPublishingViewController.h; sourceTree = "<group>"; };
@@ -749,6 +751,8 @@
 		7FEE77DD181ED8FE000F684A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7FD16DB1187636850035960C /* link-button.png */,
+				7FD16DB2187636850035960C /* link-button@2x.png */,
 				7F77F4311822F91A0019452C /* Instapaper-Icon-29.png */,
 				7F77F4321822F91A0019452C /* osk-appDotNetIcon-29.png */,
 				7F77F4331822F91A0019452C /* osk-iconMask-bw-29.png */,

@@ -515,6 +515,12 @@
     } else {
         self.characterCountLabel.textColor = _characterCount_normalColor;
     }
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        CGSize size = [self.characterCountLabel sizeThatFits:CGSizeMake(160.0f, 44.0)];
+        CGRect characterCountRect = self.characterCountLabel.frame;
+        characterCountRect.size.width = size.width;
+        self.characterCountLabel.frame = characterCountRect;
+    }
 }
 
 #pragma mark - Button Actions
