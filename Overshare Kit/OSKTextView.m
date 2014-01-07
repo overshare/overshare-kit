@@ -1074,11 +1074,9 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 #pragma mark - Text Attachments
 
 - (void)setOskAttachment:(OSKTextViewAttachment *)attachment {
-    if (_oskAttachment == nil) {
-        _oskAttachment = attachment;
+    _oskAttachment = attachment;
+    if (_oskAttachment) {
         [self setupAttachmentView:attachment];
-    } else {
-        OSKLog(@"OSKTextView does not support replacing existing attachments at this time.");
     }
 }
 

@@ -20,4 +20,9 @@ typedef NS_ENUM(NSInteger, OSKMicroblogSyntaxHighlightingStyle) {
 - (OSKMicroblogSyntaxHighlightingStyle)syntaxHighlightingStyle;
 - (NSInteger)maximumUsernameLength;
 
+@optional
+
+- (BOOL)characterCountsAreAffectedByAttachments;
+- (void)getEstimatedAttachmentURLLength:(void(^)(NSUInteger length))completion;
+
 @end

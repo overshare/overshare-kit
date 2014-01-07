@@ -22,6 +22,8 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 
 @interface OSKTwitterActivity ()
 
+@property (copy, nonatomic) NSNumber *estimatedLengthOfAttachmentURL;
+
 @end
 
 @implementation OSKTwitterActivity
@@ -125,7 +127,13 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 #pragma mark - Microblogging Activity Protocol
 
 - (NSInteger)maximumCharacterCount {
-    return OSKTwitterActivity_MaxCharacterCount;
+    NSInteger count = OSKTwitterActivity_MaxCharacterCount;
+    OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)self.contentItem;
+    if (contentItem.images.count) {
+        NSUInteger attachmentLength = (_estimatedLengthOfAttachmentURL.integerValue) ? _estimatedLengthOfAttachmentURL.integerValue : 24;
+        count -= attachmentLength; // We only ever send the first image in the array, due to API limits.
+    }
+    return count;
 }
 
 - (NSInteger)maximumImageCount {
@@ -138,6 +146,41 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 
 - (NSInteger)maximumUsernameLength {
     return OSKTwitterActivity_MaxUsernameLength;
+}
+
+- (BOOL)characterCountsAreAffectedByAttachments {
+    return YES;
+}
+
+- (void)getEstimatedAttachmentURLLength:(void(^)(NSUInteger length))completion {
+    if (_estimatedLengthOfAttachmentURL) {
+        NSUInteger roughEstimate = [_estimatedLengthOfAttachmentURL integerValue];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(roughEstimate);
+            }
+        });
+
+    }
+    else if (self.activeSystemAccount) {
+        __weak OSKTwitterActivity *weakSelf = self;
+        [OSKTwitterUtility requestTwitterConfiguration:self.activeSystemAccount completion:^(NSError *error, NSDictionary *configurationParameters) {
+            NSNumber *estimateNumber = configurationParameters[OSKTwitterImageHttpsURLLengthKey];
+            CGFloat roughEstimate = (estimateNumber.integerValue) ? estimateNumber.integerValue : 24;
+            [weakSelf setEstimatedLengthOfAttachmentURL:estimateNumber];
+            if (completion) {
+                completion(roughEstimate);
+            }
+        }];
+    }
+    else {
+        NSUInteger roughEstimate = 24;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(roughEstimate);
+            }
+        });
+    }
 }
 
 @end

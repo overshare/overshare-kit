@@ -51,6 +51,7 @@
 @property (strong, nonatomic) UIButton *linkShorteningButton;
 @property (strong, nonatomic) UIActivityIndicatorView *linkShorteningActivityIndicator;
 @property (assign, nonatomic) NSInteger activeLinkShorteningCount;
+@property (assign, nonatomic) NSUInteger reservedLengthForAttachmentURL;
 
 @end
 
@@ -510,7 +511,7 @@
 
 - (void)updateRemainingCharacterCountLabel {
     NSInteger countAdjustingForEmoji = [self.textView.attributedText.string lengthOfBytesUsingEncoding:NSUTF32StringEncoding]/4;
-    NSInteger remaining = [self.activity maximumCharacterCount] - countAdjustingForEmoji;
+    NSInteger remaining = [self.activity maximumCharacterCount] - countAdjustingForEmoji - _reservedLengthForAttachmentURL;
     self.characterCountLabel.text = @(remaining).stringValue;
     if (_characterCount_normalColor == nil) {
         OSKPresentationManager *presManager = [OSKPresentationManager sharedInstance];
@@ -543,6 +544,18 @@
     [self setContentItem:(OSKMicroblogPostContentItem *)self.activity.contentItem];
     [self setOskPublishingDelegate:oskPublishingDelegate];
     self.title = [self.activity.class activityName];
+    
+    if ([self.activity respondsToSelector:@selector(characterCountsAreAffectedByAttachments)]) {
+        BOOL adjustForAttachments = [self.activity characterCountsAreAffectedByAttachments];
+        if (adjustForAttachments) {
+            __weak OSKMicroblogPublishingViewController *weakSelf = self;
+            [self.activity getEstimatedAttachmentURLLength:^(NSUInteger length) {
+                [weakSelf setReservedLengthForAttachmentURL:length];
+                [weakSelf updateRemainingCharacterCountLabel];
+                [weakSelf updateDoneButton];
+            }];
+        }
+    }
 }
 
 #pragma mark - Account Chooser Delegate
