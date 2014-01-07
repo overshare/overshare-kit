@@ -238,6 +238,13 @@
     [self updateLinkShorteningButton];
 }
 
+- (void)textViewDidTapRemoveAttachment:(OSKTextView *)textView {
+    [textView removeAttachment];
+    [self.contentItem setImages:nil];
+    [self updateRemainingCharacterCountLabel];
+    [self updateDoneButton];
+}
+
 #pragma mark - Autorotation
 
 - (void)viewDidLayoutSubviews {

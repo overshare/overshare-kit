@@ -53,5 +53,6 @@
 - (NSString *)osk_localizedText_OptionalActivities;
 - (NSString *)osk_localizedText_ShortenLinks;
 - (NSString *)osk_localizedText_LinksShortened;
+- (NSString *)osk_localizedText_Remove;
 
 @end

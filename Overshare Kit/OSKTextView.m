@@ -79,12 +79,7 @@ static CGFloat OSKTextViewAttachmentViewWidth_Pad = 96.0f; // 2 points larger th
             
             if (rotationAngle != 0) {
                 CGFloat offset = (sinf(rotationAngle) * sizeNeeded.width) / 2.0f;
-                CGAffineTransform translation;
-                if (rotationAngle > 0) {
-                    translation = CGAffineTransformMakeTranslation(offset, offset * -1.0f);
-                } else {
-                    translation = CGAffineTransformMakeTranslation(offset, offset * -1.0f);
-                }
+                CGAffineTransform translation = CGAffineTransformMakeTranslation(offset, offset * -1.0f);
                 CGContextConcatCTM(context, translation);
             }
 
@@ -144,9 +139,21 @@ static CGFloat OSKTextViewAttachmentViewWidth_Pad = 96.0f; // 2 points larger th
 
 static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewContext";
 
-@interface OSKTextViewAttachmentView : UIButton
+@class OSKTextViewAttachmentView;
+
+@protocol OSKTextViewAttachmentViewDelegate <NSObject>
+
+- (void)attachmentViewDidTapRemove:(OSKTextViewAttachmentView *)view;
+- (BOOL)attachmentViewShouldReportHasText:(OSKTextViewAttachmentView *)view;
+- (void)attachmentView:(OSKTextViewAttachmentView *)view didInsertText:(NSString *)text;
+- (void)attachmentViewDidDeleteBackward:(OSKTextViewAttachmentView *)view;
+
+@end
+
+@interface OSKTextViewAttachmentView : UIButton <UIKeyInput>
 
 @property (strong, nonatomic) OSKTextViewAttachment *attachment;
+@property (weak, nonatomic) id <OSKTextViewAttachmentViewDelegate> delegate;
 
 @end
 
@@ -157,7 +164,8 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 }
 
 - (void)setAttachment:(OSKTextViewAttachment *)attachment {
-    if (_attachment != attachment) {
+    if (_attachment == nil) {
+        [self addTarget:self action:@selector(tapped:) forControlEvents:UIControlEventTouchUpInside];
         [self removeObservationsFromAttachment:_attachment];
         _attachment = attachment;
         [self addObservationsToAttachment:_attachment];
@@ -167,6 +175,53 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 
 - (void)updateInterface {
     [self setBackgroundImage:self.attachment.thumbnail forState:UIControlStateNormal];
+}
+
+#pragma mark - UIMenuItem Stuff
+
+-(void)tapped:(id)sender {
+    [self becomeFirstResponder];
+    
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    NSString *itemTitle = [OSKPresentationManager sharedInstance].localizedText_Remove;
+    UIMenuItem *removeAttachmentItem = [[UIMenuItem alloc] initWithTitle:itemTitle action:@selector(removeAttachmentItemTapped:)];
+    
+    NSAssert([self becomeFirstResponder], @"Sorry, UIMenuController will not work with %@ since it cannot become first responder", self);
+    [menuController setMenuItems:[NSArray arrayWithObject:removeAttachmentItem]];
+    [menuController setTargetRect:self.frame inView:self.superview];
+    [menuController setMenuVisible:YES animated:YES];
+}
+
+- (void)removeAttachmentItemTapped:(id) sender {
+    [self.delegate attachmentViewDidTapRemove:self];
+}
+
+- (BOOL)canPerformAction:(SEL)selector withSender:(id) sender {
+    BOOL canPerform = NO;
+    if (selector == @selector(removeAttachmentItemTapped:)) {
+        canPerform = YES;
+    }
+    return canPerform;
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+#pragma mark - Reliable Way of Keeping the Keyboard Visible
+
+// See Ole Begemann's answer here: http://stackoverflow.com/a/4284675/1078579
+
+- (BOOL)hasText {
+    return [self.delegate attachmentViewShouldReportHasText:self];
+}
+
+- (void)insertText:(NSString *)text {
+    [self.delegate attachmentView:self didInsertText:text];
+}
+
+- (void)deleteBackward {
+    [self.delegate attachmentViewDidDeleteBackward:self];
 }
 
 #pragma mark - KVO
@@ -197,7 +252,12 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 // OSKTextView ============================================================
 
 
-@interface OSKTextView () <UITextViewDelegate, NSTextStorageDelegate>
+@interface OSKTextView ()
+<
+    UITextViewDelegate,
+    NSTextStorageDelegate,
+    OSKTextViewAttachmentViewDelegate
+>
 
 @property (strong, nonatomic) NSDictionary *attributes_normal;
 @property (strong, nonatomic) NSDictionary *attributes_mentions;
@@ -1034,21 +1094,14 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     CGSize sizeNeeded = [OSKTextViewAttachment sizeNeededForThumbs:newAttachment.images.count ofIndividualSize:thumbSize];
     CGRect startFrame = CGRectMake(0, 0, sizeNeeded.width, sizeNeeded.height);
     
-    OSKTextViewAttachmentView *view = [OSKTextViewAttachmentView buttonWithType:UIButtonTypeCustom];
-    [view setFrame:startFrame];
-    [view setAttachment:newAttachment];
-    view.autoresizingMask = UIViewAutoresizingNone;
-    [self.textView addSubview:view];
-    [self setAttachmentView:view];
+    OSKTextViewAttachmentView *attachmentView = [OSKTextViewAttachmentView buttonWithType:UIButtonTypeCustom];
+    [attachmentView setFrame:startFrame];
+    [attachmentView setAttachment:newAttachment];
+    [attachmentView setDelegate:self];
+    attachmentView.autoresizingMask = UIViewAutoresizingNone;
+    [self.textView addSubview:attachmentView];
+    [self setAttachmentView:attachmentView];
     [self updateAttachmentViewFrames];
-    
-    /*
-    for (NSInteger index = 0; index < self.attachmentViews.count; index++) {
-        OSKTextViewAttachmentView *view = self.attachmentViews[index];
-        CGAffineTransform rotation = [self attachmentRotationForPosition:index totalCount:self.attachmentViews.count];
-        [view setTransform:rotation];
-    }
-    */
 }
 
 - (void)updateAttachmentViewFrames {
@@ -1060,10 +1113,10 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     }
     NSUInteger numberOfImages = self.attachmentView.attachment.images.count;
     CGFloat myWidth = self.textView.frame.size.width;
-    CGFloat rightPadding = (numberOfImages > 1) ? 14.0f : 6.0f;
+    CGFloat padding = (numberOfImages > 1) ? 14.0f : 8.0f;
     CGFloat viewWidth = width;
     CGFloat viewHeight = viewWidth;
-    CGFloat xOrigin = myWidth - rightPadding - viewWidth;
+    CGFloat xOrigin = myWidth - padding - viewWidth;
     CGFloat yOrigin = (numberOfImages > 1) ? 14.0f : 10.0f;
     CGFloat centerY = yOrigin + viewHeight/2.0f;
     CGFloat centerX = xOrigin + viewWidth/2.0f;
@@ -1072,13 +1125,13 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     [_attachmentView setCenter:center];
     
     CGRect frame = CGRectMake(xOrigin, yOrigin, viewWidth, viewHeight);
-    UIBezierPath *path = [self exclusionPathForRect:frame];
+    UIBezierPath *path = [self exclusionPathForRect:frame desiredInnerPadding:padding];
     [self.textView.textContainer setExclusionPaths:@[path]];
 }
 
-- (UIBezierPath *)exclusionPathForRect:(CGRect)rect {
+- (UIBezierPath *)exclusionPathForRect:(CGRect)rect desiredInnerPadding:(CGFloat)padding {
     CGRect adjustedRect = rect;
-    adjustedRect.origin.x -= 6.0f;
+    adjustedRect.origin.x -= padding;
     adjustedRect.origin.y = 0.0;
     adjustedRect.size.height = rect.origin.y + rect.size.height;
     adjustedRect.size.width = self.textView.frame.size.width - adjustedRect.origin.x;
@@ -1120,12 +1173,40 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     }];
 }
 
+#pragma mark - OSKTextViewAttachmentViewDelegate
+
+- (void)attachmentViewDidTapRemove:(OSKTextViewAttachmentView *)view {
+    [view resignFirstResponder];
+    [self becomeFirstResponder];
+    [self.textViewDelegate textViewDidTapRemoveAttachment:self];
+}
+
+- (BOOL)attachmentViewShouldReportHasText:(OSKTextViewAttachmentView *)view {
+    return [self.textView hasText];
+}
+
+- (void)attachmentView:(OSKTextViewAttachmentView *)view didInsertText:(NSString *)text {
+    [view resignFirstResponder];
+    [self becomeFirstResponder];
+    [self insertText:text];
+}
+
+- (void)attachmentViewDidDeleteBackward:(OSKTextViewAttachmentView *)view {
+    [view resignFirstResponder];
+    [self becomeFirstResponder];
+    [self.textView deleteBackward];
+}
+
+#pragma mark - Removing Attachments
+
+- (void)removeAttachment {
+    [self.attachmentView removeFromSuperview];
+    [self setAttachmentView:nil];
+    [self setOskAttachment:nil];
+    [self.textView.textContainer setExclusionPaths:nil];
+}
+
 @end
-
-
-
-
-
 
 
 

@@ -28,6 +28,8 @@
 @protocol OSKTextViewDelegate <NSObject>
 @optional
 
+- (void)textViewDidTapRemoveAttachment:(OSKTextView *)textView;
+
 - (BOOL)textViewShouldBeginEditing:(OSKTextView *)textView;
 - (BOOL)textViewShouldEndEditing:(OSKTextView *)textView;
 
@@ -84,6 +86,7 @@
 
 - (void)scrollRangeToVisible:(NSRange)range;
 - (void)insertText:(NSString *)text;
+- (void)removeAttachment;
 
 @end
 

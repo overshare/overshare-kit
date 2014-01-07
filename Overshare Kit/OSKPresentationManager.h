@@ -306,6 +306,7 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 - (NSString *)localizedText_OptionalActivities;
 - (NSString *)localizedText_ShortenLinks;
 - (NSString *)localizedText_LinksShortened;
+- (NSString *)localizedText_Remove;
 
 @end
 

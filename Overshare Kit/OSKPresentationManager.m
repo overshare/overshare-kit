@@ -971,6 +971,17 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     return text;
 }
 
+- (NSString *)localizedText_Remove {
+    NSString *text = nil;
+    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Remove)]) {
+        text = [self.localizationDelegate osk_localizedText_Remove];
+    }
+    if (text == nil) {
+        text = @"Remove";
+    }
+    return text;
+}
+
 #pragma mark - View Controllers
 
 - (UIViewController <OSKPurchasingViewController> *)purchasingViewControllerForActivity:(OSKActivity *)activity {
