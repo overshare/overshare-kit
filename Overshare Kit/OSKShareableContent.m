@@ -210,6 +210,11 @@
     smsItem.body = caption;
     smsItem.attachments = images;
     content.smsItem = smsItem;
+	
+	OSKPhotoSharingContentItem *photoItem = [[OSKPhotoSharingContentItem alloc] init];
+	photoItem.images = images;
+	photoItem.caption = caption;
+	content.photoSharingItem = photoItem;
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
     toDoList.title = [NSString stringWithFormat:@"Look into stuff from %@", appName];
