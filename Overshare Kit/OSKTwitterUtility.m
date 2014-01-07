@@ -18,6 +18,10 @@
 #define kOSKTwitterConfigurationCache		@"OSKTwitterConfigurationCachePref"
 #define kOSKTwitterConfigurationCacheDate	@"OSKTwitterConfigurationCacheDatePref"
 
+NSString * const OSKTwitterImageHttpURLLengthKey = @"short_url_length_http";
+NSString * const OSKTwitterImageHttpsURLLengthKey = @"short_url_length_https";
+NSString * const OSKTwitterImageSizeLimitKey = @"photo_size_limit";
+
 @implementation OSKTwitterUtility
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,15 +58,8 @@
 + (NSInteger) maxTwitterAttachmentSizeFromCache
 {
 	NSDictionary* configurationParameters = [self cachedTwitterConfiguration];
-	NSNumber* photoSizeLimit = [configurationParameters objectForKey:@"photo_size_limit"];
+	NSNumber* photoSizeLimit = [configurationParameters objectForKey:OSKTwitterImageSizeLimitKey];
 	return photoSizeLimit.integerValue;
-}
-
-+ (NSInteger) twitterImageURLLengthFromCache
-{
-	NSDictionary* configurationParameters = [self cachedTwitterConfiguration];
-	NSNumber* photoURLLength = [configurationParameters objectForKey:@"short_url_length_https"];
-	return photoURLLength.integerValue;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
