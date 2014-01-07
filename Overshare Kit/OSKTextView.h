@@ -16,9 +16,10 @@
 
 @interface OSKTextViewAttachment : NSObject
 
-@property (strong, nonatomic, readonly) UIImage *thumbnail; // displayed cropped to 1:1 square
+@property (strong, nonatomic, readonly) UIImage *thumbnail; // displayed cropped to roughly 1:1 square
+@property (copy, nonatomic, readonly) NSArray *images;
 
-- (instancetype)initWithImage:(UIImage *)image;
+- (instancetype)initWithImages:(NSArray *)images;
 
 @end
 
@@ -50,7 +51,7 @@
 @property (weak, nonatomic) id <OSKTextViewDelegate> textViewDelegate;
 @property (copy, nonatomic) NSAttributedString *attributedText;
 @property (copy, nonatomic) NSString *text;
-@property (strong, nonatomic) NSArray *oskAttachments;
+@property (strong, nonatomic) OSKTextViewAttachment *oskAttachment;
 @property (assign, nonatomic) OSKMicroblogSyntaxHighlightingStyle syntaxHighlighting;
 @property (assign, nonatomic) BOOL automaticallyAdjustsContentInsetForKeyboard; // Defaults to YES
 @property (strong, nonatomic, readonly) NSArray *detectedLinks; // array of OSKTwitterTextEntities

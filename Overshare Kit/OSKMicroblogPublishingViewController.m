@@ -107,16 +107,12 @@
     [self updateDoneButton];
     [self updateLinkShorteningButton];
     
-    if (self.contentItem.images.count) {
-        NSMutableArray *attachments = [[NSMutableArray alloc] init];
-        for (UIImage *image in self.contentItem.images) {
-            OSKTextViewAttachment *attachment = [[OSKTextViewAttachment alloc] initWithImage:image];
-            [attachments addObject:attachment];
-            if (attachments.count == [self.activity maximumImageCount] || attachments.count == 3) {
-                break;
-            }
-        }
-        [self.textView setOskAttachments:attachments];
+    NSUInteger numberOfImages = self.contentItem.images.count;
+    if (numberOfImages > 0) {
+        NSUInteger numberOfImagesToShow = MIN(MIN([self.activity maximumImageCount], 3), numberOfImages);
+        NSArray *imagesToShow = [self.contentItem.images subarrayWithRange:NSMakeRange(0, numberOfImagesToShow)];
+        OSKTextViewAttachment *attachment = [[OSKTextViewAttachment alloc] initWithImages:imagesToShow];
+        [self.textView setOskAttachment:attachment];
     }
 }
 

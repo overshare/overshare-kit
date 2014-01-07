@@ -19,15 +19,32 @@ static CGFloat OSKTextViewAttachmentViewWidth_Pad = 96.0f; // 2 points larger th
 
 @interface OSKTextViewAttachment ()
 
-@property (strong, nonatomic, readwrite) UIImage *thumbnail; // displayed cropped to 1:1 square
+@property (strong, nonatomic, readwrite) UIImage *thumbnail; // displayed cropped to 1:1, roughly square
+@property (copy, nonatomic, readwrite) NSArray *images;
 
 @end
 
 @implementation OSKTextViewAttachment
 
-- (instancetype)initWithImage:(UIImage *)image {
++ (CGSize)sizeNeededForThumbs:(NSUInteger)count ofIndividualSize:(CGSize)individualThumbnailSize {
+    CGSize sizeNeeded;
+    
+    if (count == 1) {
+        sizeNeeded = individualThumbnailSize;
+    } else {
+        CGFloat oneDegreeInRadians = M_PI / 180.0f;
+        CGFloat maxAngle = 12.0f * oneDegreeInRadians;
+        CGFloat widestOffset = sinf(maxAngle) * individualThumbnailSize.height;
+        sizeNeeded = CGSizeMake(individualThumbnailSize.width + widestOffset,
+                                individualThumbnailSize.height + widestOffset);
+    }
+    return CGSizeMake(ceilf(sizeNeeded.width), ceilf(sizeNeeded.width));
+}
+
+- (instancetype)initWithImages:(NSArray *)images {
     self = [super init];
     if (self) {
+        _images = images.copy;
         CGFloat width;
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
             width = OSKTextViewAttachmentViewWidth_Phone;
@@ -35,33 +52,71 @@ static CGFloat OSKTextViewAttachmentViewWidth_Pad = 96.0f; // 2 points larger th
             width = OSKTextViewAttachmentViewWidth_Pad;
         }
         __weak OSKTextViewAttachment *weakSelf = self;
-        [self scaleImage:image toThumbmailOfSize:CGSizeMake(width, width) completion:^(UIImage *thumbnail) {
+        [self scaleImages:images toThumbmailsOfSize:CGSizeMake(width, width) completion:^(UIImage *thumbnail) {
             [weakSelf setThumbnail:thumbnail];
         }];
     }
     return self;
 }
 
-- (void)scaleImage:(UIImage *)image toThumbmailOfSize:(CGSize)size completion:(void(^)(UIImage *thumbnail))completion {
+- (void)scaleImages:(NSArray *)images toThumbmailsOfSize:(CGSize)individualThumbnailSize completion:(void(^)(UIImage *thumbnail))completion {
+    __weak OSKTextViewAttachment *weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIGraphicsBeginImageContextWithOptions(size, YES, 0);
-        CGFloat nativeWidth = image.size.width;
-        CGFloat nativeHeight = image.size.height;
-        CGFloat targetWidth;
-        CGFloat targetHeight;
-        if (nativeHeight > nativeWidth) {
-            targetWidth = size.width;
-            targetHeight = (nativeHeight / nativeWidth) * targetWidth;
-        } else {
-            targetHeight = size.height;
-            targetWidth = (nativeWidth / nativeHeight) * targetHeight;
+        
+        CGSize sizeNeeded = [OSKTextViewAttachment sizeNeededForThumbs:images.count ofIndividualSize:individualThumbnailSize];
+        
+        UIGraphicsBeginImageContextWithOptions(sizeNeeded, NO, 0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        for (NSUInteger index = 0; index < images.count; index++) {
+            UIImage *image = images.reverseObjectEnumerator.allObjects[index];
+            
+            CGContextSaveGState (context);
+            
+            CGFloat rotationAngle = [weakSelf attachmentRotationForPosition:index totalCount:images.count];
+            CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(rotationAngle);
+            CGContextConcatCTM(context, rotationTransform);
+            
+            if (rotationAngle != 0) {
+                CGFloat offset = (sinf(rotationAngle) * sizeNeeded.width) / 2.0f;
+                CGAffineTransform translation;
+                if (rotationAngle > 0) {
+                    translation = CGAffineTransformMakeTranslation(offset, offset * -1.0f);
+                } else {
+                    translation = CGAffineTransformMakeTranslation(offset, offset * -1.0f);
+                }
+                CGContextConcatCTM(context, translation);
+            }
+
+            CGFloat nativeWidth = image.size.width;
+            CGFloat nativeHeight = image.size.height;
+            CGFloat targetWidth;
+            CGFloat targetHeight;
+            if (nativeHeight > nativeWidth) {
+                targetWidth = individualThumbnailSize.width;
+                targetHeight = (nativeHeight / nativeWidth) * targetWidth;
+            } else {
+                targetHeight = individualThumbnailSize.height;
+                targetWidth = (nativeWidth / nativeHeight) * targetHeight;
+            }
+            CGFloat xOrigin = (sizeNeeded.width/2.0f) - (targetWidth/2.0f);
+            CGFloat yOrigin = (sizeNeeded.height/2.0f) - (targetHeight/2.0f);
+            CGRect rect = CGRectMake(xOrigin, yOrigin, targetWidth, targetHeight);
+
+            CGRect clippingRect = CGRectMake(roundf(sizeNeeded.width - individualThumbnailSize.width)/2.0f,
+                                             roundf(sizeNeeded.height - individualThumbnailSize.height)/2.0f,
+                                             individualThumbnailSize.width,
+                                             individualThumbnailSize.height);
+            UIBezierPath *clippingPath  = [UIBezierPath bezierPathWithRect:clippingRect];
+            [clippingPath addClip];
+            [image drawInRect:rect];
+            
+            CGContextRestoreGState (context);
         }
-        CGFloat xOrigin = (size.width/2.0f) - (targetWidth/2.0f);
-        CGFloat yOrigin = (size.height/2.0f) - (targetHeight/2.0f);
-        CGRect rect = CGRectMake(xOrigin, yOrigin, targetWidth, targetHeight);
-        [image drawInRect:rect];
+        
         UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             if (completion){
                 completion(thumbnail);
@@ -70,29 +125,32 @@ static CGFloat OSKTextViewAttachmentViewWidth_Pad = 96.0f; // 2 points larger th
     });
 }
 
+- (CGFloat)attachmentRotationForPosition:(NSInteger)position totalCount:(NSInteger)count {
+    CGFloat rotation;
+    if (position > 2 || position == count-1) {
+        rotation = 0;
+    } else {
+        CGFloat oneDegreeInRadians = M_PI / 180.0f;
+        CGFloat degrees = (3.0f - position) * 4.0f;
+        degrees = (position % 2 == 0) ? degrees : degrees*-1.0;
+        rotation = degrees * oneDegreeInRadians;
+    }
+    return rotation;
+}
+
 @end
 
 // OSKTextViewAttachmentView ============================================================
 
 static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewContext";
 
-@interface OSKTextViewAttachmentView : UIView
+@interface OSKTextViewAttachmentView : UIButton
 
 @property (strong, nonatomic) OSKTextViewAttachment *attachment;
 
 @end
 
 @implementation OSKTextViewAttachmentView
-
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
-        [self setContentMode:UIViewContentModeScaleAspectFill];
-        [self setClipsToBounds:YES];
-    }
-    return self;
-}
 
 - (void)dealloc {
     [self removeObservationsFromAttachment:_attachment];
@@ -108,14 +166,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 }
 
 - (void)updateInterface {
-    if (self.attachment.thumbnail) {
-        self.backgroundColor = [UIColor clearColor];
-    }
-    [self setNeedsDisplay];
-}
-
-- (void)drawRect:(CGRect)rect {
-    [self.attachment.thumbnail drawInRect:CGRectInset(self.bounds, 1, 1)];
+    [self setBackgroundImage:self.attachment.thumbnail forState:UIControlStateNormal];
 }
 
 #pragma mark - KVO
@@ -152,13 +203,13 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 @property (strong, nonatomic) NSDictionary *attributes_mentions;
 @property (strong, nonatomic) NSDictionary *attributes_hashtags;
 @property (strong, nonatomic) NSDictionary *attributes_links;
-@property (strong, nonatomic) NSMutableArray *attachmentViews;
 @property (assign, nonatomic) CGRect currentKeyboardFrame;
 @property (strong, nonatomic) UITextView *textView;
 @property (assign, nonatomic) NSRange previousSelectedRange;
 @property (assign, nonatomic) BOOL useLinearNextScrollAnimation;
 @property (assign, nonatomic) BOOL ignoreNextTextSelectionAnimation;
 @property (strong, nonatomic, readwrite) NSArray *detectedLinks;
+@property (strong, nonatomic) OSKTextViewAttachmentView *attachmentView;
 
 @end
 
@@ -186,7 +237,6 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 }
 
 - (void)commonInit {
-    [self setAttachmentViews:[NSMutableArray array]];
     [self setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [self setAlwaysBounceVertical:YES];
     [self setupSwipeGestureRecognizers];
@@ -370,7 +420,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     // usually called.
     
     [self updateContentSize:YES delay:YES];
-    if (self.attachmentViews.count) {
+    if (self.attachmentView) {
         [self updateAttachmentViewFrames];
     }
 }
@@ -963,38 +1013,42 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 
 #pragma mark - Text Attachments
 
-- (void)setOskAttachments:(NSArray *)attachments {
-    if (_oskAttachments == nil) {
-        _oskAttachments = attachments;
-        [self setupAttachmentViews:attachments];
+- (void)setOskAttachment:(OSKTextViewAttachment *)attachment {
+    if (_oskAttachment == nil) {
+        _oskAttachment = attachment;
+        [self setupAttachmentView:attachment];
     } else {
         OSKLog(@"OSKTextView does not support replacing existing attachments at this time.");
     }
 }
 
-- (void)setupAttachmentViews:(NSArray *)newAttachments {
+- (void)setupAttachmentView:(OSKTextViewAttachment *)newAttachment {
     CGFloat width;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         width = OSKTextViewAttachmentViewWidth_Phone;
     } else {
         width = OSKTextViewAttachmentViewWidth_Pad;
     }
-    CGRect startFrame = CGRectMake(0, 0, width, width);
-    for (OSKTextViewAttachment *attachment in newAttachments) {
-        OSKTextViewAttachmentView *view = [[OSKTextViewAttachmentView alloc] initWithFrame:startFrame];
-        [view setAttachment:attachment];
-        view.autoresizingMask = UIViewAutoresizingNone;
-        [self.attachmentViews addObject:view];
-        [self.textView addSubview:view];
-    }
     
+    CGSize thumbSize = CGSizeMake(width, width);
+    CGSize sizeNeeded = [OSKTextViewAttachment sizeNeededForThumbs:newAttachment.images.count ofIndividualSize:thumbSize];
+    CGRect startFrame = CGRectMake(0, 0, sizeNeeded.width, sizeNeeded.height);
+    
+    OSKTextViewAttachmentView *view = [OSKTextViewAttachmentView buttonWithType:UIButtonTypeCustom];
+    [view setFrame:startFrame];
+    [view setAttachment:newAttachment];
+    view.autoresizingMask = UIViewAutoresizingNone;
+    [self.textView addSubview:view];
+    [self setAttachmentView:view];
     [self updateAttachmentViewFrames];
     
+    /*
     for (NSInteger index = 0; index < self.attachmentViews.count; index++) {
         OSKTextViewAttachmentView *view = self.attachmentViews[index];
         CGAffineTransform rotation = [self attachmentRotationForPosition:index totalCount:self.attachmentViews.count];
         [view setTransform:rotation];
     }
+    */
 }
 
 - (void)updateAttachmentViewFrames {
@@ -1004,37 +1058,22 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     } else {
         width = OSKTextViewAttachmentViewWidth_Pad;
     }
+    NSUInteger numberOfImages = self.attachmentView.attachment.images.count;
     CGFloat myWidth = self.textView.frame.size.width;
-    CGFloat rightPadding = (self.attachmentViews.count > 1) ? 10.0f : 6.0f;
+    CGFloat rightPadding = (numberOfImages > 1) ? 14.0f : 6.0f;
     CGFloat viewWidth = width;
     CGFloat viewHeight = viewWidth;
     CGFloat xOrigin = myWidth - rightPadding - viewWidth;
-    CGFloat yOrigin = (self.attachmentViews.count > 1) ? 14.0f : 10.0f;
+    CGFloat yOrigin = (numberOfImages > 1) ? 14.0f : 10.0f;
     CGFloat centerY = yOrigin + viewHeight/2.0f;
     CGFloat centerX = xOrigin + viewWidth/2.0f;
     CGPoint center = CGPointMake(centerX, centerY);
     
-    for (NSInteger index = 0; index < self.attachmentViews.count; index++) {
-        OSKTextViewAttachmentView *view = self.attachmentViews[index];
-        [view setCenter:center];
-    }
+    [_attachmentView setCenter:center];
     
     CGRect frame = CGRectMake(xOrigin, yOrigin, viewWidth, viewHeight);
     UIBezierPath *path = [self exclusionPathForRect:frame];
     [self.textView.textContainer setExclusionPaths:@[path]];
-}
-
-- (CGAffineTransform)attachmentRotationForPosition:(NSInteger)position totalCount:(NSInteger)count {
-    CGAffineTransform rotation;
-    if (position > 2 || position == count-1) {
-        rotation = CGAffineTransformIdentity;
-    } else {
-        CGFloat oneDegreeInRadians = M_PI / 180.0f;
-        CGFloat degrees = (3.0f - position) * 4.0f;
-        degrees = (position % 2 == 0) ? degrees : degrees*-1.0;
-        rotation = CGAffineTransformMakeRotation(degrees * oneDegreeInRadians);
-    }
-    return rotation;
 }
 
 - (UIBezierPath *)exclusionPathForRect:(CGRect)rect {
