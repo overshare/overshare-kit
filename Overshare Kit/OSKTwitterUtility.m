@@ -15,14 +15,18 @@
 #import "OSKLogger.h"
 
 #define kTwoWeeks (14 * 24 * 60 * 60)
-#define kOSKTwitterAttachmentSizeLimitDate	@"OSKTwitterAttachmentSizeLimitDateUserPref"
-#define kOSKTwitterAttachmentSizeLimit		@"OSKTwitterAttachmentSizeLimitUserPref"
+#define kOSKTwitterConfigurationCache		@"OSKTwitterConfigurationCachePref"
+#define kOSKTwitterConfigurationCacheDate	@"OSKTwitterConfigurationCacheDatePref"
 
 @implementation OSKTwitterUtility
 
-+ (BOOL) isTwitterAttachmentSizeCacheValid
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Twitter configuration caching
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
++ (BOOL) isTwitterConfigurationCacheValid
 {
-	NSDate* lastCacheDate = [[NSUserDefaults standardUserDefaults] objectForKey:kOSKTwitterAttachmentSizeLimitDate];
+	NSDate* lastCacheDate = [[NSUserDefaults standardUserDefaults] objectForKey:kOSKTwitterConfigurationCacheDate];
 	if (lastCacheDate)
 	{
 		NSTimeInterval diff = [lastCacheDate timeIntervalSinceNow];
@@ -35,20 +39,52 @@
 	return NO;
 }
 
++ (void) cacheTwitterConfiguration:(NSDictionary*)configuration
+{
+	[[NSUserDefaults standardUserDefaults] setObject:configuration forKey:kOSKTwitterConfigurationCache];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kOSKTwitterConfigurationCacheDate];
+}
+
++ (NSDictionary*) cachedTwitterConfiguration
+{
+	NSDictionary* configuration = [[NSUserDefaults standardUserDefaults] objectForKey:kOSKTwitterConfigurationCache];
+	return configuration;
+}
+
 + (NSInteger) maxTwitterAttachmentSizeFromCache
 {
-	NSNumber* maxAttachmentSize = [[NSUserDefaults standardUserDefaults] objectForKey:@"OSKTwitterAttachmentSizeLimit"];
-	return maxAttachmentSize.integerValue;
+	NSDictionary* configurationParameters = [self cachedTwitterConfiguration];
+	NSNumber* photoSizeLimit = [configurationParameters objectForKey:@"photo_size_limit"];
+	return photoSizeLimit.integerValue;
 }
 
-+ (void) cacheMaxTwitterAttachmentSize:(NSInteger)maxSize
++ (NSInteger) twitterImageURLLengthFromCache
 {
-	[[NSUserDefaults standardUserDefaults] setObject:@(maxSize) forKey:@"OSKTwitterAttachmentSizeLimit"];
-	[[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kOSKTwitterAttachmentSizeLimitDate];
+	NSDictionary* configurationParameters = [self cachedTwitterConfiguration];
+	NSNumber* photoURLLength = [configurationParameters objectForKey:@"short_url_length_https"];
+	return photoURLLength.integerValue;
 }
 
-+ (void) requestTwitterAttachmentSizeLimit:(ACAccount *)account completion:(void(^)())completion
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Twitter configuration fetching
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
++ (void) requestTwitterConfiguration:(ACAccount *)account completion:(void(^)(NSError* error, NSDictionary* configurationParameters))completion
 {
+	//If we already have a valid configuration, let's bail early
+	if ([self isTwitterConfigurationCacheValid])
+	{
+		NSDictionary* configurationParameters = [self cachedTwitterConfiguration];
+		
+		if (completion) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				completion(nil, configurationParameters);
+			});
+		}
+		return;
+	}
+	
+	//Setup the request
 	SLRequestHandler requestHandler = ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
 	{
 		if (responseData != nil)
@@ -57,12 +93,13 @@
             if ((statusCode >= 200) && (statusCode < 300))
             {
                 NSDictionary *configurationParameters = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:NULL];
-				NSNumber* photoSizeLimit = [configurationParameters objectForKey:@"photo_size_limit"];
-				[self cacheMaxTwitterAttachmentSize:photoSizeLimit.integerValue];
-				OSKLog(@"Successfully requested photo_size_limit: %d", photoSizeLimit.intValue);
+				[self cacheTwitterConfiguration:configurationParameters];
 				
-				if (completion)
-					completion();
+				if (completion) {
+						dispatch_async(dispatch_get_main_queue(), ^{
+							completion(nil, configurationParameters);
+					});
+				}
 			}
 			else
 			{
@@ -70,7 +107,7 @@
                 
 					NSError *error = [NSError errorWithDomain:@"com.secondgear.PhotosPlus.Errors" code:statusCode userInfo:nil];
 					dispatch_async(dispatch_get_main_queue(), ^{
-						completion(NO, error);
+						completion(error, nil);
 					});
             }
 		}
@@ -78,7 +115,7 @@
 		{
             OSKLog(@"[OSKTwitterUtility] An error occurred while attempting to request configuration parameters from Twitter: %@", [error localizedDescription]);
             dispatch_async(dispatch_get_main_queue(), ^{
-                completion(NO, error);
+                completion(error, nil);
             });
 		}
 	};
@@ -95,18 +132,23 @@
              completion:(void(^)(BOOL success, NSError *error))completion
 {
 	//If we don't have a valid configuration, we need to request it before posting
-	if (![self isTwitterAttachmentSizeCacheValid])
+	if (![self isTwitterConfigurationCacheValid])
 	{
-		[self requestTwitterAttachmentSizeLimit:account completion:^
-		{
-			[self postContentItem:item toSystemAccount:account completion:completion];
+		[self requestTwitterConfiguration:account completion:^(NSError *error, NSDictionary *configurationParameters){
+			if (configurationParameters){
+				[self postContentItem:item toSystemAccount:account completion:completion];
+			}
+			else{
+				dispatch_async(dispatch_get_main_queue(), ^{
+					completion(NO, error);
+				});
+			}
 		}];
 		
 		return;
 	}
 
 	NSInteger photoSizeLimit = [self maxTwitterAttachmentSizeFromCache];
-
     SLRequestHandler requestHandler = ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if (responseData != nil)
         {

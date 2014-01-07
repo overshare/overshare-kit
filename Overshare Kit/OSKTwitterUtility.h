@@ -17,5 +17,7 @@
         toSystemAccount:(ACAccount *)account
              completion:(void(^)(BOOL success, NSError *error))completion; // called on main queue
 
++ (void) requestTwitterConfiguration:(ACAccount *)account
+						  completion:(void(^)(NSError* error, NSDictionary* configurationParameters))completion; // called on main queue
 
 @end
