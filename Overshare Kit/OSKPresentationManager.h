@@ -304,6 +304,8 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 - (NSString *)localizedText_FacebookAudience_OnlyMe;
 - (NSString *)localizedText_FacebookAudience_Audience;
 - (NSString *)localizedText_OptionalActivities;
+- (NSString *)localizedText_ShortenLinks;
+- (NSString *)localizedText_LinksShortened;
 
 @end
 

@@ -949,6 +949,28 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     return text;
 }
 
+- (NSString *)localizedText_ShortenLinks {
+    NSString *text = nil;
+    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_ShortenLinks)]) {
+        text = [self.localizationDelegate osk_localizedText_ShortenLinks];
+    }
+    if (text == nil) {
+        text = @"Shorten Links";
+    }
+    return text;
+}
+
+- (NSString *)localizedText_LinksShortened {
+    NSString *text = nil;
+    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_LinksShortened)]) {
+        text = [self.localizationDelegate osk_localizedText_LinksShortened];
+    }
+    if (text == nil) {
+        text = @"Long links shortened.";
+    }
+    return text;
+}
+
 #pragma mark - View Controllers
 
 - (UIViewController <OSKPurchasingViewController> *)purchasingViewControllerForActivity:(OSKActivity *)activity {

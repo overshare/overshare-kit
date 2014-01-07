@@ -51,5 +51,7 @@
 - (NSString *)osk_localizedText_FacebookAudience_OnlyMe;
 - (NSString *)osk_localizedText_FacebookAudience_Audience;
 - (NSString *)osk_localizedText_OptionalActivities;
+- (NSString *)osk_localizedText_ShortenLinks;
+- (NSString *)osk_localizedText_LinksShortened;
 
 @end

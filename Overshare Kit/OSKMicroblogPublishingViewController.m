@@ -333,6 +333,7 @@
         UIImage *linkButtonImage = [[UIImage imageNamed:@"link-button.png"]
                                     imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         _linkShorteningButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_linkShorteningButton setAccessibilityLabel:[OSKPresentationManager sharedInstance].localizedText_ShortenLinks];
         [_linkShorteningButton setFrame:CGRectMake(0, 0, 44.0f, 30.0f)];
         [_linkShorteningButton setImage:linkButtonImage forState:UIControlStateNormal];
         [_linkShorteningButton addTarget:self
@@ -426,13 +427,16 @@
 }
 
 - (void)popLinkShorteningActivity {
-    _activeLinkShorteningCount--;
-    if (_activeLinkShorteningCount <= 0) {
-        [_linkShorteningActivityIndicator stopAnimating];
-        __weak OSKMicroblogPublishingViewController *weakSelf = self;
-        [UIView animateWithDuration:0.12f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            [weakSelf.linkShorteningButton setAlpha:1];
-        } completion:nil];
+    if (_activeLinkShorteningCount > 0) {
+        _activeLinkShorteningCount--;
+        if (_activeLinkShorteningCount <= 0) {
+            [_linkShorteningActivityIndicator stopAnimating];
+            __weak OSKMicroblogPublishingViewController *weakSelf = self;
+            [UIView animateWithDuration:0.12f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+                [weakSelf.linkShorteningButton setAlpha:1];
+                UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, [OSKPresentationManager sharedInstance].localizedText_LinksShortened);
+            } completion:nil];
+        }
     }
 }
 
