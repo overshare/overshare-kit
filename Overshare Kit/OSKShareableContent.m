@@ -9,6 +9,7 @@
 #import "OSKShareableContent.h"
 
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 @implementation OSKShareableContent
 
@@ -62,12 +63,12 @@
     
     OSKCopyToPasteboardContentItem *copyURLToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
     copyURLToPasteboard.text = absoluteString;
-    copyURLToPasteboard.alternateActivityName = @"Copy URL";
+    copyURLToPasteboard.alternateActivityName = OSKLocalizedString(@"Copy URL", nil);
     content.pasteboardItem = copyURLToPasteboard;
     
     OSKEmailContentItem *emailItem = [[OSKEmailContentItem alloc] init];
     emailItem.body = absoluteString;
-    emailItem.subject = [NSString stringWithFormat:@"Link from %@", appName];
+    emailItem.subject = [NSString stringWithFormat:OSKLocalizedString(@"Link from %@", nil), appName];
     content.emailItem = emailItem;
     
     OSKSMSContentItem *smsItem = [[OSKSMSContentItem alloc] init];
@@ -79,7 +80,7 @@
     content.readLaterItem = readLater;
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
-    toDoList.title = [NSString stringWithFormat:@"Look into link from %@", appName];
+    toDoList.title = [NSString stringWithFormat:OSKLocalizedString(@"Look into link from %@", nil), appName];
     toDoList.notes = absoluteString;
     content.toDoListItem = toDoList;
     
@@ -107,21 +108,21 @@
 + (instancetype)contentFromMicroblogPost:(NSString *)text authorName:(NSString *)authorName canonicalURL:(NSString *)canonicalURL images:(NSArray *)images {
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
     
-    content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
+    content.title = [NSString stringWithFormat:OSKLocalizedString(@"Post by %@: “%@”", nil), authorName, text];
     
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
-    microblogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
+    microblogPost.text = [NSString stringWithFormat:OSKLocalizedString(@"“%@” (Via @%@) %@", nil), text, authorName, canonicalURL];
     microblogPost.images = images;
     content.microblogPostItem = microblogPost;
     
     OSKCopyToPasteboardContentItem *copyTextToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
     copyTextToPasteboard.text = text;
-    copyTextToPasteboard.alternateActivityName = @"Copy Text";
+    copyTextToPasteboard.alternateActivityName = OSKLocalizedString(@"Copy Text", nil);
     content.pasteboardItem = copyTextToPasteboard;
     
     OSKCopyToPasteboardContentItem *copyURLToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
     copyURLToPasteboard.text = canonicalURL;
-    copyURLToPasteboard.alternateActivityName = @"Copy URL";
+    copyURLToPasteboard.alternateActivityName = OSKLocalizedString(@"Copy URL", nil);
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         copyURLToPasteboard.alternateActivityIcon = [UIImage imageNamed:@"osk-copyIcon-purple-76.png"];
     } else {
@@ -131,8 +132,8 @@
     content.additionalItems = @[copyURLToPasteboard];
     
     OSKEmailContentItem *emailItem = [[OSKEmailContentItem alloc] init];
-    emailItem.body = [NSString stringWithFormat:@"“%@”\n\n(Via @%@)\n\n%@ ", text, authorName, canonicalURL];
-    emailItem.subject = @"Clipper Ships Sail On the Ocean";
+    emailItem.body = [NSString stringWithFormat:OSKLocalizedString(@"“%@”\n\n(Via @%@)\n\n%@", nil), text, authorName, canonicalURL];
+    emailItem.subject = OSKLocalizedString(@"Clipper Ships Sail On the Ocean", nil);
     emailItem.attachments = images.copy;
     content.emailItem = emailItem;
     
@@ -146,7 +147,7 @@
     content.readLaterItem = readLater;
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
-    toDoList.title = [NSString stringWithFormat:@"Look into message from %@", authorName];
+    toDoList.title = [NSString stringWithFormat:OSKLocalizedString(@"Look into message from %@", nil), authorName];
     toDoList.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
     content.toDoListItem = toDoList;
     
@@ -188,7 +189,7 @@
 + (instancetype)contentFromImages:(NSArray *)images caption:(NSString *)caption {
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
     
-    content.title = (caption.length) ? caption : @"Share";
+    content.title = (caption.length) ? caption : OSKLocalizedString(@"Share", nil);
     
     NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     
@@ -212,7 +213,7 @@
     content.smsItem = smsItem;
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
-    toDoList.title = [NSString stringWithFormat:@"Look into stuff from %@", appName];
+    toDoList.title = [NSString stringWithFormat:OSKLocalizedString(@"Look into stuff from %@", nil), appName];
     toDoList.notes = caption;
     content.toDoListItem = toDoList;
     
@@ -233,7 +234,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self setTitle:@"Share"];
+        [self setTitle:OSKLocalizedString(@"Share", nil)];
     }
     return self;
 }

@@ -36,6 +36,7 @@
 #import "OSKPresentationManager_Protected.h"
 #import "UIViewController+OSKUtilities.h"
 #import "UIColor+OSKUtility.h"
+#import "OSKLocalizedStrings.h"
 
 NSString * const OSKPresentationOption_ActivityCompletionHandler = @"OSKPresentationOption_ActivityCompletionHandler";
 NSString * const OSKPresentationOption_PresentationEndingHandler = @"OSKPresentationOption_PresentationEndingHandler";
@@ -709,21 +710,18 @@ willRepositionPopoverToRect:(inout CGRect *)rect
 
 - (NSString *)localizedText_ActionButtonTitleForPublishingActivity:(NSString *)activityType {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_ActionButtonTitleForPublishingActivity:)]) {
-        text = [self.localizationDelegate osk_localizedText_ActionButtonTitleForPublishingActivity:activityType];
-    }
     if (text == nil) {
         if ([activityType isEqualToString:OSKActivityType_API_AppDotNet]) {
-            text = @"Post";
+            text = OSKLocalizedString(@"Post", nil);
         }
         else if ([activityType isEqualToString:OSKActivityType_iOS_Twitter]) {
-            text = @"Tweet";
+            text = OSKLocalizedString(@"Tweet", nil);
         }
         else if ([activityType isEqualToString:OSKActivityType_iOS_Facebook]) {
-            text = @"Post";
+            text = OSKLocalizedString(@"Post", nil);
         }
         else {
-            text = @"Send";
+            text = OSKLocalizedString(@"Send", nil);
         }
     }
     return text;
@@ -731,220 +729,160 @@ willRepositionPopoverToRect:(inout CGRect *)rect
 
 - (NSString *)localizedText_Cancel {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Cancel)]) {
-        text = [self.localizationDelegate osk_localizedText_Cancel];
-    }
     if (text == nil) {
-        text = @"Cancel";
+        text = OSKLocalizedString(@"Cancel", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_Done {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Done)]) {
-        text = [self.localizationDelegate osk_localizedText_Done];
-    }
     if (text == nil) {
-        text = @"Done";
+        text = OSKLocalizedString(@"Done", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_Username {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Username)]) {
-        text = [self.localizationDelegate osk_localizedText_Username];
-    }
     if (text == nil) {
-        text = @"Username";
+        text = OSKLocalizedString(@"Username", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_Password {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Password)]) {
-        text = [self.localizationDelegate osk_localizedText_Password];
-    }
     if (text == nil) {
-        text = @"Password";
+        text = OSKLocalizedString(@"Password", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_SignOut {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_SignOut)]) {
-        text = [self.localizationDelegate osk_localizedText_SignOut];
-    }
     if (text == nil) {
-        text = @"Sign Out";
+        text = OSKLocalizedString(@"Sign Out", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_SignIn {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_SignIn)]) {
-        text = [self.localizationDelegate osk_localizedText_SignIn];
-    }
     if (text == nil) {
-        text = @"Sign In";
+        text = OSKLocalizedString(@"Sign In", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_Accounts {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Accounts)]) {
-        text = [self.localizationDelegate osk_localizedText_Accounts];
-    }
     if (text == nil) {
-        text = @"Accounts";
+        text = OSKLocalizedString(@"Accounts", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_AreYouSure {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_AreYouSure)]) {
-        text = [self.localizationDelegate osk_localizedText_AreYouSure];
-    }
     if (text == nil) {
-        text = @"Are You Sure?";
+        text = OSKLocalizedString(@"Are You Sure?", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_NoAccountsFound {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_NoAccountsFound)]) {
-        text = [self.localizationDelegate osk_localizedText_NoAccountsFound];
-    }
     if (text == nil) {
-        text = @"No Accounts Found";
+        text = OSKLocalizedString(@"No Accounts Found", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_YouCanSignIntoYourAccountsViaTheSettingsApp {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_YouCanSignIntoYourAccountsViaTheSettingsApp)]) {
-        text = [self.localizationDelegate osk_localizedText_YouCanSignIntoYourAccountsViaTheSettingsApp];
-    }
     if (text == nil) {
-        text = @"You can sign into system accounts like Twitter and Facebook via the settings app.";
+        text = OSKLocalizedString(@"You can sign into system accounts like Twitter and Facebook via the settings app.", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_Okay {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Okay)]) {
-        text = [self.localizationDelegate osk_localizedText_Okay];
-    }
     if (text == nil) {
-        text = @"Okay";
+        text = OSKLocalizedString(@"Okay", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_AccessNotGrantedForSystemAccounts_Title {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_AccessNotGrantedForSystemAccounts_Title)]) {
-        text = [self.localizationDelegate osk_localizedText_AccessNotGrantedForSystemAccounts_Title];
-    }
     if (text == nil) {
-        text = @"Couldn’t Access Your Accounts";
+        text = OSKLocalizedString(@"Couldn’t Access Your Accounts", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_AccessNotGrantedForSystemAccounts_Message {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_AccessNotGrantedForSystemAccounts_Message)]) {
-        text = [self.localizationDelegate osk_localizedText_AccessNotGrantedForSystemAccounts_Message];
-    }
     if (text == nil) {
-        text = @"You have previously denied this app access to your accounts. Please head to the Settings app’s Privacy options to enable sharing.";
+        text = OSKLocalizedString(@"You have previously denied this app access to your accounts. Please head to the Settings app’s Privacy options to enable sharing.", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_UnableToSignIn {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_UnableToSignIn)]) {
-        text = [self.localizationDelegate osk_localizedText_UnableToSignIn];
-    }
     if (text == nil) {
-        text = @"Unable to Sign In";
+        text = OSKLocalizedString(@"Unable to Sign In", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_PleaseDoubleCheckYourUsernameAndPasswordAndTryAgain {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_PleaseDoubleCheckYourUsernameAndPasswordAndTryAgain)]) {
-        text = [self.localizationDelegate osk_localizedText_PleaseDoubleCheckYourUsernameAndPasswordAndTryAgain];
-    }
     if (text == nil) {
-        text = @"Please double check your username and password and try again.";
+        text = OSKLocalizedString(@"Please double check your username and password and try again.", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_FacebookAudience_Public {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_FacebookAudience_Public)]) {
-        text = [self.localizationDelegate osk_localizedText_FacebookAudience_Public];
-    }
     if (text == nil) {
-        text = @"Public";
+        text = OSKLocalizedString(@"Public", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_FacebookAudience_Friends {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_FacebookAudience_Friends)]) {
-        text = [self.localizationDelegate osk_localizedText_FacebookAudience_Friends];
-    }
     if (text == nil) {
-        text = @"Friends";
+        text = OSKLocalizedString(@"Friends", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_FacebookAudience_OnlyMe {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_FacebookAudience_OnlyMe)]) {
-        text = [self.localizationDelegate osk_localizedText_FacebookAudience_OnlyMe];
-    }
     if (text == nil) {
-        text = @"Only Me";
+        text = OSKLocalizedString(@"Only Me", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_FacebookAudience_Audience {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_FacebookAudience_Audience)]) {
-        text = [self.localizationDelegate osk_localizedText_FacebookAudience_Audience];
-    }
     if (text == nil) {
-        text = @"Audience";
+        text = OSKLocalizedString(@"Audience", nil);
     }
     return text;
 }
 
 - (NSString *)localizedText_OptionalActivities {
     NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_OptionalActivities)]) {
-        text = [self.localizationDelegate osk_localizedText_OptionalActivities];
-    }
     if (text == nil) {
-        text = @"Visible Activities";
+        text = OSKLocalizedString(@"Visible Activities", nil);
     }
     return text;
 }

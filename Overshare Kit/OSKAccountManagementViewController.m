@@ -15,6 +15,7 @@
 #import "OSKPocketAccountViewController.h"
 #import "OSKAccountTypeCell.h"
 #import "OSKActivityToggleCell.h"
+#import "OSKLocalizedStrings.h"
 
 #import "OSK1PasswordSearchActivity.h"
 #import "OSK1PasswordBrowserActivity.h"
@@ -90,7 +91,7 @@ static NSString * OSKAccountManagementHeaderViewIdentifier = @"OSKAccountManagem
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         
-        self.title = @"Sharing";
+        self.title = OSKLocalizedString(@"Sharing", nil);
         NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_Done];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(cancelButtonPressed:)];
 

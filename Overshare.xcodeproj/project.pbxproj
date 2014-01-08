@@ -1,0 +1,1738 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03AB27E64DF84922845B5C6B /* libPods-Overshare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6372A9072146CEA4538CE3 /* libPods-Overshare.a */; };
+		727988D2187DB70F00966C66 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 727988D1187DB70F00966C66 /* Podfile */; };
+		727988D4187DB75A00966C66 /* OvershareKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 727988D3187DB75A00966C66 /* OvershareKit.podspec */; };
+		727988EE187DB91700966C66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 727988D7187DB91700966C66 /* InfoPlist.strings */; };
+		727988EF187DB91700966C66 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 727988D9187DB91700966C66 /* Icon-60@2x.png */; };
+		727988F0187DB91700966C66 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 727988DA187DB91700966C66 /* Icon-76.png */; };
+		727988F1187DB91700966C66 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 727988DB187DB91700966C66 /* Icon-76@2x.png */; };
+		727988F2187DB91700966C66 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 727988DC187DB91700966C66 /* Images.xcassets */; };
+		727988F3187DB91700966C66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988DD187DB91700966C66 /* main.m */; };
+		727988F4187DB91700966C66 /* OSKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988DF187DB91700966C66 /* OSKAppDelegate.m */; };
+		727988F5187DB91700966C66 /* Overshare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 727988E0187DB91700966C66 /* Overshare-Info.plist */; };
+		727988F6187DB91700966C66 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 727988E2187DB91700966C66 /* rain.jpg */; };
+		727988F7187DB91700966C66 /* SampleAppPurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988E4187DB91700966C66 /* SampleAppPurchasingViewController.m */; };
+		727988F8187DB91700966C66 /* SampleAppPurchasingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727988E5187DB91700966C66 /* SampleAppPurchasingViewController.xib */; };
+		727988F9187DB91700966C66 /* SampleTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988E7187DB91700966C66 /* SampleTimelineCell.m */; };
+		727988FA187DB91700966C66 /* SampleTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727988E8187DB91700966C66 /* SampleTimelineCell.xib */; };
+		727988FB187DB91700966C66 /* SampleTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988EA187DB91700966C66 /* SampleTimelineViewController.m */; };
+		727988FC187DB91700966C66 /* soda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 727988EB187DB91700966C66 /* soda.jpg */; };
+		727988FD187DB91700966C66 /* type.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 727988EC187DB91700966C66 /* type.jpg */; };
+		72798A2A187DB97300966C66 /* 1Password-Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798901187DB97100966C66 /* 1Password-Icon-120.png */; };
+		72798A2B187DB97300966C66 /* 1Password-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798902187DB97100966C66 /* 1Password-Icon-60@2x.png */; };
+		72798A2C187DB97300966C66 /* 1Password-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798903187DB97100966C66 /* 1Password-Icon-76.png */; };
+		72798A2D187DB97300966C66 /* 1Password-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798904187DB97100966C66 /* 1Password-Icon-76@2x.png */; };
+		72798A2E187DB97300966C66 /* Chrome-Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798905187DB97100966C66 /* Chrome-Icon-29.png */; };
+		72798A2F187DB97300966C66 /* Chrome-Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798906187DB97100966C66 /* Chrome-Icon-29@2x.png */; };
+		72798A30187DB97300966C66 /* Chrome-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798907187DB97100966C66 /* Chrome-Icon-60@2x.png */; };
+		72798A31187DB97300966C66 /* Chrome-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798908187DB97100966C66 /* Chrome-Icon-76.png */; };
+		72798A32187DB97300966C66 /* Chrome-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798909187DB97100966C66 /* Chrome-Icon-76@2x.png */; };
+		72798A33187DB97300966C66 /* Instapaper-Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279890A187DB97100966C66 /* Instapaper-Icon-120.png */; };
+		72798A34187DB97300966C66 /* Instapaper-Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279890B187DB97100966C66 /* Instapaper-Icon-29.png */; };
+		72798A35187DB97300966C66 /* Instapaper-Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279890C187DB97100966C66 /* Instapaper-Icon-29@2x.png */; };
+		72798A36187DB97300966C66 /* Instapaper-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279890D187DB97100966C66 /* Instapaper-Icon-60@2x.png */; };
+		72798A37187DB97300966C66 /* Instapaper-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279890E187DB97100966C66 /* Instapaper-Icon-76.png */; };
+		72798A38187DB97300966C66 /* Instapaper-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279890F187DB97100966C66 /* Instapaper-Icon-76@2x.png */; };
+		72798A39187DB97300966C66 /* Omnifocus-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798910187DB97100966C66 /* Omnifocus-Icon-60@2x.png */; };
+		72798A3A187DB97300966C66 /* Omnifocus-Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798911187DB97100966C66 /* Omnifocus-Icon-72.png */; };
+		72798A3B187DB97300966C66 /* Omnifocus-Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798912187DB97100966C66 /* Omnifocus-Icon-72@2x.png */; };
+		72798A3C187DB97300966C66 /* osk-airDropIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798913187DB97100966C66 /* osk-airDropIcon-60@2x.png */; };
+		72798A3D187DB97300966C66 /* osk-airDropIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798914187DB97100966C66 /* osk-airDropIcon-76.png */; };
+		72798A3E187DB97300966C66 /* osk-airDropIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798915187DB97100966C66 /* osk-airDropIcon-76@2x.png */; };
+		72798A3F187DB97300966C66 /* osk-appDotNetIcon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798916187DB97100966C66 /* osk-appDotNetIcon-29.png */; };
+		72798A40187DB97300966C66 /* osk-appDotNetIcon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798917187DB97100966C66 /* osk-appDotNetIcon-29@2x.png */; };
+		72798A41187DB97300966C66 /* osk-appDotNetIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798918187DB97100966C66 /* osk-appDotNetIcon-60@2x.png */; };
+		72798A42187DB97300966C66 /* osk-appDotNetIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798919187DB97100966C66 /* osk-appDotNetIcon-76.png */; };
+		72798A43187DB97300966C66 /* osk-appDotNetIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279891A187DB97100966C66 /* osk-appDotNetIcon-76@2x.png */; };
+		72798A44187DB97300966C66 /* osk-appStoreIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279891B187DB97100966C66 /* osk-appStoreIcon-76.png */; };
+		72798A45187DB97300966C66 /* osk-appStoreIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279891C187DB97100966C66 /* osk-appStoreIcon-76@2x.png */; };
+		72798A46187DB97300966C66 /* osk-copyIcon-purple-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279891D187DB97100966C66 /* osk-copyIcon-purple-29@2x.png */; };
+		72798A47187DB97300966C66 /* osk-copyIcon-purple-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279891E187DB97100966C66 /* osk-copyIcon-purple-60@2x.png */; };
+		72798A48187DB97300966C66 /* osk-copyIcon-purple-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279891F187DB97100966C66 /* osk-copyIcon-purple-76.png */; };
+		72798A49187DB97300966C66 /* osk-copyIcon-purple-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798920187DB97100966C66 /* osk-copyIcon-purple-76@2x.png */; };
+		72798A4A187DB97300966C66 /* osk-copyIcon-yellow-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798921187DB97100966C66 /* osk-copyIcon-yellow-29@2x.png */; };
+		72798A4B187DB97300966C66 /* osk-copyIcon-yellow-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798922187DB97100966C66 /* osk-copyIcon-yellow-60@2x.png */; };
+		72798A4C187DB97300966C66 /* osk-copyIcon-yellow-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798923187DB97100966C66 /* osk-copyIcon-yellow-76.png */; };
+		72798A4D187DB97300966C66 /* osk-copyIcon-yellow-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798924187DB97100966C66 /* osk-copyIcon-yellow-76@2x.png */; };
+		72798A4E187DB97300966C66 /* osk-facebookIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798925187DB97100966C66 /* osk-facebookIcon-60@2x.png */; };
+		72798A4F187DB97300966C66 /* osk-facebookIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798926187DB97100966C66 /* osk-facebookIcon-76.png */; };
+		72798A50187DB97300966C66 /* osk-facebookIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798927187DB97100966C66 /* osk-facebookIcon-76@2x.png */; };
+		72798A51187DB97300966C66 /* osk-flickrIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798928187DB97100966C66 /* osk-flickrIcon-60@2x.png */; };
+		72798A52187DB97300966C66 /* osk-flickrIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798929187DB97100966C66 /* osk-flickrIcon-76.png */; };
+		72798A53187DB97300966C66 /* osk-flickrIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279892A187DB97100966C66 /* osk-flickrIcon-76@2x.png */; };
+		72798A54187DB97300966C66 /* osk-iap-badge-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279892B187DB97100966C66 /* osk-iap-badge-60.png */; };
+		72798A55187DB97300966C66 /* osk-iap-badge-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279892C187DB97100966C66 /* osk-iap-badge-60@2x.png */; };
+		72798A56187DB97300966C66 /* osk-iap-badge-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279892D187DB97100966C66 /* osk-iap-badge-76.png */; };
+		72798A57187DB97300966C66 /* osk-iap-badge-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279892E187DB97100966C66 /* osk-iap-badge-76@2x.png */; };
+		72798A58187DB97300966C66 /* osk-icon-border-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279892F187DB97100966C66 /* osk-icon-border-60@2x.png */; };
+		72798A59187DB97300966C66 /* osk-icon-border-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798930187DB97100966C66 /* osk-icon-border-76.png */; };
+		72798A5A187DB97300966C66 /* osk-icon-border-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798931187DB97100966C66 /* osk-icon-border-76@2x.png */; };
+		72798A5B187DB97300966C66 /* osk-iconMask-bw-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798932187DB97100966C66 /* osk-iconMask-bw-29.png */; };
+		72798A5C187DB97300966C66 /* osk-iconMask-bw-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798933187DB97100966C66 /* osk-iconMask-bw-29@2x.png */; };
+		72798A5D187DB97300966C66 /* osk-iconMask-bw-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798934187DB97100966C66 /* osk-iconMask-bw-60@2x.png */; };
+		72798A5E187DB97300966C66 /* osk-iconMask-bw-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798935187DB97100966C66 /* osk-iconMask-bw-76.png */; };
+		72798A5F187DB97300966C66 /* osk-iconMask-bw-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798936187DB97100966C66 /* osk-iconMask-bw-76@2x.png */; };
+		72798A60187DB97300966C66 /* osk-mailIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798937187DB97100966C66 /* osk-mailIcon-60@2x.png */; };
+		72798A61187DB97300966C66 /* osk-mailIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798938187DB97100966C66 /* osk-mailIcon-76.png */; };
+		72798A62187DB97300966C66 /* osk-mailIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798939187DB97100966C66 /* osk-mailIcon-76@2x.png */; };
+		72798A63187DB97300966C66 /* osk-messagesIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279893A187DB97100966C66 /* osk-messagesIcon-60@2x.png */; };
+		72798A64187DB97300966C66 /* osk-messagesIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279893B187DB97100966C66 /* osk-messagesIcon-76.png */; };
+		72798A65187DB97300966C66 /* osk-messagesIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279893C187DB97100966C66 /* osk-messagesIcon-76@2x.png */; };
+		72798A66187DB97300966C66 /* osk-navbarButton-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279893D187DB97100966C66 /* osk-navbarButton-disabled.png */; };
+		72798A67187DB97300966C66 /* osk-navbarButton-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279893E187DB97100966C66 /* osk-navbarButton-disabled@2x.png */; };
+		72798A68187DB97300966C66 /* osk-navbarButton-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279893F187DB97100966C66 /* osk-navbarButton-highlighted.png */; };
+		72798A69187DB97300966C66 /* osk-navbarButton-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798940187DB97100966C66 /* osk-navbarButton-highlighted@2x.png */; };
+		72798A6A187DB97300966C66 /* osk-navbarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798941187DB97100966C66 /* osk-navbarButton.png */; };
+		72798A6B187DB97300966C66 /* osk-navbarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798942187DB97100966C66 /* osk-navbarButton@2x.png */; };
+		72798A6C187DB97300966C66 /* osk-photosIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798943187DB97100966C66 /* osk-photosIcon-60@2x.png */; };
+		72798A6D187DB97300966C66 /* osk-photosIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798944187DB97100966C66 /* osk-photosIcon-76.png */; };
+		72798A6E187DB97300966C66 /* osk-photosIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798945187DB97100966C66 /* osk-photosIcon-76@2x.png */; };
+		72798A6F187DB97300966C66 /* osk-pinboardIcon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798946187DB97100966C66 /* osk-pinboardIcon-29.png */; };
+		72798A70187DB97300966C66 /* osk-pinboardIcon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798947187DB97100966C66 /* osk-pinboardIcon-29@2x.png */; };
+		72798A71187DB97300966C66 /* osk-pinboardIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798948187DB97100966C66 /* osk-pinboardIcon-60@2x.png */; };
+		72798A72187DB97300966C66 /* osk-pinboardIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798949187DB97100966C66 /* osk-pinboardIcon-76.png */; };
+		72798A73187DB97300966C66 /* osk-pinboardIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279894A187DB97100966C66 /* osk-pinboardIcon-76@2x.png */; };
+		72798A74187DB97300966C66 /* osk-readabilityIcon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279894B187DB97100966C66 /* osk-readabilityIcon-29.png */; };
+		72798A75187DB97300966C66 /* osk-readabilityIcon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279894C187DB97100966C66 /* osk-readabilityIcon-29@2x.png */; };
+		72798A76187DB97300966C66 /* osk-readabilityIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279894D187DB97100966C66 /* osk-readabilityIcon-60@2x.png */; };
+		72798A77187DB97300966C66 /* osk-readabilityIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279894E187DB97100966C66 /* osk-readabilityIcon-76.png */; };
+		72798A78187DB97300966C66 /* osk-readabilityIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279894F187DB97100966C66 /* osk-readabilityIcon-76@2x.png */; };
+		72798A79187DB97300966C66 /* osk-safariIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798950187DB97100966C66 /* osk-safariIcon-60@2x.png */; };
+		72798A7A187DB97300966C66 /* osk-safariIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798951187DB97100966C66 /* osk-safariIcon-76.png */; };
+		72798A7B187DB97300966C66 /* osk-safariIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798952187DB97100966C66 /* osk-safariIcon-76@2x.png */; };
+		72798A7C187DB97300966C66 /* osk-settingsPlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798953187DB97100966C66 /* osk-settingsPlaceholder@2x.png */; };
+		72798A7D187DB97300966C66 /* osk-twitterIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798954187DB97100966C66 /* osk-twitterIcon-60@2x.png */; };
+		72798A7E187DB97300966C66 /* osk-twitterIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798955187DB97100966C66 /* osk-twitterIcon-76.png */; };
+		72798A7F187DB97300966C66 /* osk-twitterIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798956187DB97100966C66 /* osk-twitterIcon-76@2x.png */; };
+		72798A80187DB97300966C66 /* Pocket-Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798957187DB97100966C66 /* Pocket-Icon-29.png */; };
+		72798A81187DB97300966C66 /* Pocket-Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798958187DB97100966C66 /* Pocket-Icon-29@2x.png */; };
+		72798A82187DB97300966C66 /* Pocket-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798959187DB97100966C66 /* Pocket-Icon-60@2x.png */; };
+		72798A83187DB97300966C66 /* Pocket-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279895A187DB97100966C66 /* Pocket-Icon-76.png */; };
+		72798A84187DB97300966C66 /* Pocket-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279895B187DB97100966C66 /* Pocket-Icon-76@2x.png */; };
+		72798A85187DB97300966C66 /* Riposte-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279895C187DB97100966C66 /* Riposte-Icon-60@2x.png */; };
+		72798A86187DB97300966C66 /* Riposte-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279895D187DB97100966C66 /* Riposte-Icon-76.png */; };
+		72798A87187DB97300966C66 /* Riposte-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279895E187DB97100966C66 /* Riposte-Icon-76@2x.png */; };
+		72798A88187DB97300966C66 /* Things-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279895F187DB97100966C66 /* Things-Icon-60@2x.png */; };
+		72798A89187DB97300966C66 /* Things-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798960187DB97100966C66 /* Things-Icon-76.png */; };
+		72798A8A187DB97300966C66 /* Things-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798961187DB97100966C66 /* Things-Icon-76@2x.png */; };
+		72798A8B187DB97300966C66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72798963187DB97100966C66 /* Localizable.strings */; };
+		72798A8C187DB97300966C66 /* NSCoder+OSKCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798967187DB97100966C66 /* NSCoder+OSKCoder.m */; };
+		72798A8D187DB97300966C66 /* NSData+OSKDerp.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798969187DB97100966C66 /* NSData+OSKDerp.m */; };
+		72798A8E187DB97300966C66 /* NSDate+OSK_ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279896B187DB97100966C66 /* NSDate+OSK_ISO8601.m */; };
+		72798A8F187DB97300966C66 /* NSDictionary+OSKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279896D187DB97100966C66 /* NSDictionary+OSKModel.m */; };
+		72798A90187DB97300966C66 /* NSHTTPURLResponse+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279896F187DB97100966C66 /* NSHTTPURLResponse+OSKUtilities.m */; };
+		72798A91187DB97300966C66 /* NSMutableURLRequest+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798971187DB97100966C66 /* NSMutableURLRequest+OSKUtilities.m */; };
+		72798A92187DB97300966C66 /* NSString+OSK_UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798973187DB97100966C66 /* NSString+OSK_UUID.m */; };
+		72798A93187DB97300966C66 /* NSString+OSKDerp.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798975187DB97100966C66 /* NSString+OSKDerp.m */; };
+		72798A94187DB97300966C66 /* OSK1PasswordBrowserActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798977187DB97100966C66 /* OSK1PasswordBrowserActivity.m */; };
+		72798A95187DB97300966C66 /* OSK1PasswordSearchActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798979187DB97100966C66 /* OSK1PasswordSearchActivity.m */; };
+		72798A96187DB97300966C66 /* OSKAccountChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279897B187DB97100966C66 /* OSKAccountChooserViewController.m */; };
+		72798A97187DB97300966C66 /* OSKAccountManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279897D187DB97100966C66 /* OSKAccountManagementViewController.m */; };
+		72798A98187DB97300966C66 /* OSKAccountTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279897F187DB97100966C66 /* OSKAccountTypeCell.m */; };
+		72798A99187DB97300966C66 /* OSKActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798981187DB97100966C66 /* OSKActionSheet.m */; };
+		72798A9A187DB97300966C66 /* OSKActivitiesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798983187DB97100966C66 /* OSKActivitiesManager.m */; };
+		72798A9B187DB97300966C66 /* OSKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798985187DB97100966C66 /* OSKActivity.m */; };
+		72798A9C187DB97300966C66 /* OSKActivityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279898A187DB97100966C66 /* OSKActivityCollectionViewCell.m */; };
+		72798A9D187DB97300966C66 /* OSKActivityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7279898B187DB97100966C66 /* OSKActivityCollectionViewCell.xib */; };
+		72798A9E187DB97300966C66 /* OSKActivityCollectionViewCell_Pad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7279898C187DB97100966C66 /* OSKActivityCollectionViewCell_Pad.xib */; };
+		72798A9F187DB97300966C66 /* OSKActivityCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279898E187DB97100966C66 /* OSKActivityCollectionViewController.m */; };
+		72798AA0187DB97300966C66 /* OSKActivityIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798991187DB97100966C66 /* OSKActivityIcon.m */; };
+		72798AA1187DB97300966C66 /* OSKActivityIndicatorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798993187DB97100966C66 /* OSKActivityIndicatorItem.m */; };
+		72798AA2187DB97300966C66 /* OSKActivityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798995187DB97100966C66 /* OSKActivityOperation.m */; };
+		72798AA3187DB97300966C66 /* OSKActivitySheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798998187DB97100966C66 /* OSKActivitySheetViewController.m */; };
+		72798AA4187DB97300966C66 /* OSKActivitySheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72798999187DB97100966C66 /* OSKActivitySheetViewController.xib */; };
+		72798AA5187DB97300966C66 /* OSKActivityToggleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279899B187DB97100966C66 /* OSKActivityToggleCell.m */; };
+		72798AA6187DB97300966C66 /* OSKADNLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279899D187DB97100966C66 /* OSKADNLoginManager.m */; };
+		72798AA7187DB97300966C66 /* OSKAirDropActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279899F187DB97100966C66 /* OSKAirDropActivity.m */; };
+		72798AA8187DB97300966C66 /* OSKAirDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989A1187DB97100966C66 /* OSKAirDropViewController.m */; };
+		72798AA9187DB97300966C66 /* OSKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989A3187DB97100966C66 /* OSKAlertView.m */; };
+		72798AAA187DB97300966C66 /* OSKAppDotNetActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989A5187DB97100966C66 /* OSKAppDotNetActivity.m */; };
+		72798AAB187DB97300966C66 /* OSKAppDotNetAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989A7187DB97100966C66 /* OSKAppDotNetAuthenticationViewController.m */; };
+		72798AAC187DB97300966C66 /* OSKAppDotNetUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989A9187DB97100966C66 /* OSKAppDotNetUtility.m */; };
+		72798AAD187DB97300966C66 /* OSKApplicationCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989AB187DB97100966C66 /* OSKApplicationCredential.m */; };
+		72798AAE187DB97300966C66 /* OSKBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989AF187DB97100966C66 /* OSKBorderedButton.m */; };
+		72798AAF187DB97300966C66 /* OSKChromeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989B1187DB97100966C66 /* OSKChromeActivity.m */; };
+		72798AB0187DB97300966C66 /* OSKCopyToPasteboardActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989B4187DB97200966C66 /* OSKCopyToPasteboardActivity.m */; };
+		72798AB1187DB97300966C66 /* OSKEmailActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989B6187DB97200966C66 /* OSKEmailActivity.m */; };
+		72798AB2187DB97300966C66 /* OSKFacebookActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989B8187DB97200966C66 /* OSKFacebookActivity.m */; };
+		72798AB3187DB97300966C66 /* OSKFacebookAudienceChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989BA187DB97200966C66 /* OSKFacebookAudienceChooserViewController.m */; };
+		72798AB4187DB97300966C66 /* OSKFacebookPublishingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989BC187DB97200966C66 /* OSKFacebookPublishingViewController.m */; };
+		72798AB5187DB97300966C66 /* OSKFacebookPublishingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727989BD187DB97200966C66 /* OSKFacebookPublishingViewController.xib */; };
+		72798AB6187DB97300966C66 /* OSKFacebookUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989BF187DB97200966C66 /* OSKFacebookUtility.m */; };
+		72798AB7187DB97300966C66 /* OSKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989C1187DB97200966C66 /* OSKFileManager.m */; };
+		72798AB8187DB97300966C66 /* OSKInMemoryImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989C3187DB97200966C66 /* OSKInMemoryImageCache.m */; };
+		72798AB9187DB97300966C66 /* OSKInstapaperActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989C5187DB97200966C66 /* OSKInstapaperActivity.m */; };
+		72798ABA187DB97300966C66 /* OSKInstapaperUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989C7187DB97200966C66 /* OSKInstapaperUtility.m */; };
+		72798ABB187DB97300966C66 /* OSKKeychainUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989C9187DB97200966C66 /* OSKKeychainUtility.m */; };
+		72798ABC187DB97300966C66 /* OSKLinkShorteningUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989CB187DB97200966C66 /* OSKLinkShorteningUtility.m */; };
+		72798ABD187DB97300966C66 /* OSKMailComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989CE187DB97200966C66 /* OSKMailComposeViewController.m */; };
+		72798ABE187DB97300966C66 /* OSKManagedAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989D0187DB97200966C66 /* OSKManagedAccount.m */; };
+		72798ABF187DB97300966C66 /* OSKManagedAccountCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989D2187DB97200966C66 /* OSKManagedAccountCredential.m */; };
+		72798AC0187DB97300966C66 /* OSKManagedAccountStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989D4187DB97200966C66 /* OSKManagedAccountStore.m */; };
+		72798AC1187DB97300966C66 /* OSKMessageComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989D6187DB97200966C66 /* OSKMessageComposeViewController.m */; };
+		72798AC2187DB97300966C66 /* OSKMicroblogPublishingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989D9187DB97200966C66 /* OSKMicroblogPublishingViewController.m */; };
+		72798AC3187DB97300966C66 /* OSKMicroblogPublishingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727989DA187DB97200966C66 /* OSKMicroblogPublishingViewController.xib */; };
+		72798AC4187DB97300966C66 /* OSKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989DC187DB97200966C66 /* OSKNavigationController.m */; };
+		72798AC5187DB97300966C66 /* OSKOAuthUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989DE187DB97200966C66 /* OSKOAuthUtility.m */; };
+		72798AC6187DB97300966C66 /* OSKOmnifocusActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989E0187DB97200966C66 /* OSKOmnifocusActivity.m */; };
+		72798AC7187DB97300966C66 /* OSKPagedHorizontalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989E2187DB97200966C66 /* OSKPagedHorizontalLayout.m */; };
+		72798AC8187DB97300966C66 /* OSKPinboardActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989E4187DB97200966C66 /* OSKPinboardActivity.m */; };
+		72798AC9187DB97300966C66 /* OSKPinboardUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989E6187DB97200966C66 /* OSKPinboardUtility.m */; };
+		72798ACA187DB97300966C66 /* OSKPocketAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989E8187DB97200966C66 /* OSKPocketAccountViewController.m */; };
+		72798ACB187DB97300966C66 /* OSKPocketActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989EA187DB97200966C66 /* OSKPocketActivity.m */; };
+		72798ACC187DB97300966C66 /* OSKPresentationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989EE187DB97200966C66 /* OSKPresentationManager.m */; };
+		72798ACD187DB97300966C66 /* OSKReadabilityActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989F5187DB97200966C66 /* OSKReadabilityActivity.m */; };
+		72798ACE187DB97300966C66 /* OSKReadabilityUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989F7187DB97200966C66 /* OSKReadabilityUtility.m */; };
+		72798ACF187DB97300966C66 /* OSKRPSTPasswordManagementAppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989F9187DB97200966C66 /* OSKRPSTPasswordManagementAppService.m */; };
+		72798AD0187DB97300966C66 /* OSKSafariActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989FB187DB97200966C66 /* OSKSafariActivity.m */; };
+		72798AD1187DB97300966C66 /* OSKSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989FD187DB97200966C66 /* OSKSession.m */; };
+		72798AD2187DB97300966C66 /* OSKSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989FF187DB97200966C66 /* OSKSessionController.m */; };
+		72798AD3187DB97300966C66 /* OSKSessionController_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A01187DB97200966C66 /* OSKSessionController_Pad.m */; };
+		72798AD4187DB97300966C66 /* OSKSessionController_Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A03187DB97200966C66 /* OSKSessionController_Phone.m */; };
+		72798AD5187DB97300966C66 /* OSKShareableContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A05187DB97200966C66 /* OSKShareableContent.m */; };
+		72798AD6187DB97300966C66 /* OSKShareableContentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A07187DB97200966C66 /* OSKShareableContentItem.m */; };
+		72798AD7187DB97300966C66 /* OSKSMSActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A09187DB97200966C66 /* OSKSMSActivity.m */; };
+		72798AD8187DB97300966C66 /* OSKSystemAccountStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A0B187DB97200966C66 /* OSKSystemAccountStore.m */; };
+		72798AD9187DB97300966C66 /* OSKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A0D187DB97200966C66 /* OSKTextView.m */; };
+		72798ADA187DB97300966C66 /* OSKThingsActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A0F187DB97200966C66 /* OSKThingsActivity.m */; };
+		72798ADB187DB97300966C66 /* OSKTwitterActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A11187DB97200966C66 /* OSKTwitterActivity.m */; };
+		72798ADC187DB97300966C66 /* OSKTwitterText.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A13187DB97200966C66 /* OSKTwitterText.m */; };
+		72798ADD187DB97300966C66 /* OSKTwitterTextEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A15187DB97200966C66 /* OSKTwitterTextEntity.m */; };
+		72798ADE187DB97300966C66 /* OSKTwitterUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A17187DB97200966C66 /* OSKTwitterUtility.m */; };
+		72798ADF187DB97300966C66 /* OSKUsernamePasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A19187DB97200966C66 /* OSKUsernamePasswordCell.m */; };
+		72798AE0187DB97300966C66 /* OSKUsernamePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A1B187DB97300966C66 /* OSKUsernamePasswordViewController.m */; };
+		72798AE1187DB97300966C66 /* OSKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A1D187DB97300966C66 /* OSKWebViewController.m */; };
+		72798AE2187DB97300966C66 /* UIColor+OSKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A21187DB97300966C66 /* UIColor+OSKUtility.m */; };
+		72798AE3187DB97300966C66 /* UIDevice+OSKHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A23187DB97300966C66 /* UIDevice+OSKHardware.m */; };
+		72798AE4187DB97300966C66 /* UIImage+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A25187DB97300966C66 /* UIImage+OSKUtilities.m */; };
+		72798AE5187DB97300966C66 /* UIView+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A27187DB97300966C66 /* UIView+OSKUtilities.m */; };
+		72798AE6187DB97300966C66 /* UIViewController+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A29187DB97300966C66 /* UIViewController+OSKUtilities.m */; };
+		7FEE7633181ED83D000F684A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7632181ED83D000F684A /* Foundation.framework */; };
+		7FEE7635181ED83D000F684A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7634181ED83D000F684A /* CoreGraphics.framework */; };
+		7FEE7637181ED83D000F684A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7636181ED83D000F684A /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6649A76ED6254C548DFF6344 /* Pods-Overshare.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Overshare.xcconfig"; path = "Pods/Pods-Overshare.xcconfig"; sourceTree = "<group>"; };
+		727988D1187DB70F00966C66 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		727988D3187DB75A00966C66 /* OvershareKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OvershareKit.podspec; sourceTree = "<group>"; };
+		727988D8187DB91700966C66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		727988D9187DB91700966C66 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "Projects/iOS App/Icon-60@2x.png"; sourceTree = SOURCE_ROOT; };
+		727988DA187DB91700966C66 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "Projects/iOS App/Icon-76.png"; sourceTree = SOURCE_ROOT; };
+		727988DB187DB91700966C66 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Projects/iOS App/Icon-76@2x.png"; sourceTree = SOURCE_ROOT; };
+		727988DC187DB91700966C66 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Projects/iOS App/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		727988DD187DB91700966C66 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Projects/iOS App/main.m"; sourceTree = SOURCE_ROOT; };
+		727988DE187DB91700966C66 /* OSKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSKAppDelegate.h; path = "Projects/iOS App/OSKAppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		727988DF187DB91700966C66 /* OSKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSKAppDelegate.m; path = "Projects/iOS App/OSKAppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		727988E0187DB91700966C66 /* Overshare-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Overshare-Info.plist"; path = "Projects/iOS App/Overshare-Info.plist"; sourceTree = SOURCE_ROOT; };
+		727988E1187DB91700966C66 /* Overshare-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Overshare-Prefix.pch"; path = "Projects/iOS App/Overshare-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		727988E2187DB91700966C66 /* rain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rain.jpg; path = "Projects/iOS App/rain.jpg"; sourceTree = SOURCE_ROOT; };
+		727988E3187DB91700966C66 /* SampleAppPurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleAppPurchasingViewController.h; path = "Projects/iOS App/SampleAppPurchasingViewController.h"; sourceTree = SOURCE_ROOT; };
+		727988E4187DB91700966C66 /* SampleAppPurchasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleAppPurchasingViewController.m; path = "Projects/iOS App/SampleAppPurchasingViewController.m"; sourceTree = SOURCE_ROOT; };
+		727988E5187DB91700966C66 /* SampleAppPurchasingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SampleAppPurchasingViewController.xib; path = "Projects/iOS App/SampleAppPurchasingViewController.xib"; sourceTree = SOURCE_ROOT; };
+		727988E6187DB91700966C66 /* SampleTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleTimelineCell.h; path = "Projects/iOS App/SampleTimelineCell.h"; sourceTree = SOURCE_ROOT; };
+		727988E7187DB91700966C66 /* SampleTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleTimelineCell.m; path = "Projects/iOS App/SampleTimelineCell.m"; sourceTree = SOURCE_ROOT; };
+		727988E8187DB91700966C66 /* SampleTimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SampleTimelineCell.xib; path = "Projects/iOS App/SampleTimelineCell.xib"; sourceTree = SOURCE_ROOT; };
+		727988E9187DB91700966C66 /* SampleTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleTimelineViewController.h; path = "Projects/iOS App/SampleTimelineViewController.h"; sourceTree = SOURCE_ROOT; };
+		727988EA187DB91700966C66 /* SampleTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleTimelineViewController.m; path = "Projects/iOS App/SampleTimelineViewController.m"; sourceTree = SOURCE_ROOT; };
+		727988EB187DB91700966C66 /* soda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = soda.jpg; path = "Projects/iOS App/soda.jpg"; sourceTree = SOURCE_ROOT; };
+		727988EC187DB91700966C66 /* type.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = type.jpg; path = "Projects/iOS App/type.jpg"; sourceTree = SOURCE_ROOT; };
+		72798901187DB97100966C66 /* 1Password-Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1Password-Icon-120.png"; sourceTree = "<group>"; };
+		72798902187DB97100966C66 /* 1Password-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1Password-Icon-60@2x.png"; sourceTree = "<group>"; };
+		72798903187DB97100966C66 /* 1Password-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1Password-Icon-76.png"; sourceTree = "<group>"; };
+		72798904187DB97100966C66 /* 1Password-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1Password-Icon-76@2x.png"; sourceTree = "<group>"; };
+		72798905187DB97100966C66 /* Chrome-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chrome-Icon-29.png"; sourceTree = "<group>"; };
+		72798906187DB97100966C66 /* Chrome-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chrome-Icon-29@2x.png"; sourceTree = "<group>"; };
+		72798907187DB97100966C66 /* Chrome-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chrome-Icon-60@2x.png"; sourceTree = "<group>"; };
+		72798908187DB97100966C66 /* Chrome-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chrome-Icon-76.png"; sourceTree = "<group>"; };
+		72798909187DB97100966C66 /* Chrome-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chrome-Icon-76@2x.png"; sourceTree = "<group>"; };
+		7279890A187DB97100966C66 /* Instapaper-Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instapaper-Icon-120.png"; sourceTree = "<group>"; };
+		7279890B187DB97100966C66 /* Instapaper-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instapaper-Icon-29.png"; sourceTree = "<group>"; };
+		7279890C187DB97100966C66 /* Instapaper-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instapaper-Icon-29@2x.png"; sourceTree = "<group>"; };
+		7279890D187DB97100966C66 /* Instapaper-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instapaper-Icon-60@2x.png"; sourceTree = "<group>"; };
+		7279890E187DB97100966C66 /* Instapaper-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instapaper-Icon-76.png"; sourceTree = "<group>"; };
+		7279890F187DB97100966C66 /* Instapaper-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instapaper-Icon-76@2x.png"; sourceTree = "<group>"; };
+		72798910187DB97100966C66 /* Omnifocus-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Omnifocus-Icon-60@2x.png"; sourceTree = "<group>"; };
+		72798911187DB97100966C66 /* Omnifocus-Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Omnifocus-Icon-72.png"; sourceTree = "<group>"; };
+		72798912187DB97100966C66 /* Omnifocus-Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Omnifocus-Icon-72@2x.png"; sourceTree = "<group>"; };
+		72798913187DB97100966C66 /* osk-airDropIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-airDropIcon-60@2x.png"; sourceTree = "<group>"; };
+		72798914187DB97100966C66 /* osk-airDropIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-airDropIcon-76.png"; sourceTree = "<group>"; };
+		72798915187DB97100966C66 /* osk-airDropIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-airDropIcon-76@2x.png"; sourceTree = "<group>"; };
+		72798916187DB97100966C66 /* osk-appDotNetIcon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-appDotNetIcon-29.png"; sourceTree = "<group>"; };
+		72798917187DB97100966C66 /* osk-appDotNetIcon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-appDotNetIcon-29@2x.png"; sourceTree = "<group>"; };
+		72798918187DB97100966C66 /* osk-appDotNetIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-appDotNetIcon-60@2x.png"; sourceTree = "<group>"; };
+		72798919187DB97100966C66 /* osk-appDotNetIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-appDotNetIcon-76.png"; sourceTree = "<group>"; };
+		7279891A187DB97100966C66 /* osk-appDotNetIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-appDotNetIcon-76@2x.png"; sourceTree = "<group>"; };
+		7279891B187DB97100966C66 /* osk-appStoreIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-appStoreIcon-76.png"; sourceTree = "<group>"; };
+		7279891C187DB97100966C66 /* osk-appStoreIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-appStoreIcon-76@2x.png"; sourceTree = "<group>"; };
+		7279891D187DB97100966C66 /* osk-copyIcon-purple-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-copyIcon-purple-29@2x.png"; sourceTree = "<group>"; };
+		7279891E187DB97100966C66 /* osk-copyIcon-purple-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-copyIcon-purple-60@2x.png"; sourceTree = "<group>"; };
+		7279891F187DB97100966C66 /* osk-copyIcon-purple-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-copyIcon-purple-76.png"; sourceTree = "<group>"; };
+		72798920187DB97100966C66 /* osk-copyIcon-purple-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-copyIcon-purple-76@2x.png"; sourceTree = "<group>"; };
+		72798921187DB97100966C66 /* osk-copyIcon-yellow-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-copyIcon-yellow-29@2x.png"; sourceTree = "<group>"; };
+		72798922187DB97100966C66 /* osk-copyIcon-yellow-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-copyIcon-yellow-60@2x.png"; sourceTree = "<group>"; };
+		72798923187DB97100966C66 /* osk-copyIcon-yellow-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-copyIcon-yellow-76.png"; sourceTree = "<group>"; };
+		72798924187DB97100966C66 /* osk-copyIcon-yellow-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-copyIcon-yellow-76@2x.png"; sourceTree = "<group>"; };
+		72798925187DB97100966C66 /* osk-facebookIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-facebookIcon-60@2x.png"; sourceTree = "<group>"; };
+		72798926187DB97100966C66 /* osk-facebookIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-facebookIcon-76.png"; sourceTree = "<group>"; };
+		72798927187DB97100966C66 /* osk-facebookIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-facebookIcon-76@2x.png"; sourceTree = "<group>"; };
+		72798928187DB97100966C66 /* osk-flickrIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-flickrIcon-60@2x.png"; sourceTree = "<group>"; };
+		72798929187DB97100966C66 /* osk-flickrIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-flickrIcon-76.png"; sourceTree = "<group>"; };
+		7279892A187DB97100966C66 /* osk-flickrIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-flickrIcon-76@2x.png"; sourceTree = "<group>"; };
+		7279892B187DB97100966C66 /* osk-iap-badge-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-60.png"; sourceTree = "<group>"; };
+		7279892C187DB97100966C66 /* osk-iap-badge-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-60@2x.png"; sourceTree = "<group>"; };
+		7279892D187DB97100966C66 /* osk-iap-badge-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-76.png"; sourceTree = "<group>"; };
+		7279892E187DB97100966C66 /* osk-iap-badge-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-76@2x.png"; sourceTree = "<group>"; };
+		7279892F187DB97100966C66 /* osk-icon-border-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-icon-border-60@2x.png"; sourceTree = "<group>"; };
+		72798930187DB97100966C66 /* osk-icon-border-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-icon-border-76.png"; sourceTree = "<group>"; };
+		72798931187DB97100966C66 /* osk-icon-border-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-icon-border-76@2x.png"; sourceTree = "<group>"; };
+		72798932187DB97100966C66 /* osk-iconMask-bw-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iconMask-bw-29.png"; sourceTree = "<group>"; };
+		72798933187DB97100966C66 /* osk-iconMask-bw-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iconMask-bw-29@2x.png"; sourceTree = "<group>"; };
+		72798934187DB97100966C66 /* osk-iconMask-bw-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iconMask-bw-60@2x.png"; sourceTree = "<group>"; };
+		72798935187DB97100966C66 /* osk-iconMask-bw-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iconMask-bw-76.png"; sourceTree = "<group>"; };
+		72798936187DB97100966C66 /* osk-iconMask-bw-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iconMask-bw-76@2x.png"; sourceTree = "<group>"; };
+		72798937187DB97100966C66 /* osk-mailIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-mailIcon-60@2x.png"; sourceTree = "<group>"; };
+		72798938187DB97100966C66 /* osk-mailIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-mailIcon-76.png"; sourceTree = "<group>"; };
+		72798939187DB97100966C66 /* osk-mailIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-mailIcon-76@2x.png"; sourceTree = "<group>"; };
+		7279893A187DB97100966C66 /* osk-messagesIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-messagesIcon-60@2x.png"; sourceTree = "<group>"; };
+		7279893B187DB97100966C66 /* osk-messagesIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-messagesIcon-76.png"; sourceTree = "<group>"; };
+		7279893C187DB97100966C66 /* osk-messagesIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-messagesIcon-76@2x.png"; sourceTree = "<group>"; };
+		7279893D187DB97100966C66 /* osk-navbarButton-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-navbarButton-disabled.png"; sourceTree = "<group>"; };
+		7279893E187DB97100966C66 /* osk-navbarButton-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-navbarButton-disabled@2x.png"; sourceTree = "<group>"; };
+		7279893F187DB97100966C66 /* osk-navbarButton-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-navbarButton-highlighted.png"; sourceTree = "<group>"; };
+		72798940187DB97100966C66 /* osk-navbarButton-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-navbarButton-highlighted@2x.png"; sourceTree = "<group>"; };
+		72798941187DB97100966C66 /* osk-navbarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-navbarButton.png"; sourceTree = "<group>"; };
+		72798942187DB97100966C66 /* osk-navbarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-navbarButton@2x.png"; sourceTree = "<group>"; };
+		72798943187DB97100966C66 /* osk-photosIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-photosIcon-60@2x.png"; sourceTree = "<group>"; };
+		72798944187DB97100966C66 /* osk-photosIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-photosIcon-76.png"; sourceTree = "<group>"; };
+		72798945187DB97100966C66 /* osk-photosIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-photosIcon-76@2x.png"; sourceTree = "<group>"; };
+		72798946187DB97100966C66 /* osk-pinboardIcon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-pinboardIcon-29.png"; sourceTree = "<group>"; };
+		72798947187DB97100966C66 /* osk-pinboardIcon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-pinboardIcon-29@2x.png"; sourceTree = "<group>"; };
+		72798948187DB97100966C66 /* osk-pinboardIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-pinboardIcon-60@2x.png"; sourceTree = "<group>"; };
+		72798949187DB97100966C66 /* osk-pinboardIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-pinboardIcon-76.png"; sourceTree = "<group>"; };
+		7279894A187DB97100966C66 /* osk-pinboardIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-pinboardIcon-76@2x.png"; sourceTree = "<group>"; };
+		7279894B187DB97100966C66 /* osk-readabilityIcon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-readabilityIcon-29.png"; sourceTree = "<group>"; };
+		7279894C187DB97100966C66 /* osk-readabilityIcon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-readabilityIcon-29@2x.png"; sourceTree = "<group>"; };
+		7279894D187DB97100966C66 /* osk-readabilityIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-readabilityIcon-60@2x.png"; sourceTree = "<group>"; };
+		7279894E187DB97100966C66 /* osk-readabilityIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-readabilityIcon-76.png"; sourceTree = "<group>"; };
+		7279894F187DB97100966C66 /* osk-readabilityIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-readabilityIcon-76@2x.png"; sourceTree = "<group>"; };
+		72798950187DB97100966C66 /* osk-safariIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-safariIcon-60@2x.png"; sourceTree = "<group>"; };
+		72798951187DB97100966C66 /* osk-safariIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-safariIcon-76.png"; sourceTree = "<group>"; };
+		72798952187DB97100966C66 /* osk-safariIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-safariIcon-76@2x.png"; sourceTree = "<group>"; };
+		72798953187DB97100966C66 /* osk-settingsPlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-settingsPlaceholder@2x.png"; sourceTree = "<group>"; };
+		72798954187DB97100966C66 /* osk-twitterIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-twitterIcon-60@2x.png"; sourceTree = "<group>"; };
+		72798955187DB97100966C66 /* osk-twitterIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-twitterIcon-76.png"; sourceTree = "<group>"; };
+		72798956187DB97100966C66 /* osk-twitterIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-twitterIcon-76@2x.png"; sourceTree = "<group>"; };
+		72798957187DB97100966C66 /* Pocket-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pocket-Icon-29.png"; sourceTree = "<group>"; };
+		72798958187DB97100966C66 /* Pocket-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pocket-Icon-29@2x.png"; sourceTree = "<group>"; };
+		72798959187DB97100966C66 /* Pocket-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pocket-Icon-60@2x.png"; sourceTree = "<group>"; };
+		7279895A187DB97100966C66 /* Pocket-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pocket-Icon-76.png"; sourceTree = "<group>"; };
+		7279895B187DB97100966C66 /* Pocket-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pocket-Icon-76@2x.png"; sourceTree = "<group>"; };
+		7279895C187DB97100966C66 /* Riposte-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Riposte-Icon-60@2x.png"; sourceTree = "<group>"; };
+		7279895D187DB97100966C66 /* Riposte-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Riposte-Icon-76.png"; sourceTree = "<group>"; };
+		7279895E187DB97100966C66 /* Riposte-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Riposte-Icon-76@2x.png"; sourceTree = "<group>"; };
+		7279895F187DB97100966C66 /* Things-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Things-Icon-60@2x.png"; sourceTree = "<group>"; };
+		72798960187DB97100966C66 /* Things-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Things-Icon-76.png"; sourceTree = "<group>"; };
+		72798961187DB97100966C66 /* Things-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Things-Icon-76@2x.png"; sourceTree = "<group>"; };
+		72798964187DB97100966C66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		72798965187DB97100966C66 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		72798966187DB97100966C66 /* NSCoder+OSKCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCoder+OSKCoder.h"; sourceTree = "<group>"; };
+		72798967187DB97100966C66 /* NSCoder+OSKCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCoder+OSKCoder.m"; sourceTree = "<group>"; };
+		72798968187DB97100966C66 /* NSData+OSKDerp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+OSKDerp.h"; sourceTree = "<group>"; };
+		72798969187DB97100966C66 /* NSData+OSKDerp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+OSKDerp.m"; sourceTree = "<group>"; };
+		7279896A187DB97100966C66 /* NSDate+OSK_ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+OSK_ISO8601.h"; sourceTree = "<group>"; };
+		7279896B187DB97100966C66 /* NSDate+OSK_ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+OSK_ISO8601.m"; sourceTree = "<group>"; };
+		7279896C187DB97100966C66 /* NSDictionary+OSKModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+OSKModel.h"; sourceTree = "<group>"; };
+		7279896D187DB97100966C66 /* NSDictionary+OSKModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+OSKModel.m"; sourceTree = "<group>"; };
+		7279896E187DB97100966C66 /* NSHTTPURLResponse+OSKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+OSKUtilities.h"; sourceTree = "<group>"; };
+		7279896F187DB97100966C66 /* NSHTTPURLResponse+OSKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+OSKUtilities.m"; sourceTree = "<group>"; };
+		72798970187DB97100966C66 /* NSMutableURLRequest+OSKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+OSKUtilities.h"; sourceTree = "<group>"; };
+		72798971187DB97100966C66 /* NSMutableURLRequest+OSKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+OSKUtilities.m"; sourceTree = "<group>"; };
+		72798972187DB97100966C66 /* NSString+OSK_UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OSK_UUID.h"; sourceTree = "<group>"; };
+		72798973187DB97100966C66 /* NSString+OSK_UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OSK_UUID.m"; sourceTree = "<group>"; };
+		72798974187DB97100966C66 /* NSString+OSKDerp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OSKDerp.h"; sourceTree = "<group>"; };
+		72798975187DB97100966C66 /* NSString+OSKDerp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OSKDerp.m"; sourceTree = "<group>"; };
+		72798976187DB97100966C66 /* OSK1PasswordBrowserActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSK1PasswordBrowserActivity.h; sourceTree = "<group>"; };
+		72798977187DB97100966C66 /* OSK1PasswordBrowserActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSK1PasswordBrowserActivity.m; sourceTree = "<group>"; };
+		72798978187DB97100966C66 /* OSK1PasswordSearchActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSK1PasswordSearchActivity.h; sourceTree = "<group>"; };
+		72798979187DB97100966C66 /* OSK1PasswordSearchActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSK1PasswordSearchActivity.m; sourceTree = "<group>"; };
+		7279897A187DB97100966C66 /* OSKAccountChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAccountChooserViewController.h; sourceTree = "<group>"; };
+		7279897B187DB97100966C66 /* OSKAccountChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAccountChooserViewController.m; sourceTree = "<group>"; };
+		7279897C187DB97100966C66 /* OSKAccountManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAccountManagementViewController.h; sourceTree = "<group>"; };
+		7279897D187DB97100966C66 /* OSKAccountManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAccountManagementViewController.m; sourceTree = "<group>"; };
+		7279897E187DB97100966C66 /* OSKAccountTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAccountTypeCell.h; sourceTree = "<group>"; };
+		7279897F187DB97100966C66 /* OSKAccountTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAccountTypeCell.m; sourceTree = "<group>"; };
+		72798980187DB97100966C66 /* OSKActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActionSheet.h; sourceTree = "<group>"; };
+		72798981187DB97100966C66 /* OSKActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActionSheet.m; sourceTree = "<group>"; };
+		72798982187DB97100966C66 /* OSKActivitiesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivitiesManager.h; sourceTree = "<group>"; };
+		72798983187DB97100966C66 /* OSKActivitiesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivitiesManager.m; sourceTree = "<group>"; };
+		72798984187DB97100966C66 /* OSKActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivity.h; sourceTree = "<group>"; };
+		72798985187DB97100966C66 /* OSKActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivity.m; sourceTree = "<group>"; };
+		72798986187DB97100966C66 /* OSKActivity_GenericAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivity_GenericAuthentication.h; sourceTree = "<group>"; };
+		72798987187DB97100966C66 /* OSKActivity_ManagedAccounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivity_ManagedAccounts.h; sourceTree = "<group>"; };
+		72798988187DB97100966C66 /* OSKActivity_SystemAccounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivity_SystemAccounts.h; sourceTree = "<group>"; };
+		72798989187DB97100966C66 /* OSKActivityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityCollectionViewCell.h; sourceTree = "<group>"; };
+		7279898A187DB97100966C66 /* OSKActivityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityCollectionViewCell.m; sourceTree = "<group>"; };
+		7279898B187DB97100966C66 /* OSKActivityCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSKActivityCollectionViewCell.xib; sourceTree = "<group>"; };
+		7279898C187DB97100966C66 /* OSKActivityCollectionViewCell_Pad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSKActivityCollectionViewCell_Pad.xib; sourceTree = "<group>"; };
+		7279898D187DB97100966C66 /* OSKActivityCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityCollectionViewController.h; sourceTree = "<group>"; };
+		7279898E187DB97100966C66 /* OSKActivityCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityCollectionViewController.m; sourceTree = "<group>"; };
+		7279898F187DB97100966C66 /* OSKActivityCustomizations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityCustomizations.h; sourceTree = "<group>"; };
+		72798990187DB97100966C66 /* OSKActivityIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityIcon.h; sourceTree = "<group>"; };
+		72798991187DB97100966C66 /* OSKActivityIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityIcon.m; sourceTree = "<group>"; };
+		72798992187DB97100966C66 /* OSKActivityIndicatorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityIndicatorItem.h; sourceTree = "<group>"; };
+		72798993187DB97100966C66 /* OSKActivityIndicatorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityIndicatorItem.m; sourceTree = "<group>"; };
+		72798994187DB97100966C66 /* OSKActivityOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityOperation.h; sourceTree = "<group>"; };
+		72798995187DB97100966C66 /* OSKActivityOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityOperation.m; sourceTree = "<group>"; };
+		72798996187DB97100966C66 /* OSKActivitySheetDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivitySheetDelegate.h; sourceTree = "<group>"; };
+		72798997187DB97100966C66 /* OSKActivitySheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivitySheetViewController.h; sourceTree = "<group>"; };
+		72798998187DB97100966C66 /* OSKActivitySheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivitySheetViewController.m; sourceTree = "<group>"; };
+		72798999187DB97100966C66 /* OSKActivitySheetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSKActivitySheetViewController.xib; sourceTree = "<group>"; };
+		7279899A187DB97100966C66 /* OSKActivityToggleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityToggleCell.h; sourceTree = "<group>"; };
+		7279899B187DB97100966C66 /* OSKActivityToggleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityToggleCell.m; sourceTree = "<group>"; };
+		7279899C187DB97100966C66 /* OSKADNLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKADNLoginManager.h; sourceTree = "<group>"; };
+		7279899D187DB97100966C66 /* OSKADNLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKADNLoginManager.m; sourceTree = "<group>"; };
+		7279899E187DB97100966C66 /* OSKAirDropActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAirDropActivity.h; sourceTree = "<group>"; };
+		7279899F187DB97100966C66 /* OSKAirDropActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAirDropActivity.m; sourceTree = "<group>"; };
+		727989A0187DB97100966C66 /* OSKAirDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAirDropViewController.h; sourceTree = "<group>"; };
+		727989A1187DB97100966C66 /* OSKAirDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAirDropViewController.m; sourceTree = "<group>"; };
+		727989A2187DB97100966C66 /* OSKAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAlertView.h; sourceTree = "<group>"; };
+		727989A3187DB97100966C66 /* OSKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAlertView.m; sourceTree = "<group>"; };
+		727989A4187DB97100966C66 /* OSKAppDotNetActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAppDotNetActivity.h; sourceTree = "<group>"; };
+		727989A5187DB97100966C66 /* OSKAppDotNetActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAppDotNetActivity.m; sourceTree = "<group>"; };
+		727989A6187DB97100966C66 /* OSKAppDotNetAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAppDotNetAuthenticationViewController.h; sourceTree = "<group>"; };
+		727989A7187DB97100966C66 /* OSKAppDotNetAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAppDotNetAuthenticationViewController.m; sourceTree = "<group>"; };
+		727989A8187DB97100966C66 /* OSKAppDotNetUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAppDotNetUtility.h; sourceTree = "<group>"; };
+		727989A9187DB97100966C66 /* OSKAppDotNetUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAppDotNetUtility.m; sourceTree = "<group>"; };
+		727989AA187DB97100966C66 /* OSKApplicationCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKApplicationCredential.h; sourceTree = "<group>"; };
+		727989AB187DB97100966C66 /* OSKApplicationCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKApplicationCredential.m; sourceTree = "<group>"; };
+		727989AC187DB97100966C66 /* OSKAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKAuthenticationViewController.h; sourceTree = "<group>"; };
+		727989AD187DB97100966C66 /* OSKBloggingActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKBloggingActivity.h; sourceTree = "<group>"; };
+		727989AE187DB97100966C66 /* OSKBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKBorderedButton.h; sourceTree = "<group>"; };
+		727989AF187DB97100966C66 /* OSKBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKBorderedButton.m; sourceTree = "<group>"; };
+		727989B0187DB97100966C66 /* OSKChromeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKChromeActivity.h; sourceTree = "<group>"; };
+		727989B1187DB97100966C66 /* OSKChromeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKChromeActivity.m; sourceTree = "<group>"; };
+		727989B2187DB97100966C66 /* OSKColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKColors.h; sourceTree = "<group>"; };
+		727989B3187DB97100966C66 /* OSKCopyToPasteboardActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKCopyToPasteboardActivity.h; sourceTree = "<group>"; };
+		727989B4187DB97200966C66 /* OSKCopyToPasteboardActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKCopyToPasteboardActivity.m; sourceTree = "<group>"; };
+		727989B5187DB97200966C66 /* OSKEmailActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKEmailActivity.h; sourceTree = "<group>"; };
+		727989B6187DB97200966C66 /* OSKEmailActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKEmailActivity.m; sourceTree = "<group>"; };
+		727989B7187DB97200966C66 /* OSKFacebookActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookActivity.h; sourceTree = "<group>"; };
+		727989B8187DB97200966C66 /* OSKFacebookActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookActivity.m; sourceTree = "<group>"; };
+		727989B9187DB97200966C66 /* OSKFacebookAudienceChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookAudienceChooserViewController.h; sourceTree = "<group>"; };
+		727989BA187DB97200966C66 /* OSKFacebookAudienceChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookAudienceChooserViewController.m; sourceTree = "<group>"; };
+		727989BB187DB97200966C66 /* OSKFacebookPublishingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookPublishingViewController.h; sourceTree = "<group>"; };
+		727989BC187DB97200966C66 /* OSKFacebookPublishingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookPublishingViewController.m; sourceTree = "<group>"; };
+		727989BD187DB97200966C66 /* OSKFacebookPublishingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSKFacebookPublishingViewController.xib; sourceTree = "<group>"; };
+		727989BE187DB97200966C66 /* OSKFacebookUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookUtility.h; sourceTree = "<group>"; };
+		727989BF187DB97200966C66 /* OSKFacebookUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookUtility.m; sourceTree = "<group>"; };
+		727989C0187DB97200966C66 /* OSKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFileManager.h; sourceTree = "<group>"; };
+		727989C1187DB97200966C66 /* OSKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFileManager.m; sourceTree = "<group>"; };
+		727989C2187DB97200966C66 /* OSKInMemoryImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKInMemoryImageCache.h; sourceTree = "<group>"; };
+		727989C3187DB97200966C66 /* OSKInMemoryImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKInMemoryImageCache.m; sourceTree = "<group>"; };
+		727989C4187DB97200966C66 /* OSKInstapaperActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKInstapaperActivity.h; sourceTree = "<group>"; };
+		727989C5187DB97200966C66 /* OSKInstapaperActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKInstapaperActivity.m; sourceTree = "<group>"; };
+		727989C6187DB97200966C66 /* OSKInstapaperUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKInstapaperUtility.h; sourceTree = "<group>"; };
+		727989C7187DB97200966C66 /* OSKInstapaperUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKInstapaperUtility.m; sourceTree = "<group>"; };
+		727989C8187DB97200966C66 /* OSKKeychainUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKKeychainUtility.h; sourceTree = "<group>"; };
+		727989C9187DB97200966C66 /* OSKKeychainUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKKeychainUtility.m; sourceTree = "<group>"; };
+		727989CA187DB97200966C66 /* OSKLinkShorteningUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKLinkShorteningUtility.h; sourceTree = "<group>"; };
+		727989CB187DB97200966C66 /* OSKLinkShorteningUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKLinkShorteningUtility.m; sourceTree = "<group>"; };
+		727989CC187DB97200966C66 /* OSKLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKLogger.h; sourceTree = "<group>"; };
+		727989CD187DB97200966C66 /* OSKMailComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKMailComposeViewController.h; sourceTree = "<group>"; };
+		727989CE187DB97200966C66 /* OSKMailComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKMailComposeViewController.m; sourceTree = "<group>"; };
+		727989CF187DB97200966C66 /* OSKManagedAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKManagedAccount.h; sourceTree = "<group>"; };
+		727989D0187DB97200966C66 /* OSKManagedAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKManagedAccount.m; sourceTree = "<group>"; };
+		727989D1187DB97200966C66 /* OSKManagedAccountCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKManagedAccountCredential.h; sourceTree = "<group>"; };
+		727989D2187DB97200966C66 /* OSKManagedAccountCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKManagedAccountCredential.m; sourceTree = "<group>"; };
+		727989D3187DB97200966C66 /* OSKManagedAccountStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKManagedAccountStore.h; sourceTree = "<group>"; };
+		727989D4187DB97200966C66 /* OSKManagedAccountStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKManagedAccountStore.m; sourceTree = "<group>"; };
+		727989D5187DB97200966C66 /* OSKMessageComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKMessageComposeViewController.h; sourceTree = "<group>"; };
+		727989D6187DB97200966C66 /* OSKMessageComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKMessageComposeViewController.m; sourceTree = "<group>"; };
+		727989D7187DB97200966C66 /* OSKMicrobloggingActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKMicrobloggingActivity.h; sourceTree = "<group>"; };
+		727989D8187DB97200966C66 /* OSKMicroblogPublishingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKMicroblogPublishingViewController.h; sourceTree = "<group>"; };
+		727989D9187DB97200966C66 /* OSKMicroblogPublishingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKMicroblogPublishingViewController.m; sourceTree = "<group>"; };
+		727989DA187DB97200966C66 /* OSKMicroblogPublishingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSKMicroblogPublishingViewController.xib; sourceTree = "<group>"; };
+		727989DB187DB97200966C66 /* OSKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKNavigationController.h; sourceTree = "<group>"; };
+		727989DC187DB97200966C66 /* OSKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKNavigationController.m; sourceTree = "<group>"; };
+		727989DD187DB97200966C66 /* OSKOAuthUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKOAuthUtility.h; sourceTree = "<group>"; };
+		727989DE187DB97200966C66 /* OSKOAuthUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKOAuthUtility.m; sourceTree = "<group>"; };
+		727989DF187DB97200966C66 /* OSKOmnifocusActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKOmnifocusActivity.h; sourceTree = "<group>"; };
+		727989E0187DB97200966C66 /* OSKOmnifocusActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKOmnifocusActivity.m; sourceTree = "<group>"; };
+		727989E1187DB97200966C66 /* OSKPagedHorizontalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPagedHorizontalLayout.h; sourceTree = "<group>"; };
+		727989E2187DB97200966C66 /* OSKPagedHorizontalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKPagedHorizontalLayout.m; sourceTree = "<group>"; };
+		727989E3187DB97200966C66 /* OSKPinboardActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPinboardActivity.h; sourceTree = "<group>"; };
+		727989E4187DB97200966C66 /* OSKPinboardActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKPinboardActivity.m; sourceTree = "<group>"; };
+		727989E5187DB97200966C66 /* OSKPinboardUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPinboardUtility.h; sourceTree = "<group>"; };
+		727989E6187DB97200966C66 /* OSKPinboardUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKPinboardUtility.m; sourceTree = "<group>"; };
+		727989E7187DB97200966C66 /* OSKPocketAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPocketAccountViewController.h; sourceTree = "<group>"; };
+		727989E8187DB97200966C66 /* OSKPocketAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKPocketAccountViewController.m; sourceTree = "<group>"; };
+		727989E9187DB97200966C66 /* OSKPocketActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPocketActivity.h; sourceTree = "<group>"; };
+		727989EA187DB97200966C66 /* OSKPocketActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKPocketActivity.m; sourceTree = "<group>"; };
+		727989EB187DB97200966C66 /* OSKPresentationColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPresentationColor.h; sourceTree = "<group>"; };
+		727989ED187DB97200966C66 /* OSKPresentationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPresentationManager.h; sourceTree = "<group>"; };
+		727989EE187DB97200966C66 /* OSKPresentationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKPresentationManager.m; sourceTree = "<group>"; };
+		727989EF187DB97200966C66 /* OSKPresentationManager_Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPresentationManager_Protected.h; sourceTree = "<group>"; };
+		727989F0187DB97200966C66 /* OSKPresentationStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPresentationStyle.h; sourceTree = "<group>"; };
+		727989F1187DB97200966C66 /* OSKPresentationViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPresentationViewControllers.h; sourceTree = "<group>"; };
+		727989F2187DB97200966C66 /* OSKPublishingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPublishingViewController.h; sourceTree = "<group>"; };
+		727989F3187DB97200966C66 /* OSKPurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPurchasingViewController.h; sourceTree = "<group>"; };
+		727989F4187DB97200966C66 /* OSKReadabilityActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKReadabilityActivity.h; sourceTree = "<group>"; };
+		727989F5187DB97200966C66 /* OSKReadabilityActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKReadabilityActivity.m; sourceTree = "<group>"; };
+		727989F6187DB97200966C66 /* OSKReadabilityUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKReadabilityUtility.h; sourceTree = "<group>"; };
+		727989F7187DB97200966C66 /* OSKReadabilityUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKReadabilityUtility.m; sourceTree = "<group>"; };
+		727989F8187DB97200966C66 /* OSKRPSTPasswordManagementAppService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKRPSTPasswordManagementAppService.h; sourceTree = "<group>"; };
+		727989F9187DB97200966C66 /* OSKRPSTPasswordManagementAppService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKRPSTPasswordManagementAppService.m; sourceTree = "<group>"; };
+		727989FA187DB97200966C66 /* OSKSafariActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSafariActivity.h; sourceTree = "<group>"; };
+		727989FB187DB97200966C66 /* OSKSafariActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSafariActivity.m; sourceTree = "<group>"; };
+		727989FC187DB97200966C66 /* OSKSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSession.h; sourceTree = "<group>"; };
+		727989FD187DB97200966C66 /* OSKSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSession.m; sourceTree = "<group>"; };
+		727989FE187DB97200966C66 /* OSKSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSessionController.h; sourceTree = "<group>"; };
+		727989FF187DB97200966C66 /* OSKSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSessionController.m; sourceTree = "<group>"; };
+		72798A00187DB97200966C66 /* OSKSessionController_Pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSessionController_Pad.h; sourceTree = "<group>"; };
+		72798A01187DB97200966C66 /* OSKSessionController_Pad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSessionController_Pad.m; sourceTree = "<group>"; };
+		72798A02187DB97200966C66 /* OSKSessionController_Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSessionController_Phone.h; sourceTree = "<group>"; };
+		72798A03187DB97200966C66 /* OSKSessionController_Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSessionController_Phone.m; sourceTree = "<group>"; };
+		72798A04187DB97200966C66 /* OSKShareableContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKShareableContent.h; sourceTree = "<group>"; };
+		72798A05187DB97200966C66 /* OSKShareableContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKShareableContent.m; sourceTree = "<group>"; };
+		72798A06187DB97200966C66 /* OSKShareableContentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKShareableContentItem.h; sourceTree = "<group>"; };
+		72798A07187DB97200966C66 /* OSKShareableContentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKShareableContentItem.m; sourceTree = "<group>"; };
+		72798A08187DB97200966C66 /* OSKSMSActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSMSActivity.h; sourceTree = "<group>"; };
+		72798A09187DB97200966C66 /* OSKSMSActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSMSActivity.m; sourceTree = "<group>"; };
+		72798A0A187DB97200966C66 /* OSKSystemAccountStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSystemAccountStore.h; sourceTree = "<group>"; };
+		72798A0B187DB97200966C66 /* OSKSystemAccountStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSystemAccountStore.m; sourceTree = "<group>"; };
+		72798A0C187DB97200966C66 /* OSKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTextView.h; sourceTree = "<group>"; };
+		72798A0D187DB97200966C66 /* OSKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTextView.m; sourceTree = "<group>"; };
+		72798A0E187DB97200966C66 /* OSKThingsActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKThingsActivity.h; sourceTree = "<group>"; };
+		72798A0F187DB97200966C66 /* OSKThingsActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKThingsActivity.m; sourceTree = "<group>"; };
+		72798A10187DB97200966C66 /* OSKTwitterActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTwitterActivity.h; sourceTree = "<group>"; };
+		72798A11187DB97200966C66 /* OSKTwitterActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTwitterActivity.m; sourceTree = "<group>"; };
+		72798A12187DB97200966C66 /* OSKTwitterText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTwitterText.h; sourceTree = "<group>"; };
+		72798A13187DB97200966C66 /* OSKTwitterText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTwitterText.m; sourceTree = "<group>"; };
+		72798A14187DB97200966C66 /* OSKTwitterTextEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTwitterTextEntity.h; sourceTree = "<group>"; };
+		72798A15187DB97200966C66 /* OSKTwitterTextEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTwitterTextEntity.m; sourceTree = "<group>"; };
+		72798A16187DB97200966C66 /* OSKTwitterUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTwitterUtility.h; sourceTree = "<group>"; };
+		72798A17187DB97200966C66 /* OSKTwitterUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTwitterUtility.m; sourceTree = "<group>"; };
+		72798A18187DB97200966C66 /* OSKUsernamePasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKUsernamePasswordCell.h; sourceTree = "<group>"; };
+		72798A19187DB97200966C66 /* OSKUsernamePasswordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKUsernamePasswordCell.m; sourceTree = "<group>"; };
+		72798A1A187DB97200966C66 /* OSKUsernamePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKUsernamePasswordViewController.h; sourceTree = "<group>"; };
+		72798A1B187DB97300966C66 /* OSKUsernamePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKUsernamePasswordViewController.m; sourceTree = "<group>"; };
+		72798A1C187DB97300966C66 /* OSKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKWebViewController.h; sourceTree = "<group>"; };
+		72798A1D187DB97300966C66 /* OSKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKWebViewController.m; sourceTree = "<group>"; };
+		72798A1E187DB97300966C66 /* OvershareKit-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OvershareKit-iOS.h"; sourceTree = "<group>"; };
+		72798A1F187DB97300966C66 /* OvershareKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OvershareKit.h; sourceTree = "<group>"; };
+		72798A20187DB97300966C66 /* UIColor+OSKUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+OSKUtility.h"; sourceTree = "<group>"; };
+		72798A21187DB97300966C66 /* UIColor+OSKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+OSKUtility.m"; sourceTree = "<group>"; };
+		72798A22187DB97300966C66 /* UIDevice+OSKHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+OSKHardware.h"; sourceTree = "<group>"; };
+		72798A23187DB97300966C66 /* UIDevice+OSKHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+OSKHardware.m"; sourceTree = "<group>"; };
+		72798A24187DB97300966C66 /* UIImage+OSKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OSKUtilities.h"; sourceTree = "<group>"; };
+		72798A25187DB97300966C66 /* UIImage+OSKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+OSKUtilities.m"; sourceTree = "<group>"; };
+		72798A26187DB97300966C66 /* UIView+OSKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+OSKUtilities.h"; sourceTree = "<group>"; };
+		72798A27187DB97300966C66 /* UIView+OSKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+OSKUtilities.m"; sourceTree = "<group>"; };
+		72798A28187DB97300966C66 /* UIViewController+OSKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+OSKUtilities.h"; sourceTree = "<group>"; };
+		72798A29187DB97300966C66 /* UIViewController+OSKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+OSKUtilities.m"; sourceTree = "<group>"; };
+		72798B11187DC3C000966C66 /* OSKLocalizedStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKLocalizedStrings.h; sourceTree = "<group>"; };
+		7FEE762F181ED83D000F684A /* Overshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Overshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FEE7632181ED83D000F684A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7FEE7634181ED83D000F684A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7FEE7636181ED83D000F684A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7FEE764B181ED83D000F684A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		8F6372A9072146CEA4538CE3 /* libPods-Overshare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Overshare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7FEE762C181ED83D000F684A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FEE7635181ED83D000F684A /* CoreGraphics.framework in Frameworks */,
+				7FEE7637181ED83D000F684A /* UIKit.framework in Frameworks */,
+				7FEE7633181ED83D000F684A /* Foundation.framework in Frameworks */,
+				03AB27E64DF84922845B5C6B /* libPods-Overshare.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		727988D6187DB91700966C66 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				727988D7187DB91700966C66 /* InfoPlist.strings */,
+			);
+			name = en.lproj;
+			path = "Projects/iOS App/en.lproj";
+			sourceTree = SOURCE_ROOT;
+		};
+		727988FE187DB92400966C66 /* Resource Files */ = {
+			isa = PBXGroup;
+			children = (
+				727988DE187DB91700966C66 /* OSKAppDelegate.h */,
+				727988DF187DB91700966C66 /* OSKAppDelegate.m */,
+				727988EB187DB91700966C66 /* soda.jpg */,
+				727988EC187DB91700966C66 /* type.jpg */,
+				727988E0187DB91700966C66 /* Overshare-Info.plist */,
+				727988D9187DB91700966C66 /* Icon-60@2x.png */,
+				727988DA187DB91700966C66 /* Icon-76.png */,
+				727988E2187DB91700966C66 /* rain.jpg */,
+				727988DB187DB91700966C66 /* Icon-76@2x.png */,
+				727988DD187DB91700966C66 /* main.m */,
+				727988DC187DB91700966C66 /* Images.xcassets */,
+				727988D6187DB91700966C66 /* en.lproj */,
+			);
+			name = "Resource Files";
+			sourceTree = "<group>";
+		};
+		727988FF187DB97100966C66 /* Overshare Kit */ = {
+			isa = PBXGroup;
+			children = (
+				72798A1F187DB97300966C66 /* OvershareKit.h */,
+				72798B10187DC10100966C66 /* Utilities */,
+				72798AE7187DBC2500966C66 /* Shareable Content */,
+				72798AE8187DBC4800966C66 /* Activities (Abstract + Manager) */,
+				72798AE9187DBCA900966C66 /* Activities (Subclasses) */,
+				72798AFE187DBE9600966C66 /* Managed Accounts */,
+				72798AFF187DBEBC00966C66 /* System Accounts */,
+				72798B00187DBED500966C66 /* Presentation Manager */,
+				72798B01187DBF2100966C66 /* Sessions */,
+				72798B02187DBF4500966C66 /* View Controllers */,
+				72798B0F187DC0C900966C66 /* Custom Views Etc. */,
+				72798900187DB97100966C66 /* Images */,
+				72798962187DB97100966C66 /* Localizations */,
+			);
+			path = "Overshare Kit";
+			sourceTree = "<group>";
+		};
+		72798900187DB97100966C66 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				72798901187DB97100966C66 /* 1Password-Icon-120.png */,
+				72798902187DB97100966C66 /* 1Password-Icon-60@2x.png */,
+				72798903187DB97100966C66 /* 1Password-Icon-76.png */,
+				72798904187DB97100966C66 /* 1Password-Icon-76@2x.png */,
+				72798905187DB97100966C66 /* Chrome-Icon-29.png */,
+				72798906187DB97100966C66 /* Chrome-Icon-29@2x.png */,
+				72798907187DB97100966C66 /* Chrome-Icon-60@2x.png */,
+				72798908187DB97100966C66 /* Chrome-Icon-76.png */,
+				72798909187DB97100966C66 /* Chrome-Icon-76@2x.png */,
+				7279890A187DB97100966C66 /* Instapaper-Icon-120.png */,
+				7279890B187DB97100966C66 /* Instapaper-Icon-29.png */,
+				7279890C187DB97100966C66 /* Instapaper-Icon-29@2x.png */,
+				7279890D187DB97100966C66 /* Instapaper-Icon-60@2x.png */,
+				7279890E187DB97100966C66 /* Instapaper-Icon-76.png */,
+				7279890F187DB97100966C66 /* Instapaper-Icon-76@2x.png */,
+				72798910187DB97100966C66 /* Omnifocus-Icon-60@2x.png */,
+				72798911187DB97100966C66 /* Omnifocus-Icon-72.png */,
+				72798912187DB97100966C66 /* Omnifocus-Icon-72@2x.png */,
+				72798913187DB97100966C66 /* osk-airDropIcon-60@2x.png */,
+				72798914187DB97100966C66 /* osk-airDropIcon-76.png */,
+				72798915187DB97100966C66 /* osk-airDropIcon-76@2x.png */,
+				72798916187DB97100966C66 /* osk-appDotNetIcon-29.png */,
+				72798917187DB97100966C66 /* osk-appDotNetIcon-29@2x.png */,
+				72798918187DB97100966C66 /* osk-appDotNetIcon-60@2x.png */,
+				72798919187DB97100966C66 /* osk-appDotNetIcon-76.png */,
+				7279891A187DB97100966C66 /* osk-appDotNetIcon-76@2x.png */,
+				7279891B187DB97100966C66 /* osk-appStoreIcon-76.png */,
+				7279891C187DB97100966C66 /* osk-appStoreIcon-76@2x.png */,
+				7279891D187DB97100966C66 /* osk-copyIcon-purple-29@2x.png */,
+				7279891E187DB97100966C66 /* osk-copyIcon-purple-60@2x.png */,
+				7279891F187DB97100966C66 /* osk-copyIcon-purple-76.png */,
+				72798920187DB97100966C66 /* osk-copyIcon-purple-76@2x.png */,
+				72798921187DB97100966C66 /* osk-copyIcon-yellow-29@2x.png */,
+				72798922187DB97100966C66 /* osk-copyIcon-yellow-60@2x.png */,
+				72798923187DB97100966C66 /* osk-copyIcon-yellow-76.png */,
+				72798924187DB97100966C66 /* osk-copyIcon-yellow-76@2x.png */,
+				72798925187DB97100966C66 /* osk-facebookIcon-60@2x.png */,
+				72798926187DB97100966C66 /* osk-facebookIcon-76.png */,
+				72798927187DB97100966C66 /* osk-facebookIcon-76@2x.png */,
+				72798928187DB97100966C66 /* osk-flickrIcon-60@2x.png */,
+				72798929187DB97100966C66 /* osk-flickrIcon-76.png */,
+				7279892A187DB97100966C66 /* osk-flickrIcon-76@2x.png */,
+				7279892B187DB97100966C66 /* osk-iap-badge-60.png */,
+				7279892C187DB97100966C66 /* osk-iap-badge-60@2x.png */,
+				7279892D187DB97100966C66 /* osk-iap-badge-76.png */,
+				7279892E187DB97100966C66 /* osk-iap-badge-76@2x.png */,
+				7279892F187DB97100966C66 /* osk-icon-border-60@2x.png */,
+				72798930187DB97100966C66 /* osk-icon-border-76.png */,
+				72798931187DB97100966C66 /* osk-icon-border-76@2x.png */,
+				72798932187DB97100966C66 /* osk-iconMask-bw-29.png */,
+				72798933187DB97100966C66 /* osk-iconMask-bw-29@2x.png */,
+				72798934187DB97100966C66 /* osk-iconMask-bw-60@2x.png */,
+				72798935187DB97100966C66 /* osk-iconMask-bw-76.png */,
+				72798936187DB97100966C66 /* osk-iconMask-bw-76@2x.png */,
+				72798937187DB97100966C66 /* osk-mailIcon-60@2x.png */,
+				72798938187DB97100966C66 /* osk-mailIcon-76.png */,
+				72798939187DB97100966C66 /* osk-mailIcon-76@2x.png */,
+				7279893A187DB97100966C66 /* osk-messagesIcon-60@2x.png */,
+				7279893B187DB97100966C66 /* osk-messagesIcon-76.png */,
+				7279893C187DB97100966C66 /* osk-messagesIcon-76@2x.png */,
+				7279893D187DB97100966C66 /* osk-navbarButton-disabled.png */,
+				7279893E187DB97100966C66 /* osk-navbarButton-disabled@2x.png */,
+				7279893F187DB97100966C66 /* osk-navbarButton-highlighted.png */,
+				72798940187DB97100966C66 /* osk-navbarButton-highlighted@2x.png */,
+				72798941187DB97100966C66 /* osk-navbarButton.png */,
+				72798942187DB97100966C66 /* osk-navbarButton@2x.png */,
+				72798943187DB97100966C66 /* osk-photosIcon-60@2x.png */,
+				72798944187DB97100966C66 /* osk-photosIcon-76.png */,
+				72798945187DB97100966C66 /* osk-photosIcon-76@2x.png */,
+				72798946187DB97100966C66 /* osk-pinboardIcon-29.png */,
+				72798947187DB97100966C66 /* osk-pinboardIcon-29@2x.png */,
+				72798948187DB97100966C66 /* osk-pinboardIcon-60@2x.png */,
+				72798949187DB97100966C66 /* osk-pinboardIcon-76.png */,
+				7279894A187DB97100966C66 /* osk-pinboardIcon-76@2x.png */,
+				7279894B187DB97100966C66 /* osk-readabilityIcon-29.png */,
+				7279894C187DB97100966C66 /* osk-readabilityIcon-29@2x.png */,
+				7279894D187DB97100966C66 /* osk-readabilityIcon-60@2x.png */,
+				7279894E187DB97100966C66 /* osk-readabilityIcon-76.png */,
+				7279894F187DB97100966C66 /* osk-readabilityIcon-76@2x.png */,
+				72798950187DB97100966C66 /* osk-safariIcon-60@2x.png */,
+				72798951187DB97100966C66 /* osk-safariIcon-76.png */,
+				72798952187DB97100966C66 /* osk-safariIcon-76@2x.png */,
+				72798953187DB97100966C66 /* osk-settingsPlaceholder@2x.png */,
+				72798954187DB97100966C66 /* osk-twitterIcon-60@2x.png */,
+				72798955187DB97100966C66 /* osk-twitterIcon-76.png */,
+				72798956187DB97100966C66 /* osk-twitterIcon-76@2x.png */,
+				72798957187DB97100966C66 /* Pocket-Icon-29.png */,
+				72798958187DB97100966C66 /* Pocket-Icon-29@2x.png */,
+				72798959187DB97100966C66 /* Pocket-Icon-60@2x.png */,
+				7279895A187DB97100966C66 /* Pocket-Icon-76.png */,
+				7279895B187DB97100966C66 /* Pocket-Icon-76@2x.png */,
+				7279895C187DB97100966C66 /* Riposte-Icon-60@2x.png */,
+				7279895D187DB97100966C66 /* Riposte-Icon-76.png */,
+				7279895E187DB97100966C66 /* Riposte-Icon-76@2x.png */,
+				7279895F187DB97100966C66 /* Things-Icon-60@2x.png */,
+				72798960187DB97100966C66 /* Things-Icon-76.png */,
+				72798961187DB97100966C66 /* Things-Icon-76@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		72798962187DB97100966C66 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				72798963187DB97100966C66 /* Localizable.strings */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
+		72798AE7187DBC2500966C66 /* Shareable Content */ = {
+			isa = PBXGroup;
+			children = (
+				72798A04187DB97200966C66 /* OSKShareableContent.h */,
+				72798A05187DB97200966C66 /* OSKShareableContent.m */,
+				72798A06187DB97200966C66 /* OSKShareableContentItem.h */,
+				72798A07187DB97200966C66 /* OSKShareableContentItem.m */,
+			);
+			name = "Shareable Content";
+			sourceTree = "<group>";
+		};
+		72798AE8187DBC4800966C66 /* Activities (Abstract + Manager) */ = {
+			isa = PBXGroup;
+			children = (
+				72798982187DB97100966C66 /* OSKActivitiesManager.h */,
+				72798983187DB97100966C66 /* OSKActivitiesManager.m */,
+				72798984187DB97100966C66 /* OSKActivity.h */,
+				72798985187DB97100966C66 /* OSKActivity.m */,
+				72798986187DB97100966C66 /* OSKActivity_GenericAuthentication.h */,
+				72798987187DB97100966C66 /* OSKActivity_ManagedAccounts.h */,
+				72798988187DB97100966C66 /* OSKActivity_SystemAccounts.h */,
+				7279898F187DB97100966C66 /* OSKActivityCustomizations.h */,
+				72798994187DB97100966C66 /* OSKActivityOperation.h */,
+				72798995187DB97100966C66 /* OSKActivityOperation.m */,
+				727989AD187DB97100966C66 /* OSKBloggingActivity.h */,
+				727989D7187DB97200966C66 /* OSKMicrobloggingActivity.h */,
+			);
+			name = "Activities (Abstract + Manager)";
+			sourceTree = "<group>";
+		};
+		72798AE9187DBCA900966C66 /* Activities (Subclasses) */ = {
+			isa = PBXGroup;
+			children = (
+				72798AFD187DBE7D00966C66 /* 1Password (Browser) */,
+				72798AFC187DBE6A00966C66 /* 1Password (Search) */,
+				72798AFB187DBE4E00966C66 /* App.net */,
+				72798AFA187DBE3D00966C66 /* Airdrop */,
+				72798AF9187DBE1900966C66 /* Chrome */,
+				72798AF8187DBDFA00966C66 /* Copy to Pasteboard */,
+				72798AF5187DBDA600966C66 /* Email */,
+				72798AF4187DBD9200966C66 /* Facebook */,
+				72798AF3187DBD7900966C66 /* Instapaper */,
+				72798AF2187DBD5300966C66 /* Omnifocus */,
+				72798AF1187DBD3E00966C66 /* Pinboard */,
+				72798AEF187DBD2700966C66 /* Pocket */,
+				72798AEE187DBD1000966C66 /* Readability */,
+				72798AED187DBCFC00966C66 /* Safari */,
+				72798AEC187DBCE800966C66 /* SMS */,
+				72798AEB187DBCD400966C66 /* Things */,
+				72798AEA187DBCB800966C66 /* Twitter */,
+			);
+			name = "Activities (Subclasses)";
+			sourceTree = "<group>";
+		};
+		72798AEA187DBCB800966C66 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				72798A10187DB97200966C66 /* OSKTwitterActivity.h */,
+				72798A11187DB97200966C66 /* OSKTwitterActivity.m */,
+				72798A16187DB97200966C66 /* OSKTwitterUtility.h */,
+				72798A17187DB97200966C66 /* OSKTwitterUtility.m */,
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
+		72798AEB187DBCD400966C66 /* Things */ = {
+			isa = PBXGroup;
+			children = (
+				72798A0E187DB97200966C66 /* OSKThingsActivity.h */,
+				72798A0F187DB97200966C66 /* OSKThingsActivity.m */,
+			);
+			name = Things;
+			sourceTree = "<group>";
+		};
+		72798AEC187DBCE800966C66 /* SMS */ = {
+			isa = PBXGroup;
+			children = (
+				72798A08187DB97200966C66 /* OSKSMSActivity.h */,
+				72798A09187DB97200966C66 /* OSKSMSActivity.m */,
+			);
+			name = SMS;
+			sourceTree = "<group>";
+		};
+		72798AED187DBCFC00966C66 /* Safari */ = {
+			isa = PBXGroup;
+			children = (
+				727989FA187DB97200966C66 /* OSKSafariActivity.h */,
+				727989FB187DB97200966C66 /* OSKSafariActivity.m */,
+			);
+			name = Safari;
+			sourceTree = "<group>";
+		};
+		72798AEE187DBD1000966C66 /* Readability */ = {
+			isa = PBXGroup;
+			children = (
+				727989F4187DB97200966C66 /* OSKReadabilityActivity.h */,
+				727989F5187DB97200966C66 /* OSKReadabilityActivity.m */,
+				727989F6187DB97200966C66 /* OSKReadabilityUtility.h */,
+				727989F7187DB97200966C66 /* OSKReadabilityUtility.m */,
+			);
+			name = Readability;
+			sourceTree = "<group>";
+		};
+		72798AEF187DBD2700966C66 /* Pocket */ = {
+			isa = PBXGroup;
+			children = (
+				727989E9187DB97200966C66 /* OSKPocketActivity.h */,
+				727989EA187DB97200966C66 /* OSKPocketActivity.m */,
+			);
+			name = Pocket;
+			sourceTree = "<group>";
+		};
+		72798AF1187DBD3E00966C66 /* Pinboard */ = {
+			isa = PBXGroup;
+			children = (
+				727989E3187DB97200966C66 /* OSKPinboardActivity.h */,
+				727989E4187DB97200966C66 /* OSKPinboardActivity.m */,
+				727989E5187DB97200966C66 /* OSKPinboardUtility.h */,
+				727989E6187DB97200966C66 /* OSKPinboardUtility.m */,
+			);
+			name = Pinboard;
+			sourceTree = "<group>";
+		};
+		72798AF2187DBD5300966C66 /* Omnifocus */ = {
+			isa = PBXGroup;
+			children = (
+				727989DF187DB97200966C66 /* OSKOmnifocusActivity.h */,
+				727989E0187DB97200966C66 /* OSKOmnifocusActivity.m */,
+			);
+			name = Omnifocus;
+			sourceTree = "<group>";
+		};
+		72798AF3187DBD7900966C66 /* Instapaper */ = {
+			isa = PBXGroup;
+			children = (
+				727989C4187DB97200966C66 /* OSKInstapaperActivity.h */,
+				727989C5187DB97200966C66 /* OSKInstapaperActivity.m */,
+				727989C6187DB97200966C66 /* OSKInstapaperUtility.h */,
+				727989C7187DB97200966C66 /* OSKInstapaperUtility.m */,
+			);
+			name = Instapaper;
+			sourceTree = "<group>";
+		};
+		72798AF4187DBD9200966C66 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				727989B7187DB97200966C66 /* OSKFacebookActivity.h */,
+				727989B8187DB97200966C66 /* OSKFacebookActivity.m */,
+				727989BE187DB97200966C66 /* OSKFacebookUtility.h */,
+				727989BF187DB97200966C66 /* OSKFacebookUtility.m */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
+		72798AF5187DBDA600966C66 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				727989B5187DB97200966C66 /* OSKEmailActivity.h */,
+				727989B6187DB97200966C66 /* OSKEmailActivity.m */,
+			);
+			name = Email;
+			sourceTree = "<group>";
+		};
+		72798AF8187DBDFA00966C66 /* Copy to Pasteboard */ = {
+			isa = PBXGroup;
+			children = (
+				727989B3187DB97100966C66 /* OSKCopyToPasteboardActivity.h */,
+				727989B4187DB97200966C66 /* OSKCopyToPasteboardActivity.m */,
+			);
+			name = "Copy to Pasteboard";
+			sourceTree = "<group>";
+		};
+		72798AF9187DBE1900966C66 /* Chrome */ = {
+			isa = PBXGroup;
+			children = (
+				727989B0187DB97100966C66 /* OSKChromeActivity.h */,
+				727989B1187DB97100966C66 /* OSKChromeActivity.m */,
+			);
+			name = Chrome;
+			sourceTree = "<group>";
+		};
+		72798AFA187DBE3D00966C66 /* Airdrop */ = {
+			isa = PBXGroup;
+			children = (
+				7279899E187DB97100966C66 /* OSKAirDropActivity.h */,
+				7279899F187DB97100966C66 /* OSKAirDropActivity.m */,
+			);
+			name = Airdrop;
+			sourceTree = "<group>";
+		};
+		72798AFB187DBE4E00966C66 /* App.net */ = {
+			isa = PBXGroup;
+			children = (
+				7279899C187DB97100966C66 /* OSKADNLoginManager.h */,
+				7279899D187DB97100966C66 /* OSKADNLoginManager.m */,
+				727989A4187DB97100966C66 /* OSKAppDotNetActivity.h */,
+				727989A5187DB97100966C66 /* OSKAppDotNetActivity.m */,
+				727989A8187DB97100966C66 /* OSKAppDotNetUtility.h */,
+				727989A9187DB97100966C66 /* OSKAppDotNetUtility.m */,
+			);
+			name = App.net;
+			sourceTree = "<group>";
+		};
+		72798AFC187DBE6A00966C66 /* 1Password (Search) */ = {
+			isa = PBXGroup;
+			children = (
+				72798978187DB97100966C66 /* OSK1PasswordSearchActivity.h */,
+				72798979187DB97100966C66 /* OSK1PasswordSearchActivity.m */,
+			);
+			name = "1Password (Search)";
+			sourceTree = "<group>";
+		};
+		72798AFD187DBE7D00966C66 /* 1Password (Browser) */ = {
+			isa = PBXGroup;
+			children = (
+				72798976187DB97100966C66 /* OSK1PasswordBrowserActivity.h */,
+				72798977187DB97100966C66 /* OSK1PasswordBrowserActivity.m */,
+			);
+			name = "1Password (Browser)";
+			sourceTree = "<group>";
+		};
+		72798AFE187DBE9600966C66 /* Managed Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				727989AA187DB97100966C66 /* OSKApplicationCredential.h */,
+				727989AB187DB97100966C66 /* OSKApplicationCredential.m */,
+				727989CF187DB97200966C66 /* OSKManagedAccount.h */,
+				727989D0187DB97200966C66 /* OSKManagedAccount.m */,
+				727989D1187DB97200966C66 /* OSKManagedAccountCredential.h */,
+				727989D2187DB97200966C66 /* OSKManagedAccountCredential.m */,
+				727989D3187DB97200966C66 /* OSKManagedAccountStore.h */,
+				727989D4187DB97200966C66 /* OSKManagedAccountStore.m */,
+			);
+			name = "Managed Accounts";
+			sourceTree = "<group>";
+		};
+		72798AFF187DBEBC00966C66 /* System Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				72798A0A187DB97200966C66 /* OSKSystemAccountStore.h */,
+				72798A0B187DB97200966C66 /* OSKSystemAccountStore.m */,
+			);
+			name = "System Accounts";
+			sourceTree = "<group>";
+		};
+		72798B00187DBED500966C66 /* Presentation Manager */ = {
+			isa = PBXGroup;
+			children = (
+				727989B2187DB97100966C66 /* OSKColors.h */,
+				727989EB187DB97200966C66 /* OSKPresentationColor.h */,
+				727989ED187DB97200966C66 /* OSKPresentationManager.h */,
+				727989EE187DB97200966C66 /* OSKPresentationManager.m */,
+				727989EF187DB97200966C66 /* OSKPresentationManager_Protected.h */,
+				727989F0187DB97200966C66 /* OSKPresentationStyle.h */,
+				727989F1187DB97200966C66 /* OSKPresentationViewControllers.h */,
+			);
+			name = "Presentation Manager";
+			sourceTree = "<group>";
+		};
+		72798B01187DBF2100966C66 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				727989FC187DB97200966C66 /* OSKSession.h */,
+				727989FD187DB97200966C66 /* OSKSession.m */,
+				727989FE187DB97200966C66 /* OSKSessionController.h */,
+				727989FF187DB97200966C66 /* OSKSessionController.m */,
+				72798A00187DB97200966C66 /* OSKSessionController_Pad.h */,
+				72798A01187DB97200966C66 /* OSKSessionController_Pad.m */,
+				72798A02187DB97200966C66 /* OSKSessionController_Phone.h */,
+				72798A03187DB97200966C66 /* OSKSessionController_Phone.m */,
+			);
+			name = Sessions;
+			sourceTree = "<group>";
+		};
+		72798B02187DBF4500966C66 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				727989AC187DB97100966C66 /* OSKAuthenticationViewController.h */,
+				727989F2187DB97200966C66 /* OSKPublishingViewController.h */,
+				727989F3187DB97200966C66 /* OSKPurchasingViewController.h */,
+				72798B0E187DC05100966C66 /* Activity Sheet */,
+				72798B0D187DC02A00966C66 /* Account Management */,
+				72798B07187DBFBC00966C66 /* Publishing */,
+				72798B04187DBF8200966C66 /* Authentication */,
+				72798B03187DBF6800966C66 /* Web View */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		72798B03187DBF6800966C66 /* Web View */ = {
+			isa = PBXGroup;
+			children = (
+				72798A1C187DB97300966C66 /* OSKWebViewController.h */,
+				72798A1D187DB97300966C66 /* OSKWebViewController.m */,
+			);
+			name = "Web View";
+			sourceTree = "<group>";
+		};
+		72798B04187DBF8200966C66 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				72798B06187DBFA100966C66 /* Username/Password */,
+				72798B05187DBF8F00966C66 /* App.net */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		72798B05187DBF8F00966C66 /* App.net */ = {
+			isa = PBXGroup;
+			children = (
+				727989A6187DB97100966C66 /* OSKAppDotNetAuthenticationViewController.h */,
+				727989A7187DB97100966C66 /* OSKAppDotNetAuthenticationViewController.m */,
+			);
+			name = App.net;
+			sourceTree = "<group>";
+		};
+		72798B06187DBFA100966C66 /* Username/Password */ = {
+			isa = PBXGroup;
+			children = (
+				72798A18187DB97200966C66 /* OSKUsernamePasswordCell.h */,
+				72798A19187DB97200966C66 /* OSKUsernamePasswordCell.m */,
+				72798A1A187DB97200966C66 /* OSKUsernamePasswordViewController.h */,
+				72798A1B187DB97300966C66 /* OSKUsernamePasswordViewController.m */,
+			);
+			name = Username/Password;
+			sourceTree = "<group>";
+		};
+		72798B07187DBFBC00966C66 /* Publishing */ = {
+			isa = PBXGroup;
+			children = (
+				72798B0C187DC01100966C66 /* Message Composer */,
+				72798B0B187DC00100966C66 /* Mail Composer */,
+				72798B0A187DBFF100966C66 /* AirDrop */,
+				72798B09187DBFDC00966C66 /* Microblogging */,
+				72798B08187DBFC500966C66 /* Facebook */,
+			);
+			name = Publishing;
+			sourceTree = "<group>";
+		};
+		72798B08187DBFC500966C66 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				727989B9187DB97200966C66 /* OSKFacebookAudienceChooserViewController.h */,
+				727989BA187DB97200966C66 /* OSKFacebookAudienceChooserViewController.m */,
+				727989BB187DB97200966C66 /* OSKFacebookPublishingViewController.h */,
+				727989BC187DB97200966C66 /* OSKFacebookPublishingViewController.m */,
+				727989BD187DB97200966C66 /* OSKFacebookPublishingViewController.xib */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
+		72798B09187DBFDC00966C66 /* Microblogging */ = {
+			isa = PBXGroup;
+			children = (
+				727989D8187DB97200966C66 /* OSKMicroblogPublishingViewController.h */,
+				727989D9187DB97200966C66 /* OSKMicroblogPublishingViewController.m */,
+				727989DA187DB97200966C66 /* OSKMicroblogPublishingViewController.xib */,
+			);
+			name = Microblogging;
+			sourceTree = "<group>";
+		};
+		72798B0A187DBFF100966C66 /* AirDrop */ = {
+			isa = PBXGroup;
+			children = (
+				727989A0187DB97100966C66 /* OSKAirDropViewController.h */,
+				727989A1187DB97100966C66 /* OSKAirDropViewController.m */,
+			);
+			name = AirDrop;
+			sourceTree = "<group>";
+		};
+		72798B0B187DC00100966C66 /* Mail Composer */ = {
+			isa = PBXGroup;
+			children = (
+				727989CD187DB97200966C66 /* OSKMailComposeViewController.h */,
+				727989CE187DB97200966C66 /* OSKMailComposeViewController.m */,
+			);
+			name = "Mail Composer";
+			sourceTree = "<group>";
+		};
+		72798B0C187DC01100966C66 /* Message Composer */ = {
+			isa = PBXGroup;
+			children = (
+				727989D5187DB97200966C66 /* OSKMessageComposeViewController.h */,
+				727989D6187DB97200966C66 /* OSKMessageComposeViewController.m */,
+			);
+			name = "Message Composer";
+			sourceTree = "<group>";
+		};
+		72798B0D187DC02A00966C66 /* Account Management */ = {
+			isa = PBXGroup;
+			children = (
+				7279897A187DB97100966C66 /* OSKAccountChooserViewController.h */,
+				7279897B187DB97100966C66 /* OSKAccountChooserViewController.m */,
+				7279897C187DB97100966C66 /* OSKAccountManagementViewController.h */,
+				7279897D187DB97100966C66 /* OSKAccountManagementViewController.m */,
+				7279897E187DB97100966C66 /* OSKAccountTypeCell.h */,
+				7279897F187DB97100966C66 /* OSKAccountTypeCell.m */,
+				7279899A187DB97100966C66 /* OSKActivityToggleCell.h */,
+				7279899B187DB97100966C66 /* OSKActivityToggleCell.m */,
+				727989E7187DB97200966C66 /* OSKPocketAccountViewController.h */,
+				727989E8187DB97200966C66 /* OSKPocketAccountViewController.m */,
+			);
+			name = "Account Management";
+			sourceTree = "<group>";
+		};
+		72798B0E187DC05100966C66 /* Activity Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				72798989187DB97100966C66 /* OSKActivityCollectionViewCell.h */,
+				7279898A187DB97100966C66 /* OSKActivityCollectionViewCell.m */,
+				7279898B187DB97100966C66 /* OSKActivityCollectionViewCell.xib */,
+				7279898C187DB97100966C66 /* OSKActivityCollectionViewCell_Pad.xib */,
+				7279898D187DB97100966C66 /* OSKActivityCollectionViewController.h */,
+				7279898E187DB97100966C66 /* OSKActivityCollectionViewController.m */,
+				72798990187DB97100966C66 /* OSKActivityIcon.h */,
+				72798991187DB97100966C66 /* OSKActivityIcon.m */,
+				72798996187DB97100966C66 /* OSKActivitySheetDelegate.h */,
+				72798997187DB97100966C66 /* OSKActivitySheetViewController.h */,
+				72798998187DB97100966C66 /* OSKActivitySheetViewController.m */,
+				72798999187DB97100966C66 /* OSKActivitySheetViewController.xib */,
+				727989E1187DB97200966C66 /* OSKPagedHorizontalLayout.h */,
+				727989E2187DB97200966C66 /* OSKPagedHorizontalLayout.m */,
+			);
+			name = "Activity Sheet";
+			sourceTree = "<group>";
+		};
+		72798B0F187DC0C900966C66 /* Custom Views Etc. */ = {
+			isa = PBXGroup;
+			children = (
+				72798992187DB97100966C66 /* OSKActivityIndicatorItem.h */,
+				72798993187DB97100966C66 /* OSKActivityIndicatorItem.m */,
+				72798980187DB97100966C66 /* OSKActionSheet.h */,
+				72798981187DB97100966C66 /* OSKActionSheet.m */,
+				727989A2187DB97100966C66 /* OSKAlertView.h */,
+				727989A3187DB97100966C66 /* OSKAlertView.m */,
+				727989AE187DB97100966C66 /* OSKBorderedButton.h */,
+				727989AF187DB97100966C66 /* OSKBorderedButton.m */,
+				727989DB187DB97200966C66 /* OSKNavigationController.h */,
+				727989DC187DB97200966C66 /* OSKNavigationController.m */,
+				72798A0C187DB97200966C66 /* OSKTextView.h */,
+				72798A0D187DB97200966C66 /* OSKTextView.m */,
+			);
+			name = "Custom Views Etc.";
+			sourceTree = "<group>";
+		};
+		72798B10187DC10100966C66 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				72798966187DB97100966C66 /* NSCoder+OSKCoder.h */,
+				72798967187DB97100966C66 /* NSCoder+OSKCoder.m */,
+				72798968187DB97100966C66 /* NSData+OSKDerp.h */,
+				72798969187DB97100966C66 /* NSData+OSKDerp.m */,
+				7279896A187DB97100966C66 /* NSDate+OSK_ISO8601.h */,
+				7279896B187DB97100966C66 /* NSDate+OSK_ISO8601.m */,
+				7279896C187DB97100966C66 /* NSDictionary+OSKModel.h */,
+				7279896D187DB97100966C66 /* NSDictionary+OSKModel.m */,
+				7279896E187DB97100966C66 /* NSHTTPURLResponse+OSKUtilities.h */,
+				7279896F187DB97100966C66 /* NSHTTPURLResponse+OSKUtilities.m */,
+				72798970187DB97100966C66 /* NSMutableURLRequest+OSKUtilities.h */,
+				72798971187DB97100966C66 /* NSMutableURLRequest+OSKUtilities.m */,
+				72798972187DB97100966C66 /* NSString+OSK_UUID.h */,
+				72798973187DB97100966C66 /* NSString+OSK_UUID.m */,
+				72798974187DB97100966C66 /* NSString+OSKDerp.h */,
+				72798975187DB97100966C66 /* NSString+OSKDerp.m */,
+				727989C0187DB97200966C66 /* OSKFileManager.h */,
+				727989C1187DB97200966C66 /* OSKFileManager.m */,
+				727989C2187DB97200966C66 /* OSKInMemoryImageCache.h */,
+				727989C3187DB97200966C66 /* OSKInMemoryImageCache.m */,
+				727989C8187DB97200966C66 /* OSKKeychainUtility.h */,
+				727989C9187DB97200966C66 /* OSKKeychainUtility.m */,
+				727989CA187DB97200966C66 /* OSKLinkShorteningUtility.h */,
+				727989CB187DB97200966C66 /* OSKLinkShorteningUtility.m */,
+				727989CC187DB97200966C66 /* OSKLogger.h */,
+				727989DD187DB97200966C66 /* OSKOAuthUtility.h */,
+				727989DE187DB97200966C66 /* OSKOAuthUtility.m */,
+				727989F8187DB97200966C66 /* OSKRPSTPasswordManagementAppService.h */,
+				727989F9187DB97200966C66 /* OSKRPSTPasswordManagementAppService.m */,
+				72798A12187DB97200966C66 /* OSKTwitterText.h */,
+				72798A13187DB97200966C66 /* OSKTwitterText.m */,
+				72798A14187DB97200966C66 /* OSKTwitterTextEntity.h */,
+				72798A15187DB97200966C66 /* OSKTwitterTextEntity.m */,
+				72798A1E187DB97300966C66 /* OvershareKit-iOS.h */,
+				72798A20187DB97300966C66 /* UIColor+OSKUtility.h */,
+				72798A21187DB97300966C66 /* UIColor+OSKUtility.m */,
+				72798A22187DB97300966C66 /* UIDevice+OSKHardware.h */,
+				72798A23187DB97300966C66 /* UIDevice+OSKHardware.m */,
+				72798A24187DB97300966C66 /* UIImage+OSKUtilities.h */,
+				72798A25187DB97300966C66 /* UIImage+OSKUtilities.m */,
+				72798A26187DB97300966C66 /* UIView+OSKUtilities.h */,
+				72798A27187DB97300966C66 /* UIView+OSKUtilities.m */,
+				72798A28187DB97300966C66 /* UIViewController+OSKUtilities.h */,
+				72798A29187DB97300966C66 /* UIViewController+OSKUtilities.m */,
+				72798B11187DC3C000966C66 /* OSKLocalizedStrings.h */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		7FEE7626181ED83D000F684A = {
+			isa = PBXGroup;
+			children = (
+				727988D3187DB75A00966C66 /* OvershareKit.podspec */,
+				727988D1187DB70F00966C66 /* Podfile */,
+				727988FF187DB97100966C66 /* Overshare Kit */,
+				7FEE7638181ED83D000F684A /* Sample App Files */,
+				7FEE7631181ED83D000F684A /* Frameworks */,
+				7FEE7630181ED83D000F684A /* Products */,
+				6649A76ED6254C548DFF6344 /* Pods-Overshare.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		7FEE7630181ED83D000F684A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7FEE762F181ED83D000F684A /* Overshare.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7FEE7631181ED83D000F684A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FEE7632181ED83D000F684A /* Foundation.framework */,
+				7FEE7634181ED83D000F684A /* CoreGraphics.framework */,
+				7FEE7636181ED83D000F684A /* UIKit.framework */,
+				7FEE764B181ED83D000F684A /* XCTest.framework */,
+				8F6372A9072146CEA4538CE3 /* libPods-Overshare.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7FEE7638181ED83D000F684A /* Sample App Files */ = {
+			isa = PBXGroup;
+			children = (
+				727988FE187DB92400966C66 /* Resource Files */,
+				727988E1187DB91700966C66 /* Overshare-Prefix.pch */,
+				727988E3187DB91700966C66 /* SampleAppPurchasingViewController.h */,
+				727988E4187DB91700966C66 /* SampleAppPurchasingViewController.m */,
+				727988E5187DB91700966C66 /* SampleAppPurchasingViewController.xib */,
+				727988E6187DB91700966C66 /* SampleTimelineCell.h */,
+				727988E7187DB91700966C66 /* SampleTimelineCell.m */,
+				727988E8187DB91700966C66 /* SampleTimelineCell.xib */,
+				727988E9187DB91700966C66 /* SampleTimelineViewController.h */,
+				727988EA187DB91700966C66 /* SampleTimelineViewController.m */,
+			);
+			name = "Sample App Files";
+			path = Overshare;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7FEE762E181ED83D000F684A /* Overshare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FEE765B181ED83D000F684A /* Build configuration list for PBXNativeTarget "Overshare" */;
+			buildPhases = (
+				E0AC9D3001CD479BBEB1ABD2 /* Check Pods Manifest.lock */,
+				7FEE762B181ED83D000F684A /* Sources */,
+				7FEE762C181ED83D000F684A /* Frameworks */,
+				7FEE762D181ED83D000F684A /* Resources */,
+				59D56FC1874041ACA64C7A5B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Overshare;
+			productName = Overshare;
+			productReference = 7FEE762F181ED83D000F684A /* Overshare.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7FEE7627181ED83D000F684A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OSK;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Overshare Kit";
+				TargetAttributes = {
+					7FEE762E181ED83D000F684A = {
+						DevelopmentTeam = J854U2BUWB;
+					};
+				};
+			};
+			buildConfigurationList = 7FEE762A181ED83D000F684A /* Build configuration list for PBXProject "Overshare" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				pt,
+			);
+			mainGroup = 7FEE7626181ED83D000F684A;
+			productRefGroup = 7FEE7630181ED83D000F684A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7FEE762E181ED83D000F684A /* Overshare */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7FEE762D181ED83D000F684A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72798A67187DB97300966C66 /* osk-navbarButton-disabled@2x.png in Resources */,
+				72798A41187DB97300966C66 /* osk-appDotNetIcon-60@2x.png in Resources */,
+				727988F0187DB91700966C66 /* Icon-76.png in Resources */,
+				72798A7E187DB97300966C66 /* osk-twitterIcon-76.png in Resources */,
+				72798A75187DB97300966C66 /* osk-readabilityIcon-29@2x.png in Resources */,
+				72798A43187DB97300966C66 /* osk-appDotNetIcon-76@2x.png in Resources */,
+				72798A5C187DB97300966C66 /* osk-iconMask-bw-29@2x.png in Resources */,
+				72798A6A187DB97300966C66 /* osk-navbarButton.png in Resources */,
+				727988F5187DB91700966C66 /* Overshare-Info.plist in Resources */,
+				72798A79187DB97300966C66 /* osk-safariIcon-60@2x.png in Resources */,
+				72798A6D187DB97300966C66 /* osk-photosIcon-76.png in Resources */,
+				72798A3D187DB97300966C66 /* osk-airDropIcon-76.png in Resources */,
+				72798A87187DB97300966C66 /* Riposte-Icon-76@2x.png in Resources */,
+				72798A70187DB97300966C66 /* osk-pinboardIcon-29@2x.png in Resources */,
+				72798A74187DB97300966C66 /* osk-readabilityIcon-29.png in Resources */,
+				72798A76187DB97300966C66 /* osk-readabilityIcon-60@2x.png in Resources */,
+				72798A7B187DB97300966C66 /* osk-safariIcon-76@2x.png in Resources */,
+				727988FA187DB91700966C66 /* SampleTimelineCell.xib in Resources */,
+				72798A61187DB97300966C66 /* osk-mailIcon-76.png in Resources */,
+				72798A85187DB97300966C66 /* Riposte-Icon-60@2x.png in Resources */,
+				72798A2F187DB97300966C66 /* Chrome-Icon-29@2x.png in Resources */,
+				72798AA4187DB97300966C66 /* OSKActivitySheetViewController.xib in Resources */,
+				72798A5F187DB97300966C66 /* osk-iconMask-bw-76@2x.png in Resources */,
+				72798A9E187DB97300966C66 /* OSKActivityCollectionViewCell_Pad.xib in Resources */,
+				72798AB5187DB97300966C66 /* OSKFacebookPublishingViewController.xib in Resources */,
+				72798A78187DB97300966C66 /* osk-readabilityIcon-76@2x.png in Resources */,
+				72798A73187DB97300966C66 /* osk-pinboardIcon-76@2x.png in Resources */,
+				727988F1187DB91700966C66 /* Icon-76@2x.png in Resources */,
+				72798A5B187DB97300966C66 /* osk-iconMask-bw-29.png in Resources */,
+				72798A30187DB97300966C66 /* Chrome-Icon-60@2x.png in Resources */,
+				72798A60187DB97300966C66 /* osk-mailIcon-60@2x.png in Resources */,
+				72798A5D187DB97300966C66 /* osk-iconMask-bw-60@2x.png in Resources */,
+				72798A65187DB97300966C66 /* osk-messagesIcon-76@2x.png in Resources */,
+				72798A36187DB97300966C66 /* Instapaper-Icon-60@2x.png in Resources */,
+				72798A55187DB97300966C66 /* osk-iap-badge-60@2x.png in Resources */,
+				72798A81187DB97300966C66 /* Pocket-Icon-29@2x.png in Resources */,
+				72798A3A187DB97300966C66 /* Omnifocus-Icon-72.png in Resources */,
+				727988FC187DB91700966C66 /* soda.jpg in Resources */,
+				72798A40187DB97300966C66 /* osk-appDotNetIcon-29@2x.png in Resources */,
+				72798A44187DB97300966C66 /* osk-appStoreIcon-76.png in Resources */,
+				72798A31187DB97300966C66 /* Chrome-Icon-76.png in Resources */,
+				72798A4F187DB97300966C66 /* osk-facebookIcon-76.png in Resources */,
+				72798A83187DB97300966C66 /* Pocket-Icon-76.png in Resources */,
+				72798A35187DB97300966C66 /* Instapaper-Icon-29@2x.png in Resources */,
+				72798A2B187DB97300966C66 /* 1Password-Icon-60@2x.png in Resources */,
+				72798A77187DB97300966C66 /* osk-readabilityIcon-76.png in Resources */,
+				727988F6187DB91700966C66 /* rain.jpg in Resources */,
+				727988F8187DB91700966C66 /* SampleAppPurchasingViewController.xib in Resources */,
+				72798A8A187DB97300966C66 /* Things-Icon-76@2x.png in Resources */,
+				727988FD187DB91700966C66 /* type.jpg in Resources */,
+				72798A7C187DB97300966C66 /* osk-settingsPlaceholder@2x.png in Resources */,
+				72798A3B187DB97300966C66 /* Omnifocus-Icon-72@2x.png in Resources */,
+				72798A49187DB97300966C66 /* osk-copyIcon-purple-76@2x.png in Resources */,
+				72798A37187DB97300966C66 /* Instapaper-Icon-76.png in Resources */,
+				72798A48187DB97300966C66 /* osk-copyIcon-purple-76.png in Resources */,
+				72798A5A187DB97300966C66 /* osk-icon-border-76@2x.png in Resources */,
+				727988D2187DB70F00966C66 /* Podfile in Resources */,
+				72798A80187DB97300966C66 /* Pocket-Icon-29.png in Resources */,
+				72798A4D187DB97300966C66 /* osk-copyIcon-yellow-76@2x.png in Resources */,
+				72798A71187DB97300966C66 /* osk-pinboardIcon-60@2x.png in Resources */,
+				72798AC3187DB97300966C66 /* OSKMicroblogPublishingViewController.xib in Resources */,
+				72798A9D187DB97300966C66 /* OSKActivityCollectionViewCell.xib in Resources */,
+				727988D4187DB75A00966C66 /* OvershareKit.podspec in Resources */,
+				72798A39187DB97300966C66 /* Omnifocus-Icon-60@2x.png in Resources */,
+				72798A84187DB97300966C66 /* Pocket-Icon-76@2x.png in Resources */,
+				72798A6C187DB97300966C66 /* osk-photosIcon-60@2x.png in Resources */,
+				72798A8B187DB97300966C66 /* Localizable.strings in Resources */,
+				72798A38187DB97300966C66 /* Instapaper-Icon-76@2x.png in Resources */,
+				72798A3F187DB97300966C66 /* osk-appDotNetIcon-29.png in Resources */,
+				72798A7D187DB97300966C66 /* osk-twitterIcon-60@2x.png in Resources */,
+				72798A64187DB97300966C66 /* osk-messagesIcon-76.png in Resources */,
+				72798A68187DB97300966C66 /* osk-navbarButton-highlighted.png in Resources */,
+				72798A3E187DB97300966C66 /* osk-airDropIcon-76@2x.png in Resources */,
+				72798A63187DB97300966C66 /* osk-messagesIcon-60@2x.png in Resources */,
+				72798A86187DB97300966C66 /* Riposte-Icon-76.png in Resources */,
+				72798A2E187DB97300966C66 /* Chrome-Icon-29.png in Resources */,
+				72798A47187DB97300966C66 /* osk-copyIcon-purple-60@2x.png in Resources */,
+				72798A52187DB97300966C66 /* osk-flickrIcon-76.png in Resources */,
+				727988F2187DB91700966C66 /* Images.xcassets in Resources */,
+				72798A88187DB97300966C66 /* Things-Icon-60@2x.png in Resources */,
+				72798A7A187DB97300966C66 /* osk-safariIcon-76.png in Resources */,
+				72798A6F187DB97300966C66 /* osk-pinboardIcon-29.png in Resources */,
+				72798A2C187DB97300966C66 /* 1Password-Icon-76.png in Resources */,
+				72798A45187DB97300966C66 /* osk-appStoreIcon-76@2x.png in Resources */,
+				72798A66187DB97300966C66 /* osk-navbarButton-disabled.png in Resources */,
+				72798A54187DB97300966C66 /* osk-iap-badge-60.png in Resources */,
+				72798A2A187DB97300966C66 /* 1Password-Icon-120.png in Resources */,
+				72798A57187DB97300966C66 /* osk-iap-badge-76@2x.png in Resources */,
+				72798A32187DB97300966C66 /* Chrome-Icon-76@2x.png in Resources */,
+				72798A2D187DB97300966C66 /* 1Password-Icon-76@2x.png in Resources */,
+				72798A62187DB97300966C66 /* osk-mailIcon-76@2x.png in Resources */,
+				72798A6E187DB97300966C66 /* osk-photosIcon-76@2x.png in Resources */,
+				72798A5E187DB97300966C66 /* osk-iconMask-bw-76.png in Resources */,
+				72798A51187DB97300966C66 /* osk-flickrIcon-60@2x.png in Resources */,
+				727988EE187DB91700966C66 /* InfoPlist.strings in Resources */,
+				727988EF187DB91700966C66 /* Icon-60@2x.png in Resources */,
+				72798A82187DB97300966C66 /* Pocket-Icon-60@2x.png in Resources */,
+				72798A50187DB97300966C66 /* osk-facebookIcon-76@2x.png in Resources */,
+				72798A4B187DB97300966C66 /* osk-copyIcon-yellow-60@2x.png in Resources */,
+				72798A46187DB97300966C66 /* osk-copyIcon-purple-29@2x.png in Resources */,
+				72798A4A187DB97300966C66 /* osk-copyIcon-yellow-29@2x.png in Resources */,
+				72798A89187DB97300966C66 /* Things-Icon-76.png in Resources */,
+				72798A3C187DB97300966C66 /* osk-airDropIcon-60@2x.png in Resources */,
+				72798A6B187DB97300966C66 /* osk-navbarButton@2x.png in Resources */,
+				72798A42187DB97300966C66 /* osk-appDotNetIcon-76.png in Resources */,
+				72798A34187DB97300966C66 /* Instapaper-Icon-29.png in Resources */,
+				72798A4E187DB97300966C66 /* osk-facebookIcon-60@2x.png in Resources */,
+				72798A7F187DB97300966C66 /* osk-twitterIcon-76@2x.png in Resources */,
+				72798A72187DB97300966C66 /* osk-pinboardIcon-76.png in Resources */,
+				72798A69187DB97300966C66 /* osk-navbarButton-highlighted@2x.png in Resources */,
+				72798A59187DB97300966C66 /* osk-icon-border-76.png in Resources */,
+				72798A4C187DB97300966C66 /* osk-copyIcon-yellow-76.png in Resources */,
+				72798A56187DB97300966C66 /* osk-iap-badge-76.png in Resources */,
+				72798A33187DB97300966C66 /* Instapaper-Icon-120.png in Resources */,
+				72798A53187DB97300966C66 /* osk-flickrIcon-76@2x.png in Resources */,
+				72798A58187DB97300966C66 /* osk-icon-border-60@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		59D56FC1874041ACA64C7A5B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Overshare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0AC9D3001CD479BBEB1ABD2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7FEE762B181ED83D000F684A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72798AD4187DB97300966C66 /* OSKSessionController_Phone.m in Sources */,
+				72798AB9187DB97300966C66 /* OSKInstapaperActivity.m in Sources */,
+				72798AE6187DB97300966C66 /* UIViewController+OSKUtilities.m in Sources */,
+				72798ABE187DB97300966C66 /* OSKManagedAccount.m in Sources */,
+				72798ADD187DB97300966C66 /* OSKTwitterTextEntity.m in Sources */,
+				72798AB4187DB97300966C66 /* OSKFacebookPublishingViewController.m in Sources */,
+				72798ACE187DB97300966C66 /* OSKReadabilityUtility.m in Sources */,
+				72798A96187DB97300966C66 /* OSKAccountChooserViewController.m in Sources */,
+				72798AD6187DB97300966C66 /* OSKShareableContentItem.m in Sources */,
+				72798ABF187DB97300966C66 /* OSKManagedAccountCredential.m in Sources */,
+				72798A8E187DB97300966C66 /* NSDate+OSK_ISO8601.m in Sources */,
+				72798AAD187DB97300966C66 /* OSKApplicationCredential.m in Sources */,
+				72798A98187DB97300966C66 /* OSKAccountTypeCell.m in Sources */,
+				72798AB8187DB97300966C66 /* OSKInMemoryImageCache.m in Sources */,
+				72798AC6187DB97300966C66 /* OSKOmnifocusActivity.m in Sources */,
+				72798AC9187DB97300966C66 /* OSKPinboardUtility.m in Sources */,
+				72798AAA187DB97300966C66 /* OSKAppDotNetActivity.m in Sources */,
+				72798AAF187DB97300966C66 /* OSKChromeActivity.m in Sources */,
+				72798A8F187DB97300966C66 /* NSDictionary+OSKModel.m in Sources */,
+				727988F3187DB91700966C66 /* main.m in Sources */,
+				72798AC7187DB97300966C66 /* OSKPagedHorizontalLayout.m in Sources */,
+				72798AA7187DB97300966C66 /* OSKAirDropActivity.m in Sources */,
+				72798AA3187DB97300966C66 /* OSKActivitySheetViewController.m in Sources */,
+				72798AB7187DB97300966C66 /* OSKFileManager.m in Sources */,
+				72798AAE187DB97300966C66 /* OSKBorderedButton.m in Sources */,
+				72798A99187DB97300966C66 /* OSKActionSheet.m in Sources */,
+				72798AC0187DB97300966C66 /* OSKManagedAccountStore.m in Sources */,
+				72798AE1187DB97300966C66 /* OSKWebViewController.m in Sources */,
+				72798A9C187DB97300966C66 /* OSKActivityCollectionViewCell.m in Sources */,
+				72798AE5187DB97300966C66 /* UIView+OSKUtilities.m in Sources */,
+				72798AC1187DB97300966C66 /* OSKMessageComposeViewController.m in Sources */,
+				72798AE2187DB97300966C66 /* UIColor+OSKUtility.m in Sources */,
+				72798ADB187DB97300966C66 /* OSKTwitterActivity.m in Sources */,
+				72798A95187DB97300966C66 /* OSK1PasswordSearchActivity.m in Sources */,
+				72798A90187DB97300966C66 /* NSHTTPURLResponse+OSKUtilities.m in Sources */,
+				72798AC4187DB97300966C66 /* OSKNavigationController.m in Sources */,
+				72798AB6187DB97300966C66 /* OSKFacebookUtility.m in Sources */,
+				72798AD9187DB97300966C66 /* OSKTextView.m in Sources */,
+				72798AD2187DB97300966C66 /* OSKSessionController.m in Sources */,
+				72798AA6187DB97300966C66 /* OSKADNLoginManager.m in Sources */,
+				72798A94187DB97300966C66 /* OSK1PasswordBrowserActivity.m in Sources */,
+				72798A97187DB97300966C66 /* OSKAccountManagementViewController.m in Sources */,
+				72798AD7187DB97300966C66 /* OSKSMSActivity.m in Sources */,
+				72798A91187DB97300966C66 /* NSMutableURLRequest+OSKUtilities.m in Sources */,
+				72798ACF187DB97300966C66 /* OSKRPSTPasswordManagementAppService.m in Sources */,
+				72798A92187DB97300966C66 /* NSString+OSK_UUID.m in Sources */,
+				72798AB0187DB97300966C66 /* OSKCopyToPasteboardActivity.m in Sources */,
+				72798A8C187DB97300966C66 /* NSCoder+OSKCoder.m in Sources */,
+				72798AA0187DB97300966C66 /* OSKActivityIcon.m in Sources */,
+				727988F7187DB91700966C66 /* SampleAppPurchasingViewController.m in Sources */,
+				72798ADC187DB97300966C66 /* OSKTwitterText.m in Sources */,
+				72798ACB187DB97300966C66 /* OSKPocketActivity.m in Sources */,
+				72798AE4187DB97300966C66 /* UIImage+OSKUtilities.m in Sources */,
+				72798A93187DB97300966C66 /* NSString+OSKDerp.m in Sources */,
+				72798AAC187DB97300966C66 /* OSKAppDotNetUtility.m in Sources */,
+				72798AD5187DB97300966C66 /* OSKShareableContent.m in Sources */,
+				72798AA8187DB97300966C66 /* OSKAirDropViewController.m in Sources */,
+				72798A8D187DB97300966C66 /* NSData+OSKDerp.m in Sources */,
+				727988FB187DB91700966C66 /* SampleTimelineViewController.m in Sources */,
+				72798AD8187DB97300966C66 /* OSKSystemAccountStore.m in Sources */,
+				72798A9B187DB97300966C66 /* OSKActivity.m in Sources */,
+				72798ACD187DB97300966C66 /* OSKReadabilityActivity.m in Sources */,
+				727988F9187DB91700966C66 /* SampleTimelineCell.m in Sources */,
+				72798ACA187DB97300966C66 /* OSKPocketAccountViewController.m in Sources */,
+				72798ABD187DB97300966C66 /* OSKMailComposeViewController.m in Sources */,
+				72798AC5187DB97300966C66 /* OSKOAuthUtility.m in Sources */,
+				72798AD3187DB97300966C66 /* OSKSessionController_Pad.m in Sources */,
+				72798AB1187DB97300966C66 /* OSKEmailActivity.m in Sources */,
+				72798AE0187DB97300966C66 /* OSKUsernamePasswordViewController.m in Sources */,
+				727988F4187DB91700966C66 /* OSKAppDelegate.m in Sources */,
+				72798AA1187DB97300966C66 /* OSKActivityIndicatorItem.m in Sources */,
+				72798AAB187DB97300966C66 /* OSKAppDotNetAuthenticationViewController.m in Sources */,
+				72798AD0187DB97300966C66 /* OSKSafariActivity.m in Sources */,
+				72798A9F187DB97300966C66 /* OSKActivityCollectionViewController.m in Sources */,
+				72798ADF187DB97300966C66 /* OSKUsernamePasswordCell.m in Sources */,
+				72798ABC187DB97300966C66 /* OSKLinkShorteningUtility.m in Sources */,
+				72798AA2187DB97300966C66 /* OSKActivityOperation.m in Sources */,
+				72798AC2187DB97300966C66 /* OSKMicroblogPublishingViewController.m in Sources */,
+				72798AD1187DB97300966C66 /* OSKSession.m in Sources */,
+				72798AC8187DB97300966C66 /* OSKPinboardActivity.m in Sources */,
+				72798AA9187DB97300966C66 /* OSKAlertView.m in Sources */,
+				72798A9A187DB97300966C66 /* OSKActivitiesManager.m in Sources */,
+				72798ABB187DB97300966C66 /* OSKKeychainUtility.m in Sources */,
+				72798ABA187DB97300966C66 /* OSKInstapaperUtility.m in Sources */,
+				72798ACC187DB97300966C66 /* OSKPresentationManager.m in Sources */,
+				72798AB3187DB97300966C66 /* OSKFacebookAudienceChooserViewController.m in Sources */,
+				72798ADA187DB97300966C66 /* OSKThingsActivity.m in Sources */,
+				72798AA5187DB97300966C66 /* OSKActivityToggleCell.m in Sources */,
+				72798AE3187DB97300966C66 /* UIDevice+OSKHardware.m in Sources */,
+				72798AB2187DB97300966C66 /* OSKFacebookActivity.m in Sources */,
+				72798ADE187DB97300966C66 /* OSKTwitterUtility.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		727988D7187DB91700966C66 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				727988D8187DB91700966C66 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		72798963187DB97100966C66 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72798964187DB97100966C66 /* en */,
+				72798965187DB97100966C66 /* pt */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7FEE7659181ED83D000F684A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7FEE765A181ED83D000F684A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7FEE765C181ED83D000F684A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6649A76ED6254C548DFF6344 /* Pods-Overshare.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Projects/iOS App/Overshare-Prefix.pch";
+				INFOPLIST_FILE = "Projects/iOS App/Overshare-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7FEE765D181ED83D000F684A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6649A76ED6254C548DFF6344 /* Pods-Overshare.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Projects/iOS App/Overshare-Prefix.pch";
+				INFOPLIST_FILE = "Projects/iOS App/Overshare-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7FEE762A181ED83D000F684A /* Build configuration list for PBXProject "Overshare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FEE7659181ED83D000F684A /* Debug */,
+				7FEE765A181ED83D000F684A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FEE765B181ED83D000F684A /* Build configuration list for PBXNativeTarget "Overshare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FEE765C181ED83D000F684A /* Debug */,
+				7FEE765D181ED83D000F684A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7FEE7627181ED83D000F684A /* Project object */;
+}

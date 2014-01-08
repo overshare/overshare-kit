@@ -15,7 +15,6 @@
 
 #import "OSKPresentationStyle.h"
 #import "OSKPresentationColor.h"
-#import "OSKPresentationLocalization.h"
 #import "OSKPresentationViewControllers.h"
 #import "OSKSession.h"
 
@@ -59,11 +58,6 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
  Set this delegate to override default style info, like light or dark mode.
  */
 @property (weak, nonatomic) id <OSKPresentationStyle> styleDelegate;
-
-/**
- Set this delegate to provide localized alternate display text for Overshare's UI strings.
- */
-@property (weak, nonatomic) id <OSKPresentationLocalization> localizationDelegate;
 
 /**
  Set this delegate to provide custom view controllers, or respond to view controller changes.

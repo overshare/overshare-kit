@@ -14,6 +14,7 @@
 #import "OSKManagedAccountStore.h"
 #import "OSKManagedAccount.h"
 #import "OSKActivity_GenericAuthentication.h"
+#import "OSKLocalizedStrings.h"
 
 NSString * const OSKAccountTypeCellIdentifier = @"OSKAccountTypeCellIdentifier";
 
@@ -89,7 +90,7 @@ static UIBezierPath *clippingPath;
 
 - (void)updateGenericAccountDescription {
     if ([_genericActivity isAuthenticated]) {
-        [self.detailTextLabel setText:@"Connected"];
+        [self.detailTextLabel setText:OSKLocalizedString(@"Connected", nil)];
     } else {
         [self.detailTextLabel setText:nil];
     }

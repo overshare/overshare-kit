@@ -15,7 +15,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '7.0'
   
   s.source_files = ['Overshare Kit/*.{h,m}']
-  s.resources    = ['Overshare Kit/Images/*', 'Overshare Kit/*.xib']
+
+  s.resource_bundles = {
+        'OSKLocalizations' => 'Overshare Kit/Localizations/*' ,
+        'OvershareKit' => ['Overshare Kit/Images/*', 'Overshare Kit/*.xib']
+  }
+
   
   s.dependency 'ADNLogin'
   s.dependency 'PocketAPI'

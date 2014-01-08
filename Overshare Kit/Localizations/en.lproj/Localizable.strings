@@ -1,0 +1,105 @@
+/*
+  Licalizable.strings
+  Overshare
+ 
+  Language: English
+
+  Created by Flavio Caetano on 1/8/14.
+  Copyright (c) 2014 Overshare Kit. All rights reserved.
+ */
+
+/***************************/
+/** OSKShareableContent.n **/
+/***************************/
+
+"Share"								= "Share";
+
+"Copy URL"							= "Copy URL";
+
+"Link from %@"						= "Link from %@";
+
+"Look into link from %@"			= "Look into link from %@";
+
+"Look into stuff from %@"			= "Look into stuff from %@";
+
+"Post by %@: “%@”"					= "Post by %@: “%@”";
+
+"“%@” (Via @%@) %@"					= "“%@” (Via @%@) %@";
+
+"Copy Text"							= "Copy Text";
+
+"“%@”\n\n(Via @%@)\n\n%@"			= "“%@”\n\n(Via @%@)\n\n%@";
+
+"Clipper Ships Sail On the Ocean"	= "Clipper Ships Sail On the Ocean";
+
+"Look into message from %@"			= "Look into message from %@";
+
+/******************************/
+/** OSKPresentationManager.m **/
+/******************************/
+
+"Post" = "Post";
+
+"Tweet" = "Tweet";
+
+"Send" = "Send";
+
+"Cancel" = "Cancel";
+
+"Done" = "Done";
+
+"Okay" = "Okay";
+
+"Username" = "Username";
+
+"Password" = "Password";
+
+"Sign Out" = "Sign Out";
+
+"Sign In" = "Sign In";
+
+"Accounts" = "Accounts";
+
+"Are You Sure?" = "Are You Sure?";
+
+"No Accounts Found" = "No Accounts Found";
+
+"You can sign into system accounts like Twitter and Facebook via the settings app." = "You can sign into system accounts like Twitter and Facebook via the settings app.";
+
+"Couldn’t Access Your Accounts" = "Couldn’t Access Your Accounts";
+
+"You have previously denied this app access to your accounts. Please head to the Settings app’s Privacy options to enable sharing." = "You have previously denied this app access to your accounts. Please head to the Settings app’s Privacy options to enable sharing.";
+
+"Unable to Sign In" = "Unable to Sign In";
+
+"Please double check your username and password and try again." = "Please double check your username and password and try again.";
+
+"Public" = "Public";
+
+"Friends" = "Friends";
+
+"Only Me" = "Only Me";
+
+"Audience" = "Audience";
+
+"Visible Activities" = "Visible Activities";
+
+/******************************************/
+/** OSKAccountManagementViewController.m **/
+/******************************************/
+
+"Sharing" = "Sharing";
+
+/**************************/
+/** OSKAccountTypeCell.m **/
+/**************************/
+
+"Connected" = "Connected";
+
+/*******************************************/
+/** OSKFacebookPublishingViewController.m **/
+/*******************************************/
+
+"Account" = "Account";
+
+"Everyone" = "Everyone";

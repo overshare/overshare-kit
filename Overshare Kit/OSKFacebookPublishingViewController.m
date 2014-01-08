@@ -21,6 +21,7 @@
 #import "OSKPresentationManager.h"
 #import "OSKTextView.h"
 #import "UIImage+OSKUtilities.h"
+#import "OSKLocalizedStrings.h"
 
 @interface OSKFacebookPublishingViewController () <OSKTextViewDelegate, OSKAccountChooserViewControllerDelegate, OSKFacebookAudienceChooserDelegate>
 
@@ -191,8 +192,8 @@
     NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_ActionButtonTitleForPublishingActivity:[self.activity.class activityType]];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed:)];
     
-    UIBarButtonItem *accountButton = [[UIBarButtonItem alloc] initWithTitle:@"account" style:UIBarButtonItemStylePlain target:self action:@selector(accountButtonPressed:)];
-    UIBarButtonItem *audienceButton = [[UIBarButtonItem alloc] initWithTitle:@"Everyone" style:UIBarButtonItemStylePlain target:self action:@selector(audienceButtonPressed:)];
+    UIBarButtonItem *accountButton = [[UIBarButtonItem alloc] initWithTitle:OSKLocalizedString(@"Account", nil) style:UIBarButtonItemStylePlain target:self action:@selector(accountButtonPressed:)];
+    UIBarButtonItem *audienceButton = [[UIBarButtonItem alloc] initWithTitle:OSKLocalizedString(@"Everyone", nil) style:UIBarButtonItemStylePlain target:self action:@selector(audienceButtonPressed:)];
     
     UIBarButtonItem *space_1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *space_2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -301,13 +302,13 @@
     NSString *audienceName = nil;
     NSString *audienceKey = [self.activity currentAudience];
     if ([audienceKey isEqualToString:ACFacebookAudienceEveryone]) {
-        audienceName = @"Public";
+        audienceName = OSKLocalizedString(@"Public", nil);
     }
     else if ([audienceKey isEqualToString:ACFacebookAudienceFriends]) {
-        audienceName = @"Friends";
+        audienceName = OSKLocalizedString(@"Friends", nil);
     }
     else if ([audienceKey isEqualToString:ACFacebookAudienceOnlyMe]) {
-        audienceName = @"Only Me";
+        audienceName = OSKLocalizedString(@"Only Me", nil);
     }
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self updateAudienceButton_Phone:audienceName];

@@ -1,0 +1,105 @@
+/*
+  Licalizable.strings
+  Overshare
+ 
+  Language: Português Brasileiro
+
+  Created by Flavio Caetano on 1/8/14.
+  Copyright (c) 2014 Overshare Kit. All rights reserved.
+ */
+
+/***************************/
+/** OSKShareableContent.n **/
+/***************************/
+
+"Share"								= "Compartilhar";
+
+"Copy URL"							= "Copiar URL";
+
+"Link from %@"						= "Link de %@";
+
+"Look into link from %@"			= "Ver link de %@";
+
+"Look into stuff from %@"			= "Ver conteúdo de %@";
+
+"Post by %@: “%@”"					= "Postagem por %@: “%@”";
+
+"“%@” (Via @%@) %@"					= "“%@” (Via @%@) %@";
+
+"Copy Text"							= "Copiar Texto";
+
+"“%@”\n\n(Via @%@)\n\n%@"			= "“%@”\n\n(Via @%@)\n\n%@";
+
+"Clipper Ships Sail On the Ocean"	= "Clipper Ships Sail On the Ocean";
+
+"Look into message from %@"			= "Ver mensagem de %@";
+
+/******************************/
+/** OSKPresentationManager.m **/
+/******************************/
+
+"Post" = "Postar";
+
+"Tweet" = "Twitar";
+
+"Send" = "Enviar";
+
+"Cancel" = "Cancelar";
+
+"Done" = "OK";
+
+"Okay" = "OK";
+
+"Username" = "Usuário";
+
+"Password" = "Senha";
+
+"Sign Out" = "Sair";
+
+"Sign In" = "Login";
+
+"Accounts" = "Contas";
+
+"Are You Sure?" = "Tem certeza?";
+
+"No Accounts Found" = "Nenhuma conta encontrada";
+
+"You can sign into system accounts like Twitter and Facebook via the settings app." = "Você pode se conectar à sua conta do Twitter e Facebook através do aplicativo Ajustes";
+
+"Couldn’t Access Your Accounts" = "Não foi possível acessar as suas contas";
+
+"You have previously denied this app access to your accounts. Please head to the Settings app’s Privacy options to enable sharing." = "Você negou o acesso deste app às suas contas. Para compartilhar, habilite este app em Ajustes > Privacidade.";
+
+"Unable to Sign In" = "Não foi possível se logar";
+
+"Please double check your username and password and try again." = "Por favor, confira novamente o seu usuário e senha e tente novamente";
+
+"Public" = "Público";
+
+"Friends" = "Amigos";
+
+"Only Me" = "Somente Eu";
+
+"Audience" = "Visibilidade";
+
+"Visible Activities" = "Atividades Visíveis";
+
+/******************************************/
+/** OSKAccountManagementViewController.m **/
+/******************************************/
+
+"Sharing" = "Compartilhamento";
+
+/**************************/
+/** OSKAccountTypeCell.m **/
+/**************************/
+
+"Connected" = "Conectado";
+
+/*******************************************/
+/** OSKFacebookPublishingViewController.m **/
+/*******************************************/
+
+"Account" = "Conta";
+
+"Everyone" = "Todos";
