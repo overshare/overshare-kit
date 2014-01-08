@@ -90,10 +90,14 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 
 - (BOOL)isReadyToPerform {
     BOOL accountPresent = (self.activeSystemAccount != nil);
-    
+
+    NSInteger totalAvailableCharacters = [self maximumCharacterCount];
     OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)self.contentItem;
-    NSInteger maxCharacterCount = [self maximumCharacterCount];
-    BOOL textIsValid = (contentItem.text.length > 0 && contentItem.text.length <= maxCharacterCount);
+    if (contentItem.images.count) {
+        NSUInteger attachmentLength = (_estimatedLengthOfAttachmentURL.integerValue) ? _estimatedLengthOfAttachmentURL.integerValue : 24;
+        totalAvailableCharacters -= attachmentLength; // We only ever send the first image in the array, due to API limits.
+    }
+    BOOL textIsValid = (contentItem.text.length > 0 && contentItem.text.length <= totalAvailableCharacters);
     
     return (accountPresent && textIsValid);
 }
@@ -127,13 +131,7 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 #pragma mark - Microblogging Activity Protocol
 
 - (NSInteger)maximumCharacterCount {
-    NSInteger count = OSKTwitterActivity_MaxCharacterCount;
-    OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)self.contentItem;
-    if (contentItem.images.count) {
-        NSUInteger attachmentLength = (_estimatedLengthOfAttachmentURL.integerValue) ? _estimatedLengthOfAttachmentURL.integerValue : 24;
-        count -= attachmentLength; // We only ever send the first image in the array, due to API limits.
-    }
-    return count;
+    return OSKTwitterActivity_MaxCharacterCount;
 }
 
 - (NSInteger)maximumImageCount {

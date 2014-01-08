@@ -147,6 +147,9 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 - (BOOL)attachmentViewShouldReportHasText:(OSKTextViewAttachmentView *)view;
 - (void)attachmentView:(OSKTextViewAttachmentView *)view didInsertText:(NSString *)text;
 - (void)attachmentViewDidDeleteBackward:(OSKTextViewAttachmentView *)view;
+- (UIKeyboardAppearance)attachmentViewKeyboardAppearance:(OSKTextViewAttachmentView *)view;
+- (UIKeyboardType)attachmentViewKeyboardType:(OSKTextViewAttachmentView *)view;
+- (UIReturnKeyType)attachmentViewReturnKeyType:(OSKTextViewAttachmentView *)view;
 
 @end
 
@@ -222,6 +225,18 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 
 - (void)deleteBackward {
     [self.delegate attachmentViewDidDeleteBackward:self];
+}
+
+- (UIKeyboardAppearance)keyboardAppearance {
+    return [self.delegate attachmentViewKeyboardAppearance:self];
+}
+
+- (UIKeyboardType)keyboardType {
+    return [self.delegate attachmentViewKeyboardType:self];
+}
+
+- (UIReturnKeyType)returnKeyType {
+    return [self.delegate attachmentViewReturnKeyType:self];
 }
 
 #pragma mark - KVO
@@ -1193,6 +1208,18 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     [view resignFirstResponder];
     [self becomeFirstResponder];
     [self.textView deleteBackward];
+}
+
+- (UIKeyboardAppearance)attachmentViewKeyboardAppearance:(OSKTextViewAttachmentView *)view {
+    return self.textView.keyboardAppearance;
+}
+
+- (UIKeyboardType)attachmentViewKeyboardType:(OSKTextViewAttachmentView *)view {
+    return self.textView.keyboardType;
+}
+
+- (UIReturnKeyType)attachmentViewReturnKeyType:(OSKTextViewAttachmentView *)view {
+    return self.textView.returnKeyType;
 }
 
 #pragma mark - Removing Attachments

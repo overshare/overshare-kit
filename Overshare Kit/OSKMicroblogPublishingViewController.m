@@ -511,7 +511,11 @@
 
 - (void)updateRemainingCharacterCountLabel {
     NSInteger countAdjustingForEmoji = [self.textView.attributedText.string lengthOfBytesUsingEncoding:NSUTF32StringEncoding]/4;
-    NSInteger remaining = [self.activity maximumCharacterCount] - countAdjustingForEmoji - _reservedLengthForAttachmentURL;
+    NSInteger remaining = [self.activity maximumCharacterCount] - countAdjustingForEmoji;
+    if (self.contentItem.images.count) {
+        NSUInteger numberToBeAttached = MIN([self.activity maximumImageCount], self.contentItem.images.count);
+        remaining -= numberToBeAttached * _reservedLengthForAttachmentURL;
+    }
     self.characterCountLabel.text = @(remaining).stringValue;
     if (_characterCount_normalColor == nil) {
         OSKPresentationManager *presManager = [OSKPresentationManager sharedInstance];
