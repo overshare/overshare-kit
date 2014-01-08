@@ -10,6 +10,7 @@
 
 #import "OSKShareableContentItem.h"
 #import "OSKRPSTPasswordManagementAppService.h"
+#import "OSKLocalizedStrings.h"
 
 @implementation OSK1PasswordBrowserActivity
 
@@ -36,7 +37,7 @@
 }
 
 + (NSString *)activityName {
-    return @"1Password Browser";
+    return OSKLocalizedString(@"1Password Browser", nil);;
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

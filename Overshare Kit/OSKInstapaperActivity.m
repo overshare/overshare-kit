@@ -13,6 +13,7 @@
 #import "OSKManagedAccount.h"
 #import "OSKShareableContentItem.h"
 #import "OSKInstapaperUtility.h"
+#import "OSKLocalizedStrings.h"
 
 @interface OSKInstapaperActivity ()
 
@@ -58,7 +59,7 @@
 }
 
 + (NSString *)activityName {
-    return @"Instapaper";
+    return OSKLocalizedString(@"Instapaper", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

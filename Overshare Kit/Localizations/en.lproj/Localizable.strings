@@ -103,3 +103,59 @@
 "Account" = "Account";
 
 "Everyone" = "Everyone";
+
+
+/****************/
+/** Activities **/
+/****************/
+
+// 1Password Browser
+"1Password Browser" = "1Password Browser";
+
+// 1Password Search
+"1Password Search" = "1Password Search";
+
+// App.net
+"App.net" = "App.net";
+
+// AirDrop
+"AirDrop" = "AirDrop";
+
+// Chrome
+"Chrome" = "Chrome";
+
+// Copy
+"Copy" = "Copy";
+
+// Email
+"Email" = "Email";
+
+// Facebook
+"Facebook" = "Facebook";
+
+// Instapaper
+"Instapaper" = "Instapaper";
+
+// OmniFocus
+"OmniFocus" = "OmniFocus";
+
+// Pinboard
+"Pinboard" = "Pinboard";
+
+// Pocket
+"Pocket" = "Pocket";
+
+// Readability
+"Readability" = "Readability";
+
+// Safari
+"Safari" = "Safari";
+
+// Message
+"Message" = "Message";
+
+// Things
+"Things" = "Things";
+
+// Twitter
+"Twitter" = "Twitter";

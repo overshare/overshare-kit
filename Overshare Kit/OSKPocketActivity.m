@@ -10,6 +10,7 @@
 
 #import "PocketAPI.h"
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 @interface OSKPocketActivity ()
 
@@ -67,7 +68,7 @@
 }
 
 + (NSString *)activityName {
-    return @"Pocket";
+    return OSKLocalizedString(@"Pocket", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

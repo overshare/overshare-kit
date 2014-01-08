@@ -12,6 +12,7 @@
 #import "OSKShareableContentItem.h"
 #import "OSKFacebookUtility.h"
 #import "OSKApplicationCredential.h"
+#import "OSKLocalizedStrings.h"
 
 static NSInteger OSKFacebookActivity_MaxCharacterCount = 6000;
 static NSInteger OSKFacebookActivity_MaxUsernameLength = 20;
@@ -64,7 +65,7 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
 }
 
 + (NSString *)activityName {
-    return @"Facebook";
+    return OSKLocalizedString(@"Facebook", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

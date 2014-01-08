@@ -10,6 +10,7 @@
 
 #import "OSKShareableContentItem.h"
 #import "OSKRPSTPasswordManagementAppService.h"
+#import "OSKLocalizedStrings.h"
 
 @implementation OSK1PasswordSearchActivity
 
@@ -36,7 +37,7 @@
 }
 
 + (NSString *)activityName {
-    return @"1Password Search";
+    return OSKLocalizedString(@"1Password Search", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

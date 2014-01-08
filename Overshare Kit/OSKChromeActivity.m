@@ -44,6 +44,7 @@
 #import "OSKChromeActivity.h"
 
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 static NSString * OSKChromeActivity_ChromeURLScheme = @"googlechrome:";
 static NSString * kGoogleChromeHTTPScheme = @"googlechrome:";
@@ -75,7 +76,7 @@ static NSString * kGoogleChromeHTTPSScheme = @"googlechromes:";
 }
 
 + (NSString *)activityName {
-    return @"Chrome";
+    return OSKLocalizedString(@"Chrome", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

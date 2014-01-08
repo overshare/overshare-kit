@@ -9,6 +9,7 @@
 #import "OSKThingsActivity.h"
 
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 static NSString * OSKThingsActivity_BaseURL = @"things:";
 static NSString * OSKThingsActivity_AddEntryWithNoteURL = @"add?title=%@&notes=%@";
@@ -38,7 +39,7 @@ static NSString * OSKThingsActivity_AddEntryWithNoteURL = @"add?title=%@&notes=%
 }
 
 + (NSString *)activityName {
-    return @"Things";
+    return OSKLocalizedString(@"Things", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

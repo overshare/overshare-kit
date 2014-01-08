@@ -9,6 +9,7 @@
 #import "OSKSafariActivity.h"
 
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 @implementation OSKSafariActivity
 
@@ -35,7 +36,7 @@
 }
 
 + (NSString *)activityName {
-    return @"Safari";
+    return OSKLocalizedString(@"Safari", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

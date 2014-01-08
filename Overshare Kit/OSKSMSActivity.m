@@ -7,9 +7,11 @@
 //
 
 @import MessageUI;
+
 #import "OSKSMSActivity.h"
 
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 @implementation OSKSMSActivity
 
@@ -36,7 +38,7 @@
 }
 
 + (NSString *)activityName {
-    return @"Message";
+    return OSKLocalizedString(@"Message", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

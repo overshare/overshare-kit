@@ -11,6 +11,7 @@
 @import MessageUI;
 
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 @implementation OSKEmailActivity
 
@@ -37,7 +38,7 @@
 }
 
 + (NSString *)activityName {
-    return @"Email";
+    return OSKLocalizedString(@"Email", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

@@ -10,6 +10,7 @@
 
 #import "UIDevice+OSKHardware.h"
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 @interface OSKAirDropActivity ()
 
@@ -40,7 +41,7 @@
 }
 
 + (NSString *)activityName {
-    return @"AirDrop";
+    return OSKLocalizedString(@"AirDrop", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

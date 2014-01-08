@@ -13,6 +13,7 @@
 #import "OSKManagedAccount.h"
 #import "OSKShareableContentItem.h"
 #import "OSKReadabilityUtility.h"
+#import "OSKLocalizedStrings.h"
 
 @interface OSKReadabilityActivity ()
 
@@ -60,7 +61,7 @@
 }
 
 + (NSString *)activityName {
-    return @"Readability";
+    return OSKLocalizedString(@"Readability", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

@@ -16,6 +16,7 @@
 #import "OSKLogger.h"
 #import "OSKManagedAccount.h"
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 static NSInteger OSKAppDotNetActivity_MaxCharacterCount = 256;
 static NSInteger OSKAppDotNetActivity_MaxUsernameLength = 20;
@@ -75,7 +76,7 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
 }
 
 + (NSString *)activityName {
-    return @"App.net";
+    return OSKLocalizedString(@"App.net", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

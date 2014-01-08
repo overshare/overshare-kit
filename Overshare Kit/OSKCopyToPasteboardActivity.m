@@ -9,6 +9,7 @@
 #import "OSKCopyToPasteboardActivity.h"
 
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 @interface OSKCopyToPasteboardActivity ()
 
@@ -41,7 +42,7 @@
 }
 
 + (NSString *)activityName {
-    return @"Copy";
+    return OSKLocalizedString(@"Copy", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

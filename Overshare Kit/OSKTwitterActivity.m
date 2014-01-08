@@ -15,6 +15,7 @@
 
 #import "OSKSystemAccountStore.h"
 #import "OSKActivity_SystemAccounts.h"
+#import "OSKLocalizedStrings.h"
 
 static NSInteger OSKTwitterActivity_MaxCharacterCount = 140;
 static NSInteger OSKTwitterActivity_MaxUsernameLength = 20;
@@ -57,7 +58,7 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 }
 
 + (NSString *)activityName {
-    return @"Twitter";
+    return OSKLocalizedString(@"Twitter", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

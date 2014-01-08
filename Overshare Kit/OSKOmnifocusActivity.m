@@ -9,6 +9,7 @@
 #import "OSKOmnifocusActivity.h"
 
 #import "OSKShareableContentItem.h"
+#import "OSKLocalizedStrings.h"
 
 static NSString * OSKOmnifocusActivity_BaseURL = @"omnifocus://";
 static NSString * OSKOmnifocusActivity_AddEntryWithNoteURL = @"/add?name=%@&note=%@";
@@ -38,7 +39,7 @@ static NSString * OSKOmnifocusActivity_AddEntryWithNoteURL = @"/add?name=%@&note
 }
 
 + (NSString *)activityName {
-    return @"OmniFocus";
+    return OSKLocalizedString(@"OmniFocus", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {

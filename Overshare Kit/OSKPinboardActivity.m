@@ -11,6 +11,7 @@
 #import "OSKShareableContentItem.h"
 #import "OSKPinboardUtility.h"
 #import "OSKManagedAccount.h"
+#import "OSKLocalizedStrings.h"
 
 @implementation OSKPinboardActivity
 
@@ -54,7 +55,7 @@
 }
 
 + (NSString *)activityName {
-    return @"Pinboard";
+    return OSKLocalizedString(@"Pinboard", nil);
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {
