@@ -22,6 +22,7 @@ extern NSString * const OSKActivityType_iOS_SMS;
 extern NSString * const OSKActivityType_iOS_Email;
 extern NSString * const OSKActivityType_iOS_CopyToPasteboard;
 extern NSString * const OSKActivityType_iOS_AirDrop;
+extern NSString * const OSKActivityType_iOS_ReadingList;
 extern NSString * const OSKActivityType_API_AppDotNet;
 extern NSString * const OSKActivityType_API_500Pixels;
 extern NSString * const OSKActivityType_API_Instapaper;

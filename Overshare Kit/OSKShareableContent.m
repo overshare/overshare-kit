@@ -143,6 +143,8 @@
     
     OSKReadLaterContentItem *readLater = [[OSKReadLaterContentItem alloc] init];
     readLater.url = [NSURL URLWithString:canonicalURL];
+    readLater.title = [NSString stringWithFormat:@"Post by %@", authorName];
+    readLater.description = text;
     content.readLaterItem = readLater;
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
