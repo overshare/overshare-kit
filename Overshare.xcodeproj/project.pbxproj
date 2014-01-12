@@ -123,7 +123,6 @@
 		72798A88187DB97300966C66 /* Things-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7279895F187DB97100966C66 /* Things-Icon-60@2x.png */; };
 		72798A89187DB97300966C66 /* Things-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798960187DB97100966C66 /* Things-Icon-76.png */; };
 		72798A8A187DB97300966C66 /* Things-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798961187DB97100966C66 /* Things-Icon-76@2x.png */; };
-		72798A8B187DB97300966C66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72798963187DB97100966C66 /* Localizable.strings */; };
 		72798A8C187DB97300966C66 /* NSCoder+OSKCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798967187DB97100966C66 /* NSCoder+OSKCoder.m */; };
 		72798A8D187DB97300966C66 /* NSData+OSKDerp.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798969187DB97100966C66 /* NSData+OSKDerp.m */; };
 		72798A8E187DB97300966C66 /* NSDate+OSK_ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = 7279896B187DB97100966C66 /* NSDate+OSK_ISO8601.m */; };
@@ -215,6 +214,7 @@
 		72798AE4187DB97300966C66 /* UIImage+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A25187DB97300966C66 /* UIImage+OSKUtilities.m */; };
 		72798AE5187DB97300966C66 /* UIView+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A27187DB97300966C66 /* UIView+OSKUtilities.m */; };
 		72798AE6187DB97300966C66 /* UIViewController+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A29187DB97300966C66 /* UIViewController+OSKUtilities.m */; };
+		72F280CA188301EA00AC5E8F /* OSKLocalizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72F280C9188301EA00AC5E8F /* OSKLocalizations.bundle */; };
 		7FEE7633181ED83D000F684A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7632181ED83D000F684A /* Foundation.framework */; };
 		7FEE7635181ED83D000F684A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7634181ED83D000F684A /* CoreGraphics.framework */; };
 		7FEE7637181ED83D000F684A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7636181ED83D000F684A /* UIKit.framework */; };
@@ -342,8 +342,6 @@
 		7279895F187DB97100966C66 /* Things-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Things-Icon-60@2x.png"; sourceTree = "<group>"; };
 		72798960187DB97100966C66 /* Things-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Things-Icon-76.png"; sourceTree = "<group>"; };
 		72798961187DB97100966C66 /* Things-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Things-Icon-76@2x.png"; sourceTree = "<group>"; };
-		72798964187DB97100966C66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		72798965187DB97100966C66 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		72798966187DB97100966C66 /* NSCoder+OSKCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCoder+OSKCoder.h"; sourceTree = "<group>"; };
 		72798967187DB97100966C66 /* NSCoder+OSKCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCoder+OSKCoder.m"; sourceTree = "<group>"; };
 		72798968187DB97100966C66 /* NSData+OSKDerp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+OSKDerp.h"; sourceTree = "<group>"; };
@@ -540,6 +538,7 @@
 		72798A28187DB97300966C66 /* UIViewController+OSKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+OSKUtilities.h"; sourceTree = "<group>"; };
 		72798A29187DB97300966C66 /* UIViewController+OSKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+OSKUtilities.m"; sourceTree = "<group>"; };
 		72798B11187DC3C000966C66 /* OSKLocalizedStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKLocalizedStrings.h; sourceTree = "<group>"; };
+		72F280C9188301EA00AC5E8F /* OSKLocalizations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OSKLocalizations.bundle; sourceTree = "<group>"; };
 		7FEE762F181ED83D000F684A /* Overshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Overshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEE7632181ED83D000F684A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FEE7634181ED83D000F684A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -595,6 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				72798A1F187DB97300966C66 /* OvershareKit.h */,
+				72F280C9188301EA00AC5E8F /* OSKLocalizations.bundle */,
 				72798B10187DC10100966C66 /* Utilities */,
 				72798AE7187DBC2500966C66 /* Shareable Content */,
 				72798AE8187DBC4800966C66 /* Activities (Abstract + Manager) */,
@@ -606,7 +606,6 @@
 				72798B02187DBF4500966C66 /* View Controllers */,
 				72798B0F187DC0C900966C66 /* Custom Views Etc. */,
 				72798900187DB97100966C66 /* Images */,
-				72798962187DB97100966C66 /* Localizations */,
 			);
 			path = "Overshare Kit";
 			sourceTree = "<group>";
@@ -713,14 +712,6 @@
 				72798961187DB97100966C66 /* Things-Icon-76@2x.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		72798962187DB97100966C66 /* Localizations */ = {
-			isa = PBXGroup;
-			children = (
-				72798963187DB97100966C66 /* Localizable.strings */,
-			);
-			path = Localizations;
 			sourceTree = "<group>";
 		};
 		72798AE7187DBC2500966C66 /* Shareable Content */ = {
@@ -1355,6 +1346,7 @@
 				72798AA4187DB97300966C66 /* OSKActivitySheetViewController.xib in Resources */,
 				72798A5F187DB97300966C66 /* osk-iconMask-bw-76@2x.png in Resources */,
 				72798A9E187DB97300966C66 /* OSKActivityCollectionViewCell_Pad.xib in Resources */,
+				72F280CA188301EA00AC5E8F /* OSKLocalizations.bundle in Resources */,
 				72798AB5187DB97300966C66 /* OSKFacebookPublishingViewController.xib in Resources */,
 				72798A78187DB97300966C66 /* osk-readabilityIcon-76@2x.png in Resources */,
 				72798A73187DB97300966C66 /* osk-pinboardIcon-76@2x.png in Resources */,
@@ -1397,7 +1389,6 @@
 				72798A39187DB97300966C66 /* Omnifocus-Icon-60@2x.png in Resources */,
 				72798A84187DB97300966C66 /* Pocket-Icon-76@2x.png in Resources */,
 				72798A6C187DB97300966C66 /* osk-photosIcon-60@2x.png in Resources */,
-				72798A8B187DB97300966C66 /* Localizable.strings in Resources */,
 				72798A38187DB97300966C66 /* Instapaper-Icon-76@2x.png in Resources */,
 				72798A3F187DB97300966C66 /* osk-appDotNetIcon-29.png in Resources */,
 				72798A7D187DB97300966C66 /* osk-twitterIcon-60@2x.png in Resources */,
@@ -1593,15 +1584,6 @@
 				727988D8187DB91700966C66 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		72798963187DB97100966C66 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				72798964187DB97100966C66 /* en */,
-				72798965187DB97100966C66 /* pt */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
