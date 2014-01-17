@@ -26,6 +26,7 @@
 #import "OSKEmailActivity.h"
 #import "OSKFacebookActivity.h"
 #import "OSKInstapaperActivity.h"
+#import "OSKReadingListActivity.h"
 #import "OSKOmnifocusActivity.h"
 #import "OSKPinboardActivity.h"
 #import "OSKPocketActivity.h"
@@ -367,6 +368,13 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
 
 - (NSArray *)builtInActivitiesForReadLaterItem:(OSKReadLaterContentItem *)item excludedActivityTypes:(NSArray *)excludedActivityTypes requireOperations:(BOOL)requireOperations {
     NSMutableArray *activities = [[NSMutableArray alloc] init];
+    
+    OSKReadingListActivity *readingList = [self validActivityForType:[OSKReadingListActivity activityType]
+                                                               class:[OSKReadingListActivity class]
+                                                       excludedTypes:excludedActivityTypes
+                                                   requireOperations:requireOperations
+                                                                item:item];
+    if (readingList) { [activities addObject:readingList]; }
     
     OSKInstapaperActivity *instapaper = [self validActivityForType:[OSKInstapaperActivity activityType]
                                                                  class:[OSKInstapaperActivity class]

@@ -265,9 +265,19 @@ extern NSString * const OSKShareableContentItemType_AirDrop;
 @interface OSKReadLaterContentItem : OSKShareableContentItem
 
 /**
- The url to be saved.
+ The url to be saved. Must be set to a non-nil value before sharing.
  */
 @property (copy, nonatomic) NSURL *url;
+
+/**
+ An optional title. Not all activities use this.
+ */
+@property (copy, nonatomic) NSString *title;
+
+/**
+ An optional description. Not all activities use this.
+ */
+@property (copy, nonatomic) NSString *description;
 
 @end
 
