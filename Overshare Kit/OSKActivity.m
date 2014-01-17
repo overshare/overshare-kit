@@ -24,6 +24,7 @@ NSString * const OSKActivityType_iOS_SMS = @"OSKActivityType_iOS_SMS";
 NSString * const OSKActivityType_iOS_Email = @"OSKActivityType_iOS_Email";
 NSString * const OSKActivityType_iOS_CopyToPasteboard = @"OSKActivityType_iOS_CopyToPasteboard";
 NSString * const OSKActivityType_iOS_AirDrop = @"OSKActivityType_iOS_AirDrop";
+NSString * const OSKActivityType_iOS_ReadingList = @"OSKActivityType_iOS_ReadingList";
 NSString * const OSKActivityType_API_AppDotNet = @"OSKActivityType_API_AppDotNet";
 NSString * const OSKActivityType_API_500Pixels = @"OSKActivityType_API_500Pixels";
 NSString * const OSKActivityType_API_Instapaper = @"OSKActivityType_API_Instapaper";
