@@ -47,6 +47,13 @@
 		7F77F4391822FAC60019452C /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F77F4371822FAC60019452C /* Icon-76.png */; };
 		7F77F43A1822FAC60019452C /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F77F4381822FAC60019452C /* Icon-76@2x.png */; };
 		7F78E9AC1820E5630042CF02 /* OSKPocketAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F78E9AB1820E5630042CF02 /* OSKPocketAccountViewController.m */; };
+		7FA91AE51889F53500A5DF9B /* ReadingList-Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA91ADF1889F53500A5DF9B /* ReadingList-Icon-29.png */; };
+		7FA91AE61889F53500A5DF9B /* ReadingList-Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA91AE01889F53500A5DF9B /* ReadingList-Icon-29@2x.png */; };
+		7FA91AE71889F53500A5DF9B /* ReadingList-Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA91AE11889F53500A5DF9B /* ReadingList-Icon-60.png */; };
+		7FA91AE91889F53500A5DF9B /* ReadingList-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA91AE31889F53500A5DF9B /* ReadingList-Icon-76.png */; };
+		7FA91AEA1889F53500A5DF9B /* ReadingList-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA91AE41889F53500A5DF9B /* ReadingList-Icon-76@2x.png */; };
+		7FA91AF41889F56F00A5DF9B /* OSKReadingListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA91AF31889F56F00A5DF9B /* OSKReadingListActivity.m */; };
+		7FA91AF91889F68100A5DF9B /* ReadingList-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FA91AF81889F68100A5DF9B /* ReadingList-Icon-60@2x.png */; };
 		7FCD027F18539735005C5931 /* OSKActivityToggleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD027E18539735005C5931 /* OSKActivityToggleCell.m */; };
 		7FD16DAF1876367A0035960C /* link-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD16DAD1876367A0035960C /* link-button.png */; };
 		7FD16DB01876367A0035960C /* link-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD16DAE1876367A0035960C /* link-button@2x.png */; };
@@ -287,6 +294,14 @@
 		7F77F4381822FAC60019452C /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
 		7F78E9AA1820E5630042CF02 /* OSKPocketAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPocketAccountViewController.h; sourceTree = "<group>"; };
 		7F78E9AB1820E5630042CF02 /* OSKPocketAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKPocketAccountViewController.m; sourceTree = "<group>"; };
+		7FA91ADF1889F53500A5DF9B /* ReadingList-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-29.png"; sourceTree = "<group>"; };
+		7FA91AE01889F53500A5DF9B /* ReadingList-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-29@2x.png"; sourceTree = "<group>"; };
+		7FA91AE11889F53500A5DF9B /* ReadingList-Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-60.png"; sourceTree = "<group>"; };
+		7FA91AE31889F53500A5DF9B /* ReadingList-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-76.png"; sourceTree = "<group>"; };
+		7FA91AE41889F53500A5DF9B /* ReadingList-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-76@2x.png"; sourceTree = "<group>"; };
+		7FA91AF21889F56F00A5DF9B /* OSKReadingListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKReadingListActivity.h; sourceTree = "<group>"; };
+		7FA91AF31889F56F00A5DF9B /* OSKReadingListActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKReadingListActivity.m; sourceTree = "<group>"; };
+		7FA91AF81889F68100A5DF9B /* ReadingList-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-60@2x.png"; sourceTree = "<group>"; };
 		7FCD027D18539735005C5931 /* OSKActivityToggleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityToggleCell.h; sourceTree = "<group>"; };
 		7FCD027E18539735005C5931 /* OSKActivityToggleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityToggleCell.m; sourceTree = "<group>"; };
 		7FD16DAD1876367A0035960C /* link-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-button.png"; sourceTree = "<group>"; };
@@ -601,6 +616,15 @@
 			name = Sessions;
 			sourceTree = "<group>";
 		};
+		7FA91AF11889F55A00A5DF9B /* Reading List */ = {
+			isa = PBXGroup;
+			children = (
+				7FA91AF21889F56F00A5DF9B /* OSKReadingListActivity.h */,
+				7FA91AF31889F56F00A5DF9B /* OSKReadingListActivity.m */,
+			);
+			name = "Reading List";
+			sourceTree = "<group>";
+		};
 		7FEE7626181ED83D000F684A = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +715,12 @@
 		7FEE7694181ED8EE000F684A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7FA91ADF1889F53500A5DF9B /* ReadingList-Icon-29.png */,
+				7FA91AE01889F53500A5DF9B /* ReadingList-Icon-29@2x.png */,
+				7FA91AE11889F53500A5DF9B /* ReadingList-Icon-60.png */,
+				7FA91AF81889F68100A5DF9B /* ReadingList-Icon-60@2x.png */,
+				7FA91AE31889F53500A5DF9B /* ReadingList-Icon-76.png */,
+				7FA91AE41889F53500A5DF9B /* ReadingList-Icon-76@2x.png */,
 				7FD16DAD1876367A0035960C /* link-button.png */,
 				7FD16DAE1876367A0035960C /* link-button@2x.png */,
 				7FE467351821F2C50054D2BC /* osk-iconMask-bw-29@2x.png */,
@@ -878,6 +908,7 @@
 				7FEE7916181EDB33000F684A /* Pinboard */,
 				7FEE7917181EDB3E000F684A /* Pocket */,
 				7FEE7918181EDB55000F684A /* Readability */,
+				7FA91AF11889F55A00A5DF9B /* Reading List */,
 				7FEE7919181EDB63000F684A /* Safari */,
 				7FEE791B181EDB9A000F684A /* SMS */,
 				7FEE791D181EDBD8000F684A /* Things */,
@@ -1358,9 +1389,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FEE777B181ED8EF000F684A /* osk-iconMask-bw-76.png in Resources */,
+				7FA91AE51889F53500A5DF9B /* ReadingList-Icon-29.png in Resources */,
 				7FEE7784181ED8EF000F684A /* Pocket-Icon-76@2x.png in Resources */,
 				7FEE77A2181ED8EF000F684A /* OSKActivitySheetViewController.xib in Resources */,
 				7FEE7776181ED8EF000F684A /* osk-facebookIcon-60@2x.png in Resources */,
+				7FA91AE71889F53500A5DF9B /* ReadingList-Icon-60.png in Resources */,
 				7FE466F11821C9F20054D2BC /* osk-appDotNetIcon-76.png in Resources */,
 				7FE466F81821C9F20054D2BC /* osk-flickrIcon-76.png in Resources */,
 				7FE467041821C9F20054D2BC /* osk-twitterIcon-76@2x.png in Resources */,
@@ -1384,6 +1417,7 @@
 				7FE466FB1821C9F20054D2BC /* osk-mailIcon-76@2x.png in Resources */,
 				7F19F90B181F524B00E5EA52 /* osk-navbarButton-highlighted@2x.png in Resources */,
 				7FE4672D1821E9650054D2BC /* osk-copyIcon-yellow-76.png in Resources */,
+				7FA91AEA1889F53500A5DF9B /* ReadingList-Icon-76@2x.png in Resources */,
 				7FEE776A181ED8EF000F684A /* Chrome-Icon-76.png in Resources */,
 				7FE466F91821C9F20054D2BC /* osk-flickrIcon-76@2x.png in Resources */,
 				7FE467301821E9650054D2BC /* osk-pinboardIcon-76.png in Resources */,
@@ -1422,6 +1456,7 @@
 				7FE466F31821C9F20054D2BC /* osk-appStoreIcon-76.png in Resources */,
 				7FDCDE9B181EE1BA00AC2985 /* type.jpg in Resources */,
 				7FEE776F181ED8EF000F684A /* Omnifocus-Icon-72.png in Resources */,
+				7FA91AE91889F53500A5DF9B /* ReadingList-Icon-76.png in Resources */,
 				7FEE7771181ED8EF000F684A /* osk-airDropIcon-60@2x.png in Resources */,
 				7FEE777F181ED8EF000F684A /* osk-readabilityIcon-60@2x.png in Resources */,
 				7FE467061821CA7F0054D2BC /* osk-mailIcon-60@2x.png in Resources */,
@@ -1431,6 +1466,7 @@
 				7F19F91C181FF21C00E5EA52 /* osk-navbarButton-disabled@2x.png in Resources */,
 				7F19F91B181FF21C00E5EA52 /* osk-navbarButton-disabled.png in Resources */,
 				7F43DEB918217986003BE9B6 /* OSKFacebookPublishingViewController.xib in Resources */,
+				7FA91AF91889F68100A5DF9B /* ReadingList-Icon-60@2x.png in Resources */,
 				7FEE7779181ED8EF000F684A /* osk-icon-border-76@2x.png in Resources */,
 				7F77F42C1822F7760019452C /* osk-readabilityIcon-29.png in Resources */,
 				7FDCDE97181EE1BA00AC2985 /* rain.jpg in Resources */,
@@ -1447,6 +1483,7 @@
 				7FE466F41821C9F20054D2BC /* osk-appStoreIcon-76@2x.png in Resources */,
 				7FE466EC1821C9F20054D2BC /* 1Password-Icon-60@2x.png in Resources */,
 				7FE466FD1821C9F20054D2BC /* osk-messagesIcon-76@2x.png in Resources */,
+				7FA91AE61889F53500A5DF9B /* ReadingList-Icon-29@2x.png in Resources */,
 				7FE4673D1821FEAC0054D2BC /* osk-settingsPlaceholder@2x.png in Resources */,
 				7FEE776B181ED8EF000F684A /* Instapaper-Icon-120.png in Resources */,
 				7FEE7789181ED8EF000F684A /* Things-Icon-76.png in Resources */,
@@ -1534,6 +1571,7 @@
 				7F43DEB01821596D003BE9B6 /* SampleTimelineCell.m in Sources */,
 				7FEE77B5181ED8EF000F684A /* OSKInstapaperActivity.m in Sources */,
 				7FEE778B181ED8EF000F684A /* NSCoder+OSKCoder.m in Sources */,
+				7FA91AF41889F56F00A5DF9B /* OSKReadingListActivity.m in Sources */,
 				7FEE77B0181ED8EF000F684A /* OSKFileManager.m in Sources */,
 				7FEE77C4181ED8EF000F684A /* OSKPinboardUtility.m in Sources */,
 				7FEE77D9181ED8EF000F684A /* UIDevice+OSKHardware.m in Sources */,

@@ -24,6 +24,7 @@
 		7F75BF5A182158E500D3681E /* PocketAPIOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7F75BF4C1821589800D3681E /* PocketAPIOperation.h */; };
 		7F75BF5B182158E500D3681E /* PocketAPITypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7F75BF4E1821589800D3681E /* PocketAPITypes.h */; };
 		7F75BF5C182158E500D3681E /* SFHFKeychainUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7F75BF4F1821589800D3681E /* SFHFKeychainUtils.h */; };
+		7FA91AF71889F61D00A5DF9B /* OSKReadingListActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA91AF61889F61D00A5DF9B /* OSKReadingListActivity.m */; };
 		7FCD02821853975D005C5931 /* OSKActivityToggleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD02811853975D005C5931 /* OSKActivityToggleCell.m */; };
 		7FE4109E1821994B00B13AB1 /* OSKFacebookAudienceChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE410991821994B00B13AB1 /* OSKFacebookAudienceChooserViewController.m */; };
 		7FE4109F1821994B00B13AB1 /* OSKFacebookPublishingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4109B1821994B00B13AB1 /* OSKFacebookPublishingViewController.m */; };
@@ -178,6 +179,14 @@
 		7F77F4341822F91A0019452C /* osk-pinboardIcon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-pinboardIcon-29.png"; sourceTree = "<group>"; };
 		7F77F4351822F91A0019452C /* osk-readabilityIcon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-readabilityIcon-29.png"; sourceTree = "<group>"; };
 		7F77F4361822F91A0019452C /* Pocket-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pocket-Icon-29.png"; sourceTree = "<group>"; };
+		7FA91AEB1889F54800A5DF9B /* ReadingList-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-29.png"; sourceTree = "<group>"; };
+		7FA91AEC1889F54800A5DF9B /* ReadingList-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-29@2x.png"; sourceTree = "<group>"; };
+		7FA91AED1889F54800A5DF9B /* ReadingList-Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-60.png"; sourceTree = "<group>"; };
+		7FA91AEF1889F54800A5DF9B /* ReadingList-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-76.png"; sourceTree = "<group>"; };
+		7FA91AF01889F54800A5DF9B /* ReadingList-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-76@2x.png"; sourceTree = "<group>"; };
+		7FA91AF51889F61D00A5DF9B /* OSKReadingListActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKReadingListActivity.h; sourceTree = "<group>"; };
+		7FA91AF61889F61D00A5DF9B /* OSKReadingListActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKReadingListActivity.m; sourceTree = "<group>"; };
+		7FA91AFA1889F69100A5DF9B /* ReadingList-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReadingList-Icon-60@2x.png"; sourceTree = "<group>"; };
 		7FCD02801853975D005C5931 /* OSKActivityToggleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKActivityToggleCell.h; sourceTree = "<group>"; };
 		7FCD02811853975D005C5931 /* OSKActivityToggleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityToggleCell.m; sourceTree = "<group>"; };
 		7FD16DB1187636850035960C /* link-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-button.png"; sourceTree = "<group>"; };
@@ -694,6 +703,8 @@
 				7FEE7885181ED8FE000F684A /* OSKReadabilityActivity.m */,
 				7FEE7886181ED8FE000F684A /* OSKReadabilityUtility.h */,
 				7FEE7887181ED8FE000F684A /* OSKReadabilityUtility.m */,
+				7FA91AF51889F61D00A5DF9B /* OSKReadingListActivity.h */,
+				7FA91AF61889F61D00A5DF9B /* OSKReadingListActivity.m */,
 				7FEE7888181ED8FE000F684A /* OSKRPSTPasswordManagementAppService.h */,
 				7FEE7889181ED8FE000F684A /* OSKRPSTPasswordManagementAppService.m */,
 				7FEE788A181ED8FE000F684A /* OSKSafariActivity.h */,
@@ -751,6 +762,12 @@
 		7FEE77DD181ED8FE000F684A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7FA91AEB1889F54800A5DF9B /* ReadingList-Icon-29.png */,
+				7FA91AEC1889F54800A5DF9B /* ReadingList-Icon-29@2x.png */,
+				7FA91AED1889F54800A5DF9B /* ReadingList-Icon-60.png */,
+				7FA91AFA1889F69100A5DF9B /* ReadingList-Icon-60@2x.png */,
+				7FA91AEF1889F54800A5DF9B /* ReadingList-Icon-76.png */,
+				7FA91AF01889F54800A5DF9B /* ReadingList-Icon-76@2x.png */,
 				7FD16DB1187636850035960C /* link-button.png */,
 				7FD16DB2187636850035960C /* link-button@2x.png */,
 				7F77F4311822F91A0019452C /* Instapaper-Icon-29.png */,
@@ -916,6 +933,7 @@
 				7FEE78E2181ED8FE000F684A /* OSKPagedHorizontalLayout.m in Sources */,
 				7FEE78C2181ED8FE000F684A /* OSKActivityOperation.m in Sources */,
 				7FEE78DA181ED8FE000F684A /* OSKManagedAccount.m in Sources */,
+				7FA91AF71889F61D00A5DF9B /* OSKReadingListActivity.m in Sources */,
 				7FEE78E6181ED8FE000F684A /* OSKPresentationManager.m in Sources */,
 				7F55A30E18425C6C004A3BCC /* OSKSessionController_Phone.m in Sources */,
 				7FEE78DD181ED8FE000F684A /* OSKMessageComposeViewController.m in Sources */,

@@ -112,8 +112,7 @@
 }
 
 - (OSKActivityOperation *)operationForActivityWithCompletion:(OSKActivityCompletionHandler)completion {
-    OSKActivityOperation *op = nil;
-    return op;
+    return nil;
 }
      
 #pragma mark - Convenience

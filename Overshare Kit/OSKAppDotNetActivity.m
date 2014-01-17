@@ -137,8 +137,7 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
 }
 
 - (OSKActivityOperation *)operationForActivityWithCompletion:(OSKActivityCompletionHandler)completion {
-    OSKActivityOperation *op = nil;
-    return op;
+    return nil;
 }
 
 #pragma mark - Microblogging Activity Protocol
