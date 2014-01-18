@@ -51,7 +51,6 @@
 @property (strong, nonatomic) UIButton *linkShorteningButton;
 @property (strong, nonatomic) UIActivityIndicatorView *linkShorteningActivityIndicator;
 @property (assign, nonatomic) NSInteger activeLinkShorteningCount;
-@property (assign, nonatomic) NSUInteger reservedLengthForAttachmentURL;
 
 @end
 
@@ -510,12 +509,9 @@
 #pragma mark - Character Count
 
 - (void)updateRemainingCharacterCountLabel {
-    NSInteger countAdjustingForEmoji = [self.textView.attributedText.string lengthOfBytesUsingEncoding:NSUTF32StringEncoding]/4;
-    NSInteger remaining = [self.activity maximumCharacterCount] - countAdjustingForEmoji;
-    if (self.contentItem.images.count) {
-        NSUInteger numberToBeAttached = MIN([self.activity maximumImageCount], self.contentItem.images.count);
-        remaining -= numberToBeAttached * _reservedLengthForAttachmentURL;
-    }
+    
+    NSInteger remaining = [self.activity updateRemainingCharacterCount:self.contentItem urlEntities:self.textView.detectedLinks];;
+    
     self.characterCountLabel.text = @(remaining).stringValue;
     if (_characterCount_normalColor == nil) {
         OSKPresentationManager *presManager = [OSKPresentationManager sharedInstance];
@@ -548,18 +544,6 @@
     [self setContentItem:(OSKMicroblogPostContentItem *)self.activity.contentItem];
     [self setOskPublishingDelegate:oskPublishingDelegate];
     self.title = [self.activity.class activityName];
-    
-    if ([self.activity respondsToSelector:@selector(characterCountsAreAffectedByAttachments)]) {
-        BOOL adjustForAttachments = [self.activity characterCountsAreAffectedByAttachments];
-        if (adjustForAttachments) {
-            __weak OSKMicroblogPublishingViewController *weakSelf = self;
-            [self.activity getEstimatedAttachmentURLLength:^(NSUInteger length) {
-                [weakSelf setReservedLengthForAttachmentURL:length];
-                [weakSelf updateRemainingCharacterCountLabel];
-                [weakSelf updateDoneButton];
-            }];
-        }
-    }
 }
 
 #pragma mark - Account Chooser Delegate
