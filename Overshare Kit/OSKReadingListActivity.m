@@ -1,9 +1,9 @@
 //
 //  OSKReadingListActivity.m
-//  Overshare
+//  OvershareKit
 //
-//
-//  Copyright (c) 2013 Overshare Kit. All rights reserved.
+//  Created by Jared Sinclair on 1/10/14.
+//  Copyright (c) 2014 OvershareKit. All rights reserved.
 //
 
 #import "OSKReadingListActivity.h"
@@ -71,7 +71,11 @@
 }
 
 - (BOOL)isReadyToPerform {
-    return ([self readLaterItem].url != nil);
+    BOOL isReady = NO;
+    if ([self readLaterItem].url != nil) {
+        isReady = [SSReadingList supportsURL:[self readLaterItem].url];
+    }
+    return isReady;
 }
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
@@ -95,8 +99,7 @@
 }
 
 - (OSKActivityOperation *)operationForActivityWithCompletion:(OSKActivityCompletionHandler)completion {
-    OSKActivityOperation *op = nil;
-    return op;
+    return nil;
 }
 
 #pragma mark - Convenience

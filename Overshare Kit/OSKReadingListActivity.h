@@ -1,9 +1,9 @@
 //
 //  OSKReadingListActivity.h
-//  Unread
+//  OvershareKit
 //
-//  Created by Jared on 1/10/14.
-//  Copyright (c) 2014 Nice Boy LLC. All rights reserved.
+//  Created by Jared Sinclair on 1/10/14.
+//  Copyright (c) 2014 OvershareKit. All rights reserved.
 //
 
 #import "OSKActivity.h"

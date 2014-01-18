@@ -147,14 +147,26 @@ static NSString * OSKAppDotNetUtility_URL_WriteNewPost = @"stream/0/posts?access
                     userDictionary = [responseDictionary objectForKey:@"data"];
                 }
                 
+				//There are times when the values aren't present in the dictionary
                 NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-                userInfo[OSKAppDotNetUtility_UserInfoKey_accountID] = [userDictionary osk_nonNullStringIDForKey:kAccountID];
-                userInfo[OSKAppDotNetUtility_UserInfoKey_username] = [userDictionary osk_nonNullObjectForKey:kUsername];
-                userInfo[OSKAppDotNetUtility_UserInfoKey_name] = [userDictionary osk_nonNullObjectForKey:kName];
-                
-                NSDictionary *avatarObject = [userDictionary osk_nonNullObjectForKey:kAvatarObject];
-                userInfo[OSKAppDotNetUtility_UserInfoKey_avatarURL] = [avatarObject osk_nonNullObjectForKey:kAvatarURL];
-                if (completion) {
+				if ([userDictionary objectForKey:kAccountID]) {
+					userInfo[OSKAppDotNetUtility_UserInfoKey_accountID] = [userDictionary osk_nonNullStringIDForKey:kAccountID];
+                }
+                if ([userDictionary objectForKey:kUsername]) {
+					userInfo[OSKAppDotNetUtility_UserInfoKey_username] = [userDictionary osk_nonNullObjectForKey:kUsername];
+                }
+                if ([userDictionary objectForKey:kName]) {
+					userInfo[OSKAppDotNetUtility_UserInfoKey_name] = [userDictionary osk_nonNullObjectForKey:kName];
+                }
+            
+				if ([userDictionary objectForKey:kAvatarObject])
+				{
+					NSDictionary *avatarObject = [userDictionary osk_nonNullObjectForKey:kAvatarObject];
+					if ([avatarObject objectForKey:kAvatarURL]) {
+						userInfo[OSKAppDotNetUtility_UserInfoKey_avatarURL] = [avatarObject osk_nonNullObjectForKey:kAvatarURL];
+                    }
+                }
+				if (completion) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         completion(userInfo, nil);
                     });

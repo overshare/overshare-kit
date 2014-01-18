@@ -23,6 +23,8 @@ OvershareKit makes it trivial to add rich sharing options to your iOS apps. In a
 
 - Killer text editing views with as-you-type Twitter syntax highlighting, [Riposte](http://riposteapp.net)-style swipe gesture cursor navigation, and automatic smart quotes.
 
+## Screenshot
+
 <img src="https://jaredsinclair-dev.s3.amazonaws.com/web/jaredsinclair.com/overshare.png" width="320"/>
 
 ## How to Use OvershareKit
