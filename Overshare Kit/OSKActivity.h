@@ -58,7 +58,6 @@ typedef NS_ENUM(NSInteger, OSKPublishingViewControllerType) {
     OSKPublishingViewControllerType_Bespoke,        // Your custom, one-of-a-kind publishing view controller
     OSKPublishingViewControllerType_Microblogging,  // e.g. Twitter & App.net
     OSKPublishingViewControllerType_Blogging,       // e.g. Tumblr or WordPress
-    OSKPublishingViewControllerType_Facebook,       // duh
 };
 
 ///--------------------------------------------------------

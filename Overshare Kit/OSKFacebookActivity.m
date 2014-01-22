@@ -10,8 +10,9 @@
 
 #import "OSKFacebookActivity.h"
 #import "OSKShareableContentItem.h"
-#import "OSKFacebookUtility.h"
 #import "OSKApplicationCredential.h"
+
+#import <Facebook.h>
 
 static NSInteger OSKFacebookActivity_MaxCharacterCount = 6000;
 static NSInteger OSKFacebookActivity_MaxUsernameLength = 20;
@@ -19,34 +20,12 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
 
 @implementation OSKFacebookActivity
 
-@synthesize activeSystemAccount = _activeSystemAccount;
-
 - (instancetype)initWithContentItem:(OSKShareableContentItem *)item {
     self = [super initWithContentItem:item];
     if (self) {
         _currentAudience = ACFacebookAudienceEveryone;
     }
     return self;
-}
-
-#pragma mark - System Accounts
-
-+ (NSString *)systemAccountTypeIdentifier {
-    return ACAccountTypeIdentifierFacebook;
-}
-
-+ (NSDictionary *)readAccessRequestOptions {
-    OSKApplicationCredential *appCredential = [self applicationCredential];
-    return @{ACFacebookPermissionsKey:@[@"email"],
-             ACFacebookAudienceKey:ACFacebookAudienceEveryone,
-             ACFacebookAppIdKey:appCredential.applicationKey};
-}
-
-+ (NSDictionary *)writeAccessRequestOptions {
-    OSKApplicationCredential *appCredential = [self applicationCredential];
-    return @{ACFacebookPermissionsKey:@[@"publish_actions"],
-             ACFacebookAudienceKey:ACFacebookAudienceEveryone,
-             ACFacebookAppIdKey:appCredential.applicationKey};
 }
 
 #pragma mark - Methods for OSKActivity Subclasses
@@ -82,43 +61,53 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
 }
 
 + (OSKAuthenticationMethod)authenticationMethod {
-    return OSKAuthenticationMethod_SystemAccounts;
+    return OSKAuthenticationMethod_None;
 }
 
 + (BOOL)requiresApplicationCredential {
-    return YES;
+    NSAssert([[NSBundle mainBundle] objectForInfoDictionaryKey:@"FacebookAppID"], @"You must define your Facebook App ID in the main Info.plist file as defined by the Facebook SDK. \
+			 https://developers.facebook.com/docs/ios/getting-started#configure");
+	
+	return NO;
 }
 
 + (OSKPublishingViewControllerType)publishingViewControllerType {
-    return OSKPublishingViewControllerType_Facebook;
+    return OSKPublishingViewControllerType_None;
 }
 
 - (BOOL)isReadyToPerform {
-    BOOL accountPresent = (self.activeSystemAccount != nil);
-    
     OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)self.contentItem;
     NSInteger maxCharacterCount = [self maximumCharacterCount];
     BOOL textIsValid = (contentItem.text.length > 0 && contentItem.text.length <= maxCharacterCount);
     
-    return (accountPresent && textIsValid);
+    return textIsValid;
 }
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
     __weak OSKFacebookActivity *weakSelf = self;
-    UIBackgroundTaskIdentifier backgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-        if (completion) {
-            completion(weakSelf, NO, nil);
-        }
-    }];
-    [OSKFacebookUtility postContentItem:(OSKMicroblogPostContentItem *)self.contentItem
-                        toSystemAccount:self.activeSystemAccount
-                                options:@{ACFacebookAudienceKey:[self currentAudience]}
-                             completion:^(BOOL success, NSError *error) {
-                                 if (completion) {
-                                     completion(weakSelf, success, error);
-                                 }
-                                 [[UIApplication sharedApplication] endBackgroundTask:backgroundTaskIdentifier];
-     }];
+	
+	OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)self.contentItem;
+	FBShareDialogParams *shareParams	= [FBShareDialogParams new];
+	shareParams.link					= [NSURL URLWithString:contentItem.text];
+	
+	if ([FBDialogs canPresentShareDialogWithParams:shareParams])
+	{
+		[FBDialogs presentShareDialogWithParams:shareParams
+									clientState:nil
+										handler:nil];
+	}
+	else
+	{
+		[FBWebDialogs presentFeedDialogModallyWithSession:nil
+											   parameters:@{
+															@"link": contentItem.text,
+															}
+												  handler:nil];
+	}
+	
+	if (completion) {
+		completion(weakSelf, NO, nil);
+	}
 }
 
 + (BOOL)canPerformViaOperation {

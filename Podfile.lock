@@ -1,0 +1,16 @@
+PODS:
+  - ADNLogin (2.1.0)
+  - Facebook-iOS-SDK (3.11.1)
+  - PocketAPI (1.0.2)
+
+DEPENDENCIES:
+  - ADNLogin
+  - Facebook-iOS-SDK
+  - PocketAPI
+
+SPEC CHECKSUMS:
+  ADNLogin: ee20dc7e648813104930d445054cc9780599d864
+  Facebook-iOS-SDK: 42a1de39170b858d675c2453d8aace55c51be2bb
+  PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
+
+COCOAPODS: 0.29.0
