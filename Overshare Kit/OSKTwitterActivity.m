@@ -6,15 +6,11 @@
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 
-@import Accounts;
-
 #import "OSKTwitterActivity.h"
-#import "OSKTwitterUtility.h"
-#import "OSKMicrobloggingActivity.h"
-#import "OSKShareableContentItem.h"
 
-#import "OSKSystemAccountStore.h"
-#import "OSKActivity_SystemAccounts.h"
+@import Social;
+
+#import "OSKShareableContentItem.h"
 
 static NSInteger OSKTwitterActivity_MaxCharacterCount = 140;
 static NSInteger OSKTwitterActivity_MaxUsernameLength = 20;
@@ -26,20 +22,12 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 
 @implementation OSKTwitterActivity
 
-@synthesize activeSystemAccount = _activeSystemAccount;
-
 - (instancetype)initWithContentItem:(OSKShareableContentItem *)item {
     self = [super initWithContentItem:item];
     if (self) {
         //
     }
     return self;
-}
-
-#pragma mark - System Accounts
-
-+ (NSString *)systemAccountTypeIdentifier {
-    return ACAccountTypeIdentifierTwitter;
 }
 
 #pragma mark - Methods for OSKActivity Subclasses
@@ -49,7 +37,7 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 }
 
 + (BOOL)isAvailable {
-    return YES; // This is *in general*, not whether account access has been granted.
+    return [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter];
 }
 
 + (NSString *)activityType {
@@ -75,7 +63,7 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 }
 
 + (OSKAuthenticationMethod)authenticationMethod {
-    return OSKAuthenticationMethod_SystemAccounts;
+    return OSKAuthenticationMethod_None;
 }
 
 + (BOOL)requiresApplicationCredential {
@@ -83,17 +71,15 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 }
 
 + (OSKPublishingViewControllerType)publishingViewControllerType {
-    return OSKPublishingViewControllerType_Microblogging;
+    return OSKPublishingViewControllerType_System;
 }
 
 - (BOOL)isReadyToPerform {
-    BOOL accountPresent = (self.activeSystemAccount != nil);
-    
     OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)self.contentItem;
     NSInteger maxCharacterCount = [self maximumCharacterCount];
     BOOL textIsValid = (contentItem.text.length > 0 && contentItem.text.length <= maxCharacterCount);
     
-    return (accountPresent && textIsValid);
+	return textIsValid;
 }
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
@@ -103,15 +89,6 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
             completion(weakSelf, NO, nil);
         }
     }];
-    [OSKTwitterUtility
-     postContentItem:(OSKMicroblogPostContentItem *)self.contentItem
-     toSystemAccount:self.activeSystemAccount
-     completion:^(BOOL success, NSError *error) {
-         if (completion) {
-             completion(weakSelf, (error == nil), error);
-         }
-         [[UIApplication sharedApplication] endBackgroundTask:backgroundTaskIdentifier];
-     }];
 }
 
 + (BOOL)canPerformViaOperation {
@@ -141,7 +118,4 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 }
 
 @end
-
-
-
 

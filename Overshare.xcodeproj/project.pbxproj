@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03AB27E64DF84922845B5C6B /* libPods-Overshare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6372A9072146CEA4538CE3 /* libPods-Overshare.a */; };
+		72670B5618906CC100056736 /* OSKSocialComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72670B5518906CC100056736 /* OSKSocialComposeViewController.m */; };
 		727988D2187DB70F00966C66 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 727988D1187DB70F00966C66 /* Podfile */; };
 		727988D4187DB75A00966C66 /* OvershareKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 727988D3187DB75A00966C66 /* OvershareKit.podspec */; };
 		727988EE187DB91700966C66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 727988D7187DB91700966C66 /* InfoPlist.strings */; };
@@ -201,7 +202,6 @@
 		72798ADB187DB97300966C66 /* OSKTwitterActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A11187DB97200966C66 /* OSKTwitterActivity.m */; };
 		72798ADC187DB97300966C66 /* OSKTwitterText.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A13187DB97200966C66 /* OSKTwitterText.m */; };
 		72798ADD187DB97300966C66 /* OSKTwitterTextEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A15187DB97200966C66 /* OSKTwitterTextEntity.m */; };
-		72798ADE187DB97300966C66 /* OSKTwitterUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A17187DB97200966C66 /* OSKTwitterUtility.m */; };
 		72798ADF187DB97300966C66 /* OSKUsernamePasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A19187DB97200966C66 /* OSKUsernamePasswordCell.m */; };
 		72798AE0187DB97300966C66 /* OSKUsernamePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A1B187DB97300966C66 /* OSKUsernamePasswordViewController.m */; };
 		72798AE1187DB97300966C66 /* OSKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A1D187DB97300966C66 /* OSKWebViewController.m */; };
@@ -218,6 +218,8 @@
 
 /* Begin PBXFileReference section */
 		6649A76ED6254C548DFF6344 /* Pods-Overshare.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Overshare.xcconfig"; path = "Pods/Pods-Overshare.xcconfig"; sourceTree = "<group>"; };
+		72670B5418906CC100056736 /* OSKSocialComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSocialComposeViewController.h; sourceTree = "<group>"; };
+		72670B5518906CC100056736 /* OSKSocialComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSocialComposeViewController.m; sourceTree = "<group>"; };
 		727988D1187DB70F00966C66 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		727988D3187DB75A00966C66 /* OvershareKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OvershareKit.podspec; sourceTree = "<group>"; };
 		727988D8187DB91700966C66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -506,8 +508,6 @@
 		72798A13187DB97200966C66 /* OSKTwitterText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTwitterText.m; sourceTree = "<group>"; };
 		72798A14187DB97200966C66 /* OSKTwitterTextEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTwitterTextEntity.h; sourceTree = "<group>"; };
 		72798A15187DB97200966C66 /* OSKTwitterTextEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTwitterTextEntity.m; sourceTree = "<group>"; };
-		72798A16187DB97200966C66 /* OSKTwitterUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTwitterUtility.h; sourceTree = "<group>"; };
-		72798A17187DB97200966C66 /* OSKTwitterUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTwitterUtility.m; sourceTree = "<group>"; };
 		72798A18187DB97200966C66 /* OSKUsernamePasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKUsernamePasswordCell.h; sourceTree = "<group>"; };
 		72798A19187DB97200966C66 /* OSKUsernamePasswordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKUsernamePasswordCell.m; sourceTree = "<group>"; };
 		72798A1A187DB97200966C66 /* OSKUsernamePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKUsernamePasswordViewController.h; sourceTree = "<group>"; };
@@ -551,6 +551,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72670B5318906CAB00056736 /* Social Composer */ = {
+			isa = PBXGroup;
+			children = (
+				72670B5418906CC100056736 /* OSKSocialComposeViewController.h */,
+				72670B5518906CC100056736 /* OSKSocialComposeViewController.m */,
+			);
+			name = "Social Composer";
+			sourceTree = "<group>";
+		};
 		727988D6187DB91700966C66 /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,8 +771,6 @@
 			children = (
 				72798A10187DB97200966C66 /* OSKTwitterActivity.h */,
 				72798A11187DB97200966C66 /* OSKTwitterActivity.m */,
-				72798A16187DB97200966C66 /* OSKTwitterUtility.h */,
-				72798A17187DB97200966C66 /* OSKTwitterUtility.m */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -1031,6 +1038,7 @@
 		72798B07187DBFBC00966C66 /* Publishing */ = {
 			isa = PBXGroup;
 			children = (
+				72670B5318906CAB00056736 /* Social Composer */,
 				72798B0C187DC01100966C66 /* Message Composer */,
 				72798B0B187DC00100966C66 /* Mail Composer */,
 				72798B0A187DBFF100966C66 /* AirDrop */,
@@ -1502,6 +1510,7 @@
 				72798A8C187DB97300966C66 /* NSCoder+OSKCoder.m in Sources */,
 				72798AA0187DB97300966C66 /* OSKActivityIcon.m in Sources */,
 				727988F7187DB91700966C66 /* SampleAppPurchasingViewController.m in Sources */,
+				72670B5618906CC100056736 /* OSKSocialComposeViewController.m in Sources */,
 				72798ADC187DB97300966C66 /* OSKTwitterText.m in Sources */,
 				72798ACB187DB97300966C66 /* OSKPocketActivity.m in Sources */,
 				72798AE4187DB97300966C66 /* UIImage+OSKUtilities.m in Sources */,
@@ -1541,7 +1550,6 @@
 				72798AA5187DB97300966C66 /* OSKActivityToggleCell.m in Sources */,
 				72798AE3187DB97300966C66 /* UIDevice+OSKHardware.m in Sources */,
 				72798AB2187DB97300966C66 /* OSKFacebookActivity.m in Sources */,
-				72798ADE187DB97300966C66 /* OSKTwitterUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

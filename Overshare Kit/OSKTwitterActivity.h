@@ -11,6 +11,6 @@
 #import "OSKMicrobloggingActivity.h"
 #import "OSKActivity_SystemAccounts.h"
 
-@interface OSKTwitterActivity : OSKActivity <OSKMicrobloggingActivity, OSKActivity_SystemAccounts>
+@interface OSKTwitterActivity : OSKActivity <OSKMicrobloggingActivity>
 
 @end
