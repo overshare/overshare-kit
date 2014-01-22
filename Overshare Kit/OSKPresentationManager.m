@@ -30,6 +30,7 @@
 #import "OSKUsernamePasswordViewController.h"
 #import "OSKMessageComposeViewController.h"
 #import "OSKMailComposeViewController.h"
+#import "OSKSocialComposeViewController.h"
 #import "OSKNavigationController.h"
 #import "OSKPresentationManager_Protected.h"
 #import "UIViewController+OSKUtilities.h"
@@ -937,6 +938,9 @@ willRepositionPopoverToRect:(inout CGRect *)rect
                 }
                 else if ([activity.contentItem.itemType isEqualToString:OSKShareableContentItemType_AirDrop]) {
                     viewController = [[OSKAirDropViewController alloc] initWithAirDropItem:(OSKAirDropContentItem *)activity.contentItem];
+                }
+                else if ([[activity.class activityType] isEqualToString:OSKActivityType_iOS_Twitter]) {
+                    viewController = [OSKSocialComposeViewController composeForMicrobloggingActivity:activity];
                 }
             } break;
             case OSKPublishingViewControllerType_Bespoke: {
