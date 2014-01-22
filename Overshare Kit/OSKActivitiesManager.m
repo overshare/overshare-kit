@@ -167,7 +167,7 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
         for (id activityClass in bespokeActivities) {
             NSAssert([activityClass respondsToSelector:@selector(supportedContentItemType)], @"The bespokeActivities array must contain classes inheriting from OSKActivity, not actual instances of the class.");
             if ([[activityClass supportedContentItemType] isEqualToString:item.itemType]) {
-                NSString *type = [activityClass activityType];
+                NSString *type = [(Class)activityClass activityType];
                 if ([excludedActivityTypes containsObject:type] == NO) {
                     if ((requireOperations && [activityClass canPerformViaOperation]) || requireOperations == NO) {
                         OSKActivity *activity = [[activityClass alloc] initWithContentItem:item];

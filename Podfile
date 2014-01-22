@@ -5,6 +5,7 @@ target "Overshare" do
 
 pod "PocketAPI"
 pod "ADNLogin"
+pod "Facebook-iOS-SDK"
 
 end
 

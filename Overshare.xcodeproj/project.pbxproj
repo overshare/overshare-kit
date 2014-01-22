@@ -162,10 +162,6 @@
 		72798AB0187DB97300966C66 /* OSKCopyToPasteboardActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989B4187DB97200966C66 /* OSKCopyToPasteboardActivity.m */; };
 		72798AB1187DB97300966C66 /* OSKEmailActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989B6187DB97200966C66 /* OSKEmailActivity.m */; };
 		72798AB2187DB97300966C66 /* OSKFacebookActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989B8187DB97200966C66 /* OSKFacebookActivity.m */; };
-		72798AB3187DB97300966C66 /* OSKFacebookAudienceChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989BA187DB97200966C66 /* OSKFacebookAudienceChooserViewController.m */; };
-		72798AB4187DB97300966C66 /* OSKFacebookPublishingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989BC187DB97200966C66 /* OSKFacebookPublishingViewController.m */; };
-		72798AB5187DB97300966C66 /* OSKFacebookPublishingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727989BD187DB97200966C66 /* OSKFacebookPublishingViewController.xib */; };
-		72798AB6187DB97300966C66 /* OSKFacebookUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989BF187DB97200966C66 /* OSKFacebookUtility.m */; };
 		72798AB7187DB97300966C66 /* OSKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989C1187DB97200966C66 /* OSKFileManager.m */; };
 		72798AB8187DB97300966C66 /* OSKInMemoryImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989C3187DB97200966C66 /* OSKInMemoryImageCache.m */; };
 		72798AB9187DB97300966C66 /* OSKInstapaperActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 727989C5187DB97200966C66 /* OSKInstapaperActivity.m */; };
@@ -425,13 +421,6 @@
 		727989B6187DB97200966C66 /* OSKEmailActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKEmailActivity.m; sourceTree = "<group>"; };
 		727989B7187DB97200966C66 /* OSKFacebookActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookActivity.h; sourceTree = "<group>"; };
 		727989B8187DB97200966C66 /* OSKFacebookActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookActivity.m; sourceTree = "<group>"; };
-		727989B9187DB97200966C66 /* OSKFacebookAudienceChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookAudienceChooserViewController.h; sourceTree = "<group>"; };
-		727989BA187DB97200966C66 /* OSKFacebookAudienceChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookAudienceChooserViewController.m; sourceTree = "<group>"; };
-		727989BB187DB97200966C66 /* OSKFacebookPublishingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookPublishingViewController.h; sourceTree = "<group>"; };
-		727989BC187DB97200966C66 /* OSKFacebookPublishingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookPublishingViewController.m; sourceTree = "<group>"; };
-		727989BD187DB97200966C66 /* OSKFacebookPublishingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSKFacebookPublishingViewController.xib; sourceTree = "<group>"; };
-		727989BE187DB97200966C66 /* OSKFacebookUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookUtility.h; sourceTree = "<group>"; };
-		727989BF187DB97200966C66 /* OSKFacebookUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookUtility.m; sourceTree = "<group>"; };
 		727989C0187DB97200966C66 /* OSKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFileManager.h; sourceTree = "<group>"; };
 		727989C1187DB97200966C66 /* OSKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFileManager.m; sourceTree = "<group>"; };
 		727989C2187DB97200966C66 /* OSKInMemoryImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKInMemoryImageCache.h; sourceTree = "<group>"; };
@@ -862,8 +851,6 @@
 			children = (
 				727989B7187DB97200966C66 /* OSKFacebookActivity.h */,
 				727989B8187DB97200966C66 /* OSKFacebookActivity.m */,
-				727989BE187DB97200966C66 /* OSKFacebookUtility.h */,
-				727989BF187DB97200966C66 /* OSKFacebookUtility.m */,
 			);
 			name = Facebook;
 			sourceTree = "<group>";
@@ -1048,21 +1035,8 @@
 				72798B0B187DC00100966C66 /* Mail Composer */,
 				72798B0A187DBFF100966C66 /* AirDrop */,
 				72798B09187DBFDC00966C66 /* Microblogging */,
-				72798B08187DBFC500966C66 /* Facebook */,
 			);
 			name = Publishing;
-			sourceTree = "<group>";
-		};
-		72798B08187DBFC500966C66 /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-				727989B9187DB97200966C66 /* OSKFacebookAudienceChooserViewController.h */,
-				727989BA187DB97200966C66 /* OSKFacebookAudienceChooserViewController.m */,
-				727989BB187DB97200966C66 /* OSKFacebookPublishingViewController.h */,
-				727989BC187DB97200966C66 /* OSKFacebookPublishingViewController.m */,
-				727989BD187DB97200966C66 /* OSKFacebookPublishingViewController.xib */,
-			);
-			name = Facebook;
 			sourceTree = "<group>";
 		};
 		72798B09187DBFDC00966C66 /* Microblogging */ = {
@@ -1347,7 +1321,6 @@
 				72798A5F187DB97300966C66 /* osk-iconMask-bw-76@2x.png in Resources */,
 				72798A9E187DB97300966C66 /* OSKActivityCollectionViewCell_Pad.xib in Resources */,
 				72F280CA188301EA00AC5E8F /* OSKLocalizations.bundle in Resources */,
-				72798AB5187DB97300966C66 /* OSKFacebookPublishingViewController.xib in Resources */,
 				72798A78187DB97300966C66 /* osk-readabilityIcon-76@2x.png in Resources */,
 				72798A73187DB97300966C66 /* osk-pinboardIcon-76@2x.png in Resources */,
 				727988F1187DB91700966C66 /* Icon-76@2x.png in Resources */,
@@ -1486,7 +1459,6 @@
 				72798AE6187DB97300966C66 /* UIViewController+OSKUtilities.m in Sources */,
 				72798ABE187DB97300966C66 /* OSKManagedAccount.m in Sources */,
 				72798ADD187DB97300966C66 /* OSKTwitterTextEntity.m in Sources */,
-				72798AB4187DB97300966C66 /* OSKFacebookPublishingViewController.m in Sources */,
 				72798ACE187DB97300966C66 /* OSKReadabilityUtility.m in Sources */,
 				72798A96187DB97300966C66 /* OSKAccountChooserViewController.m in Sources */,
 				72798AD6187DB97300966C66 /* OSKShareableContentItem.m in Sources */,
@@ -1517,7 +1489,6 @@
 				72798A95187DB97300966C66 /* OSK1PasswordSearchActivity.m in Sources */,
 				72798A90187DB97300966C66 /* NSHTTPURLResponse+OSKUtilities.m in Sources */,
 				72798AC4187DB97300966C66 /* OSKNavigationController.m in Sources */,
-				72798AB6187DB97300966C66 /* OSKFacebookUtility.m in Sources */,
 				72798AD9187DB97300966C66 /* OSKTextView.m in Sources */,
 				72798AD2187DB97300966C66 /* OSKSessionController.m in Sources */,
 				72798AA6187DB97300966C66 /* OSKADNLoginManager.m in Sources */,
@@ -1566,7 +1537,6 @@
 				72798ABB187DB97300966C66 /* OSKKeychainUtility.m in Sources */,
 				72798ABA187DB97300966C66 /* OSKInstapaperUtility.m in Sources */,
 				72798ACC187DB97300966C66 /* OSKPresentationManager.m in Sources */,
-				72798AB3187DB97300966C66 /* OSKFacebookAudienceChooserViewController.m in Sources */,
 				72798ADA187DB97300966C66 /* OSKThingsActivity.m in Sources */,
 				72798AA5187DB97300966C66 /* OSKActivityToggleCell.m in Sources */,
 				72798AE3187DB97300966C66 /* UIDevice+OSKHardware.m in Sources */,
