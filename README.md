@@ -3,6 +3,22 @@
 
 #### A soup-to-nuts sharing library for iOS.
 
+## Table of Contents    
+
+- [Why OvershareKit?](#why-oversharekit)
+- [Screenshot](#screenshot)
+- [How to Use OvershareKit](#how-to-use-oversharekit)
+- [Architecture](#architecture)
+- [Authentication](#authentication)
+- [Application-Specific Credentials](#application-specific-credentials)
+- [URL Schemes](#url-schemes)
+- [Dependencies](#dependencies)
+- [In-App Purchases](#in-app-purchases)
+- [So Much More](#so-much-more)
+- [Contributors](#contributors)
+- [Attributions](#attributions)
+- [License](#license)
+
 ## Why OvershareKit?
 
 Sharing is far too cumbersome to implement on iOS. UIActivityViewController is too limiting, and rolling your own library is too time-consuming. Most devs end up settling for underwhelming sharing options for lack of the time or inclination to make something better.
