@@ -1153,55 +1153,77 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 
 #pragma mark - Smart Quotes
 
-- (void)fixDumbQuotes:(NSTextStorage *)mutableString {
-    NSString *copyOfOriginalString = [mutableString.string copy];
+-(void)fixDumbQuotes:(NSTextStorage *)textStorage {
+    
+    NSString *copyOfOriginalString = [textStorage.string copy];
+    
     NSString *dumbDouble = @"\"";
     NSString *dumbSingle = @"'";
     NSString *leftSmartSingle = @"‛";
     NSString *leftSmartDouble = @"“";
     NSString *rightSmartSingle = @"’";
     NSString *rightSmartDouble = @"”";
-
-    NSString *regexThatShouldBeFollowedByLeftQuotes = [NSString stringWithFormat:@"(\\s|\\(|\\[|\\{|\\<|\\〈|%@|%@)", leftSmartSingle, leftSmartDouble];
+    
+    NSString *regex = [NSString stringWithFormat:@"(\\s|\\(|\\[|\\{|\\<|\\〈|%@|%@)",
+                       leftSmartSingle,
+                       leftSmartDouble];
+    
+    NSString *regexThatShouldBeFollowedByLeftQuotes = regex;
     
     [copyOfOriginalString
      enumerateSubstringsInRange:NSMakeRange(0, [copyOfOriginalString length])
      options:NSStringEnumerationByComposedCharacterSequences
      usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
          
-        if ([substring isEqualToString:dumbDouble]) {
-            if (substringRange.location > 0) {
-                NSString *previousCharacter = [mutableString.string substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
-                NSRange rangeOfRegexMatch = [previousCharacter rangeOfString:regexThatShouldBeFollowedByLeftQuotes options:NSRegularExpressionSearch];
-                BOOL useLeftQuote = (rangeOfRegexMatch.location != NSNotFound);
-                if (useLeftQuote) {
-                    [mutableString replaceCharactersInRange:substringRange withString:leftSmartDouble];
-                }
-                else {
-                    [mutableString replaceCharactersInRange:substringRange withString:rightSmartDouble];
-                }
-            }
-            else {
-                [mutableString replaceCharactersInRange:substringRange withString:leftSmartDouble];
-            }
-        }
-        else if ([substring isEqualToString:dumbSingle]) {
-            if (substringRange.location > 0) {
-                NSString *previousCharacter = [copyOfOriginalString substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
-                NSRange rangeOfRegexMatch = [previousCharacter rangeOfString:regexThatShouldBeFollowedByLeftQuotes options:NSRegularExpressionSearch];
-                BOOL useLeftQuote = (rangeOfRegexMatch.location != NSNotFound);
-                if (useLeftQuote) {
-                    [mutableString replaceCharactersInRange:substringRange withString:leftSmartSingle];
-                }
-                else {
-                    [mutableString replaceCharactersInRange:substringRange withString:rightSmartSingle];
-                }
-            }
-            else {
-                [mutableString replaceCharactersInRange:substringRange withString:leftSmartSingle];
-            }
-        }
-    }];
+         if ([substring isEqualToString:dumbDouble]) {
+             
+             if (substringRange.location > 0) {
+                 
+                 NSString *previousCharacter = [copyOfOriginalString
+                                                substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
+                 
+                 NSRange rangeOfRegexMatch = [previousCharacter
+                                              rangeOfString:regexThatShouldBeFollowedByLeftQuotes
+                                              options:NSRegularExpressionSearch];
+                 
+                 BOOL useLeftQuote = (rangeOfRegexMatch.location != NSNotFound);
+                 
+                 if (useLeftQuote) {
+                     [textStorage replaceCharactersInRange:substringRange withString:leftSmartDouble];
+                 }
+                 else {
+                     [textStorage replaceCharactersInRange:substringRange withString:rightSmartDouble];
+                 }
+             }
+             else {
+                 [textStorage replaceCharactersInRange:substringRange withString:leftSmartDouble];
+             }
+         }
+         else if ([substring isEqualToString:dumbSingle]) {
+             
+             if (substringRange.location > 0) {
+                 
+                 NSString *previousCharacter = [copyOfOriginalString
+                                                substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
+                 
+                 NSRange rangeOfRegexMatch = [previousCharacter
+                                              rangeOfString:regexThatShouldBeFollowedByLeftQuotes
+                                              options:NSRegularExpressionSearch];
+                 
+                 BOOL useLeftQuote = (rangeOfRegexMatch.location != NSNotFound);
+                 
+                 if (useLeftQuote) {
+                     [textStorage replaceCharactersInRange:substringRange withString:leftSmartSingle];
+                 }
+                 else {
+                     [textStorage replaceCharactersInRange:substringRange withString:rightSmartSingle];
+                 }
+             }
+             else {
+                 [textStorage replaceCharactersInRange:substringRange withString:leftSmartSingle];
+             }
+         }
+     }];
 }
 
 #pragma mark - OSKTextViewAttachmentViewDelegate
