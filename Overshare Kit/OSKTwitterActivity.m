@@ -84,7 +84,7 @@ static NSInteger OSKTwitterActivity_MaxImageCount = 1;
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
     __weak OSKTwitterActivity *weakSelf = self;
-    UIBackgroundTaskIdentifier backgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+	[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
         if (completion) {
             completion(weakSelf, NO, nil);
         }

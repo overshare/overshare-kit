@@ -40,12 +40,18 @@
 	return compose;
 }
 
-- (void)preparePublishingViewForActivity:(OSKActivity *)activity delegate:(id <OSKPublishingViewControllerDelegate>)oskPublishingDelegate
+- (void)preparePublishingViewForActivity:(OSKActivity *)activity delegate:(id<OSKPublishingViewControllerDelegate>)oskPublishingDelegate
 {
+	self.oskPublishingDelegate = oskPublishingDelegate;
+	
 	OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)self.contentItem;
 	
 	[self addURL:[NSURL URLWithString:contentItem.text]];
 	[self addImage:contentItem.images.firstObject];
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
 }
 
 @end

@@ -1652,6 +1652,7 @@
 				GCC_PREFIX_HEADER = "Projects/iOS App/Overshare-Prefix.pch";
 				INFOPLIST_FILE = "Projects/iOS App/Overshare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0AEA4871-9E21-47F6-9B41-DC989F5E0E24";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1667,6 +1668,7 @@
 				GCC_PREFIX_HEADER = "Projects/iOS App/Overshare-Prefix.pch";
 				INFOPLIST_FILE = "Projects/iOS App/Overshare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0AEA4871-9E21-47F6-9B41-DC989F5E0E24";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

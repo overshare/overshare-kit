@@ -40,13 +40,9 @@
  
  @param accountTypeIdentifier The iOS account type identifier (See ACAccountType.h)
  
- @param options An options dictionary for the access request. Used by Facebook accounts. Should be `nil` if
- requesting Twitter account access.
- 
  @param completion A completion handler called at the end of the request, whether it succeeds or fails.
  */
 - (void)requestAccessToAccountsWithAccountTypeIdentifier:(NSString *)accountTypeIdentifier
-                                                 options:(NSDictionary *)options
                                               completion:(OSKSystemAccountAccessRequestCompletionHandler)completion;
 
 

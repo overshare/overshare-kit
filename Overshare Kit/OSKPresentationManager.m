@@ -718,9 +718,6 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         else if ([activityType isEqualToString:OSKActivityType_iOS_Twitter]) {
             text = @"Tweet";
         }
-        else if ([activityType isEqualToString:OSKActivityType_iOS_Facebook]) {
-            text = @"Post";
-        }
         else {
             text = @"Send";
         }
@@ -889,50 +886,6 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     }
     if (text == nil) {
         text = @"Please double check your username and password and try again.";
-    }
-    return text;
-}
-
-- (NSString *)localizedText_FacebookAudience_Public {
-    NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_FacebookAudience_Public)]) {
-        text = [self.localizationDelegate osk_localizedText_FacebookAudience_Public];
-    }
-    if (text == nil) {
-        text = @"Public";
-    }
-    return text;
-}
-
-- (NSString *)localizedText_FacebookAudience_Friends {
-    NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_FacebookAudience_Friends)]) {
-        text = [self.localizationDelegate osk_localizedText_FacebookAudience_Friends];
-    }
-    if (text == nil) {
-        text = @"Friends";
-    }
-    return text;
-}
-
-- (NSString *)localizedText_FacebookAudience_OnlyMe {
-    NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_FacebookAudience_OnlyMe)]) {
-        text = [self.localizationDelegate osk_localizedText_FacebookAudience_OnlyMe];
-    }
-    if (text == nil) {
-        text = @"Only Me";
-    }
-    return text;
-}
-
-- (NSString *)localizedText_FacebookAudience_Audience {
-    NSString *text = nil;
-    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_FacebookAudience_Audience)]) {
-        text = [self.localizationDelegate osk_localizedText_FacebookAudience_Audience];
-    }
-    if (text == nil) {
-        text = @"Audience";
     }
     return text;
 }

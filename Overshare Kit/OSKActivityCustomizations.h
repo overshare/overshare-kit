@@ -26,7 +26,6 @@
  
  The following built-in services require application credentials:
  
- - Facebook
  - App.net
  - Readability
  - Pocket
