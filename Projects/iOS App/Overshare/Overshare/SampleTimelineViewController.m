@@ -177,8 +177,8 @@
 }
 
 - (BOOL)osk_toolbarsUseUnjustifiablyBorderlessButtons {
-    BOOL hellNo = NO;
-    return hellNo;
+#warning Override this to use bordered navigation bar buttons.
+    return YES;
 }
 
 

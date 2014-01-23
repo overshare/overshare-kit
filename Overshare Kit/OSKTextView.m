@@ -364,7 +364,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     if (boldDescriptor) {
         boldFont = [UIFont fontWithDescriptor:boldDescriptor size:fontSize];
     } else {
-        boldFont = [UIFont systemFontOfSize:fontSize];
+        boldFont = [UIFont boldSystemFontOfSize:fontSize];
     }
     
     UIColor *normalColor = manager.color_text;
