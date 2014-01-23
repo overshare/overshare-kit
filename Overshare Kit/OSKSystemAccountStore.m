@@ -40,12 +40,11 @@
 }
 
 - (void)requestAccessToAccountsWithAccountTypeIdentifier:(NSString *)accountTypeIdentifier
-                                                 options:(NSDictionary *)options
                                               completion:(OSKSystemAccountAccessRequestCompletionHandler)completion
 {
     ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:accountTypeIdentifier];
 
-    [self.accountStore requestAccessToAccountsWithType:accountType options:options completion:^(BOOL granted, NSError *error) {
+    [self.accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 OSKLog(@"System account access request denied: %@", error.localizedDescription);

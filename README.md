@@ -17,7 +17,7 @@ Overshare makes it trivial to add rich sharing options to your iOS apps. In a wo
 
 - Lots of tweakable options, including a gorgeous dark mode.
 
-- Built-in integration with iOS Twitter and Facebook accounts.
+- Native integration with iOS Twitter and Facebook accounts.
 
 - Built-in integration with popular third-party services like App.net, Instapaper, and more.
 
@@ -78,7 +78,7 @@ The list of services currently requiring application credentials are:
 
 - **Pocket:** Visit http://getpocket.com/developer/ for more information. In addition to registering your app, you'll need to follow their instructions for setting up a custom URL scheme, including downloading the Pocket iOS SDK. *There is no way to sign into Pocket without setting up this URL scheme.*
 
-- **Facebook:** The iOS authentication requirements for Facebook include passing an application ID. Register your app at http://developers.facebook.com/.
+- **Facebook:** As stated by the [Facebook API Documentation](https://developers.facebook.com/docs/ios/getting-started#configure) you must set your Facebook App ID in the projects Info.plist. Otherwise the application will crash!
 
 - **Readability:** You'll need to obtain an application key and secret by registering your app via a new developer account. Visit http://www.readability.com for more information.
 
@@ -97,6 +97,9 @@ There are two required external libraries:
 - [App.net Login SDK](https://github.com/appdotnet/ADNLogin-SDK-iOS)
 
 - [Pocket-iOS-SDK](https://github.com/Pocket/Pocket-ObjC-SDK)
+
+- [Facebook iOS SDK](https://developers.facebook.com/docs/ios)
+
 
 
 ## In-App Purchases

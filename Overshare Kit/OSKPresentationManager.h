@@ -293,10 +293,6 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 - (NSString *)localizedText_AccessNotGrantedForSystemAccounts_Message;
 - (NSString *)localizedText_UnableToSignIn;
 - (NSString *)localizedText_PleaseDoubleCheckYourUsernameAndPasswordAndTryAgain;
-- (NSString *)localizedText_FacebookAudience_Public;
-- (NSString *)localizedText_FacebookAudience_Friends;
-- (NSString *)localizedText_FacebookAudience_OnlyMe;
-- (NSString *)localizedText_FacebookAudience_Audience;
 - (NSString *)localizedText_OptionalActivities;
 
 @end

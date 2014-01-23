@@ -29,18 +29,6 @@ typedef void(^OSKSystemAccountAccessRequestCompletionHandler)(BOOL successful, N
  */
 + (NSString *)systemAccountTypeIdentifier;
 
-@optional
-
-/**
- @return Returns an `NSDictionary` of read access request options, or nil. Used only by `OSKFacebookActivity`.
- */
-+ (NSDictionary *)readAccessRequestOptions;
-
-/**
- @return Returns an `NSDictionary` of write access request options, or nil. Used only by `OSKFacebookActivity`.
- */
-+ (NSDictionary *)writeAccessRequestOptions;
-
 @end
 
 

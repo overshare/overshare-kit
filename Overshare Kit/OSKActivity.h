@@ -201,7 +201,7 @@ typedef NS_ENUM(NSInteger, OSKPublishingViewControllerType) {
  "None" is self explanatory. These activities do not require authentication before they can perform
  their task.
  
- "SystemAccounts" refers to accounts handled by iOS, e.g. Twitter or Facebook.
+ "SystemAccounts" refers to accounts handled by iOS, e.g. Twitter.
  
  "ManagedAccounts" refers to accounts managed by Overshare Kit, e.g. App.net or Instapaper, to name
  a few.

@@ -716,9 +716,6 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         else if ([activityType isEqualToString:OSKActivityType_iOS_Twitter]) {
             text = OSKLocalizedString(@"Tweet", nil);
         }
-        else if ([activityType isEqualToString:OSKActivityType_iOS_Facebook]) {
-            text = OSKLocalizedString(@"Post", nil);
-        }
         else {
             text = OSKLocalizedString(@"Send", nil);
         }
@@ -842,38 +839,6 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     NSString *text = nil;
     if (text == nil) {
         text = OSKLocalizedString(@"Please double check your username and password and try again.", nil);
-    }
-    return text;
-}
-
-- (NSString *)localizedText_FacebookAudience_Public {
-    NSString *text = nil;
-    if (text == nil) {
-        text = OSKLocalizedString(@"Public", nil);
-    }
-    return text;
-}
-
-- (NSString *)localizedText_FacebookAudience_Friends {
-    NSString *text = nil;
-    if (text == nil) {
-        text = OSKLocalizedString(@"Friends", nil);
-    }
-    return text;
-}
-
-- (NSString *)localizedText_FacebookAudience_OnlyMe {
-    NSString *text = nil;
-    if (text == nil) {
-        text = OSKLocalizedString(@"Only Me", nil);
-    }
-    return text;
-}
-
-- (NSString *)localizedText_FacebookAudience_Audience {
-    NSString *text = nil;
-    if (text == nil) {
-        text = OSKLocalizedString(@"Audience", nil);
     }
     return text;
 }
