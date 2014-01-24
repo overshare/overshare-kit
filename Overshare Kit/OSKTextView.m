@@ -1159,10 +1159,11 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     
     NSString *dumbDouble = @"\"";
     NSString *dumbSingle = @"'";
-    NSString *leftSmartSingle = @"‛";
+    NSString *leftSmartSingle = @"‘";
     NSString *leftSmartDouble = @"“";
     NSString *rightSmartSingle = @"’";
     NSString *rightSmartDouble = @"”";
+    
     
     NSString *regex = [NSString stringWithFormat:@"(\\s|\\(|\\[|\\{|\\<|\\〈|%@|%@)",
                        leftSmartSingle,
