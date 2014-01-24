@@ -48,6 +48,23 @@
 	
 	[self addURL:[NSURL URLWithString:contentItem.text]];
 	[self addImage:contentItem.images.firstObject];
+	
+	__block UIViewController<OSKPublishingViewController> *blockSelf = self;
+	[self setCompletionHandler:^(SLComposeViewControllerResult result) {
+		switch (result)
+		{
+			case SLComposeViewControllerResultDone:
+				[oskPublishingDelegate publishingViewController:blockSelf didTapPublishActivity:activity];
+				break;
+				
+			case SLComposeViewControllerResultCancelled:
+				[oskPublishingDelegate publishingViewControllerDidCancel:blockSelf withActivity:activity];
+				break;
+				
+			default:
+				break;
+		}
+	}];
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result

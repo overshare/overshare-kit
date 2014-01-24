@@ -94,19 +94,23 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
 	{
 		[FBDialogs presentShareDialogWithParams:shareParams
 									clientState:nil
-										handler:nil];
+										handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+											if (completion)
+											{
+												completion(weakSelf, [results[@"completionGesture"] isEqualToString:@"post"], error);
+											}
+										}];
 	}
 	else
 	{
 		[FBWebDialogs presentFeedDialogModallyWithSession:nil
-											   parameters:@{
-															@"link": contentItem.text,
-															}
-												  handler:nil];
-	}
-	
-	if (completion) {
-		completion(weakSelf, NO, nil);
+											   parameters:@{@"link": contentItem.text}
+												  handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+													  if (completion)
+													  {
+														  completion(weakSelf, result == FBWebDialogResultDialogCompleted, error);
+													  }
+												  }];
 	}
 }
 

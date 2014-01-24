@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		7278E40B1892AC6700D36676 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7278E40E1892AC6800D36676 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				7278E40F1892AC8100D36676 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		03AB27E64DF84922845B5C6B /* libPods-Overshare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6372A9072146CEA4538CE3 /* libPods-Overshare.a */; };
 		72670B5618906CC100056736 /* OSKSocialComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72670B5518906CC100056736 /* OSKSocialComposeViewController.m */; };
@@ -1295,6 +1309,7 @@
 			projectRoot = "";
 			targets = (
 				7FEE762E181ED83D000F684A /* Overshare */,
+				7278E40B1892AC6700D36676 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -1440,6 +1455,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-Overshare-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7278E40F1892AC8100D36676 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"Overshare-Kit\" \\\n--project-company \"Overshare-Kit\" \\\n--company-id \"com.jaredsinclair\" \\\n--docset-desc \"References to the API and concept documentation for Overshare-Kit classes.\" \\\n--output ~/help \\\n--ignore .m \\\n--ignore Pods \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n.";
+		};
 		E0AC9D3001CD479BBEB1ABD2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1567,6 +1595,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7278E40C1892AC6800D36676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7278E40D1892AC6800D36676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		7FEE7659181ED83D000F684A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1676,6 +1718,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7278E40E1892AC6800D36676 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7278E40C1892AC6800D36676 /* Debug */,
+				7278E40D1892AC6800D36676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		7FEE762A181ED83D000F684A /* Build configuration list for PBXProject "Overshare" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
