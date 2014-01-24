@@ -16,6 +16,7 @@
 #import "OSKLogger.h"
 #import "OSKManagedAccount.h"
 #import "OSKShareableContentItem.h"
+#import "NSString+OSKEmoji.h"
 
 static NSInteger OSKAppDotNetActivity_MaxCharacterCount = 256;
 static NSInteger OSKAppDotNetActivity_MaxUsernameLength = 20;
@@ -32,6 +33,7 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
 @implementation OSKAppDotNetActivity
 
 @synthesize activeManagedAccount = _activeManagedAccount;
+@synthesize remainingCharacterCount = _remainingCharacterCount;
 
 - (instancetype)initWithContentItem:(OSKShareableContentItem *)item {
     self = [super initWithContentItem:item];
@@ -109,9 +111,8 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
     BOOL credentialPresent = (self.activeManagedAccount.credential != nil);
     BOOL accountPresent = (self.activeManagedAccount != nil);
     
-    OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)self.contentItem;
     NSInteger maxCharacterCount = [self maximumCharacterCount];
-    BOOL textIsValid = (contentItem.text.length > 0 && contentItem.text.length <= maxCharacterCount);
+    BOOL textIsValid = (0 <= self.remainingCharacterCount && self.remainingCharacterCount < maxCharacterCount);
     
     return (appCredentialPreset && credentialPresent && accountPresent && textIsValid);
 }
@@ -156,6 +157,17 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
 
 - (NSInteger)maximumUsernameLength {
     return OSKAppDotNetActivity_MaxUsernameLength;
+}
+
+- (NSInteger)updateRemainingCharacterCount:(OSKMicroblogPostContentItem *)contentItem urlEntities:(NSArray *)urlEntities {
+    
+    NSString *text = contentItem.text;
+    NSInteger composedLength = [text osk_lengthAdjustingForComposedCharacters];
+    NSInteger remainingCharacterCount = [self maximumCharacterCount] - composedLength;
+    
+    [self setRemainingCharacterCount:remainingCharacterCount];
+    
+    return remainingCharacterCount;
 }
 
 #pragma mark - ADNLogin

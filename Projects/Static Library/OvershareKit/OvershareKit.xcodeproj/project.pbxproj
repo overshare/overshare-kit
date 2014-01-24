@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F04946C188AFE5400BE7C4E /* NSString+OSKEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F04946B188AFE5400BE7C4E /* NSString+OSKEmoji.m */; };
 		7F1DA9E0183C6B050082356D /* OSKLinkShorteningUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DA9DF183C6B050082356D /* OSKLinkShorteningUtility.m */; };
 		7F55A30C18425C6C004A3BCC /* OSKSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A30518425C6C004A3BCC /* OSKSession.m */; };
 		7F55A30D18425C6C004A3BCC /* OSKSessionController_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A30718425C6C004A3BCC /* OSKSessionController_Pad.m */; };
@@ -129,6 +130,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7F04946A188AFE5400BE7C4E /* NSString+OSKEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OSKEmoji.h"; sourceTree = "<group>"; };
+		7F04946B188AFE5400BE7C4E /* NSString+OSKEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OSKEmoji.m"; sourceTree = "<group>"; };
 		7F19F901181F228200E5EA52 /* osk-iap-badge-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-60@2x.png"; sourceTree = "<group>"; };
 		7F19F902181F228200E5EA52 /* osk-iap-badge-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-76.png"; sourceTree = "<group>"; };
 		7F19F903181F228200E5EA52 /* osk-iap-badge-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-76@2x.png"; sourceTree = "<group>"; };
@@ -595,6 +598,8 @@
 				7FEE7810181ED8FE000F684A /* NSString+OSK_UUID.m */,
 				7FEE7811181ED8FE000F684A /* NSString+OSKDerp.h */,
 				7FEE7812181ED8FE000F684A /* NSString+OSKDerp.m */,
+				7F04946A188AFE5400BE7C4E /* NSString+OSKEmoji.h */,
+				7F04946B188AFE5400BE7C4E /* NSString+OSKEmoji.m */,
 				7FEE7815181ED8FE000F684A /* OSK1PasswordBrowserActivity.h */,
 				7FEE7816181ED8FE000F684A /* OSK1PasswordBrowserActivity.m */,
 				7FEE7817181ED8FE000F684A /* OSK1PasswordSearchActivity.h */,
@@ -969,6 +974,7 @@
 				7FEE78B2181ED8FE000F684A /* NSDictionary+OSKModel.m in Sources */,
 				7FEE78F5181ED8FE000F684A /* OSKUsernamePasswordCell.m in Sources */,
 				7FEE78BA181ED8FE000F684A /* OSKAccountChooserViewController.m in Sources */,
+				7F04946C188AFE5400BE7C4E /* NSString+OSKEmoji.m in Sources */,
 				7FEE78B8181ED8FE000F684A /* OSK1PasswordBrowserActivity.m in Sources */,
 				7FEE78E3181ED8FE000F684A /* OSKPinboardActivity.m in Sources */,
 				7FEE78F8181ED8FE000F684A /* UIColor+OSKUtility.m in Sources */,

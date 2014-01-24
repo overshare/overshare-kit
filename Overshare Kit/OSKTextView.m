@@ -364,7 +364,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     if (boldDescriptor) {
         boldFont = [UIFont fontWithDescriptor:boldDescriptor size:fontSize];
     } else {
-        boldFont = [UIFont systemFontOfSize:fontSize];
+        boldFont = [UIFont boldSystemFontOfSize:fontSize];
     }
     
     UIColor *normalColor = manager.color_text;
@@ -1153,37 +1153,78 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 
 #pragma mark - Smart Quotes
 
-- (void)fixDumbQuotes:(NSTextStorage *)mutableString {
-    [mutableString.string enumerateSubstringsInRange:NSMakeRange(0, [mutableString length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
-        if ([substring isEqualToString:@"\""]) {
-            if (substringRange.location > 0) {
-                NSString *previousCharacter = [mutableString.string substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
-                if ([previousCharacter isEqualToString:@" "] || [previousCharacter isEqualToString:@"\n"]) {
-                    [mutableString replaceCharactersInRange:substringRange withString:@"“"];
-                }
-                else {
-                    [mutableString replaceCharactersInRange:substringRange withString:@"”"];
-                }
-            }
-            else {
-                [mutableString replaceCharactersInRange:substringRange withString:@"“"];
-            }
-        }
-        else if ([substring isEqualToString:@"'"]) {
-            if (substringRange.location > 0) {
-                NSString *previousCharacter = [mutableString.string substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
-                if ([previousCharacter isEqualToString:@" "] || [previousCharacter isEqualToString:@"\n"]) {
-                    [mutableString replaceCharactersInRange:substringRange withString:@"‘"];
-                }
-                else {
-                    [mutableString replaceCharactersInRange:substringRange withString:@"’"];
-                }
-            }
-            else {
-                [mutableString replaceCharactersInRange:substringRange withString:@"‘"];
-            }
-        }
-    }];
+-(void)fixDumbQuotes:(NSTextStorage *)textStorage {
+    
+    NSString *copyOfOriginalString = [textStorage.string copy];
+    
+    NSString *dumbDouble = @"\"";
+    NSString *dumbSingle = @"'";
+    NSString *leftSmartSingle = @"‘";
+    NSString *leftSmartDouble = @"“";
+    NSString *rightSmartSingle = @"’";
+    NSString *rightSmartDouble = @"”";
+    
+    
+    NSString *regex = [NSString stringWithFormat:@"(\\s|\\(|\\[|\\{|\\<|\\〈|%@|%@)",
+                       leftSmartSingle,
+                       leftSmartDouble];
+    
+    NSString *regexThatShouldBeFollowedByLeftQuotes = regex;
+    
+    [copyOfOriginalString
+     enumerateSubstringsInRange:NSMakeRange(0, [copyOfOriginalString length])
+     options:NSStringEnumerationByComposedCharacterSequences
+     usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+         
+         if ([substring isEqualToString:dumbDouble]) {
+             
+             if (substringRange.location > 0) {
+                 
+                 NSString *previousCharacter = [copyOfOriginalString
+                                                substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
+                 
+                 NSRange rangeOfRegexMatch = [previousCharacter
+                                              rangeOfString:regexThatShouldBeFollowedByLeftQuotes
+                                              options:NSRegularExpressionSearch];
+                 
+                 BOOL useLeftQuote = (rangeOfRegexMatch.location != NSNotFound);
+                 
+                 if (useLeftQuote) {
+                     [textStorage replaceCharactersInRange:substringRange withString:leftSmartDouble];
+                 }
+                 else {
+                     [textStorage replaceCharactersInRange:substringRange withString:rightSmartDouble];
+                 }
+             }
+             else {
+                 [textStorage replaceCharactersInRange:substringRange withString:leftSmartDouble];
+             }
+         }
+         else if ([substring isEqualToString:dumbSingle]) {
+             
+             if (substringRange.location > 0) {
+                 
+                 NSString *previousCharacter = [copyOfOriginalString
+                                                substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
+                 
+                 NSRange rangeOfRegexMatch = [previousCharacter
+                                              rangeOfString:regexThatShouldBeFollowedByLeftQuotes
+                                              options:NSRegularExpressionSearch];
+                 
+                 BOOL useLeftQuote = (rangeOfRegexMatch.location != NSNotFound);
+                 
+                 if (useLeftQuote) {
+                     [textStorage replaceCharactersInRange:substringRange withString:leftSmartSingle];
+                 }
+                 else {
+                     [textStorage replaceCharactersInRange:substringRange withString:rightSmartSingle];
+                 }
+             }
+             else {
+                 [textStorage replaceCharactersInRange:substringRange withString:leftSmartSingle];
+             }
+         }
+     }];
 }
 
 #pragma mark - OSKTextViewAttachmentViewDelegate
