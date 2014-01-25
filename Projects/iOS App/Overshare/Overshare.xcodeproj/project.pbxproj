@@ -23,6 +23,7 @@
 		7F19F92A1820A34F00E5EA52 /* OSKAccountManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F19F9291820A34F00E5EA52 /* OSKAccountManagementViewController.m */; };
 		7F1DA9E3183C6B280082356D /* OSKLinkShorteningUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DA9E2183C6B280082356D /* OSKLinkShorteningUtility.m */; };
 		7F339D72185361AF0020CF9C /* Chrome-Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F339D71185361AF0020CF9C /* Chrome-Icon-29.png */; };
+		7F341E1D18943EEE00CBA9B0 /* OSKSmartPunctuation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F341E1C18943EEE00CBA9B0 /* OSKSmartPunctuation.m */; };
 		7F43DEAD18215916003BE9B6 /* SampleTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F43DEAC18215916003BE9B6 /* SampleTimelineViewController.m */; };
 		7F43DEB01821596D003BE9B6 /* SampleTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F43DEAF1821596D003BE9B6 /* SampleTimelineCell.m */; };
 		7F43DEB21821597E003BE9B6 /* SampleTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F43DEB11821597E003BE9B6 /* SampleTimelineCell.xib */; };
@@ -253,6 +254,8 @@
 		7F1DA9E1183C6B280082356D /* OSKLinkShorteningUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKLinkShorteningUtility.h; sourceTree = "<group>"; };
 		7F1DA9E2183C6B280082356D /* OSKLinkShorteningUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKLinkShorteningUtility.m; sourceTree = "<group>"; };
 		7F339D71185361AF0020CF9C /* Chrome-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chrome-Icon-29.png"; sourceTree = "<group>"; };
+		7F341E1B18943EEE00CBA9B0 /* OSKSmartPunctuation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSmartPunctuation.h; sourceTree = "<group>"; };
+		7F341E1C18943EEE00CBA9B0 /* OSKSmartPunctuation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSmartPunctuation.m; sourceTree = "<group>"; };
 		7F43DEAB18215916003BE9B6 /* SampleTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTimelineViewController.h; sourceTree = "<group>"; };
 		7F43DEAC18215916003BE9B6 /* SampleTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleTimelineViewController.m; sourceTree = "<group>"; };
 		7F43DEAE1821596D003BE9B6 /* SampleTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleTimelineCell.h; sourceTree = "<group>"; };
@@ -875,6 +878,8 @@
 				7FEE76C7181ED8EE000F684A /* NSString+OSK_UUID.m */,
 				7FEE76C8181ED8EE000F684A /* NSString+OSKDerp.h */,
 				7FEE76C9181ED8EE000F684A /* NSString+OSKDerp.m */,
+				7F341E1B18943EEE00CBA9B0 /* OSKSmartPunctuation.h */,
+				7F341E1C18943EEE00CBA9B0 /* OSKSmartPunctuation.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1589,6 +1594,7 @@
 				7F1DA9E3183C6B280082356D /* OSKLinkShorteningUtility.m in Sources */,
 				7FEE77D5181ED8EF000F684A /* OSKUsernamePasswordCell.m in Sources */,
 				7FEE77DB181ED8EF000F684A /* UIViewController+OSKUtilities.m in Sources */,
+				7F341E1D18943EEE00CBA9B0 /* OSKSmartPunctuation.m in Sources */,
 				7FEE763F181ED83D000F684A /* main.m in Sources */,
 				7FEE779F181ED8EF000F684A /* OSKActivityIndicatorItem.m in Sources */,
 				7FEE778D181ED8EF000F684A /* NSDate+OSK_ISO8601.m in Sources */,

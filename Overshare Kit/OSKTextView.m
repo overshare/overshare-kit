@@ -11,6 +11,7 @@
 #import "OSKLogger.h"
 #import "OSKPresentationManager.h"
 #import "OSKTwitterText.h"
+#import "OSKSmartPunctuation.h"
 
 static CGFloat OSKTextViewAttachmentViewWidth_Phone = 78.0f; // 2 points larger than visual appearance, due to anti-aliasing technique
 static CGFloat OSKTextViewAttachmentViewWidth_Pad = 96.0f; // 2 points larger than visual appearance, due to anti-aliasing technique
@@ -915,7 +916,15 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 #pragma mark - Text Storage Delegate
 
 - (void)textStorage:(NSTextStorage *)textStorage willProcessEditing:(NSTextStorageEditActions)editedMask range:(NSRange)editedRange changeInLength:(NSInteger)delta {
-    [self fixDumbQuotes:textStorage];
+    
+    NSInteger lengthChange = [OSKSmartPunctuation fixDumbPunctuation:textStorage editedRange:editedRange textInputObject:self.textView];
+    
+    if (lengthChange != 0) {
+        NSRange selectedRange = [self.textView selectedRange];
+        selectedRange.location += lengthChange;
+        [self.textView setSelectedRange:selectedRange];
+    }
+    
     [self updateSyntaxHighlighting:textStorage];
 }
 
