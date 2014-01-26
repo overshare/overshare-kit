@@ -20,6 +20,7 @@ extern NSString * const OSKShareableContentItemType_WebBrowser;
 extern NSString * const OSKShareableContentItemType_PasswordManagementAppSearch;
 extern NSString * const OSKShareableContentItemType_ToDoListEntry;
 extern NSString * const OSKShareableContentItemType_AirDrop;
+extern NSString * const OSKShareableContentItemType_TextEditing;
 
 ///---------------------------
 /// @name Abstract Base Class
@@ -390,6 +391,61 @@ extern NSString * const OSKShareableContentItemType_AirDrop;
  instance of `UIActivityViewController`.
  */
 @property (copy, nonatomic) NSArray *items;
+
+@end
+
+///-------------------------------------------------------
+/// @name Text-Editing (Drafts, Editorial, Evernote etc.)
+///-------------------------------------------------------
+
+/**
+ Content for creating a new text editing document.
+ */
+@interface OSKTextEditingContentItem : OSKShareableContentItem
+
+/**
+ The body text. Required.
+ */
+@property (copy, nonatomic) NSString *text;
+
+/**
+ Optional title of the entry. Some apps don't support title fields.
+ */
+@property (copy, nonatomic) NSString *title;
+
+/**
+ Optional image attachements for the new entry. Not all apps support images. Those that
+ do may not support multiple images.
+ */
+@property (copy, nonatomic) NSArray *images;
+
+/**
+ Optional tags for the new entry. Not all apps support tags. Those that
+ do may not support multiple tags.
+ */
+@property (copy, nonatomic) NSArray *tags;
+
+/**
+ Additional activity-specific info. Optional.
+ 
+ @discussion Text editing apps & services vary widely in the extra features they
+ offer. Evernote, for example, offers considerably more options than a
+ a traditional note taking app. Rather than add dozens of properties that are each
+ only used by a single activity type, it makes more sense use an NSDictionary to
+ store activity-specific attributes.
+ 
+ To avoid conflicts, keys in this dictionary should be namespaced as follows:
+ 
+    com.<activityName>.<key>
+ 
+ For example, the key to an NSDictionary of Evernote note attributes would be:
+ 
+    com.evernote.noteAttributes
+ 
+ And so forth. As OvershareKit matures, we may occasionally promote frequently-used data types
+ stored in the additionalInfo dictionary to class-level @properties.
+ */
+@property (copy, nonatomic) NSDictionary *additionalInfo;
 
 @end
 

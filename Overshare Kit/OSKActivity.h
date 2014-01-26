@@ -37,6 +37,7 @@ extern NSString * const OSKActivityType_URLScheme_1Password_Browser;
 extern NSString * const OSKActivityType_URLScheme_Chrome;
 extern NSString * const OSKActivityType_URLScheme_Omnifocus;
 extern NSString * const OSKActivityType_URLScheme_Things;
+extern NSString * const OSKActivityType_URLScheme_Drafts;
 extern NSString * const OSKActivityType_SDK_Pocket;
 
 @class OSKActivity;

@@ -59,6 +59,7 @@
 		7FCD027F18539735005C5931 /* OSKActivityToggleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD027E18539735005C5931 /* OSKActivityToggleCell.m */; };
 		7FD16DAF1876367A0035960C /* link-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD16DAD1876367A0035960C /* link-button.png */; };
 		7FD16DB01876367A0035960C /* link-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD16DAE1876367A0035960C /* link-button@2x.png */; };
+		7FD649DA1895C7CA0021BD50 /* OSKDraftsActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD649D91895C7CA0021BD50 /* OSKDraftsActivity.m */; };
 		7FDCDE96181EE1BA00AC2985 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8E181EE1BA00AC2985 /* Icon-60@2x.png */; };
 		7FDCDE97181EE1BA00AC2985 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8F181EE1BA00AC2985 /* rain.jpg */; };
 		7FDCDE9A181EE1BA00AC2985 /* soda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE93181EE1BA00AC2985 /* soda.jpg */; };
@@ -314,6 +315,8 @@
 		7FCD027E18539735005C5931 /* OSKActivityToggleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityToggleCell.m; sourceTree = "<group>"; };
 		7FD16DAD1876367A0035960C /* link-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-button.png"; sourceTree = "<group>"; };
 		7FD16DAE1876367A0035960C /* link-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-button@2x.png"; sourceTree = "<group>"; };
+		7FD649D81895C7CA0021BD50 /* OSKDraftsActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKDraftsActivity.h; sourceTree = "<group>"; };
+		7FD649D91895C7CA0021BD50 /* OSKDraftsActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKDraftsActivity.m; sourceTree = "<group>"; };
 		7FDCDE8E181EE1BA00AC2985 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		7FDCDE8F181EE1BA00AC2985 /* rain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rain.jpg; sourceTree = "<group>"; };
 		7FDCDE93181EE1BA00AC2985 /* soda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soda.jpg; sourceTree = "<group>"; };
@@ -633,6 +636,15 @@
 			name = "Reading List";
 			sourceTree = "<group>";
 		};
+		7FD649D71895BD6A0021BD50 /* Drafts.app */ = {
+			isa = PBXGroup;
+			children = (
+				7FD649D81895C7CA0021BD50 /* OSKDraftsActivity.h */,
+				7FD649D91895C7CA0021BD50 /* OSKDraftsActivity.m */,
+			);
+			name = Drafts.app;
+			sourceTree = "<group>";
+		};
 		7FEE7626181ED83D000F684A = {
 			isa = PBXGroup;
 			children = (
@@ -913,6 +925,7 @@
 				7FEE7906181ED9EA000F684A /* AirDrop */,
 				7FEE790C181EDA42000F684A /* Chrome */,
 				7FEE790E181EDA63000F684A /* Copy to Pasteboard */,
+				7FD649D71895BD6A0021BD50 /* Drafts.app */,
 				7FEE790F181EDA9A000F684A /* Email */,
 				7FEE7910181EDAA9000F684A /* Facebook */,
 				7FEE7911181EDACC000F684A /* Instapaper */,
@@ -1574,6 +1587,7 @@
 				7FEE77B7181ED8EF000F684A /* OSKKeychainUtility.m in Sources */,
 				7FE467391821F4010054D2BC /* OSKAccountTypeCell.m in Sources */,
 				7FEE778F181ED8EF000F684A /* NSHTTPURLResponse+OSKUtilities.m in Sources */,
+				7FD649DA1895C7CA0021BD50 /* OSKDraftsActivity.m in Sources */,
 				7F75BF3E1821588700D3681E /* PocketAPILogin.m in Sources */,
 				7FEE77C7181ED8EF000F684A /* OSKReadabilityActivity.m in Sources */,
 				7F55A30218425C46004A3BCC /* OSKSessionController.m in Sources */,

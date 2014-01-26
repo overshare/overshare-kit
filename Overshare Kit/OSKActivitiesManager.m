@@ -23,6 +23,7 @@
 #import "OSKAppDotNetActivity.h"
 #import "OSKChromeActivity.h"
 #import "OSKCopyToPasteboardActivity.h"
+#import "OSKDraftsActivity.h"
 #import "OSKEmailActivity.h"
 #import "OSKFacebookActivity.h"
 #import "OSKInstapaperActivity.h"
@@ -172,6 +173,11 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
                                                    excludedActivityTypes:excludedActivityTypes
                                                        requireOperations:requireOperations];
         }
+        else if ([item.itemType isEqualToString:OSKShareableContentItemType_TextEditing]) {
+            activitiesToAdd = [self builtInActivitiesForTextEditingItem:(OSKTextEditingContentItem *)item
+                                                  excludedActivityTypes:excludedActivityTypes
+                                                      requireOperations:requireOperations];
+        }
         
         [validActivities addObjectsFromArray:activitiesToAdd];
         
@@ -236,6 +242,10 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
     
     if (content.linkBookmarkItem) { [sortedItems addObject:content.linkBookmarkItem]; }
     additionals = [self contentItemsOfType:OSKShareableContentItemType_LinkBookmark inArray:content.additionalItems];
+    [sortedItems addObjectsFromArray:additionals];
+    
+    if (content.textEditingItem) { [sortedItems addObject:content.textEditingItem]; }
+    additionals = [self contentItemsOfType:OSKShareableContentItemType_TextEditing inArray:content.additionalItems];
     [sortedItems addObjectsFromArray:additionals];
 
     if (content.toDoListItem) { [sortedItems addObject:content.toDoListItem]; }
@@ -449,6 +459,19 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
                                                  requireOperations:requireOperations
                                                               item:item];
     if (airDrop) { [activities addObject:airDrop]; }
+    
+    return activities;
+}
+
+- (NSArray *)builtInActivitiesForTextEditingItem:(OSKTextEditingContentItem *)item excludedActivityTypes:(NSArray *)excludedActivityTypes requireOperations:(BOOL)requireOperations {
+    NSMutableArray *activities = [[NSMutableArray alloc] init];
+    
+    OSKDraftsActivity *drafts = [self validActivityForType:[OSKDraftsActivity activityType]
+                                                      class:[OSKDraftsActivity class]
+                                               excludedTypes:excludedActivityTypes
+                                           requireOperations:requireOperations
+                                                        item:item];
+    if (drafts) { [activities addObject:drafts]; }
     
     return activities;
 }

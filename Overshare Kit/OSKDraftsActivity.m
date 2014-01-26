@@ -1,29 +1,27 @@
 //
-//  OSKChromeActivity.m
+//  OSKDraftsActivity.m
 //  Overshare
 //
 //  Created by Jared Sinclair on 10/15/13.
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 
-#import "OSKChromeActivity.h"
+#import "OSKDraftsActivity.h"
 
 #import "OSKShareableContentItem.h"
 
-static NSString * OSKChromeActivity_ChromeURLScheme = @"googlechrome-x-callback:";
-static NSString * OSKChromeActivity_Path = @"//x-callback-url/open/";
-static NSString * OSKChromeActivity_URLQueryKey = @"url";
+static NSString * OSKDraftsActivity_URLScheme = @"drafts://";
+static NSString * OSKDraftsActivity_Path_CreateNote = @"x-callback-url/create";
+static NSString * OSKDraftsActivity_QueryKey_Text = @"text";
 
-@interface OSKChromeActivity ()
+@interface OSKDraftsActivity ()
 
-@property (copy, nonatomic) NSString *url_encoded_x_source;
 @property (copy, nonatomic) NSString *url_encoded_x_success;
-@property (copy, nonatomic) NSString *url_encoded_x_cancel;
 @property (copy, nonatomic) NSString *url_encoded_x_error;
 
 @end
 
-@implementation OSKChromeActivity
+@implementation OSKDraftsActivity
 
 - (instancetype)initWithContentItem:(OSKShareableContentItem *)item {
     self = [super initWithContentItem:item];
@@ -40,12 +38,6 @@ static NSString * OSKChromeActivity_URLQueryKey = @"url";
 }
 
 - (void)prepareToPerformActionUsingXCallbackURLInfo:(id<OSKXCallbackURLInfo>)info {
-    if ([info respondsToSelector:@selector(xCallbackSourceForActivity:)]) {
-        [self setUrl_encoded_x_source:[info xCallbackSourceForActivity:self]];
-    }
-    if ([info respondsToSelector:@selector(xCallbackCancelForActivity:)]) {
-        [self setUrl_encoded_x_cancel:[info xCallbackCancelForActivity:self]];
-    }
     if ([info respondsToSelector:@selector(xCallbackSuccessForActivity:)]) {
         [self setUrl_encoded_x_success:[info xCallbackSuccessForActivity:self]];
     }
@@ -57,11 +49,11 @@ static NSString * OSKChromeActivity_URLQueryKey = @"url";
 #pragma mark - Methods for OSKActivity Subclasses
 
 + (NSString *)supportedContentItemType {
-    return OSKShareableContentItemType_WebBrowser;
+    return OSKShareableContentItemType_TextEditing;
 }
 
 + (BOOL)isAvailable {
-    NSURL *url = [NSURL URLWithString:OSKChromeActivity_ChromeURLScheme];
+    NSURL *url = [NSURL URLWithString:OSKDraftsActivity_URLScheme];
     return [[UIApplication sharedApplication] canOpenURL:url];
 }
 
@@ -70,7 +62,7 @@ static NSString * OSKChromeActivity_URLQueryKey = @"url";
 }
 
 + (NSString *)activityName {
-    return @"Chrome";
+    return @"Send to Drafts";
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {
@@ -100,37 +92,29 @@ static NSString * OSKChromeActivity_URLQueryKey = @"url";
 }
 
 - (BOOL)isReadyToPerform {
-    return ([(OSKWebBrowserContentItem *)self.contentItem url] != nil);
+    return ([self textEditingItem].text.length > 0);
 }
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
-    NSURL *url = [[self browserItem] url];
     
-    NSMutableString *chromeURLString = [[NSMutableString alloc] init];
-    [chromeURLString appendString:OSKChromeActivity_ChromeURLScheme];
-    [chromeURLString appendString:OSKChromeActivity_Path];
+    NSMutableString *draftsURLstring = [[NSMutableString alloc] init];
+    [draftsURLstring appendString:OSKDraftsActivity_URLScheme];
+    [draftsURLstring appendString:OSKDraftsActivity_Path_CreateNote];
     
-    NSString *encodedURL = [url.absoluteString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [chromeURLString appendFormat:@"?%@=%@", OSKChromeActivity_URLQueryKey, encodedURL];
-    
-    if (self.url_encoded_x_source) {
-        [chromeURLString appendFormat:@"&x-source=%@", self.url_encoded_x_source];
-    }
+    NSString *text = [[self textEditingItem] text];
+    NSString *encodedText = [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [draftsURLstring appendFormat:@"?%@=%@", OSKDraftsActivity_QueryKey_Text, encodedText];
     
     if (self.url_encoded_x_success) {
-        [chromeURLString appendFormat:@"&x-success=%@", self.url_encoded_x_success];
-    }
-    
-    if (self.url_encoded_x_cancel) {
-        [chromeURLString appendFormat:@"&x-cancel=%@", self.url_encoded_x_cancel];
+        [draftsURLstring appendFormat:@"&x-success=%@", self.url_encoded_x_success];
     }
     
     if (self.url_encoded_x_error) {
-        [chromeURLString appendFormat:@"&x-error=%@", self.url_encoded_x_error];
+        [draftsURLstring appendFormat:@"&x-error=%@", self.url_encoded_x_error];
     }
-
-    NSURL *chromeURL = [NSURL URLWithString:chromeURLString];
-    [[UIApplication sharedApplication] openURL:chromeURL];
+    
+    NSURL *draftsURL = [NSURL URLWithString:draftsURLstring];
+    [[UIApplication sharedApplication] openURL:draftsURL];
     
     if (completion) {
         completion(self, YES, nil);
@@ -147,8 +131,8 @@ static NSString * OSKChromeActivity_URLQueryKey = @"url";
 
 #pragma mark - Convenience
 
-- (OSKWebBrowserContentItem *)browserItem {
-    return (OSKWebBrowserContentItem *)self.contentItem;
+- (OSKTextEditingContentItem *)textEditingItem {
+    return (OSKTextEditingContentItem *)self.contentItem;
 }
 
 @end
