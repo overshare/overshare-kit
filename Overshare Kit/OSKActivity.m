@@ -125,9 +125,9 @@ NSString * const OSKActivityType_SDK_Pocket = @"OSKActivityType_SDK_Pocket";
     return NO;
 }
 
-+ (OSKPublishingViewControllerType)publishingViewControllerType {
++ (OSKPublishingMethod)publishingMethod {
     NSAssert(NO, @"OSKActivity subclasses must override `usesPublishingViewController` without calling super.");
-    return OSKPublishingViewControllerType_None;
+    return OSKPublishingMethod_None;
 }
 
 - (BOOL)isReadyToPerform {

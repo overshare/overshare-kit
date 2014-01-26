@@ -8,6 +8,8 @@
 
 @import UIKit;
 
+#import "OSKXCallbackURLInfo.h"
+
 @class OSKApplicationCredential;
 @class OSKShareableContent;
 @protocol OSKActivityCustomizations;
@@ -30,6 +32,19 @@ extern NSString * const OSKActivitiesManagerActivityTypesKey;
  on its own (application credentials, e.g.).
  */
 @property (weak, nonatomic) id <OSKActivityCustomizations> customizationsDelegate;
+
+/**
+ Some OSKActivities integrate with third-party apps that implement the x-callback-url specification.
+ `xCallbackURLDelegate`, if present, will provide information necessary to build valid NSURLs that conform
+ to the x-callback-url specification.
+ 
+ Your application, if it supports x-callback-url callbacks, will provide those callbacks via this object.
+
+ @note OvershareKit does *not* handle the processing of x-callback-url callbacks
+ if/when the target app relinquishes the user's focus back to the current application. 
+ If your app provides x-callback-url callbacks, you probably knew this already.
+ */
+@property (weak, nonatomic) id <OSKXCallbackURLInfo> xCallbackURLDelegate;
 
 /**
  Accesses the singleton activity manager.

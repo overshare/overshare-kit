@@ -91,8 +91,8 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
     return YES;
 }
 
-+ (OSKPublishingViewControllerType)publishingViewControllerType {
-    return OSKPublishingViewControllerType_Facebook;
++ (OSKPublishingMethod)publishingMethod {
+    return OSKPublishingMethod_ViewController_Facebook;
 }
 
 - (BOOL)isReadyToPerform {

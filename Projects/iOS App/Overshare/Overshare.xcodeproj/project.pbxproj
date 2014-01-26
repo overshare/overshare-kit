@@ -267,6 +267,8 @@
 		7F43DEB718217986003BE9B6 /* OSKFacebookPublishingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSKFacebookPublishingViewController.xib; sourceTree = "<group>"; };
 		7F43DEBA1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookAudienceChooserViewController.h; sourceTree = "<group>"; };
 		7F43DEBB1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookAudienceChooserViewController.m; sourceTree = "<group>"; };
+		7F4E3AFF18959AA000719268 /* OSKURLSchemeActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKURLSchemeActivity.h; sourceTree = "<group>"; };
+		7F4E3B0018959B9800719268 /* OSKXCallbackURLInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKXCallbackURLInfo.h; sourceTree = "<group>"; };
 		7F4FF50F18516A6D00BFFF2B /* OSKPresentationManager_Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPresentationManager_Protected.h; sourceTree = "<group>"; };
 		7F55A2F718425C46004A3BCC /* OSKSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSession.h; sourceTree = "<group>"; };
 		7F55A2F818425C46004A3BCC /* OSKSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSession.m; sourceTree = "<group>"; };
@@ -993,6 +995,8 @@
 				7FEE76E7181ED8EE000F684A /* OSKActivityOperation.m */,
 				7FEE76FD181ED8EE000F684A /* OSKBloggingActivity.h */,
 				7FEE7725181ED8EE000F684A /* OSKMicrobloggingActivity.h */,
+				7F4E3AFF18959AA000719268 /* OSKURLSchemeActivity.h */,
+				7F4E3B0018959B9800719268 /* OSKXCallbackURLInfo.h */,
 			);
 			name = "Activities (Abstract + Manager)";
 			sourceTree = "<group>";

@@ -45,9 +45,18 @@
 
 #import "OSKShareableContentItem.h"
 
-static NSString * OSKChromeActivity_ChromeURLScheme = @"googlechrome:";
-static NSString * kGoogleChromeHTTPScheme = @"googlechrome:";
-static NSString * kGoogleChromeHTTPSScheme = @"googlechromes:";
+static NSString * OSKChromeActivity_ChromeURLScheme = @"googlechrome-x-callback:";
+static NSString * OSKChromeActivity_Path = @"//x-callback-url/open/";
+static NSString * OSKChromeActivity_URLQueryKey = @"url";
+
+@interface OSKChromeActivity ()
+
+@property (copy, nonatomic) NSString *url_encoded_x_source;
+@property (copy, nonatomic) NSString *url_encoded_x_success;
+@property (copy, nonatomic) NSString *url_encoded_x_cancel;
+@property (copy, nonatomic) NSString *url_encoded_x_error;
+
+@end
 
 @implementation OSKChromeActivity
 
@@ -57,6 +66,27 @@ static NSString * kGoogleChromeHTTPSScheme = @"googlechromes:";
         //
     }
     return self;
+}
+
+#pragma mark - OSKURLSchemeActivity
+
+- (BOOL)targetApplicationSupportsXCallbackURL {
+    return YES;
+}
+
+- (void)prepareToPerformActionUsingXCallbackURLInfo:(id<OSKXCallbackURLInfo>)info {
+    if ([info respondsToSelector:@selector(xCallbackSourceForActivity:)]) {
+        [self setUrl_encoded_x_source:[info xCallbackSourceForActivity:self]];
+    }
+    if ([info respondsToSelector:@selector(xCallbackCancelForActivity:)]) {
+        [self setUrl_encoded_x_cancel:[info xCallbackCancelForActivity:self]];
+    }
+    if ([info respondsToSelector:@selector(xCallbackSuccessForActivity:)]) {
+        [self setUrl_encoded_x_success:[info xCallbackSuccessForActivity:self]];
+    }
+    if ([info respondsToSelector:@selector(xCallbackErrorForActivity:)]) {
+        [self setUrl_encoded_x_error:[info xCallbackErrorForActivity:self]];
+    }
 }
 
 #pragma mark - Methods for OSKActivity Subclasses
@@ -100,8 +130,8 @@ static NSString * kGoogleChromeHTTPSScheme = @"googlechromes:";
     return NO;
 }
 
-+ (OSKPublishingViewControllerType)publishingViewControllerType {
-    return OSKPublishingViewControllerType_None;
++ (OSKPublishingMethod)publishingMethod {
+    return OSKPublishingMethod_URLScheme;
 }
 
 - (BOOL)isReadyToPerform {
@@ -110,29 +140,33 @@ static NSString * kGoogleChromeHTTPSScheme = @"googlechromes:";
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
     NSURL *url = [[self browserItem] url];
-    NSString *scheme = [url.scheme lowercaseString];
     
-    // Replace the URL Scheme with the Chrome equivalent.
-    NSString *chromeScheme = nil;
-    if ([scheme isEqualToString:@"http"]) {
-        chromeScheme = kGoogleChromeHTTPScheme;
-    } else if ([scheme isEqualToString:@"https"]) {
-        chromeScheme = kGoogleChromeHTTPSScheme;
+    NSMutableString *chromeURLString = [[NSMutableString alloc] init];
+    [chromeURLString appendString:OSKChromeActivity_ChromeURLScheme];
+    [chromeURLString appendString:OSKChromeActivity_Path];
+    
+    NSString *encodedURL = [url.absoluteString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [chromeURLString appendFormat:@"?%@=%@", OSKChromeActivity_URLQueryKey, encodedURL];
+    
+    if (self.url_encoded_x_source) {
+        [chromeURLString appendFormat:@"&x-source=%@", self.url_encoded_x_source];
     }
     
-    // Proceed only if a valid Google Chrome URI Scheme is available.
-    if (chromeScheme) {
-        NSString *absoluteString = [url absoluteString];
-        NSRange rangeForScheme = [absoluteString rangeOfString:@":"];
-        NSString *urlNoScheme =
-        [absoluteString substringFromIndex:rangeForScheme.location + 1];
-        NSString *chromeURLString =
-        [chromeScheme stringByAppendingString:urlNoScheme];
-        NSURL *chromeURL = [NSURL URLWithString:chromeURLString];
-        
-        // Open the URL with Google Chrome.
-        [[UIApplication sharedApplication] openURL:chromeURL];
+    if (self.url_encoded_x_success) {
+        [chromeURLString appendFormat:@"&x-success=%@", self.url_encoded_x_success];
     }
+    
+    if (self.url_encoded_x_cancel) {
+        [chromeURLString appendFormat:@"&x-cancel=%@", self.url_encoded_x_cancel];
+    }
+    
+    if (self.url_encoded_x_error) {
+        [chromeURLString appendFormat:@"&x-error=%@", self.url_encoded_x_error];
+    }
+
+    NSURL *chromeURL = [NSURL URLWithString:chromeURLString];
+    [[UIApplication sharedApplication] openURL:chromeURL];
+    
     if (completion) {
         completion(self, YES, nil);
     }

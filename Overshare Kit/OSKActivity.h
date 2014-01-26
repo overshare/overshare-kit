@@ -53,13 +53,14 @@ typedef NS_ENUM(NSInteger, OSKAuthenticationMethod) {
     OSKAuthenticationMethod_Generic,            // e.g. Pocket API
 };
 
-typedef NS_ENUM(NSInteger, OSKPublishingViewControllerType) {
-    OSKPublishingViewControllerType_None,
-    OSKPublishingViewControllerType_System,         // e.g. Email and Messages
-    OSKPublishingViewControllerType_Bespoke,        // Your custom, one-of-a-kind publishing view controller
-    OSKPublishingViewControllerType_Microblogging,  // e.g. Twitter & App.net
-    OSKPublishingViewControllerType_Blogging,       // e.g. Tumblr or WordPress
-    OSKPublishingViewControllerType_Facebook,       // duh
+typedef NS_ENUM(NSInteger, OSKPublishingMethod) {
+    OSKPublishingMethod_None,                           // e.g. Copy to Pasteboard
+    OSKPublishingMethod_URLScheme,                      // e.g. 1Password
+    OSKPublishingMethod_ViewController_System,          // e.g. Email and Messages
+    OSKPublishingMethod_ViewController_Bespoke,         // Your custom, one-of-a-kind publishing view controller
+    OSKPublishingMethod_ViewController_Microblogging,   // e.g. Twitter & App.net
+    OSKPublishingMethod_ViewController_Blogging,        // e.g. Tumblr or WordPress
+    OSKPublishingMethod_ViewController_Facebook,        // duh
 };
 
 ///--------------------------------------------------------
@@ -231,9 +232,9 @@ typedef NS_ENUM(NSInteger, OSKPublishingViewControllerType) {
 /**
  Determines the type of publishing view controller the activity needs to perform its task.
  
- @return Returns a value from the enum `OSKPublishingViewControllerType`
+ @return Returns a value from the enum `OSKpublishingMethod`
  */
-+ (OSKPublishingViewControllerType)publishingViewControllerType;
++ (OSKPublishingMethod)publishingMethod;
 
 /**
  Determines whether or not the activity is ready to perform.
