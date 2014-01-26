@@ -24,7 +24,7 @@ static NSString *dot = @".";
 static NSString *elipsis = @"…";
 
 static NSString *regexThatShouldBeFollowedByLeftQuotes_leftToRight = @"(\\s|\\(|\\[|\\{|\\<|\\〈|‘|“|'|\")";
-static NSString *regexThatShouldBeFollowedByRightQuotes_RightToLeft = @"(\\s|\\)|\\]|\\}|\\>|\\〉|’|”|'|\")";
+static NSString *regexThatShouldBeFollowedByRightQuotes_RightToLeft = @"(\\s|\\(|\\[|\\{|\\<|\\〈|’|”|'|\")";
 
 typedef NS_ENUM(NSInteger, OSKQuoteDirection) {
     OSKQuoteDirection_Left,
@@ -470,11 +470,6 @@ typedef NS_ENUM(NSInteger, OSKQuoteDirection) {
 }
 
 @end
-
-
-
-
-
 
 
 

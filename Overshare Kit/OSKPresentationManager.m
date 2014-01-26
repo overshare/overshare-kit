@@ -43,7 +43,7 @@ NSString * const OSKPresentationOption_PresentationEndingHandler = @"OSKPresenta
 static CGFloat OSKPresentationManagerActivitySheetPresentationDuration = 0.3f;
 static CGFloat OSKPresentationManagerActivitySheetDismissalDuration = 0.16f;
 
-static NSInteger OSKTextViewFontSize_Phone = 16.0f;
+static NSInteger OSKTextViewFontSize_Phone = 17.0f;
 static NSInteger OSKTextViewFontSize_Pad = 19.0f;
 
 @interface OSKPresentationManager ()
