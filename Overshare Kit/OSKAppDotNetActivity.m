@@ -58,6 +58,10 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
     return method;
 }
 
+- (OSKUsernameNomenclature)usernameNomenclatureForSignInScreen {
+    return OSKUsernameNomenclature_Username;
+}
+
 - (void)authenticateNewAccountWithoutViewController:(OSKManagedAccountAuthenticationHandler)completion {
     [self authenticateWithADNLogin:completion];
 }

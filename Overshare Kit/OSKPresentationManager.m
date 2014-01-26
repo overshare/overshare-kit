@@ -762,6 +762,17 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     return text;
 }
 
+- (NSString *)localizedText_Email {
+    NSString *text = nil;
+    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Email)]) {
+        text = [self.localizationDelegate osk_localizedText_Email];
+    }
+    if (text == nil) {
+        text = @"Email";
+    }
+    return text;
+}
+
 - (NSString *)localizedText_Password {
     NSString *text = nil;
     if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Password)]) {

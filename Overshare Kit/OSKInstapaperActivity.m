@@ -35,6 +35,10 @@
     return OSKManagedAccountAuthenticationViewControllerType_DefaultUsernamePasswordViewController;
 }
 
+- (OSKUsernameNomenclature)usernameNomenclatureForSignInScreen {
+    return OSKUsernameNomenclature_Email;
+}
+
 - (void)authenticateNewAccountWithUsername:(NSString *)username password:(NSString *)password appCredential:(OSKApplicationCredential *)appCredential completion:(OSKManagedAccountAuthenticationHandler)completion {
     [OSKInstapaperUtility createNewAccountWithUsername:username password:password completion:^(OSKManagedAccount *account, NSError *error) {
         if (completion) {
