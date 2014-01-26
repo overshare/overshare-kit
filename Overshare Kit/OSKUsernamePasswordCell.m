@@ -139,6 +139,10 @@ CGFloat const OSKUsernamePasswordCellHeight = 44.0f;
     }
 }
 
+- (void)setKeyboardType:(UIKeyboardType)keyboardType {
+    [self.textField setKeyboardType:keyboardType];
+}
+
 @end
 
 

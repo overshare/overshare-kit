@@ -35,6 +35,7 @@
 - (NSString *)osk_localizedText_Done;
 - (NSString *)osk_localizedText_Okay;
 - (NSString *)osk_localizedText_Username;
+- (NSString *)osk_localizedText_Email;
 - (NSString *)osk_localizedText_Password;
 - (NSString *)osk_localizedText_SignOut;
 - (NSString *)osk_localizedText_SignIn;
