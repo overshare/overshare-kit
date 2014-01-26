@@ -18,7 +18,7 @@
 - [In-App Purchases](#in-app-purchases)
 - [So Much More](#so-much-more)
 - [Contributors](#contributors)
-- [Apps Using OvershareKit](apps-using-oversharekit)
+- [Apps Using OvershareKit](#apps-using-oversharekit)
 - [Attributions](#attributions)
 - [License](#license)
 
