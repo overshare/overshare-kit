@@ -22,25 +22,25 @@
 
 /* Begin PBXBuildFile section */
 		03AB27E64DF84922845B5C6B /* libPods-Overshare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6372A9072146CEA4538CE3 /* libPods-Overshare.a */; };
+		7211FCD31896E00C00CDB619 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCC51896E00C00CDB619 /* InfoPlist.strings */; };
+		7211FCD41896E00C00CDB619 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCC71896E00C00CDB619 /* Icon-60@2x.png */; };
+		7211FCD51896E00C00CDB619 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCC81896E00C00CDB619 /* Icon-76.png */; };
+		7211FCD61896E00C00CDB619 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCC91896E00C00CDB619 /* Icon-76@2x.png */; };
+		7211FCD71896E00C00CDB619 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCCA1896E00C00CDB619 /* Images.xcassets */; };
+		7211FCD81896E00C00CDB619 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7211FCCB1896E00C00CDB619 /* main.m */; };
+		7211FCD91896E00C00CDB619 /* OSKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7211FCCD1896E00C00CDB619 /* OSKAppDelegate.m */; };
+		7211FCDA1896E00C00CDB619 /* Overshare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCCE1896E00C00CDB619 /* Overshare-Info.plist */; };
+		7211FCDB1896E00C00CDB619 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCD01896E00C00CDB619 /* rain.jpg */; };
+		7211FCDC1896E00C00CDB619 /* soda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCD11896E00C00CDB619 /* soda.jpg */; };
+		7211FCDD1896E00C00CDB619 /* type.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCD21896E00C00CDB619 /* type.jpg */; };
+		7211FCE61896E04200CDB619 /* SampleAppPurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7211FCDF1896E04200CDB619 /* SampleAppPurchasingViewController.m */; };
+		7211FCE71896E04200CDB619 /* SampleAppPurchasingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCE01896E04200CDB619 /* SampleAppPurchasingViewController.xib */; };
+		7211FCE81896E04200CDB619 /* SampleTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7211FCE21896E04200CDB619 /* SampleTimelineCell.m */; };
+		7211FCE91896E04200CDB619 /* SampleTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7211FCE31896E04200CDB619 /* SampleTimelineCell.xib */; };
+		7211FCEA1896E04200CDB619 /* SampleTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7211FCE51896E04200CDB619 /* SampleTimelineViewController.m */; };
 		72670B5618906CC100056736 /* OSKSocialComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72670B5518906CC100056736 /* OSKSocialComposeViewController.m */; };
 		727988D2187DB70F00966C66 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 727988D1187DB70F00966C66 /* Podfile */; };
 		727988D4187DB75A00966C66 /* OvershareKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 727988D3187DB75A00966C66 /* OvershareKit.podspec */; };
-		727988EE187DB91700966C66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 727988D7187DB91700966C66 /* InfoPlist.strings */; };
-		727988EF187DB91700966C66 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 727988D9187DB91700966C66 /* Icon-60@2x.png */; };
-		727988F0187DB91700966C66 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 727988DA187DB91700966C66 /* Icon-76.png */; };
-		727988F1187DB91700966C66 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 727988DB187DB91700966C66 /* Icon-76@2x.png */; };
-		727988F2187DB91700966C66 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 727988DC187DB91700966C66 /* Images.xcassets */; };
-		727988F3187DB91700966C66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988DD187DB91700966C66 /* main.m */; };
-		727988F4187DB91700966C66 /* OSKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988DF187DB91700966C66 /* OSKAppDelegate.m */; };
-		727988F5187DB91700966C66 /* Overshare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 727988E0187DB91700966C66 /* Overshare-Info.plist */; };
-		727988F6187DB91700966C66 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 727988E2187DB91700966C66 /* rain.jpg */; };
-		727988F7187DB91700966C66 /* SampleAppPurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988E4187DB91700966C66 /* SampleAppPurchasingViewController.m */; };
-		727988F8187DB91700966C66 /* SampleAppPurchasingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727988E5187DB91700966C66 /* SampleAppPurchasingViewController.xib */; };
-		727988F9187DB91700966C66 /* SampleTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988E7187DB91700966C66 /* SampleTimelineCell.m */; };
-		727988FA187DB91700966C66 /* SampleTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727988E8187DB91700966C66 /* SampleTimelineCell.xib */; };
-		727988FB187DB91700966C66 /* SampleTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727988EA187DB91700966C66 /* SampleTimelineViewController.m */; };
-		727988FC187DB91700966C66 /* soda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 727988EB187DB91700966C66 /* soda.jpg */; };
-		727988FD187DB91700966C66 /* type.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 727988EC187DB91700966C66 /* type.jpg */; };
 		72798A2A187DB97300966C66 /* 1Password-Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798901187DB97100966C66 /* 1Password-Icon-120.png */; };
 		72798A2B187DB97300966C66 /* 1Password-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798902187DB97100966C66 /* 1Password-Icon-60@2x.png */; };
 		72798A2C187DB97300966C66 /* 1Password-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 72798903187DB97100966C66 /* 1Password-Icon-76.png */; };
@@ -224,7 +224,6 @@
 		72798AE4187DB97300966C66 /* UIImage+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A25187DB97300966C66 /* UIImage+OSKUtilities.m */; };
 		72798AE5187DB97300966C66 /* UIView+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A27187DB97300966C66 /* UIView+OSKUtilities.m */; };
 		72798AE6187DB97300966C66 /* UIViewController+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 72798A29187DB97300966C66 /* UIViewController+OSKUtilities.m */; };
-		72F280CA188301EA00AC5E8F /* OSKLocalizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72F280C9188301EA00AC5E8F /* OSKLocalizations.bundle */; };
 		7FEE7633181ED83D000F684A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7632181ED83D000F684A /* Foundation.framework */; };
 		7FEE7635181ED83D000F684A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7634181ED83D000F684A /* CoreGraphics.framework */; };
 		7FEE7637181ED83D000F684A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7636181ED83D000F684A /* UIKit.framework */; };
@@ -232,31 +231,32 @@
 
 /* Begin PBXFileReference section */
 		6649A76ED6254C548DFF6344 /* Pods-Overshare.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Overshare.xcconfig"; path = "Pods/Pods-Overshare.xcconfig"; sourceTree = "<group>"; };
+		7211FCC61896E00C00CDB619 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		7211FCC71896E00C00CDB619 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "Projects/iOS App/Overshare/Overshare/Icon-60@2x.png"; sourceTree = SOURCE_ROOT; };
+		7211FCC81896E00C00CDB619 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "Projects/iOS App/Overshare/Overshare/Icon-76.png"; sourceTree = SOURCE_ROOT; };
+		7211FCC91896E00C00CDB619 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Projects/iOS App/Overshare/Overshare/Icon-76@2x.png"; sourceTree = SOURCE_ROOT; };
+		7211FCCA1896E00C00CDB619 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Projects/iOS App/Overshare/Overshare/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		7211FCCB1896E00C00CDB619 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Projects/iOS App/Overshare/Overshare/main.m"; sourceTree = SOURCE_ROOT; };
+		7211FCCC1896E00C00CDB619 /* OSKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSKAppDelegate.h; path = "Projects/iOS App/Overshare/Overshare/OSKAppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		7211FCCD1896E00C00CDB619 /* OSKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSKAppDelegate.m; path = "Projects/iOS App/Overshare/Overshare/OSKAppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		7211FCCE1896E00C00CDB619 /* Overshare-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Overshare-Info.plist"; path = "Projects/iOS App/Overshare/Overshare/Overshare-Info.plist"; sourceTree = SOURCE_ROOT; };
+		7211FCCF1896E00C00CDB619 /* Overshare-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Overshare-Prefix.pch"; path = "Projects/iOS App/Overshare/Overshare/Overshare-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		7211FCD01896E00C00CDB619 /* rain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rain.jpg; path = "Projects/iOS App/Overshare/Overshare/rain.jpg"; sourceTree = SOURCE_ROOT; };
+		7211FCD11896E00C00CDB619 /* soda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = soda.jpg; path = "Projects/iOS App/Overshare/Overshare/soda.jpg"; sourceTree = SOURCE_ROOT; };
+		7211FCD21896E00C00CDB619 /* type.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = type.jpg; path = "Projects/iOS App/Overshare/Overshare/type.jpg"; sourceTree = SOURCE_ROOT; };
+		7211FCDE1896E04200CDB619 /* SampleAppPurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleAppPurchasingViewController.h; path = "Projects/iOS App/Overshare/Overshare/SampleAppPurchasingViewController.h"; sourceTree = SOURCE_ROOT; };
+		7211FCDF1896E04200CDB619 /* SampleAppPurchasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleAppPurchasingViewController.m; path = "Projects/iOS App/Overshare/Overshare/SampleAppPurchasingViewController.m"; sourceTree = SOURCE_ROOT; };
+		7211FCE01896E04200CDB619 /* SampleAppPurchasingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SampleAppPurchasingViewController.xib; path = "Projects/iOS App/Overshare/Overshare/SampleAppPurchasingViewController.xib"; sourceTree = SOURCE_ROOT; };
+		7211FCE11896E04200CDB619 /* SampleTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleTimelineCell.h; path = "Projects/iOS App/Overshare/Overshare/SampleTimelineCell.h"; sourceTree = SOURCE_ROOT; };
+		7211FCE21896E04200CDB619 /* SampleTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleTimelineCell.m; path = "Projects/iOS App/Overshare/Overshare/SampleTimelineCell.m"; sourceTree = SOURCE_ROOT; };
+		7211FCE31896E04200CDB619 /* SampleTimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SampleTimelineCell.xib; path = "Projects/iOS App/Overshare/Overshare/SampleTimelineCell.xib"; sourceTree = SOURCE_ROOT; };
+		7211FCE41896E04200CDB619 /* SampleTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleTimelineViewController.h; path = "Projects/iOS App/Overshare/Overshare/SampleTimelineViewController.h"; sourceTree = SOURCE_ROOT; };
+		7211FCE51896E04200CDB619 /* SampleTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleTimelineViewController.m; path = "Projects/iOS App/Overshare/Overshare/SampleTimelineViewController.m"; sourceTree = SOURCE_ROOT; };
+		7211FCEB1896E05F00CDB619 /* Overshare-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Overshare-Prefix.pch"; path = "Projects/iOS App/Overshare/Overshare/Overshare-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		72670B5418906CC100056736 /* OSKSocialComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSocialComposeViewController.h; sourceTree = "<group>"; };
 		72670B5518906CC100056736 /* OSKSocialComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSocialComposeViewController.m; sourceTree = "<group>"; };
 		727988D1187DB70F00966C66 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		727988D3187DB75A00966C66 /* OvershareKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OvershareKit.podspec; sourceTree = "<group>"; };
-		727988D8187DB91700966C66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
-		727988D9187DB91700966C66 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "Projects/iOS App/Icon-60@2x.png"; sourceTree = SOURCE_ROOT; };
-		727988DA187DB91700966C66 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "Projects/iOS App/Icon-76.png"; sourceTree = SOURCE_ROOT; };
-		727988DB187DB91700966C66 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Projects/iOS App/Icon-76@2x.png"; sourceTree = SOURCE_ROOT; };
-		727988DC187DB91700966C66 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Projects/iOS App/Images.xcassets"; sourceTree = SOURCE_ROOT; };
-		727988DD187DB91700966C66 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Projects/iOS App/main.m"; sourceTree = SOURCE_ROOT; };
-		727988DE187DB91700966C66 /* OSKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSKAppDelegate.h; path = "Projects/iOS App/OSKAppDelegate.h"; sourceTree = SOURCE_ROOT; };
-		727988DF187DB91700966C66 /* OSKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSKAppDelegate.m; path = "Projects/iOS App/OSKAppDelegate.m"; sourceTree = SOURCE_ROOT; };
-		727988E0187DB91700966C66 /* Overshare-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Overshare-Info.plist"; path = "Projects/iOS App/Overshare-Info.plist"; sourceTree = SOURCE_ROOT; };
-		727988E1187DB91700966C66 /* Overshare-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Overshare-Prefix.pch"; path = "Projects/iOS App/Overshare-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		727988E2187DB91700966C66 /* rain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rain.jpg; path = "Projects/iOS App/rain.jpg"; sourceTree = SOURCE_ROOT; };
-		727988E3187DB91700966C66 /* SampleAppPurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleAppPurchasingViewController.h; path = "Projects/iOS App/SampleAppPurchasingViewController.h"; sourceTree = SOURCE_ROOT; };
-		727988E4187DB91700966C66 /* SampleAppPurchasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleAppPurchasingViewController.m; path = "Projects/iOS App/SampleAppPurchasingViewController.m"; sourceTree = SOURCE_ROOT; };
-		727988E5187DB91700966C66 /* SampleAppPurchasingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SampleAppPurchasingViewController.xib; path = "Projects/iOS App/SampleAppPurchasingViewController.xib"; sourceTree = SOURCE_ROOT; };
-		727988E6187DB91700966C66 /* SampleTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleTimelineCell.h; path = "Projects/iOS App/SampleTimelineCell.h"; sourceTree = SOURCE_ROOT; };
-		727988E7187DB91700966C66 /* SampleTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleTimelineCell.m; path = "Projects/iOS App/SampleTimelineCell.m"; sourceTree = SOURCE_ROOT; };
-		727988E8187DB91700966C66 /* SampleTimelineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SampleTimelineCell.xib; path = "Projects/iOS App/SampleTimelineCell.xib"; sourceTree = SOURCE_ROOT; };
-		727988E9187DB91700966C66 /* SampleTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleTimelineViewController.h; path = "Projects/iOS App/SampleTimelineViewController.h"; sourceTree = SOURCE_ROOT; };
-		727988EA187DB91700966C66 /* SampleTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleTimelineViewController.m; path = "Projects/iOS App/SampleTimelineViewController.m"; sourceTree = SOURCE_ROOT; };
-		727988EB187DB91700966C66 /* soda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = soda.jpg; path = "Projects/iOS App/soda.jpg"; sourceTree = SOURCE_ROOT; };
-		727988EC187DB91700966C66 /* type.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = type.jpg; path = "Projects/iOS App/type.jpg"; sourceTree = SOURCE_ROOT; };
 		72798901187DB97100966C66 /* 1Password-Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1Password-Icon-120.png"; sourceTree = "<group>"; };
 		72798902187DB97100966C66 /* 1Password-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1Password-Icon-60@2x.png"; sourceTree = "<group>"; };
 		72798903187DB97100966C66 /* 1Password-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1Password-Icon-76.png"; sourceTree = "<group>"; };
@@ -540,8 +540,6 @@
 		72798A27187DB97300966C66 /* UIView+OSKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+OSKUtilities.m"; sourceTree = "<group>"; };
 		72798A28187DB97300966C66 /* UIViewController+OSKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+OSKUtilities.h"; sourceTree = "<group>"; };
 		72798A29187DB97300966C66 /* UIViewController+OSKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+OSKUtilities.m"; sourceTree = "<group>"; };
-		72798B11187DC3C000966C66 /* OSKLocalizedStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKLocalizedStrings.h; sourceTree = "<group>"; };
-		72F280C9188301EA00AC5E8F /* OSKLocalizations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OSKLocalizations.bundle; sourceTree = "<group>"; };
 		7FEE762F181ED83D000F684A /* Overshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Overshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEE7632181ED83D000F684A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FEE7634181ED83D000F684A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -565,6 +563,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7211FCC41896E00C00CDB619 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				7211FCC51896E00C00CDB619 /* InfoPlist.strings */,
+			);
+			name = en.lproj;
+			path = "Projects/iOS App/Overshare/Overshare/en.lproj";
+			sourceTree = SOURCE_ROOT;
+		};
 		72670B5318906CAB00056736 /* Social Composer */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,30 +581,22 @@
 			name = "Social Composer";
 			sourceTree = "<group>";
 		};
-		727988D6187DB91700966C66 /* en.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				727988D7187DB91700966C66 /* InfoPlist.strings */,
-			);
-			name = en.lproj;
-			path = "Projects/iOS App/en.lproj";
-			sourceTree = SOURCE_ROOT;
-		};
 		727988FE187DB92400966C66 /* Resource Files */ = {
 			isa = PBXGroup;
 			children = (
-				727988DE187DB91700966C66 /* OSKAppDelegate.h */,
-				727988DF187DB91700966C66 /* OSKAppDelegate.m */,
-				727988EB187DB91700966C66 /* soda.jpg */,
-				727988EC187DB91700966C66 /* type.jpg */,
-				727988E0187DB91700966C66 /* Overshare-Info.plist */,
-				727988D9187DB91700966C66 /* Icon-60@2x.png */,
-				727988DA187DB91700966C66 /* Icon-76.png */,
-				727988E2187DB91700966C66 /* rain.jpg */,
-				727988DB187DB91700966C66 /* Icon-76@2x.png */,
-				727988DD187DB91700966C66 /* main.m */,
-				727988DC187DB91700966C66 /* Images.xcassets */,
-				727988D6187DB91700966C66 /* en.lproj */,
+				7211FCC41896E00C00CDB619 /* en.lproj */,
+				7211FCC71896E00C00CDB619 /* Icon-60@2x.png */,
+				7211FCC81896E00C00CDB619 /* Icon-76.png */,
+				7211FCC91896E00C00CDB619 /* Icon-76@2x.png */,
+				7211FCCA1896E00C00CDB619 /* Images.xcassets */,
+				7211FCCB1896E00C00CDB619 /* main.m */,
+				7211FCCC1896E00C00CDB619 /* OSKAppDelegate.h */,
+				7211FCCD1896E00C00CDB619 /* OSKAppDelegate.m */,
+				7211FCCE1896E00C00CDB619 /* Overshare-Info.plist */,
+				7211FCCF1896E00C00CDB619 /* Overshare-Prefix.pch */,
+				7211FCD01896E00C00CDB619 /* rain.jpg */,
+				7211FCD11896E00C00CDB619 /* soda.jpg */,
+				7211FCD21896E00C00CDB619 /* type.jpg */,
 			);
 			name = "Resource Files";
 			sourceTree = "<group>";
@@ -606,7 +605,6 @@
 			isa = PBXGroup;
 			children = (
 				72798A1F187DB97300966C66 /* OvershareKit.h */,
-				72F280C9188301EA00AC5E8F /* OSKLocalizations.bundle */,
 				72798B10187DC10100966C66 /* Utilities */,
 				72798AE7187DBC2500966C66 /* Shareable Content */,
 				72798AE8187DBC4800966C66 /* Activities (Abstract + Manager) */,
@@ -1202,7 +1200,6 @@
 				72798A27187DB97300966C66 /* UIView+OSKUtilities.m */,
 				72798A28187DB97300966C66 /* UIViewController+OSKUtilities.h */,
 				72798A29187DB97300966C66 /* UIViewController+OSKUtilities.m */,
-				72798B11187DC3C000966C66 /* OSKLocalizedStrings.h */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1244,15 +1241,15 @@
 			isa = PBXGroup;
 			children = (
 				727988FE187DB92400966C66 /* Resource Files */,
-				727988E1187DB91700966C66 /* Overshare-Prefix.pch */,
-				727988E3187DB91700966C66 /* SampleAppPurchasingViewController.h */,
-				727988E4187DB91700966C66 /* SampleAppPurchasingViewController.m */,
-				727988E5187DB91700966C66 /* SampleAppPurchasingViewController.xib */,
-				727988E6187DB91700966C66 /* SampleTimelineCell.h */,
-				727988E7187DB91700966C66 /* SampleTimelineCell.m */,
-				727988E8187DB91700966C66 /* SampleTimelineCell.xib */,
-				727988E9187DB91700966C66 /* SampleTimelineViewController.h */,
-				727988EA187DB91700966C66 /* SampleTimelineViewController.m */,
+				7211FCEB1896E05F00CDB619 /* Overshare-Prefix.pch */,
+				7211FCDE1896E04200CDB619 /* SampleAppPurchasingViewController.h */,
+				7211FCDF1896E04200CDB619 /* SampleAppPurchasingViewController.m */,
+				7211FCE01896E04200CDB619 /* SampleAppPurchasingViewController.xib */,
+				7211FCE11896E04200CDB619 /* SampleTimelineCell.h */,
+				7211FCE21896E04200CDB619 /* SampleTimelineCell.m */,
+				7211FCE31896E04200CDB619 /* SampleTimelineCell.xib */,
+				7211FCE41896E04200CDB619 /* SampleTimelineViewController.h */,
+				7211FCE51896E04200CDB619 /* SampleTimelineViewController.m */,
 			);
 			name = "Sample App Files";
 			path = Overshare;
@@ -1321,32 +1318,30 @@
 			files = (
 				72798A67187DB97300966C66 /* osk-navbarButton-disabled@2x.png in Resources */,
 				72798A41187DB97300966C66 /* osk-appDotNetIcon-60@2x.png in Resources */,
-				727988F0187DB91700966C66 /* Icon-76.png in Resources */,
 				72798A7E187DB97300966C66 /* osk-twitterIcon-76.png in Resources */,
+				7211FCDA1896E00C00CDB619 /* Overshare-Info.plist in Resources */,
 				72798A75187DB97300966C66 /* osk-readabilityIcon-29@2x.png in Resources */,
 				72798A43187DB97300966C66 /* osk-appDotNetIcon-76@2x.png in Resources */,
 				72798A5C187DB97300966C66 /* osk-iconMask-bw-29@2x.png in Resources */,
 				72798A6A187DB97300966C66 /* osk-navbarButton.png in Resources */,
-				727988F5187DB91700966C66 /* Overshare-Info.plist in Resources */,
 				72798A79187DB97300966C66 /* osk-safariIcon-60@2x.png in Resources */,
 				72798A6D187DB97300966C66 /* osk-photosIcon-76.png in Resources */,
 				72798A3D187DB97300966C66 /* osk-airDropIcon-76.png in Resources */,
 				72798A87187DB97300966C66 /* Riposte-Icon-76@2x.png in Resources */,
+				7211FCD31896E00C00CDB619 /* InfoPlist.strings in Resources */,
 				72798A70187DB97300966C66 /* osk-pinboardIcon-29@2x.png in Resources */,
+				7211FCD51896E00C00CDB619 /* Icon-76.png in Resources */,
 				72798A74187DB97300966C66 /* osk-readabilityIcon-29.png in Resources */,
 				72798A76187DB97300966C66 /* osk-readabilityIcon-60@2x.png in Resources */,
 				72798A7B187DB97300966C66 /* osk-safariIcon-76@2x.png in Resources */,
-				727988FA187DB91700966C66 /* SampleTimelineCell.xib in Resources */,
 				72798A61187DB97300966C66 /* osk-mailIcon-76.png in Resources */,
 				72798A85187DB97300966C66 /* Riposte-Icon-60@2x.png in Resources */,
 				72798A2F187DB97300966C66 /* Chrome-Icon-29@2x.png in Resources */,
 				72798AA4187DB97300966C66 /* OSKActivitySheetViewController.xib in Resources */,
 				72798A5F187DB97300966C66 /* osk-iconMask-bw-76@2x.png in Resources */,
 				72798A9E187DB97300966C66 /* OSKActivityCollectionViewCell_Pad.xib in Resources */,
-				72F280CA188301EA00AC5E8F /* OSKLocalizations.bundle in Resources */,
 				72798A78187DB97300966C66 /* osk-readabilityIcon-76@2x.png in Resources */,
 				72798A73187DB97300966C66 /* osk-pinboardIcon-76@2x.png in Resources */,
-				727988F1187DB91700966C66 /* Icon-76@2x.png in Resources */,
 				72798A5B187DB97300966C66 /* osk-iconMask-bw-29.png in Resources */,
 				72798A30187DB97300966C66 /* Chrome-Icon-60@2x.png in Resources */,
 				72798A60187DB97300966C66 /* osk-mailIcon-60@2x.png in Resources */,
@@ -1355,20 +1350,18 @@
 				72798A36187DB97300966C66 /* Instapaper-Icon-60@2x.png in Resources */,
 				72798A55187DB97300966C66 /* osk-iap-badge-60@2x.png in Resources */,
 				72798A81187DB97300966C66 /* Pocket-Icon-29@2x.png in Resources */,
+				7211FCE71896E04200CDB619 /* SampleAppPurchasingViewController.xib in Resources */,
 				72798A3A187DB97300966C66 /* Omnifocus-Icon-72.png in Resources */,
-				727988FC187DB91700966C66 /* soda.jpg in Resources */,
 				72798A40187DB97300966C66 /* osk-appDotNetIcon-29@2x.png in Resources */,
 				72798A44187DB97300966C66 /* osk-appStoreIcon-76.png in Resources */,
+				7211FCD41896E00C00CDB619 /* Icon-60@2x.png in Resources */,
 				72798A31187DB97300966C66 /* Chrome-Icon-76.png in Resources */,
 				72798A4F187DB97300966C66 /* osk-facebookIcon-76.png in Resources */,
 				72798A83187DB97300966C66 /* Pocket-Icon-76.png in Resources */,
 				72798A35187DB97300966C66 /* Instapaper-Icon-29@2x.png in Resources */,
 				72798A2B187DB97300966C66 /* 1Password-Icon-60@2x.png in Resources */,
 				72798A77187DB97300966C66 /* osk-readabilityIcon-76.png in Resources */,
-				727988F6187DB91700966C66 /* rain.jpg in Resources */,
-				727988F8187DB91700966C66 /* SampleAppPurchasingViewController.xib in Resources */,
 				72798A8A187DB97300966C66 /* Things-Icon-76@2x.png in Resources */,
-				727988FD187DB91700966C66 /* type.jpg in Resources */,
 				72798A7C187DB97300966C66 /* osk-settingsPlaceholder@2x.png in Resources */,
 				72798A3B187DB97300966C66 /* Omnifocus-Icon-72@2x.png in Resources */,
 				72798A49187DB97300966C66 /* osk-copyIcon-purple-76@2x.png in Resources */,
@@ -1390,13 +1383,15 @@
 				72798A7D187DB97300966C66 /* osk-twitterIcon-60@2x.png in Resources */,
 				72798A64187DB97300966C66 /* osk-messagesIcon-76.png in Resources */,
 				72798A68187DB97300966C66 /* osk-navbarButton-highlighted.png in Resources */,
+				7211FCD61896E00C00CDB619 /* Icon-76@2x.png in Resources */,
 				72798A3E187DB97300966C66 /* osk-airDropIcon-76@2x.png in Resources */,
 				72798A63187DB97300966C66 /* osk-messagesIcon-60@2x.png in Resources */,
 				72798A86187DB97300966C66 /* Riposte-Icon-76.png in Resources */,
 				72798A2E187DB97300966C66 /* Chrome-Icon-29.png in Resources */,
 				72798A47187DB97300966C66 /* osk-copyIcon-purple-60@2x.png in Resources */,
+				7211FCDD1896E00C00CDB619 /* type.jpg in Resources */,
 				72798A52187DB97300966C66 /* osk-flickrIcon-76.png in Resources */,
-				727988F2187DB91700966C66 /* Images.xcassets in Resources */,
+				7211FCD71896E00C00CDB619 /* Images.xcassets in Resources */,
 				72798A88187DB97300966C66 /* Things-Icon-60@2x.png in Resources */,
 				72798A7A187DB97300966C66 /* osk-safariIcon-76.png in Resources */,
 				72798A6F187DB97300966C66 /* osk-pinboardIcon-29.png in Resources */,
@@ -1408,12 +1403,11 @@
 				72798A57187DB97300966C66 /* osk-iap-badge-76@2x.png in Resources */,
 				72798A32187DB97300966C66 /* Chrome-Icon-76@2x.png in Resources */,
 				72798A2D187DB97300966C66 /* 1Password-Icon-76@2x.png in Resources */,
+				7211FCE91896E04200CDB619 /* SampleTimelineCell.xib in Resources */,
 				72798A62187DB97300966C66 /* osk-mailIcon-76@2x.png in Resources */,
 				72798A6E187DB97300966C66 /* osk-photosIcon-76@2x.png in Resources */,
 				72798A5E187DB97300966C66 /* osk-iconMask-bw-76.png in Resources */,
 				72798A51187DB97300966C66 /* osk-flickrIcon-60@2x.png in Resources */,
-				727988EE187DB91700966C66 /* InfoPlist.strings in Resources */,
-				727988EF187DB91700966C66 /* Icon-60@2x.png in Resources */,
 				72798A82187DB97300966C66 /* Pocket-Icon-60@2x.png in Resources */,
 				72798A50187DB97300966C66 /* osk-facebookIcon-76@2x.png in Resources */,
 				72798A4B187DB97300966C66 /* osk-copyIcon-yellow-60@2x.png in Resources */,
@@ -1428,6 +1422,8 @@
 				72798A7F187DB97300966C66 /* osk-twitterIcon-76@2x.png in Resources */,
 				72798A72187DB97300966C66 /* osk-pinboardIcon-76.png in Resources */,
 				72798A69187DB97300966C66 /* osk-navbarButton-highlighted@2x.png in Resources */,
+				7211FCDC1896E00C00CDB619 /* soda.jpg in Resources */,
+				7211FCDB1896E00C00CDB619 /* rain.jpg in Resources */,
 				72798A59187DB97300966C66 /* osk-icon-border-76.png in Resources */,
 				72798A4C187DB97300966C66 /* osk-copyIcon-yellow-76.png in Resources */,
 				72798A56187DB97300966C66 /* osk-iap-badge-76.png in Resources */,
@@ -1494,6 +1490,7 @@
 				72798AB9187DB97300966C66 /* OSKInstapaperActivity.m in Sources */,
 				72798AE6187DB97300966C66 /* UIViewController+OSKUtilities.m in Sources */,
 				72798ABE187DB97300966C66 /* OSKManagedAccount.m in Sources */,
+				7211FCE61896E04200CDB619 /* SampleAppPurchasingViewController.m in Sources */,
 				72798ADD187DB97300966C66 /* OSKTwitterTextEntity.m in Sources */,
 				72798ACE187DB97300966C66 /* OSKReadabilityUtility.m in Sources */,
 				72798A96187DB97300966C66 /* OSKAccountChooserViewController.m in Sources */,
@@ -1503,12 +1500,12 @@
 				72798AAD187DB97300966C66 /* OSKApplicationCredential.m in Sources */,
 				72798A98187DB97300966C66 /* OSKAccountTypeCell.m in Sources */,
 				72798AB8187DB97300966C66 /* OSKInMemoryImageCache.m in Sources */,
+				7211FCD81896E00C00CDB619 /* main.m in Sources */,
 				72798AC6187DB97300966C66 /* OSKOmnifocusActivity.m in Sources */,
 				72798AC9187DB97300966C66 /* OSKPinboardUtility.m in Sources */,
 				72798AAA187DB97300966C66 /* OSKAppDotNetActivity.m in Sources */,
 				72798AAF187DB97300966C66 /* OSKChromeActivity.m in Sources */,
 				72798A8F187DB97300966C66 /* NSDictionary+OSKModel.m in Sources */,
-				727988F3187DB91700966C66 /* main.m in Sources */,
 				72798AC7187DB97300966C66 /* OSKPagedHorizontalLayout.m in Sources */,
 				72798AA7187DB97300966C66 /* OSKAirDropActivity.m in Sources */,
 				72798AA3187DB97300966C66 /* OSKActivitySheetViewController.m in Sources */,
@@ -1529,6 +1526,7 @@
 				72798AD2187DB97300966C66 /* OSKSessionController.m in Sources */,
 				72798AA6187DB97300966C66 /* OSKADNLoginManager.m in Sources */,
 				72798A94187DB97300966C66 /* OSK1PasswordBrowserActivity.m in Sources */,
+				7211FCD91896E00C00CDB619 /* OSKAppDelegate.m in Sources */,
 				72798A97187DB97300966C66 /* OSKAccountManagementViewController.m in Sources */,
 				72798AD7187DB97300966C66 /* OSKSMSActivity.m in Sources */,
 				72798A91187DB97300966C66 /* NSMutableURLRequest+OSKUtilities.m in Sources */,
@@ -1537,9 +1535,9 @@
 				72798AB0187DB97300966C66 /* OSKCopyToPasteboardActivity.m in Sources */,
 				72798A8C187DB97300966C66 /* NSCoder+OSKCoder.m in Sources */,
 				72798AA0187DB97300966C66 /* OSKActivityIcon.m in Sources */,
-				727988F7187DB91700966C66 /* SampleAppPurchasingViewController.m in Sources */,
 				72670B5618906CC100056736 /* OSKSocialComposeViewController.m in Sources */,
 				72798ADC187DB97300966C66 /* OSKTwitterText.m in Sources */,
+				7211FCEA1896E04200CDB619 /* SampleTimelineViewController.m in Sources */,
 				72798ACB187DB97300966C66 /* OSKPocketActivity.m in Sources */,
 				72798AE4187DB97300966C66 /* UIImage+OSKUtilities.m in Sources */,
 				72798A93187DB97300966C66 /* NSString+OSKDerp.m in Sources */,
@@ -1547,18 +1545,15 @@
 				72798AD5187DB97300966C66 /* OSKShareableContent.m in Sources */,
 				72798AA8187DB97300966C66 /* OSKAirDropViewController.m in Sources */,
 				72798A8D187DB97300966C66 /* NSData+OSKDerp.m in Sources */,
-				727988FB187DB91700966C66 /* SampleTimelineViewController.m in Sources */,
 				72798AD8187DB97300966C66 /* OSKSystemAccountStore.m in Sources */,
 				72798A9B187DB97300966C66 /* OSKActivity.m in Sources */,
 				72798ACD187DB97300966C66 /* OSKReadabilityActivity.m in Sources */,
-				727988F9187DB91700966C66 /* SampleTimelineCell.m in Sources */,
 				72798ACA187DB97300966C66 /* OSKPocketAccountViewController.m in Sources */,
 				72798ABD187DB97300966C66 /* OSKMailComposeViewController.m in Sources */,
 				72798AC5187DB97300966C66 /* OSKOAuthUtility.m in Sources */,
 				72798AD3187DB97300966C66 /* OSKSessionController_Pad.m in Sources */,
 				72798AB1187DB97300966C66 /* OSKEmailActivity.m in Sources */,
 				72798AE0187DB97300966C66 /* OSKUsernamePasswordViewController.m in Sources */,
-				727988F4187DB91700966C66 /* OSKAppDelegate.m in Sources */,
 				72798AA1187DB97300966C66 /* OSKActivityIndicatorItem.m in Sources */,
 				72798AAB187DB97300966C66 /* OSKAppDotNetAuthenticationViewController.m in Sources */,
 				72798AD0187DB97300966C66 /* OSKSafariActivity.m in Sources */,
@@ -1571,6 +1566,7 @@
 				72798AC8187DB97300966C66 /* OSKPinboardActivity.m in Sources */,
 				72798AA9187DB97300966C66 /* OSKAlertView.m in Sources */,
 				72798A9A187DB97300966C66 /* OSKActivitiesManager.m in Sources */,
+				7211FCE81896E04200CDB619 /* SampleTimelineCell.m in Sources */,
 				72798ABB187DB97300966C66 /* OSKKeychainUtility.m in Sources */,
 				72798ABA187DB97300966C66 /* OSKInstapaperUtility.m in Sources */,
 				72798ACC187DB97300966C66 /* OSKPresentationManager.m in Sources */,
@@ -1584,10 +1580,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		727988D7187DB91700966C66 /* InfoPlist.strings */ = {
+		7211FCC51896E00C00CDB619 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				727988D8187DB91700966C66 /* en */,
+				7211FCC61896E00C00CDB619 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1691,10 +1687,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Projects/iOS App/Overshare-Prefix.pch";
-				INFOPLIST_FILE = "Projects/iOS App/Overshare-Info.plist";
+				GCC_PREFIX_HEADER = "Projects/iOS App/Overshare/Overshare/Overshare-Prefix.pch";
+				INFOPLIST_FILE = "Projects/iOS App/Overshare/Overshare/Overshare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0AEA4871-9E21-47F6-9B41-DC989F5E0E24";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1707,10 +1703,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Projects/iOS App/Overshare-Prefix.pch";
-				INFOPLIST_FILE = "Projects/iOS App/Overshare-Info.plist";
+				GCC_PREFIX_HEADER = "Projects/iOS App/Overshare/Overshare/Overshare-Prefix.pch";
+				INFOPLIST_FILE = "Projects/iOS App/Overshare/Overshare/Overshare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0AEA4871-9E21-47F6-9B41-DC989F5E0E24";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1725,6 +1721,7 @@
 				7278E40D1892AC6800D36676 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FEE762A181ED83D000F684A /* Build configuration list for PBXProject "Overshare" */ = {
 			isa = XCConfigurationList;
