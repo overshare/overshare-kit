@@ -24,6 +24,14 @@ NSString * const OSKShareableContentItemType_TextEditing = @"OSKShareableContent
 
 @implementation OSKShareableContentItem
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _userInfo = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
 - (NSString *)itemType {
     NSAssert(NO, @"OSKShareableContentItem subclasses must override itemType without calling super.");
     return nil;

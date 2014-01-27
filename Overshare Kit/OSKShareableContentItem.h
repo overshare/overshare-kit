@@ -64,6 +64,28 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
  */
 - (NSString *)itemType;
 
+/**
+ Additional activity-specific or contextual info.
+ 
+ @discussion Third-party apps & services vary widely in the extra features they
+ offer. Facebook is *in general* a microblogging activity, like ADN and Twitter,
+ but in practice it has a few advanced needs. Rather than add dozens of properties 
+ that are each only used by a single activity type, it makes more sense use an 
+ NSMutableDictionary to store activity-specific or app-specific contextual info.
+ 
+ To avoid conflicts, keys in this dictionary should be namespaced as follows:
+ 
+ com.<activityName>.<key>
+ 
+ For example, the key to an NSDictionary of Facebook post attributes would be:
+ 
+ com.facebook.postAttributes
+ 
+ And so forth. As OvershareKit matures, we may occasionally promote frequently-used data types
+ stored in the userInfo dictionary to class-level @properties.
+ */
+@property (copy, nonatomic, readonly) NSMutableDictionary *userInfo;
+
 @end
 
 ///---------------------------------------------------
@@ -424,28 +446,6 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
  do may not support multiple tags.
  */
 @property (copy, nonatomic) NSArray *tags;
-
-/**
- Additional activity-specific info. Optional.
- 
- @discussion Text editing apps & services vary widely in the extra features they
- offer. Evernote, for example, offers considerably more options than a
- a traditional note taking app. Rather than add dozens of properties that are each
- only used by a single activity type, it makes more sense use an NSDictionary to
- store activity-specific attributes.
- 
- To avoid conflicts, keys in this dictionary should be namespaced as follows:
- 
-    com.<activityName>.<key>
- 
- For example, the key to an NSDictionary of Evernote note attributes would be:
- 
-    com.evernote.noteAttributes
- 
- And so forth. As OvershareKit matures, we may occasionally promote frequently-used data types
- stored in the additionalInfo dictionary to class-level @properties.
- */
-@property (copy, nonatomic) NSDictionary *additionalInfo;
 
 @end
 
