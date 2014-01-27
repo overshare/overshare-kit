@@ -155,6 +155,10 @@ Justin is an independent iOS and Mac app developer at [Second Gear](http://www.s
 
 *Recent additions are at the top of the list.*
 
+**nvNotes**    
+*The professional Note-taking App that allows you to focus on writing.*    
+[Website](http://www.nvnotes.co.uk)  |  [App Store](https://itunes.apple.com/us/app/nvnotes-note-taking-writing/id700659300?mt=8)
+
 **Unread**    
 *An RSS Reader*    
 By Jared Sinclair    
