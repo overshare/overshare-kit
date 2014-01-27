@@ -757,7 +757,7 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         text = [self.localizationDelegate osk_localizedText_Username];
     }
     if (text == nil) {
-        text = @"Username";
+        text = @"username";
     }
     return text;
 }
@@ -768,7 +768,7 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         text = [self.localizationDelegate osk_localizedText_Email];
     }
     if (text == nil) {
-        text = @"Email";
+        text = @"email";
     }
     return text;
 }
@@ -779,7 +779,7 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         text = [self.localizationDelegate osk_localizedText_Password];
     }
     if (text == nil) {
-        text = @"Password";
+        text = @"password";
     }
     return text;
 }
