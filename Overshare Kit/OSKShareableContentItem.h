@@ -75,14 +75,26 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
  
  To avoid conflicts, keys in this dictionary should be namespaced as follows:
  
- com.<activityName>.<key>
+ com.<application>.<activityName>.<key>
  
- For example, the key to an NSDictionary of Facebook post attributes would be:
+ For example, the key to an NSDictionary of Facebook post attributes would use
+ a protected namespace as follows:
  
- com.facebook.postAttributes
+ com.oversharekit.facebook.userInfo
  
- And so forth. As OvershareKit matures, we may occasionally promote frequently-used data types
- stored in the userInfo dictionary to class-level @properties.
+ Let's say there's an app called Foo.app that has integrated OvershareKit.
+ It has also written a bespoke OSKActivity subclass, "FOOSelfieActivity." This
+ activity is a microblogging activity, but it needs additional data to submit a post.
+ It could add an NSDictionary of custom attributes to the userInfo dictionary 
+ with the following key:
+ 
+ com.fooapp.selfie.userInfo
+ 
+ This would allow Foo.app to add the Selfie activity without having to make awkward
+ modifications to their OSK integration.
+ 
+ As OvershareKit matures, we may occasionally promote frequently-used data types
+ stored in userInfo dictionaries to class-level @properties.
  */
 @property (copy, nonatomic, readonly) NSMutableDictionary *userInfo;
 
