@@ -55,8 +55,8 @@ typedef NS_ENUM(NSInteger, OSKQuoteDirection) {
 #pragma mark - Public
 
 + (NSInteger)fixDumbPunctuation:(NSTextStorage *)textStorage
-               editedRange:(NSRange)editedRange
-          textInputObject:(id<UITextInput>)textInputObject {
+                    editedRange:(NSRange)editedRange
+                textInputObject:(id<UITextInput>)textInputObject {
     
     // Not every edit should trigger a punctuation fix.
 
@@ -385,8 +385,8 @@ typedef NS_ENUM(NSInteger, OSKQuoteDirection) {
 }
 
 + (NSString *)_replacementStringForSingleQuoteAtIndex:(NSInteger)index
-                                   inCharacterItems:(NSArray *)items
-                                   writingDirection:(UITextWritingDirection)writingDirection {
+                                     inCharacterItems:(NSArray *)items
+                                     writingDirection:(UITextWritingDirection)writingDirection {
     
     NSString *replacement = nil;
     
@@ -426,7 +426,7 @@ typedef NS_ENUM(NSInteger, OSKQuoteDirection) {
 }
 
 + (NSString *)_replacementStringForDumbDoubleQuoteAtIndex:(NSInteger)index
-                                     inCharacterItems:(NSArray *)items
+                                         inCharacterItems:(NSArray *)items
                                          writingDirection:(UITextWritingDirection)writingDirection {
     NSString *replacement = nil;
     
@@ -445,7 +445,8 @@ typedef NS_ENUM(NSInteger, OSKQuoteDirection) {
     return replacement;
 }
 
-+ (OSKQuoteDirection)_quoteDirectionThatShouldFollowCharacter:(NSString *)character forDirection:(UITextWritingDirection)writingDirection {
++ (OSKQuoteDirection)_quoteDirectionThatShouldFollowCharacter:(NSString *)character
+                                                 forDirection:(UITextWritingDirection)writingDirection {
     
     OSKQuoteDirection quoteDirection;
     

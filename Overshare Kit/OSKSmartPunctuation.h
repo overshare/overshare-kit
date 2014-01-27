@@ -13,20 +13,30 @@
 /**
  Changes dumb quotes to smart quotes, dashes to en- and em- dashes, and dots to elipses.
  
- This method is designed to be used inside the NSTextStorageDelegate method
- `textStorage:willProcessEditing:editedRange:changeInLength:`. 
- 
  @param textStorage The NSTextStorage of the UIKit text editing view (likely a UITextView).
  
  @param editedRange The editedRange from the NSTextStorageDelegate method listed above.
  
  @param textInputObject An object conforming to the UITextInput protocol. This is ususally
- to be your UITextView. This object is used to obtain writing directions.
+ to your UITextView. This object is used to obtain writing direction.
  
- @return Returns the change in length after the edits.
+ @return Returns the change in length after the edits. OSK uses this to correct the
+ cursor position after, for example, three dots are replaced with an elipsis.
+ 
+ @discussion This method is designed to be used inside the NSTextStorageDelegate method
+ `textStorage:willProcessEditing:editedRange:changeInLength:`.
+ 
+ This method is safe to use with strings containing composed characters (emoji, etc.).
+ It also respects writing direction.
+ 
+ Two dashes followed by anything except a dash will be replaced with an en-dash.
+ 
+ Three consecutive dashes will be replaced with an em-dash.
+ 
+ Three consecutive dots will be replaced with an elipsis.
  */
 + (NSInteger)fixDumbPunctuation:(NSTextStorage *)textStorage
-               editedRange:(NSRange)editedRange
-           textInputObject:(id <UITextInput>)textInputObject;
+                    editedRange:(NSRange)editedRange
+                textInputObject:(id <UITextInput>)textInputObject;
 
 @end

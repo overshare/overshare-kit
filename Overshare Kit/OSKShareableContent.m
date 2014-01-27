@@ -43,6 +43,10 @@
     airDrop.items = @[text];
     content.airDropItem = airDrop;
     
+    OSKTextEditingContentItem *textEditing = [[OSKTextEditingContentItem alloc] init];
+    textEditing.text = text;
+    content.textEditingItem = textEditing;
+    
     return content;
 }
 
@@ -100,6 +104,10 @@
     OSKAirDropContentItem *airDrop = [[OSKAirDropContentItem alloc] init];
     airDrop.items = @[url];
     content.airDropItem = airDrop;
+    
+    OSKTextEditingContentItem *textEditing = [[OSKTextEditingContentItem alloc] init];
+    textEditing.text = url.absoluteString;
+    content.textEditingItem = textEditing;
     
     return content;
 }
@@ -183,6 +191,10 @@
         airDrop.items = @[text];
         content.airDropItem = airDrop;
     }
+    
+    OSKTextEditingContentItem *textEditing = [[OSKTextEditingContentItem alloc] init];
+    textEditing.text = emailItem.body;
+    content.textEditingItem = textEditing;
     
     return content;
 }

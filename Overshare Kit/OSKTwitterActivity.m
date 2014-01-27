@@ -88,8 +88,8 @@ static NSInteger OSKTwitterActivity_FallbackShortURLEstimate = 24;
     return NO;
 }
 
-+ (OSKPublishingViewControllerType)publishingViewControllerType {
-    return OSKPublishingViewControllerType_Microblogging;
++ (OSKPublishingMethod)publishingMethod {
+    return OSKPublishingMethod_ViewController_Microblogging;
 }
 
 - (BOOL)isReadyToPerform {

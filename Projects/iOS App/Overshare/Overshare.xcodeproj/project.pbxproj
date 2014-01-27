@@ -59,6 +59,12 @@
 		7FCD027F18539735005C5931 /* OSKActivityToggleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD027E18539735005C5931 /* OSKActivityToggleCell.m */; };
 		7FD16DAF1876367A0035960C /* link-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD16DAD1876367A0035960C /* link-button.png */; };
 		7FD16DB01876367A0035960C /* link-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD16DAE1876367A0035960C /* link-button@2x.png */; };
+		7FD649DA1895C7CA0021BD50 /* OSKDraftsActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD649D91895C7CA0021BD50 /* OSKDraftsActivity.m */; };
+		7FD649E01895EAF20021BD50 /* Drafts-Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DB1895EAF20021BD50 /* Drafts-Icon-29.png */; };
+		7FD649E11895EAF20021BD50 /* Drafts-Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DC1895EAF20021BD50 /* Drafts-Icon-29@2x.png */; };
+		7FD649E21895EAF20021BD50 /* Drafts-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DD1895EAF20021BD50 /* Drafts-Icon-60@2x.png */; };
+		7FD649E31895EAF20021BD50 /* Drafts-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DE1895EAF20021BD50 /* Drafts-Icon-76.png */; };
+		7FD649E41895EAF20021BD50 /* Drafts-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DF1895EAF20021BD50 /* Drafts-Icon-76@2x.png */; };
 		7FDCDE96181EE1BA00AC2985 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8E181EE1BA00AC2985 /* Icon-60@2x.png */; };
 		7FDCDE97181EE1BA00AC2985 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8F181EE1BA00AC2985 /* rain.jpg */; };
 		7FDCDE9A181EE1BA00AC2985 /* soda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE93181EE1BA00AC2985 /* soda.jpg */; };
@@ -267,6 +273,8 @@
 		7F43DEB718217986003BE9B6 /* OSKFacebookPublishingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSKFacebookPublishingViewController.xib; sourceTree = "<group>"; };
 		7F43DEBA1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookAudienceChooserViewController.h; sourceTree = "<group>"; };
 		7F43DEBB1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKFacebookAudienceChooserViewController.m; sourceTree = "<group>"; };
+		7F4E3AFF18959AA000719268 /* OSKURLSchemeActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKURLSchemeActivity.h; sourceTree = "<group>"; };
+		7F4E3B0018959B9800719268 /* OSKXCallbackURLInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKXCallbackURLInfo.h; sourceTree = "<group>"; };
 		7F4FF50F18516A6D00BFFF2B /* OSKPresentationManager_Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKPresentationManager_Protected.h; sourceTree = "<group>"; };
 		7F55A2F718425C46004A3BCC /* OSKSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSession.h; sourceTree = "<group>"; };
 		7F55A2F818425C46004A3BCC /* OSKSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSession.m; sourceTree = "<group>"; };
@@ -312,6 +320,13 @@
 		7FCD027E18539735005C5931 /* OSKActivityToggleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKActivityToggleCell.m; sourceTree = "<group>"; };
 		7FD16DAD1876367A0035960C /* link-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-button.png"; sourceTree = "<group>"; };
 		7FD16DAE1876367A0035960C /* link-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-button@2x.png"; sourceTree = "<group>"; };
+		7FD649D81895C7CA0021BD50 /* OSKDraftsActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKDraftsActivity.h; sourceTree = "<group>"; };
+		7FD649D91895C7CA0021BD50 /* OSKDraftsActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKDraftsActivity.m; sourceTree = "<group>"; };
+		7FD649DB1895EAF20021BD50 /* Drafts-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Drafts-Icon-29.png"; sourceTree = "<group>"; };
+		7FD649DC1895EAF20021BD50 /* Drafts-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Drafts-Icon-29@2x.png"; sourceTree = "<group>"; };
+		7FD649DD1895EAF20021BD50 /* Drafts-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Drafts-Icon-60@2x.png"; sourceTree = "<group>"; };
+		7FD649DE1895EAF20021BD50 /* Drafts-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Drafts-Icon-76.png"; sourceTree = "<group>"; };
+		7FD649DF1895EAF20021BD50 /* Drafts-Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Drafts-Icon-76@2x.png"; sourceTree = "<group>"; };
 		7FDCDE8E181EE1BA00AC2985 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		7FDCDE8F181EE1BA00AC2985 /* rain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rain.jpg; sourceTree = "<group>"; };
 		7FDCDE93181EE1BA00AC2985 /* soda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soda.jpg; sourceTree = "<group>"; };
@@ -631,6 +646,15 @@
 			name = "Reading List";
 			sourceTree = "<group>";
 		};
+		7FD649D71895BD6A0021BD50 /* Drafts.app */ = {
+			isa = PBXGroup;
+			children = (
+				7FD649D81895C7CA0021BD50 /* OSKDraftsActivity.h */,
+				7FD649D91895C7CA0021BD50 /* OSKDraftsActivity.m */,
+			);
+			name = Drafts.app;
+			sourceTree = "<group>";
+		};
 		7FEE7626181ED83D000F684A = {
 			isa = PBXGroup;
 			children = (
@@ -721,6 +745,11 @@
 		7FEE7694181ED8EE000F684A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7FD649DB1895EAF20021BD50 /* Drafts-Icon-29.png */,
+				7FD649DC1895EAF20021BD50 /* Drafts-Icon-29@2x.png */,
+				7FD649DD1895EAF20021BD50 /* Drafts-Icon-60@2x.png */,
+				7FD649DE1895EAF20021BD50 /* Drafts-Icon-76.png */,
+				7FD649DF1895EAF20021BD50 /* Drafts-Icon-76@2x.png */,
 				7FA91ADF1889F53500A5DF9B /* ReadingList-Icon-29.png */,
 				7FA91AE01889F53500A5DF9B /* ReadingList-Icon-29@2x.png */,
 				7FA91AE11889F53500A5DF9B /* ReadingList-Icon-60.png */,
@@ -911,6 +940,7 @@
 				7FEE7906181ED9EA000F684A /* AirDrop */,
 				7FEE790C181EDA42000F684A /* Chrome */,
 				7FEE790E181EDA63000F684A /* Copy to Pasteboard */,
+				7FD649D71895BD6A0021BD50 /* Drafts.app */,
 				7FEE790F181EDA9A000F684A /* Email */,
 				7FEE7910181EDAA9000F684A /* Facebook */,
 				7FEE7911181EDACC000F684A /* Instapaper */,
@@ -993,6 +1023,8 @@
 				7FEE76E7181ED8EE000F684A /* OSKActivityOperation.m */,
 				7FEE76FD181ED8EE000F684A /* OSKBloggingActivity.h */,
 				7FEE7725181ED8EE000F684A /* OSKMicrobloggingActivity.h */,
+				7F4E3AFF18959AA000719268 /* OSKURLSchemeActivity.h */,
+				7F4E3B0018959B9800719268 /* OSKXCallbackURLInfo.h */,
 			);
 			name = "Activities (Abstract + Manager)";
 			sourceTree = "<group>";
@@ -1412,6 +1444,7 @@
 				7FE467361821F2C50054D2BC /* osk-iconMask-bw-29@2x.png in Resources */,
 				7F77F42F1822F7FC0019452C /* Instapaper-Icon-29.png in Resources */,
 				7FEE7786181ED8EF000F684A /* Riposte-Icon-76.png in Resources */,
+				7FD649E11895EAF20021BD50 /* Drafts-Icon-29@2x.png in Resources */,
 				7FE467281821E9650054D2BC /* osk-appDotNetIcon-29@2x.png in Resources */,
 				7FEE7785181ED8EF000F684A /* Riposte-Icon-60@2x.png in Resources */,
 				7FD16DB01876367A0035960C /* link-button@2x.png in Resources */,
@@ -1437,6 +1470,7 @@
 				7FEE776E181ED8EF000F684A /* Omnifocus-Icon-60@2x.png in Resources */,
 				7FE4672F1821E9650054D2BC /* osk-pinboardIcon-29@2x.png in Resources */,
 				7FEE7766181ED8EF000F684A /* 1Password-Icon-120.png in Resources */,
+				7FD649E21895EAF20021BD50 /* Drafts-Icon-60@2x.png in Resources */,
 				7FEE776D181ED8EF000F684A /* Instapaper-Icon-76@2x.png in Resources */,
 				7FE467011821C9F20054D2BC /* osk-safariIcon-76.png in Resources */,
 				7FE467271821E9650054D2BC /* osk-airDropIcon-76@2x.png in Resources */,
@@ -1483,6 +1517,7 @@
 				7FD16DAF1876367A0035960C /* link-button.png in Resources */,
 				7FEE776C181ED8EF000F684A /* Instapaper-Icon-76.png in Resources */,
 				7FE467321821E9650054D2BC /* osk-readabilityIcon-29@2x.png in Resources */,
+				7FD649E01895EAF20021BD50 /* Drafts-Icon-29.png in Resources */,
 				7FEE778A181ED8EF000F684A /* Things-Icon-76@2x.png in Resources */,
 				7FE466F01821C9F20054D2BC /* Instapaper-Icon-60@2x.png in Resources */,
 				7F77F43A1822FAC60019452C /* Icon-76@2x.png in Resources */,
@@ -1493,6 +1528,7 @@
 				7FE466F41821C9F20054D2BC /* osk-appStoreIcon-76@2x.png in Resources */,
 				7FE466EC1821C9F20054D2BC /* 1Password-Icon-60@2x.png in Resources */,
 				7FE466FD1821C9F20054D2BC /* osk-messagesIcon-76@2x.png in Resources */,
+				7FD649E41895EAF20021BD50 /* Drafts-Icon-76@2x.png in Resources */,
 				7FA91AE61889F53500A5DF9B /* ReadingList-Icon-29@2x.png in Resources */,
 				7FE4673D1821FEAC0054D2BC /* osk-settingsPlaceholder@2x.png in Resources */,
 				7FEE776B181ED8EF000F684A /* Instapaper-Icon-120.png in Resources */,
@@ -1504,6 +1540,7 @@
 				7FE4672B1821E9650054D2BC /* osk-copyIcon-purple-76@2x.png in Resources */,
 				7FE467001821C9F20054D2BC /* osk-photosIcon-76@2x.png in Resources */,
 				7FE466F21821C9F20054D2BC /* osk-appDotNetIcon-76@2x.png in Resources */,
+				7FD649E31895EAF20021BD50 /* Drafts-Icon-76.png in Resources */,
 				7FDCDEA3181EFF5500AC2985 /* SampleAppPurchasingViewController.xib in Resources */,
 				7F77F4281822F6D10019452C /* osk-appDotNetIcon-29.png in Resources */,
 				7FEE7777181ED8EF000F684A /* osk-icon-border-60@2x.png in Resources */,
@@ -1570,6 +1607,7 @@
 				7FEE77B7181ED8EF000F684A /* OSKKeychainUtility.m in Sources */,
 				7FE467391821F4010054D2BC /* OSKAccountTypeCell.m in Sources */,
 				7FEE778F181ED8EF000F684A /* NSHTTPURLResponse+OSKUtilities.m in Sources */,
+				7FD649DA1895C7CA0021BD50 /* OSKDraftsActivity.m in Sources */,
 				7F75BF3E1821588700D3681E /* PocketAPILogin.m in Sources */,
 				7FEE77C7181ED8EF000F684A /* OSKReadabilityActivity.m in Sources */,
 				7F55A30218425C46004A3BCC /* OSKSessionController.m in Sources */,

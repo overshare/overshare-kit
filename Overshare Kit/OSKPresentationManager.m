@@ -1028,15 +1028,15 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         viewController = [self.viewControllerDelegate osk_publishingViewControllerForActivity:activity];
     }
     if (viewController == nil) {
-        switch ([activity.class publishingViewControllerType]) {
-            case OSKPublishingViewControllerType_Microblogging: {
+        switch ([activity.class publishingMethod]) {
+            case OSKPublishingMethod_ViewController_Microblogging: {
                 NSString *nibName = NSStringFromClass([OSKMicroblogPublishingViewController class]);
                 viewController = [[OSKMicroblogPublishingViewController alloc] initWithNibName:nibName bundle:nil];
             } break;
-            case OSKPublishingViewControllerType_Blogging: {
+            case OSKPublishingMethod_ViewController_Blogging: {
                 // alloc/init a blogging view controller
             } break;
-            case OSKPublishingViewControllerType_System: {
+            case OSKPublishingMethod_ViewController_System: {
                 if ([activity.contentItem.itemType isEqualToString:OSKShareableContentItemType_Email]) {
                     viewController = [[OSKMailComposeViewController alloc] initWithNibName:nil bundle:nil];
                 }
@@ -1047,14 +1047,15 @@ willRepositionPopoverToRect:(inout CGRect *)rect
                     viewController = [[OSKAirDropViewController alloc] initWithAirDropItem:(OSKAirDropContentItem *)activity.contentItem];
                 }
             } break;
-            case OSKPublishingViewControllerType_Facebook: {
+            case OSKPublishingMethod_ViewController_Facebook: {
                 NSString *nibName = NSStringFromClass([OSKFacebookPublishingViewController class]);
                 viewController = [[OSKFacebookPublishingViewController alloc] initWithNibName:nibName bundle:nil];
             } break;
-            case OSKPublishingViewControllerType_Bespoke: {
+            case OSKPublishingMethod_ViewController_Bespoke: {
                 NSAssert(NO, @"OSKPresentationManager: Activities with a bespoke publishing view controller require the OSKPresentationManager's delegate to vend the appropriate publishing view controller via osk_publishingViewControllerForActivity:");
             } break;
-            case OSKPublishingViewControllerType_None: {
+            case OSKPublishingMethod_URLScheme:
+            case OSKPublishingMethod_None: {
                 NSAssert(NO, @"OSKPresentationManager: Attempting to present a publishing view controller for an activity that does not require one.");
             } break;
             default:
