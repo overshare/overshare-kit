@@ -9,6 +9,7 @@
 #import "OSKChromeActivity.h"
 
 #import "OSKShareableContentItem.h"
+#import "NSString+OSKDerp.h"
 
 static NSString * OSKChromeActivity_ChromeURLScheme = @"googlechrome-x-callback:";
 static NSString * OSKChromeActivity_Path = @"//x-callback-url/open/";
@@ -110,7 +111,7 @@ static NSString * OSKChromeActivity_URLQueryKey = @"url";
     [chromeURLString appendString:OSKChromeActivity_ChromeURLScheme];
     [chromeURLString appendString:OSKChromeActivity_Path];
     
-    NSString *encodedURL = [url.absoluteString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *encodedURL = [url.absoluteString osk_derp_stringByEscapingPercents];
     [chromeURLString appendFormat:@"?%@=%@", OSKChromeActivity_URLQueryKey, encodedURL];
     
     if (self.url_encoded_x_source) {

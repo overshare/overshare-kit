@@ -9,6 +9,7 @@
 #import "OSKDraftsActivity.h"
 
 #import "OSKShareableContentItem.h"
+#import "NSString+OSKDerp.h"
 
 static NSString * OSKDraftsActivity_URLScheme = @"drafts://";
 static NSString * OSKDraftsActivity_Path_CreateNote = @"x-callback-url/create";
@@ -58,25 +59,25 @@ static NSString * OSKDraftsActivity_QueryKey_Text = @"text";
 }
 
 + (NSString *)activityType {
-    return OSKActivityType_URLScheme_Chrome;
+    return OSKActivityType_URLScheme_Drafts;
 }
 
 + (NSString *)activityName {
-    return @"Send to Drafts";
+    return @"Drafts";
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {
     UIImage *image = nil;
     if (idiom == UIUserInterfaceIdiomPhone) {
-        image = [UIImage imageNamed:@"Chrome-Icon-60.png"];
+        image = [UIImage imageNamed:@"Drafts-Icon-60.png"];
     } else {
-        image = [UIImage imageNamed:@"Chrome-Icon-76.png"];
+        image = [UIImage imageNamed:@"Drafts-Icon-76.png"];
     }
     return image;
 }
 
 + (UIImage *)settingsIcon {
-    return [UIImage imageNamed:@"Chrome-Icon-29.png"];
+    return [UIImage imageNamed:@"Drafts-Icon-29.png"];
 }
 
 + (OSKAuthenticationMethod)authenticationMethod {
@@ -102,7 +103,7 @@ static NSString * OSKDraftsActivity_QueryKey_Text = @"text";
     [draftsURLstring appendString:OSKDraftsActivity_Path_CreateNote];
     
     NSString *text = [[self textEditingItem] text];
-    NSString *encodedText = [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *encodedText = [text osk_derp_stringByEscapingPercents];
     [draftsURLstring appendFormat:@"?%@=%@", OSKDraftsActivity_QueryKey_Text, encodedText];
     
     if (self.url_encoded_x_success) {

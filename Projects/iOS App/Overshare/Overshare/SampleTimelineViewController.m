@@ -146,7 +146,7 @@
     NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
                         [UIImage imageNamed:@"rain.jpg"],
                         [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"http://twitter.com/testochango";
+    NSString *canonicalURL = @"http://twitter.com/testochango/?chorizo=sausage&vittles=food&space=%20okay";
     NSString *authorName = @"testochango";
     
     // 1) Create the shareable content from the user's source content.
