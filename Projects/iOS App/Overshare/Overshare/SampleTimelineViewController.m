@@ -13,6 +13,8 @@
 
 #import "OvershareKit.h"
 
+#import "NSString+OSKDerp.h"
+
 @interface SampleTimelineViewController ()
 <
     SampleTimelineCellDelegate,
@@ -146,7 +148,7 @@
     NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
                         [UIImage imageNamed:@"rain.jpg"],
                         [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"http://twitter.com/testochango/?chorizo=sausage&vittles=food&space=%20okay";
+    NSString *canonicalURL = @"http://twitter.com/testochango";
     NSString *authorName = @"testochango";
     
     // 1) Create the shareable content from the user's source content.
@@ -177,15 +179,15 @@
 }
 
 - (NSString *)xCallbackSuccessForActivity:(OSKActivity *)activity {
-    return [@"oversharekit://" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return [@"oversharekit://" osk_derp_stringByEscapingPercents];
 }
 
 - (NSString *)xCallbackCancelForActivity:(OSKActivity *)activity {
-    return [@"oversharekit://" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return [@"oversharekit://" osk_derp_stringByEscapingPercents];
 }
 
 - (NSString *)xCallbackErrorForActivity:(OSKActivity *)activity {
-    return [@"oversharekit://" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return [@"oversharekit://" osk_derp_stringByEscapingPercents];
 }
 
 
