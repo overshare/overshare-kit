@@ -255,6 +255,14 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
     if (content.passwordSearchItem) { [sortedItems addObject:content.passwordSearchItem]; }
     additionals = [self contentItemsOfType:OSKShareableContentItemType_PasswordManagementAppSearch inArray:content.additionalItems];
     [sortedItems addObjectsFromArray:additionals];
+    
+    if (content.additionalItems) {
+        NSMutableSet *customContentItems = [NSMutableSet setWithArray:content.additionalItems];
+        [customContentItems minusSet:[NSSet setWithArray:sortedItems]];
+        if (customContentItems.count) {
+            [sortedItems addObjectsFromArray:customContentItems.allObjects];
+        }
+    }
 
     return sortedItems;
 }
