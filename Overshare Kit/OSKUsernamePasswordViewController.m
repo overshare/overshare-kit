@@ -110,6 +110,7 @@
             }
         }
         else if (indexPath.row == PASSWORD_ROW) {
+            [textFieldCell setKeyboardType:UIKeyboardTypeDefault];
             [textFieldCell setUseSecureInput:YES];
             [textFieldCell setText:self.password];
             [textFieldCell setPlaceholder:self.password_placeholder];
