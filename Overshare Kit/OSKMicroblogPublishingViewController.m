@@ -290,7 +290,12 @@
 #pragma mark - Link Shortening Button
 
 - (void)updateLinkShorteningButton {
-    if ([OSKPresentationManager sharedInstance].allowLinkShorteningButton) {
+    BOOL presManagerAllows = [OSKPresentationManager sharedInstance].allowLinkShorteningButton;
+    BOOL activityAllows = YES;
+    if ([self.activity respondsToSelector:@selector(allowLinkShortening)]) {
+        activityAllows = [self.activity allowLinkShortening];
+    }
+    if (presManagerAllows && activityAllows) {
         NSArray *links = _textView.detectedLinks;
         BOOL shouldShow = NO;
         for (OSKTwitterTextEntity *link in links) {
