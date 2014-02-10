@@ -5,6 +5,3 @@
 [submodule "ADNLogin-SDK-iOS"]
 	path = Dependencies/ADNLogin-SDK
 	url = https://github.com/appdotnet/ADNLogin-SDK-iOS.git
-[submodule "Dependencies/GooglePlus-SDK"]
-	path = Dependencies/GooglePlus-SDK
-	url = https://github.com/peterfriese/google-plus-ios-sdk.git
