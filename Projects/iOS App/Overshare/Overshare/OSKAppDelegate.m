@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Overshare Kit. All rights reserved.
 //
 
+#import <GooglePlus/GooglePlus.h>
 #import "OSKAppDelegate.h"
 
 #import "OSKADNLoginManager.h"
@@ -66,6 +67,9 @@
         success = YES;
     }
     else if ([[PocketAPI sharedAPI] handleOpenURL:url]){
+        success = YES;
+    }
+    else if ([GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation]) {
         success = YES;
     }
     else {
