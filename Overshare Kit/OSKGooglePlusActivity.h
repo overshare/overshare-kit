@@ -12,8 +12,4 @@
 #import "OSKActivity_GenericAuthentication.h"
 
 @interface OSKGooglePlusActivity : OSKActivity <OSKMicrobloggingActivity, OSKActivity_GenericAuthentication>
-
-// Defaults to ACFacebookAudienceEveryone. See ACAccountType.h for all options.
-@property (copy, nonatomic) NSString *currentAudience; // TODO(peterfriese): use circles!
-
 @end

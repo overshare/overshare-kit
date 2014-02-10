@@ -1852,7 +1852,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/peterfriese/Google\\ Drive/Google/DevRel/GooglePlus/Playground/overshare-kit/Dependencies/GooglePlus-SDK",
+					"../../../Dependencies/GooglePlus-SDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Overshare/Overshare-Prefix.pch";
@@ -1873,7 +1873,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/peterfriese/Google\\ Drive/Google/DevRel/GooglePlus/Playground/overshare-kit/Dependencies/GooglePlus-SDK",
+					"../../../Dependencies/GooglePlus-SDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Overshare/Overshare-Prefix.pch";

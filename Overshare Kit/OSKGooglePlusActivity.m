@@ -1,6 +1,6 @@
 //
 // Created by Peter Friese on 2/5/14.
-// Copyright (c) 2014 Overshare Kit. All rights reserved.
+//  Copyright (c) 2014 Google. All rights reserved.
 //
 
 #import <GooglePlus/GooglePlus.h>
@@ -17,6 +17,9 @@ static NSInteger OSKGooglePlusActivity_MaxUsernameLength = 20;
 static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
 
 @interface OSKGooglePlusActivity () <GPPSignInDelegate>
+@property (strong, nonatomic) NSTimer *authenticationTimeoutTimer;
+@property (assign, nonatomic) BOOL authenticationTimedOut;
+@property (copy, nonatomic) OSKGenericAuthenticationCompletionHandler completionHandler;
 @end
 
 @implementation OSKGooglePlusActivity
@@ -26,7 +29,6 @@ static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
 - (instancetype)initWithContentItem:(OSKShareableContentItem *)item {
     self = [super initWithContentItem:item];
     if (self) {
-        _currentAudience = ACFacebookAudienceEveryone;
     }
     return self;
 }
@@ -38,7 +40,8 @@ static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
 }
 
 - (void)authenticate:(OSKGenericAuthenticationCompletionHandler)completion {
-
+    [self setCompletionHandler:completion];
+    [self startAuthenticationTimeoutTimer];
 
     GPPSignIn *signIn = [GPPSignIn sharedInstance];
     signIn.shouldFetchGooglePlusUser = YES;
@@ -55,16 +58,13 @@ static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
 #pragma mark - Google Plus Sign In
 
 - (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error {
-    NSLog(@"Received error %@ and auth object %@", error, auth);
-    if (error) {
-        NSLog(@"Authentication error: %@", error);
+    __weak OSKGooglePlusActivity *weakSelf = self;
+    if (self.completionHandler && weakSelf.authenticationTimedOut == NO) {
+        [weakSelf cancelAuthenticationTimeoutTimer];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.completionHandler((error == nil), error);
+        });
     }
-    else {
-//        if (self.onSignIn) {
-//            self.onSignIn();
-//        }
-    }
-
 }
 
 #pragma mark - Methods for OSKActivity Subclasses
@@ -105,7 +105,7 @@ static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
 }
 
 + (BOOL)requiresApplicationCredential {
-    return NO; // TODO(peterfriese)
+    return NO;
 }
 
 + (OSKPublishingMethod)publishingMethod {
@@ -173,5 +173,34 @@ static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
 - (NSInteger)maximumUsernameLength {
     return OSKGooglePlusActivity_MaxUsernameLength;
 }
+
+#pragma mark - Authentication Timeout
+
+- (void)startAuthenticationTimeoutTimer {
+    NSTimer *timer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:60*2]
+                                              interval:0
+                                                target:self
+                                              selector:@selector(authenticationTimedOut:)
+                                              userInfo:nil
+                                               repeats:NO];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+}
+
+- (void)cancelAuthenticationTimeoutTimer {
+    [_authenticationTimeoutTimer invalidate];
+    _authenticationTimeoutTimer = nil;
+}
+
+- (void)authenticationTimedOut:(NSTimer *)timer {
+    [self setAuthenticationTimedOut:YES];
+    if (self.completionHandler) {
+        __weak OSKGooglePlusActivity *weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSError *error = [NSError errorWithDomain:@"OSKGooglePlusActivity" code:408 userInfo:@{NSLocalizedFailureReasonErrorKey:@"Google+ authentication timed out."}];
+            weakSelf.completionHandler(NO, error);
+        });
+    }
+}
+
 
 @end

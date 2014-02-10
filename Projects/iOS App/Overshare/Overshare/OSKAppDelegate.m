@@ -60,7 +60,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-#warning Don't forget to override this method so that both Pocket and App.net authentication have the opportunity to respond!
+#warning Don't forget to override this method so that Pocket, App.net and Google+ authentication have the opportunity to respond!
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     BOOL success = NO;
     if ([[OSKADNLoginManager sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {
