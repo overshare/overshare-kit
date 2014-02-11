@@ -751,6 +751,17 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     return text;
 }
 
+- (NSString *)localizedText_Add {
+    NSString *text = nil;
+    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Add)]) {
+        text = [self.localizationDelegate osk_localizedText_Add];
+    }
+    if (text == nil) {
+        text = @"Add Account";
+    }
+    return text;
+}
+
 - (NSString *)localizedText_Username {
     NSString *text = nil;
     if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_Username)]) {

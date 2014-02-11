@@ -287,6 +287,7 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 - (NSString *)localizedText_Cancel;
 - (NSString *)localizedText_Done;
 - (NSString *)localizedText_Okay;
+- (NSString *)localizedText_Add;
 - (NSString *)localizedText_Username;
 - (NSString *)localizedText_Email;
 - (NSString *)localizedText_Password;
