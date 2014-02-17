@@ -62,7 +62,7 @@ static NSString * OSKInstapaperAPIAddURL = @"add";
 
 + (void)saveURL:(NSURL *)URL credential:(OSKManagedAccountCredential *)credential completion:(void(^)(BOOL success, NSError *error))completion {
     NSString *urlString = URL.absoluteString;
-    if (urlString.length == 0) {
+    if (urlString.length == 0 || credential.username == nil || credential.password == nil) {
         if (completion) {
             NSDictionary *info = @{NSLocalizedFailureReasonErrorKey:@"OSKInstapaperUtility: Unable to obtain a valid string from the NSURL."};
             NSError *error = [[NSError alloc] initWithDomain:@"Overshare" code:400 userInfo:info];
