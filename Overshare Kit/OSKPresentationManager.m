@@ -757,7 +757,7 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         text = [self.localizationDelegate osk_localizedText_Add];
     }
     if (text == nil) {
-        text = @"Add Account";
+        text = @"Add";
     }
     return text;
 }
