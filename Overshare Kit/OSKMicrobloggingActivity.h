@@ -25,4 +25,8 @@ typedef NS_ENUM(NSInteger, OSKMicroblogSyntaxHighlightingStyle) {
 - (NSInteger)updateRemainingCharacterCount:(OSKMicroblogPostContentItem *)contentItem urlEntities:(NSArray *)urlEntities;
 - (OSKMicroblogSyntaxHighlightingStyle)syntaxHighlightingStyle;
 
+@optional
+
+- (BOOL)allowLinkShortening; // OSK assumes YES.
+
 @end

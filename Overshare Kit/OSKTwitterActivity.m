@@ -174,6 +174,12 @@ static NSInteger OSKTwitterActivity_FallbackShortURLEstimate = 24;
     return OSKMicroblogSyntaxHighlightingStyle_Twitter;
 }
 
+- (BOOL)allowLinkShortening {
+    // Twitter's API wraps all links in t.co links that count as 23/24 characters,
+    // even short links. So there's no point in using a link shortening service.
+    return NO;
+}
+
 #pragma mark - Updating Estimated Short URL Lengths
 
 - (NSNumber *)estimatedShortURLLength_http {

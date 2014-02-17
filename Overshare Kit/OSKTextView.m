@@ -994,14 +994,16 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 - (void)swipedToTheRight:(id)sender {
     NSRange selectedRange = self.textView.selectedRange;
     if (selectedRange.location < self.textView.attributedText.string.length) {
-        self.textView.selectedRange = NSMakeRange(selectedRange.location+1, 0);
+        NSInteger location = [self indexOfNextCharacter];
+        self.textView.selectedRange = NSMakeRange(location, 0);
     }
 }
 
 - (void)swipedToTheLeft:(id)sender {
     NSRange selectedRange = self.textView.selectedRange;
     if (selectedRange.location > 0) {
-        self.textView.selectedRange = NSMakeRange(selectedRange.location-1, 0);
+        NSInteger location = [self indexOfPreviousCharacter];
+        self.textView.selectedRange = NSMakeRange(location, 0);
     }
 }
 
@@ -1024,6 +1026,49 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     NSInteger targetIndex = [self indexOfFirstPreviousLine];
     self.textView.selectedRange = NSMakeRange(targetIndex, 0);
 }
+
+- (NSInteger)indexOfPreviousCharacter {
+    
+    __block NSInteger indexOfSpace = 0;
+    
+    [self.textView.attributedText.string
+     enumerateSubstringsInRange:NSMakeRange(0, self.textView.selectedRange.location)
+     options:NSStringEnumerationReverse | NSStringEnumerationByComposedCharacterSequences
+     usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+         
+         indexOfSpace = substringRange.location;
+         *stop = YES;
+         
+     }];
+    
+    return indexOfSpace;
+}
+
+- (NSInteger)indexOfNextCharacter {
+    __block BOOL nextCharacterReached = NO;
+    __block BOOL indexChanged = NO;
+    __block NSInteger indexOfSpace = self.textView.selectedRange.location;
+    
+    [self.textView.attributedText.string
+     enumerateSubstringsInRange:NSMakeRange(self.textView.selectedRange.location, self.textView.attributedText.string.length - self.textView.selectedRange.location)
+     options:NSStringEnumerationByComposedCharacterSequences
+     usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+         
+         if (nextCharacterReached == YES) {
+             indexChanged = YES;
+             indexOfSpace = substringRange.location;
+             *stop = YES;
+         }
+         nextCharacterReached = YES;
+     }];
+    
+    if (indexChanged == NO) {
+        indexOfSpace = self.textView.attributedText.string.length;
+    }
+    
+    return indexOfSpace;
+}
+
 
 - (NSInteger)indexOfFirstPreviousSpace {
     __block NSInteger indexOfSpace = 0;
