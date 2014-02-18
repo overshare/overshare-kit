@@ -7,7 +7,6 @@
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import "OSKGooglePlusActivity.h"
 #import "OSKShareableContentItem.h"
-#import "OSKFacebookUtility.h"
 #import "OSKApplicationCredential.h"
 #import "NSString+OSKEmoji.h"
 #import "OSKActivitiesManager.h"
@@ -16,7 +15,7 @@ static NSInteger OSKGooglePlusActivity_MaxCharacterCount = 6000;
 static NSInteger OSKGooglePlusActivity_MaxUsernameLength = 20;
 static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
 
-@interface OSKGooglePlusActivity () <GPPSignInDelegate>
+@interface OSKGooglePlusActivity () <GPPSignInDelegate, GPPShareDelegate>
 @property (strong, nonatomic) NSTimer *authenticationTimeoutTimer;
 @property (assign, nonatomic) BOOL authenticationTimedOut;
 @property (copy, nonatomic) OSKGenericAuthenticationCompletionHandler completionHandler;
@@ -133,7 +132,8 @@ static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
 }
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
-
+    self.activityCompletionHandler = completion;
+    [GPPShare sharedInstance].delegate = self;
     id <GPPNativeShareBuilder> shareDialog = [[GPPShare sharedInstance] nativeShareDialog];
 
     OSKMicroblogPostContentItem *item = (OSKMicroblogPostContentItem *)self.contentItem;
@@ -202,5 +202,12 @@ static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
     }
 }
 
+#pragma mark - GPPShareDelegate
+
+- (void)finishedSharingWithError:(NSError *)error {
+    if (self.activityCompletionHandler) {
+        self.activityCompletionHandler(self, error == nil, error);
+    }
+}
 
 @end

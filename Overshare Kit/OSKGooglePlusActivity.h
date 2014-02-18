@@ -12,4 +12,5 @@
 #import "OSKActivity_GenericAuthentication.h"
 
 @interface OSKGooglePlusActivity : OSKActivity <OSKMicrobloggingActivity, OSKActivity_GenericAuthentication>
+@property(nonatomic, copy) OSKActivityCompletionHandler activityCompletionHandler;
 @end
