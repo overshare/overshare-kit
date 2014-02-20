@@ -97,8 +97,20 @@
             [textFieldCell setUseSecureInput:NO];
             [textFieldCell setText:self.username];
             [textFieldCell setPlaceholder:self.username_placeholder];
+            if ([_activity respondsToSelector:@selector(usernameNomenclatureForSignInScreen)]) {
+                OSKUsernameNomenclature nomenclature = [_activity usernameNomenclatureForSignInScreen];
+                if (nomenclature & OSKUsernameNomenclature_Email) {
+                    [textFieldCell setKeyboardType:UIKeyboardTypeEmailAddress];
+                }
+                else if (nomenclature & OSKUsernameNomenclature_Username) {
+                    [textFieldCell setKeyboardType:UIKeyboardTypeDefault];
+                }
+            } else {
+                [textFieldCell setKeyboardType:UIKeyboardTypeEmailAddress];
+            }
         }
         else if (indexPath.row == PASSWORD_ROW) {
+            [textFieldCell setKeyboardType:UIKeyboardTypeDefault];
             [textFieldCell setUseSecureInput:YES];
             [textFieldCell setText:self.password];
             [textFieldCell setPlaceholder:self.password_placeholder];
@@ -218,6 +230,23 @@
     _activity = activity;
     _delegate = delegate;
     self.title = [_activity.class activityName];
+    
+    if ([_activity respondsToSelector:@selector(usernameNomenclatureForSignInScreen)]) {
+        OSKUsernameNomenclature nomenclature = [_activity usernameNomenclatureForSignInScreen];
+        if (nomenclature & OSKUsernameNomenclature_Username && nomenclature & OSKUsernameNomenclature_Email) {
+            OSKPresentationManager *presMan = [OSKPresentationManager sharedInstance];
+            NSString *username = presMan.localizedText_Username;
+            NSString *email = presMan.localizedText_Email;
+            NSString *placeholder = [NSString stringWithFormat:@"%@ | %@", username, email];
+            [self setUsername_placeholder:placeholder];
+        }
+        else if (nomenclature & OSKUsernameNomenclature_Email) {
+            [self setUsername_placeholder:[OSKPresentationManager sharedInstance].localizedText_Email];
+        }
+        else if (nomenclature & OSKUsernameNomenclature_Username) {
+            [self setUsername_placeholder:[OSKPresentationManager sharedInstance].localizedText_Username];
+        }
+    }
 }
 
 #pragma mark - Authenticate

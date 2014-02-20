@@ -31,6 +31,7 @@ NSString * const OSKActivityType_API_Instapaper = @"OSKActivityType_API_Instapap
 NSString * const OSKActivityType_API_Readability = @"OSKActivityType_API_Readability";
 NSString * const OSKActivityType_API_Pocket = @"OSKActivityType_API_Pocket";
 NSString * const OSKActivityType_API_Pinboard = @"OSKActivityType_API_Pinboard";
+NSString * const OSKActivityType_API_GooglePlus = @"OSKActivityType_API_GooglePlus";
 NSString * const OSKActivityType_URLScheme_Instagram = @"OSKActivityType_URLScheme_Instagram";
 NSString * const OSKActivityType_URLScheme_Riposte = @"OSKActivityType_URLScheme_Riposte";
 NSString * const OSKActivityType_URLScheme_Tweetbot = @"OSKActivityType_URLScheme_Tweetbot";
@@ -39,6 +40,7 @@ NSString * const OSKActivityType_URLScheme_1Password_Browser = @"OSKActivityType
 NSString * const OSKActivityType_URLScheme_Chrome = @"OSKActivityType_URLScheme_Chrome";
 NSString * const OSKActivityType_URLScheme_Omnifocus = @"OSKActivityType_URLScheme_Omnifocus";
 NSString * const OSKActivityType_URLScheme_Things = @"OSKActivityType_URLScheme_Things";
+NSString * const OSKActivityType_URLScheme_Drafts = @"OSKActivityType_URLScheme_Drafts";
 NSString * const OSKActivityType_SDK_Pocket = @"OSKActivityType_SDK_Pocket";
 
 @interface OSKActivity ()
@@ -125,9 +127,9 @@ NSString * const OSKActivityType_SDK_Pocket = @"OSKActivityType_SDK_Pocket";
     return NO;
 }
 
-+ (OSKPublishingViewControllerType)publishingViewControllerType {
++ (OSKPublishingMethod)publishingMethod {
     NSAssert(NO, @"OSKActivity subclasses must override `usesPublishingViewController` without calling super.");
-    return OSKPublishingViewControllerType_None;
+    return OSKPublishingMethod_None;
 }
 
 - (BOOL)isReadyToPerform {

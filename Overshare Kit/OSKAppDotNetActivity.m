@@ -58,6 +58,10 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
     return method;
 }
 
+- (OSKUsernameNomenclature)usernameNomenclatureForSignInScreen {
+    return OSKUsernameNomenclature_Username;
+}
+
 - (void)authenticateNewAccountWithoutViewController:(OSKManagedAccountAuthenticationHandler)completion {
     [self authenticateWithADNLogin:completion];
 }
@@ -102,8 +106,8 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
     return YES;
 }
 
-+ (OSKPublishingViewControllerType)publishingViewControllerType {
-    return OSKPublishingViewControllerType_Microblogging;
++ (OSKPublishingMethod)publishingMethod {
+    return OSKPublishingMethod_ViewController_Microblogging;
 }
 
 - (BOOL)isReadyToPerform {

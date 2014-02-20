@@ -13,12 +13,15 @@
 
 #import "OvershareKit.h"
 
+#import "NSString+OSKDerp.h"
+
 @interface SampleTimelineViewController ()
 <
     SampleTimelineCellDelegate,
     OSKPresentationViewControllers,
     OSKPresentationStyle,
-    OSKPresentationColor
+    OSKPresentationColor,
+    OSKXCallbackURLInfo
 >
 
 @property (assign, nonatomic) OSKActivitySheetViewControllerStyle sheetStyle;
@@ -38,6 +41,7 @@
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         self.title = @"Overshare";
+        [[OSKActivitiesManager sharedInstance] setXCallbackURLDelegate:self];
         [[OSKPresentationManager sharedInstance] setViewControllerDelegate:self];
         [[OSKPresentationManager sharedInstance] setColorDelegate:self];
         [[OSKPresentationManager sharedInstance] setStyleDelegate:self];
@@ -58,7 +62,6 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareBarButtonTapped:)];
     }
 }
-
 
 
 #pragma mark - Sharing
@@ -169,6 +172,24 @@
 }
 
 
+#pragma mark - OSKActivitiesManager X-Callback-URL Delegate
+
+- (NSString *)xCallbackSourceForActivity:(OSKActivity *)activity {
+    return @"OvershareKit";
+}
+
+- (NSString *)xCallbackSuccessForActivity:(OSKActivity *)activity {
+    return [@"oversharekit://" osk_derp_stringByEscapingPercents];
+}
+
+- (NSString *)xCallbackCancelForActivity:(OSKActivity *)activity {
+    return [@"oversharekit://" osk_derp_stringByEscapingPercents];
+}
+
+- (NSString *)xCallbackErrorForActivity:(OSKActivity *)activity {
+    return [@"oversharekit://" osk_derp_stringByEscapingPercents];
+}
+
 
 #pragma mark - OSKPresentationManager Style Delegate
 
@@ -182,7 +203,6 @@
 }
 
 
-
 #pragma mark - OSKPresentationManager Color Delegate
 
 - (UIColor *)osk_color_action {
@@ -194,7 +214,6 @@
     }
     return color;
 }
-
 
 
 #pragma mark - OSKPresentationManager View Controller Delegate
@@ -220,8 +239,6 @@
 }
 
 
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -243,13 +260,11 @@
 }
 
 
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 
 #pragma mark - SampleTimelineViewController 
@@ -263,7 +278,6 @@
 }
 
 
-
 #pragma mark - Timeline Cell Delegate
 
 - (void)timelineCell:(SampleTimelineCell *)cell didTapLightModeShareButtonInRect:(CGRect)rect {
@@ -275,7 +289,6 @@
     self.sheetStyle = OSKActivitySheetViewControllerStyle_Dark;
     [self showShareSheetForTappedCell:cell];
 }
-
 
 
 #pragma mark - Convenience

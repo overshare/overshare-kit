@@ -29,5 +29,9 @@ extern CGFloat const OSKUsernamePasswordCellHeight;
 - (void)setText:(NSString *)text;
 - (void)setPlaceholder:(NSString *)placeholder;
 - (void)setUseSecureInput:(BOOL)useSecureInput;
+- (void)setKeyboardType:(UIKeyboardType)keyboardType;
 
 @end
+
+
+

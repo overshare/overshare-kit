@@ -41,7 +41,7 @@
 #define ACCOUNT_BUTTON_INDEX 2
 #define AUDIENCE_BUTTON_INDEX 2
 
-#define TOOLBAR_FONT_SIZE 15
+#define TOOLBAR_FONT_SIZE 17
 
 @implementation OSKFacebookPublishingViewController
 

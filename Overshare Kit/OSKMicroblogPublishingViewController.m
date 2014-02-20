@@ -57,7 +57,7 @@
 #define NUM_ROWS 1
 #define ROW_TEXT_VIEW 0
 #define ROW_ACTIVE_ACCOUNT 1
-#define TOOLBAR_FONT_SIZE 15
+#define TOOLBAR_FONT_SIZE 17
 
 #define CANCEL_ITEM_INDEX_IPAD 0
 #define ACCOUNT_ITEM_INDEX_IPAD 2
@@ -290,7 +290,12 @@
 #pragma mark - Link Shortening Button
 
 - (void)updateLinkShorteningButton {
-    if ([OSKPresentationManager sharedInstance].allowLinkShorteningButton) {
+    BOOL presManagerAllows = [OSKPresentationManager sharedInstance].allowLinkShorteningButton;
+    BOOL activityAllows = YES;
+    if ([self.activity respondsToSelector:@selector(allowLinkShortening)]) {
+        activityAllows = [self.activity allowLinkShortening];
+    }
+    if (presManagerAllows && activityAllows) {
         NSArray *links = _textView.detectedLinks;
         BOOL shouldShow = NO;
         for (OSKTwitterTextEntity *link in links) {

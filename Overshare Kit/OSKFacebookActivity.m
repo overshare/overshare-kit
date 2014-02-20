@@ -91,15 +91,17 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
     return YES;
 }
 
-+ (OSKPublishingViewControllerType)publishingViewControllerType {
-    return OSKPublishingViewControllerType_Facebook;
++ (OSKPublishingMethod)publishingMethod {
+    return OSKPublishingMethod_ViewController_Facebook;
 }
 
 - (BOOL)isReadyToPerform {
     BOOL accountPresent = (self.activeSystemAccount != nil);
     
+    OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)[self contentItem];
+    
     NSInteger maxCharacterCount = [self maximumCharacterCount];
-    BOOL textIsValid = (0 <= self.remainingCharacterCount && self.remainingCharacterCount < maxCharacterCount);
+    BOOL textIsValid = (0 <= self.remainingCharacterCount && self.remainingCharacterCount < maxCharacterCount && contentItem.text.length > 0);
     
     return (accountPresent && textIsValid);
 }

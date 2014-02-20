@@ -11,6 +11,7 @@
 #import "OSKLogger.h"
 #import "OSKPresentationManager.h"
 #import "OSKTwitterText.h"
+#import "OSKSmartPunctuation.h"
 
 static CGFloat OSKTextViewAttachmentViewWidth_Phone = 78.0f; // 2 points larger than visual appearance, due to anti-aliasing technique
 static CGFloat OSKTextViewAttachmentViewWidth_Pad = 96.0f; // 2 points larger than visual appearance, due to anti-aliasing technique
@@ -211,7 +212,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     return YES;
 }
 
-#pragma mark - Reliable Way of Keeping the Keyboard Visible
+#pragma mark - Keep Keyboard Visible While Menu View Controller Popover is Out
 
 // See Ole Begemann's answer here: http://stackoverflow.com/a/4284675/1078579
 
@@ -371,25 +372,17 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     UIColor *actionColor = manager.color_action;
     UIColor *hashtagColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineHeightMultiple:1.1];
-    [paragraphStyle setBaseWritingDirection:NSWritingDirectionNatural];
-    
     _attributes_normal = @{NSFontAttributeName:normalFont,
-                           NSForegroundColorAttributeName:normalColor,
-                           NSParagraphStyleAttributeName:paragraphStyle};
+                           NSForegroundColorAttributeName:normalColor};
     
     _attributes_mentions = @{NSFontAttributeName:boldFont,
-                             NSForegroundColorAttributeName:actionColor,
-                             NSParagraphStyleAttributeName:paragraphStyle};
+                             NSForegroundColorAttributeName:actionColor};
     
     _attributes_hashtags = @{NSFontAttributeName:normalFont,
-                             NSForegroundColorAttributeName:hashtagColor,
-                             NSParagraphStyleAttributeName:paragraphStyle};
+                             NSForegroundColorAttributeName:hashtagColor};
     
     _attributes_links = @{NSFontAttributeName:normalFont,
-                          NSForegroundColorAttributeName:actionColor,
-                          NSParagraphStyleAttributeName:paragraphStyle};
+                          NSForegroundColorAttributeName:actionColor};
     
     [self.textView setTypingAttributes:_attributes_normal];
     
@@ -421,7 +414,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     }
 }
 
-#pragma mark - These Are Why This Works
+#pragma mark - Critical Methods for iOS 7 Bug Workarounds
 
 // The various method & delegate method implementations in this pragma marked section
 // are why OSKTextView works. Edit these with extreme care.
@@ -564,6 +557,64 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     [self simpleScrollToCaret];
     if ([self.textViewDelegate respondsToSelector:@selector(textViewDidBeginEditing:)]) {
         [self.textViewDelegate textViewDidBeginEditing:self];
+    }
+}
+
+#pragma mark - Text Storage Delegate & Syntax Highlighting
+
+- (void)textStorage:(NSTextStorage *)textStorage willProcessEditing:(NSTextStorageEditActions)editedMask range:(NSRange)editedRange changeInLength:(NSInteger)delta {
+    
+    NSInteger lengthChange = [OSKSmartPunctuation fixDumbPunctuation:textStorage editedRange:editedRange textInputObject:self.textView];
+    
+    if (lengthChange != 0) {
+        NSRange selectedRange = [self.textView selectedRange];
+        selectedRange.location += lengthChange;
+        [self.textView setSelectedRange:selectedRange];
+    }
+    
+    [self updateSyntaxHighlighting:textStorage];
+}
+
+- (void)updateSyntaxHighlighting:(NSTextStorage *)textStorage {
+    
+    // Apply default attributes to the entire string
+    [textStorage addAttributes:self.attributes_normal range:NSMakeRange(0, textStorage.length)];
+    
+    if (self.syntaxHighlighting == OSKMicroblogSyntaxHighlightingStyle_Twitter) {
+        // Apply syntax highlighting for entities
+        NSArray *allEntities = [OSKTwitterText entitiesInText:textStorage.string];
+        NSMutableArray *links = [[NSMutableArray alloc] init];
+        for (OSKTwitterTextEntity *anEntity in allEntities) {
+            switch (anEntity.type) {
+                case OSKTwitterTextEntityHashtag: {
+                    [textStorage addAttributes:self.attributes_hashtags range:anEntity.range];
+                } break;
+                    
+                case OSKTwitterTextEntityScreenName: {
+                    NSString *lowercaseName = [textStorage.string substringWithRange:anEntity.range].lowercaseString;
+                    [textStorage replaceCharactersInRange:anEntity.range withString:lowercaseName];
+                    [textStorage addAttributes:self.attributes_mentions range:anEntity.range];
+                } break;
+                    
+                case OSKTwitterTextEntityURL: {
+                    [textStorage addAttributes:self.attributes_links range:anEntity.range];
+                    [links addObject:anEntity];
+                } break;
+                default:
+                    break;
+            }
+        }
+        [self setDetectedLinks:links];
+    }
+    else if (self.syntaxHighlighting == OSKMicroblogSyntaxHighlightingStyle_LinksOnly) {
+        NSArray *allURLEntities = [OSKTwitterText URLsInText:textStorage.string];
+        for (OSKTwitterTextEntity *urlEntitiy in allURLEntities) {
+            [textStorage addAttributes:self.attributes_links range:urlEntitiy.range];
+        }
+        [self setDetectedLinks:allURLEntities];
+    }
+    else {
+        [self setDetectedLinks:nil];
     }
 }
 
@@ -912,56 +963,6 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     }
 }
 
-#pragma mark - Text Storage Delegate
-
-- (void)textStorage:(NSTextStorage *)textStorage willProcessEditing:(NSTextStorageEditActions)editedMask range:(NSRange)editedRange changeInLength:(NSInteger)delta {
-    [self fixDumbQuotes:textStorage];
-    [self updateSyntaxHighlighting:textStorage];
-}
-
-- (void)updateSyntaxHighlighting:(NSTextStorage *)textStorage {
-    
-    // Apply default attributes to the entire string
-    [textStorage addAttributes:self.attributes_normal range:NSMakeRange(0, textStorage.length)];
-    
-    if (self.syntaxHighlighting == OSKMicroblogSyntaxHighlightingStyle_Twitter) {
-        // Apply syntax highlighting for entities
-        NSArray *allEntities = [OSKTwitterText entitiesInText:textStorage.string];
-        NSMutableArray *links = [[NSMutableArray alloc] init];
-        for (OSKTwitterTextEntity *anEntity in allEntities) {
-            switch (anEntity.type) {
-                case OSKTwitterTextEntityHashtag: {
-                    [textStorage addAttributes:self.attributes_hashtags range:anEntity.range];
-                } break;
-                    
-                case OSKTwitterTextEntityScreenName: {
-                    NSString *lowercaseName = [textStorage.string substringWithRange:anEntity.range].lowercaseString;
-                    [textStorage replaceCharactersInRange:anEntity.range withString:lowercaseName];
-                    [textStorage addAttributes:self.attributes_mentions range:anEntity.range];
-                } break;
-                    
-                case OSKTwitterTextEntityURL: {
-                    [textStorage addAttributes:self.attributes_links range:anEntity.range];
-                    [links addObject:anEntity];
-                } break;
-                default:
-                    break;
-            }
-        }
-        [self setDetectedLinks:links];
-    }
-    else if (self.syntaxHighlighting == OSKMicroblogSyntaxHighlightingStyle_LinksOnly) {
-        NSArray *allURLEntities = [OSKTwitterText URLsInText:textStorage.string];
-        for (OSKTwitterTextEntity *urlEntitiy in allURLEntities) {
-            [textStorage addAttributes:self.attributes_links range:urlEntitiy.range];
-        }
-        [self setDetectedLinks:allURLEntities];
-    }
-    else {
-        [self setDetectedLinks:nil];
-    }
-}
-
 #pragma mark - Swipe Left Or Right To Advance Cursor
 
 - (void)setupSwipeGestureRecognizers {
@@ -993,14 +994,16 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
 - (void)swipedToTheRight:(id)sender {
     NSRange selectedRange = self.textView.selectedRange;
     if (selectedRange.location < self.textView.attributedText.string.length) {
-        self.textView.selectedRange = NSMakeRange(selectedRange.location+1, 0);
+        NSInteger location = [self indexOfNextCharacter];
+        self.textView.selectedRange = NSMakeRange(location, 0);
     }
 }
 
 - (void)swipedToTheLeft:(id)sender {
     NSRange selectedRange = self.textView.selectedRange;
     if (selectedRange.location > 0) {
-        self.textView.selectedRange = NSMakeRange(selectedRange.location-1, 0);
+        NSInteger location = [self indexOfPreviousCharacter];
+        self.textView.selectedRange = NSMakeRange(location, 0);
     }
 }
 
@@ -1023,6 +1026,49 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     NSInteger targetIndex = [self indexOfFirstPreviousLine];
     self.textView.selectedRange = NSMakeRange(targetIndex, 0);
 }
+
+- (NSInteger)indexOfPreviousCharacter {
+    
+    __block NSInteger indexOfSpace = 0;
+    
+    [self.textView.attributedText.string
+     enumerateSubstringsInRange:NSMakeRange(0, self.textView.selectedRange.location)
+     options:NSStringEnumerationReverse | NSStringEnumerationByComposedCharacterSequences
+     usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+         
+         indexOfSpace = substringRange.location;
+         *stop = YES;
+         
+     }];
+    
+    return indexOfSpace;
+}
+
+- (NSInteger)indexOfNextCharacter {
+    __block BOOL nextCharacterReached = NO;
+    __block BOOL indexChanged = NO;
+    __block NSInteger indexOfSpace = self.textView.selectedRange.location;
+    
+    [self.textView.attributedText.string
+     enumerateSubstringsInRange:NSMakeRange(self.textView.selectedRange.location, self.textView.attributedText.string.length - self.textView.selectedRange.location)
+     options:NSStringEnumerationByComposedCharacterSequences
+     usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+         
+         if (nextCharacterReached == YES) {
+             indexChanged = YES;
+             indexOfSpace = substringRange.location;
+             *stop = YES;
+         }
+         nextCharacterReached = YES;
+     }];
+    
+    if (indexChanged == NO) {
+        indexOfSpace = self.textView.attributedText.string.length;
+    }
+    
+    return indexOfSpace;
+}
+
 
 - (NSInteger)indexOfFirstPreviousSpace {
     __block NSInteger indexOfSpace = 0;
@@ -1149,82 +1195,6 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     adjustedRect.size.height = rect.origin.y + rect.size.height;
     adjustedRect.size.width = self.textView.frame.size.width - adjustedRect.origin.x;
     return [UIBezierPath bezierPathWithRect:adjustedRect];
-}
-
-#pragma mark - Smart Quotes
-
--(void)fixDumbQuotes:(NSTextStorage *)textStorage {
-    
-    NSString *copyOfOriginalString = [textStorage.string copy];
-    
-    NSString *dumbDouble = @"\"";
-    NSString *dumbSingle = @"'";
-    NSString *leftSmartSingle = @"‘";
-    NSString *leftSmartDouble = @"“";
-    NSString *rightSmartSingle = @"’";
-    NSString *rightSmartDouble = @"”";
-    
-    
-    NSString *regex = [NSString stringWithFormat:@"(\\s|\\(|\\[|\\{|\\<|\\〈|%@|%@)",
-                       leftSmartSingle,
-                       leftSmartDouble];
-    
-    NSString *regexThatShouldBeFollowedByLeftQuotes = regex;
-    
-    [copyOfOriginalString
-     enumerateSubstringsInRange:NSMakeRange(0, [copyOfOriginalString length])
-     options:NSStringEnumerationByComposedCharacterSequences
-     usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
-         
-         if ([substring isEqualToString:dumbDouble]) {
-             
-             if (substringRange.location > 0) {
-                 
-                 NSString *previousCharacter = [copyOfOriginalString
-                                                substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
-                 
-                 NSRange rangeOfRegexMatch = [previousCharacter
-                                              rangeOfString:regexThatShouldBeFollowedByLeftQuotes
-                                              options:NSRegularExpressionSearch];
-                 
-                 BOOL useLeftQuote = (rangeOfRegexMatch.location != NSNotFound);
-                 
-                 if (useLeftQuote) {
-                     [textStorage replaceCharactersInRange:substringRange withString:leftSmartDouble];
-                 }
-                 else {
-                     [textStorage replaceCharactersInRange:substringRange withString:rightSmartDouble];
-                 }
-             }
-             else {
-                 [textStorage replaceCharactersInRange:substringRange withString:leftSmartDouble];
-             }
-         }
-         else if ([substring isEqualToString:dumbSingle]) {
-             
-             if (substringRange.location > 0) {
-                 
-                 NSString *previousCharacter = [copyOfOriginalString
-                                                substringWithRange:NSMakeRange(substringRange.location - 1, 1)];
-                 
-                 NSRange rangeOfRegexMatch = [previousCharacter
-                                              rangeOfString:regexThatShouldBeFollowedByLeftQuotes
-                                              options:NSRegularExpressionSearch];
-                 
-                 BOOL useLeftQuote = (rangeOfRegexMatch.location != NSNotFound);
-                 
-                 if (useLeftQuote) {
-                     [textStorage replaceCharactersInRange:substringRange withString:leftSmartSingle];
-                 }
-                 else {
-                     [textStorage replaceCharactersInRange:substringRange withString:rightSmartSingle];
-                 }
-             }
-             else {
-                 [textStorage replaceCharactersInRange:substringRange withString:leftSmartSingle];
-             }
-         }
-     }];
 }
 
 #pragma mark - OSKTextViewAttachmentViewDelegate
