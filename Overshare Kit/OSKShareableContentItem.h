@@ -284,9 +284,16 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
 @interface OSKCopyToPasteboardContentItem : OSKShareableContentItem
 
 /**
- Plain text content for copying & pasting.
+ Plain text content for copying & pasting. Setting this property will set all
+ other properties to nil.
  */
 @property (copy, nonatomic) NSString *text;
+
+/**
+ Image content for copying & pasting. Setting this property will set all
+ other properties to nil. 
+ */
+@property (copy, nonatomic) NSArray *images;
 
 @end
 

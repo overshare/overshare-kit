@@ -85,6 +85,20 @@ NSString * const OSKShareableContentItemType_TextEditing = @"OSKShareableContent
     return OSKShareableContentItemType_CopyToPasteboard;
 }
 
+- (void)setText:(NSString *)text {
+    _text = [text copy];
+    if (_text) {
+        [self setImages:nil];
+    }
+}
+
+- (void)setImages:(NSArray *)images {
+    _images = [images copy];
+    if (_images) {
+        [self setText:nil];
+    }
+}
+
 @end
 
 @implementation OSKReadLaterContentItem

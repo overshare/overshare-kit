@@ -202,7 +202,16 @@
 + (instancetype)contentFromImages:(NSArray *)images caption:(NSString *)caption {
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
     
-    content.title = (caption.length) ? caption : @"Share";
+    if (caption.length) {
+        [content setTitle:caption];
+    }
+    else if (images.count) {
+        NSString *title = (images.count == 1) ? @"Share Image" : @"Share Images";
+        [content setTitle:title];
+    }
+    else {
+        [content setTitle:@"Share"];
+    }
     
     NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     
@@ -211,9 +220,29 @@
     microblogPost.images = images;
     content.microblogPostItem = microblogPost;
     
-    OSKCopyToPasteboardContentItem *copyTextToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
-    copyTextToPasteboard.text = caption;
-    content.pasteboardItem = copyTextToPasteboard;
+    if (images.count) {
+        OSKCopyToPasteboardContentItem *copyImageToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
+        NSString *name = (images.count == 1) ? @"Copy Image" : @"Copy Images";
+        [copyImageToPasteboard setAlternateActivityName:name];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            copyImageToPasteboard.alternateActivityIcon = [UIImage imageNamed:@"osk-copyIcon-purple-76.png"];
+        } else {
+            copyImageToPasteboard.alternateActivityIcon = [UIImage imageNamed:@"osk-copyIcon-purple-60.png"];
+        }
+        [copyImageToPasteboard setImages:images];
+        content.pasteboardItem = copyImageToPasteboard;
+    }
+    
+    if (caption.length) {
+        OSKCopyToPasteboardContentItem *copyTextToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
+        [copyTextToPasteboard setAlternateActivityName:@"Copy Text"];
+        copyTextToPasteboard.text = caption;
+        if (content.pasteboardItem) {
+            content.additionalItems = @[copyTextToPasteboard];
+        } else {
+            content.pasteboardItem = copyTextToPasteboard;
+        }
+    }
     
     OSKEmailContentItem *emailItem = [[OSKEmailContentItem alloc] init];
     emailItem.body = caption;
