@@ -3,9 +3,13 @@
 //  Copyright (c) 2014 Google. All rights reserved.
 //
 
+#import "OSKGooglePlusActivity.h"
+
+@import CoreMotion;
+
 #import <GooglePlus/GooglePlus.h>
 #import <GoogleOpenSource/GoogleOpenSource.h>
-#import "OSKGooglePlusActivity.h"
+
 #import "OSKShareableContentItem.h"
 #import "OSKApplicationCredential.h"
 #import "NSString+OSKEmoji.h"
