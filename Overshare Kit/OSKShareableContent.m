@@ -207,6 +207,8 @@
 + (instancetype)contentFromImages:(NSArray *)images caption:(NSString *)caption {
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
     
+    // CONTENT TITLE
+    
     if (caption.length) {
         [content setTitle:caption];
     }
@@ -220,10 +222,14 @@
     
     NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     
+    // MICROBLOG POST
+    
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
     microblogPost.text = caption;
     microblogPost.images = images;
     content.microblogPostItem = microblogPost;
+    
+    // COPY TO PASTEBOARD
     
     if (images.count) {
         OSKCopyToPasteboardContentItem *copyImageToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
@@ -249,25 +255,37 @@
         }
     }
     
+    // EMAIL
+    
     OSKEmailContentItem *emailItem = [[OSKEmailContentItem alloc] init];
     emailItem.body = caption;
     emailItem.attachments = images.copy;
     content.emailItem = emailItem;
     
+    // SMS
+    
     OSKSMSContentItem *smsItem = [[OSKSMSContentItem alloc] init];
     smsItem.body = caption;
     smsItem.attachments = images;
     content.smsItem = smsItem;
+    
+    // PHOTOSHARING
 	
 	OSKPhotoSharingContentItem *photoItem = [[OSKPhotoSharingContentItem alloc] init];
 	photoItem.images = images;
 	photoItem.caption = caption;
 	content.photoSharingItem = photoItem;
     
-    OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
-    toDoList.title = [NSString stringWithFormat:@"Look into stuff from %@", appName];
-    toDoList.notes = caption;
-    content.toDoListItem = toDoList;
+    // TODO LIST
+    
+    if (caption.length) {
+        OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
+        toDoList.title = [NSString stringWithFormat:@"Look into stuff from %@", appName];
+        toDoList.notes = caption;
+        content.toDoListItem = toDoList;
+    }
+    
+    // AIRDROP
     
     if (images.count) {
         OSKAirDropContentItem *airDrop = [[OSKAirDropContentItem alloc] init];
