@@ -35,6 +35,7 @@
 #import "OSKSMSActivity.h"
 #import "OSKThingsActivity.h"
 #import "OSKTwitterActivity.h"
+#import "OSKGooglePlusActivity.h"
 
 @interface OSKAccountManagementHeaderView : UITableViewHeaderFooterView
 
@@ -153,7 +154,8 @@ static NSString * OSKAccountManagementHeaderViewIdentifier = @"OSKAccountManagem
     [defaultClasses addObject:[OSKPinboardActivity class]];
     [defaultClasses addObject:[OSKTwitterActivity class]];
     [defaultClasses addObject:[OSKFacebookActivity class]];
-    
+    [defaultClasses addObject:[OSKGooglePlusActivity class]];
+
     if ([OSK1PasswordSearchActivity isAvailable]) {
         [defaultClasses addObject:[OSK1PasswordSearchActivity class]];
         [defaultClasses addObject:[OSK1PasswordBrowserActivity class]];

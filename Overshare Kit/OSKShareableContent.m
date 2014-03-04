@@ -149,28 +149,33 @@
     smsItem.attachments = images;
     content.smsItem = smsItem;
     
-    OSKReadLaterContentItem *readLater = [[OSKReadLaterContentItem alloc] init];
-    readLater.url = [NSURL URLWithString:canonicalURL];
-    readLater.title = [NSString stringWithFormat:@"Post by %@", authorName];
-    readLater.description = text;
-    content.readLaterItem = readLater;
+    if (canonicalURL) {
+        NSURL *URLforCanonicalURL = [NSURL URLWithString:canonicalURL];
+        if (URLforCanonicalURL) {
+            OSKReadLaterContentItem *readLater = [[OSKReadLaterContentItem alloc] init];
+            readLater.url = URLforCanonicalURL;
+            readLater.title = [NSString stringWithFormat:@"Post by %@", authorName];
+            readLater.description = text;
+            content.readLaterItem = readLater;
+            
+            OSKLinkBookmarkContentItem *linkBookmarking = [[OSKLinkBookmarkContentItem alloc] init];
+            linkBookmarking.url = URLforCanonicalURL;
+            linkBookmarking.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
+            NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+            linkBookmarking.tags = @[appName];
+            linkBookmarking.markToRead = YES;
+            content.linkBookmarkItem = linkBookmarking;
+            
+            OSKWebBrowserContentItem *browserItem = [[OSKWebBrowserContentItem alloc] init];
+            browserItem.url = URLforCanonicalURL;
+            content.webBrowserItem = browserItem;
+        }
+    }
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
     toDoList.title = [NSString stringWithFormat:@"Look into message from %@", authorName];
     toDoList.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
     content.toDoListItem = toDoList;
-    
-    OSKLinkBookmarkContentItem *linkBookmarking = [[OSKLinkBookmarkContentItem alloc] init];
-    linkBookmarking.url = readLater.url;
-    linkBookmarking.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
-    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-    linkBookmarking.tags = @[appName];
-    linkBookmarking.markToRead = YES;
-    content.linkBookmarkItem = linkBookmarking;
-    
-    OSKWebBrowserContentItem *browserItem = [[OSKWebBrowserContentItem alloc] init];
-    browserItem.url = readLater.url;
-    content.webBrowserItem = browserItem;
     
     OSKPasswordManagementAppSearchContentItem *passwordSearchItem = [[OSKPasswordManagementAppSearchContentItem alloc] init];
     passwordSearchItem.query = [[NSURL URLWithString:canonicalURL] host];
