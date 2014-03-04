@@ -102,13 +102,12 @@ static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
     return [UIImage imageNamed:@"GooglePlus-Icon-29.png"];
 }
 
-
 + (OSKAuthenticationMethod)authenticationMethod {
     return OSKAuthenticationMethod_Generic;
 }
 
 + (BOOL)requiresApplicationCredential {
-    return NO;
+    return YES;
 }
 
 + (OSKPublishingMethod)publishingMethod {
