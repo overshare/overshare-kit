@@ -220,8 +220,6 @@
         [content setTitle:@"Share"];
     }
     
-    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-    
     // MICROBLOG POST
     
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
@@ -278,23 +276,13 @@
     
     // TODO LIST
     
-    if (caption.length) {
-        OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
-        toDoList.title = [NSString stringWithFormat:@"Look into stuff from %@", appName];
-        toDoList.notes = caption;
-        content.toDoListItem = toDoList;
-    }
+    // No to-do lists accept images at this time.
     
     // AIRDROP
     
     if (images.count) {
         OSKAirDropContentItem *airDrop = [[OSKAirDropContentItem alloc] init];
         airDrop.items = images;
-        content.airDropItem = airDrop;
-    }
-    else if (caption.length) {
-        OSKAirDropContentItem *airDrop = [[OSKAirDropContentItem alloc] init];
-        airDrop.items = @[caption];
         content.airDropItem = airDrop;
     }
     
