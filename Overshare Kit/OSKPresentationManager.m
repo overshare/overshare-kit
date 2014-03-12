@@ -602,6 +602,21 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     return color;
 }
 
+- (UIColor *)color_textViewBackground {
+    UIColor *color;
+    if ([self.colorDelegate respondsToSelector:@selector(osk_color_textViewBackground)]) {
+        color = [self.colorDelegate osk_color_textViewBackground];
+    } else {
+        OSKActivitySheetViewControllerStyle style = [self sheetStyle];
+        if (style == OSKActivitySheetViewControllerStyle_Light) {
+            color = OSKDefaultColor_LightStyle_OpaqueBGColor;
+        } else {
+            color = OSKDefaultColor_DarkStyle_OpaqueBGColor;
+        }
+    }
+    return color;
+}
+
 - (UIColor *)color_pageIndicatorColor_current {
     UIColor *color;
     if ([self.colorDelegate respondsToSelector:@selector(osk_color_pageIndicatorColor_current)]) {

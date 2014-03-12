@@ -388,8 +388,8 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     
     [self setTintColor:actionColor];
     [self.textView setTintColor:actionColor];
-    [self setBackgroundColor:manager.color_opaqueBackground];
-    [self.textView setBackgroundColor:manager.color_opaqueBackground];
+    [self setBackgroundColor:manager.color_textViewBackground];
+    [self.textView setBackgroundColor:manager.color_textViewBackground];
     
     UIKeyboardAppearance keyboardAppearance;
     if (manager.sheetStyle == OSKActivitySheetViewControllerStyle_Dark) {
@@ -1068,7 +1068,6 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     
     return indexOfSpace;
 }
-
 
 - (NSInteger)indexOfFirstPreviousSpace {
     __block NSInteger indexOfSpace = 0;
