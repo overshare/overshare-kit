@@ -142,7 +142,7 @@ Jared is an independent iOS app designer and developer. He makes [Riposte](http:
 
 ---
 
-<a href="https://twitter.com/justin" target="_blank"><img src="https://pbs.twimg.com/profile_images/378800000306417944/4bd8ad98836bdf9af9767a10217475bb.jpeg" alt="Justin Williams" width="128" height="128"></a>  
+<a href="https://twitter.com/justin" target="_blank"><img src="http://www.jaredsinclair.com/img/justin-williams.jpeg" alt="Justin Williams" width="128" height="128"></a>  
 **Justin Williams** — API Design & iOS Account Integration 
  
 Twitter: <a href="https://twitter.com/justin" target="_blank">@justin</a>
