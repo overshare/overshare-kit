@@ -111,11 +111,13 @@ If you have any questions about this setup process, don’t hesitate to [ask].
 
 OvershareKit is almost entirely a standalone library. All of its categories and classes have been properly namespaced with the `OSK` prefix to avoid collisions.
 
-There are two required external libraries:
+There are three required external libraries:
 
 - [App.net Login SDK](https://github.com/appdotnet/ADNLogin-SDK-iOS)
 
 - [Pocket-iOS-SDK](https://github.com/Pocket/Pocket-ObjC-SDK)
+- 
+- [Google-Plus-iOS-SDK](https://developers.google.com/+/mobile/ios/)
 
 
 ## In-App Purchases
