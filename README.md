@@ -3,6 +3,8 @@
 
 #### A soup-to-nuts sharing library for iOS.
 
+*Note: day-to-day work is done on the dev branch. Bug fixes and new features will show up there first.*
+
 ## Table of Contents    
 
 - [Why OvershareKit?](#why-oversharekit)
@@ -16,6 +18,7 @@
 - [In-App Purchases](#in-app-purchases)
 - [So Much More](#so-much-more)
 - [Contributors](#contributors)
+- [Apps Using OvershareKit](#apps-using-oversharekit)
 - [Attributions](#attributions)
 - [License](#license)
 
@@ -139,7 +142,7 @@ Jared is an independent iOS app designer and developer. He makes [Riposte](http:
 
 ---
 
-<a href="https://twitter.com/justin" target="_blank"><img src="https://pbs.twimg.com/profile_images/378800000306417944/4bd8ad98836bdf9af9767a10217475bb.jpeg" alt="Justin Williams" width="128" height="128"></a>  
+<a href="https://twitter.com/justin" target="_blank"><img src="http://www.jaredsinclair.com/img/justin-williams.jpeg" alt="Justin Williams" width="128" height="128"></a>  
 **Justin Williams** — API Design & iOS Account Integration 
  
 Twitter: <a href="https://twitter.com/justin" target="_blank">@justin</a>
@@ -147,6 +150,34 @@ Twitter: <a href="https://twitter.com/justin" target="_blank">@justin</a>
 App.net: <a href="https://alpha.app.net/justin" target="_blank">@justin</a>
 
 Justin is an independent iOS and Mac app developer at [Second Gear](http://www.secondgearsoftware.com). He is a frequent public speaker at tech events.
+
+## Apps Using OvershareKit
+
+*Recent additions are at the top of the list.*
+
+**nvNotes**    
+*The professional Note-taking App that allows you to focus on writing.*    
+[Website](http://www.nvnotes.co.uk)  |  [App Store](https://itunes.apple.com/us/app/nvnotes-note-taking-writing/id700659300?mt=8)
+
+**Unread**    
+*An RSS Reader*    
+By Jared Sinclair    
+[Website](http://jaredsinclair.com/unread/)  |  [App Store](https://itunes.apple.com/us/app/unread-an-rss-reader/id754143884?ls=1&mt=8)
+
+**Redd**    
+*A Reddit client for iOS 7.*    
+By Craig Merchant    
+Website  |  [App Store](https://itunes.apple.com/us/app/redd-reddit-client/id777208009?mt=8&uo=4&at=10l6nh&ct=ms_inline)
+
+**Sunlit**    
+*Shared photos and stories, built with App.net.*    
+By Manton Reece and Jonathan Hays    
+[Website](http://sunlit.io)  |  [App Store](https://itunes.apple.com/app/sunlit/id690924901?mt=8)
+
+**App.net - Broadcast With Push**    
+*Never miss important news again with App.net Broadcast.*    
+By App.net    
+[Website](http://alpha.app.net)  |  [App Store](https://itunes.apple.com/us/app/app.net-passport/id534414475)
 
 ## Attributions
 
