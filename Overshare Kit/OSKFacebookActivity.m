@@ -101,9 +101,12 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
     OSKFacebookContentItem *contentItem = (OSKFacebookContentItem *)[self contentItem];
     
     NSInteger maxCharacterCount = [self maximumCharacterCount];
-    BOOL textIsValid = (0 <= self.remainingCharacterCount && self.remainingCharacterCount < maxCharacterCount && contentItem.text.length > 0);
+    BOOL textIsLongerThanZero = (contentItem.text.length > 0);
+    BOOL textIsWithinTheMaxCount = (0 <= self.remainingCharacterCount && self.remainingCharacterCount < maxCharacterCount);
+    BOOL textIsValid = (textIsLongerThanZero && textIsWithinTheMaxCount);
+    BOOL isALinkPost = (contentItem.link != nil);
     
-    return (accountPresent && textIsValid);
+    return (accountPresent && (textIsValid || isALinkPost));
 }
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {

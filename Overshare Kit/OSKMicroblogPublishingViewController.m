@@ -246,6 +246,10 @@
 
 #pragma mark - OSKTextViewAttachmentsDelegate
 
+- (BOOL)textView:(OSKMicrobloggingTextView *)textView shouldAllowAttachmentsToBeEdited:(OSKTextViewAttachment *)attachment {
+    return YES;
+}
+
 - (void)textViewDidTapRemoveAttachment:(OSKMicrobloggingTextView *)textView {
     [textView removeAttachment];
     [self.contentItem setImages:nil];

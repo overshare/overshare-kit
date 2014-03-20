@@ -21,6 +21,7 @@
 #import "OSKPresentationManager.h"
 #import "OSKMicrobloggingTextView.h"
 #import "UIImage+OSKUtilities.h"
+#import "UIColor+OSKUtility.h"
 
 @interface OSKFacebookPublishingViewController ()
 <
@@ -91,12 +92,25 @@
     
     [self updateDoneButton];
     
-    NSUInteger numberOfImages = self.contentItem.images.count;
-    if (numberOfImages > 0) {
-        NSUInteger numberOfImagesToShow = MIN(MIN([self.activity maximumImageCount], 3), numberOfImages);
-        NSArray *imagesToShow = [self.contentItem.images subarrayWithRange:NSMakeRange(0, numberOfImagesToShow)];
-        OSKTextViewAttachment *attachment = [[OSKTextViewAttachment alloc] initWithImages:imagesToShow];
+    if (self.contentItem.link) {
+        UIImage *linkPlaceholderImage = nil;
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            linkPlaceholderImage = [UIImage imageNamed:@"osk_linkPlaceholder_pad.png"];
+        } else {
+            linkPlaceholderImage = [UIImage imageNamed:@"osk_linkPlaceholder_phone.png"];
+        }
+        UIColor *accentColor = [[OSKPresentationManager sharedInstance].color_textViewBackground osk_contrastingColor];
+        linkPlaceholderImage = [UIImage osk_maskedImage:linkPlaceholderImage color:accentColor];
+        OSKTextViewAttachment *attachment = [[OSKTextViewAttachment alloc] initWithImages:@[linkPlaceholderImage]];
         [self.textView setOskAttachment:attachment];
+    } else {
+        NSUInteger numberOfImages = self.contentItem.images.count;
+        if (numberOfImages > 0) {
+            NSUInteger numberOfImagesToShow = MIN(MIN([self.activity maximumImageCount], 3), numberOfImages);
+            NSArray *imagesToShow = [self.contentItem.images subarrayWithRange:NSMakeRange(0, numberOfImagesToShow)];
+            OSKTextViewAttachment *attachment = [[OSKTextViewAttachment alloc] initWithImages:imagesToShow];
+            [self.textView setOskAttachment:attachment];
+        }
     }
 }
 
@@ -217,6 +231,11 @@
 }
 
 #pragma mark - OSKTextViewAttachmentsDelegate
+
+- (BOOL)textView:(OSKMicrobloggingTextView *)textView shouldAllowAttachmentsToBeEdited:(OSKTextViewAttachment *)attachment {
+    BOOL isALinkPost = (self.contentItem.link != nil);
+    return (isALinkPost == NO);
+}
 
 - (void)textViewDidTapRemoveAttachment:(OSKMicrobloggingTextView *)textView {
     [textView removeAttachment];

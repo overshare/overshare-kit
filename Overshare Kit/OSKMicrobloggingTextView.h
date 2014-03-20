@@ -21,6 +21,7 @@
 
 @protocol OSKMicrobloggingTextViewAttachmentsDelegate <NSObject>
 
+- (BOOL)textView:(OSKMicrobloggingTextView *)textView shouldAllowAttachmentsToBeEdited:(OSKTextViewAttachment *)attachment;
 - (void)textViewDidTapRemoveAttachment:(OSKMicrobloggingTextView *)textView;
 
 @end
@@ -31,9 +32,9 @@
 
 @interface OSKMicrobloggingTextView : OSKUITextViewSubstitute
 
-@property (weak, nonatomic) id <OSKMicrobloggingTextViewAttachmentsDelegate> oskAttachmentsDelegate;
-@property (strong, nonatomic) OSKTextViewAttachment *oskAttachment;
-@property (assign, nonatomic) OSKSyntaxHighlightingStyle syntaxHighlighting;
+@property (weak, nonatomic, readwrite) id <OSKMicrobloggingTextViewAttachmentsDelegate> oskAttachmentsDelegate;
+@property (strong, nonatomic, readwrite) OSKTextViewAttachment *oskAttachment;
+@property (assign, nonatomic, readwrite) OSKSyntaxHighlightingStyle syntaxHighlighting;
 @property (strong, nonatomic, readonly) NSArray *detectedLinks; // array of OSKTwitterTextEntities
 
 - (void)removeAttachment;

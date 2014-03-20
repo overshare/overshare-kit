@@ -209,8 +209,16 @@
     [attachmentView setAttachment:newAttachment];
     [attachmentView setDelegate:self];
     attachmentView.autoresizingMask = UIViewAutoresizingNone;
+    attachmentView.backgroundColor = [UIColor clearColor];
     [self.textView addSubview:attachmentView];
     [self setAttachmentView:attachmentView];
+    
+    if ([self.oskAttachmentsDelegate textView:self shouldAllowAttachmentsToBeEdited:newAttachment]) {
+        [self.attachmentView setUserInteractionEnabled:YES];
+    } else {
+        [self.attachmentView setUserInteractionEnabled:NO];
+    }
+    
     [self updateAttachmentViewFrames];
 }
 
