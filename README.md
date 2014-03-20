@@ -104,6 +104,8 @@ The list of services currently requiring application credentials are:
 
 - **Readability:** You'll need to obtain an application key and secret by registering your app via a new developer account. Visit http://www.readability.com for more information.
 
+- **Google Plus:** You'll need to obtain an application key by registering your app with Google Plus.
+
 If you have any questions about this setup process, don’t hesitate to [ask].
 
 ### URL Schemes
@@ -116,11 +118,13 @@ If you have any questions about this setup process, don’t hesitate to [ask].
 
 OvershareKit is almost entirely a standalone library. All of its categories and classes have been properly namespaced with the `OSK` prefix to avoid collisions.
 
-There are two required external libraries:
+There are two required external libraries, which are included as git submodules in the Depedencies directory:
 
 - [App.net Login SDK](https://github.com/appdotnet/ADNLogin-SDK-iOS)
 
 - [Pocket-iOS-SDK](https://github.com/Pocket/Pocket-ObjC-SDK)
+
+*The Google Plus framework in the Dependencies directory is not a submodule.*
 
 
 ## In-App Purchases
@@ -133,25 +137,29 @@ There’s a ton of stuff to work with in OvershareKit. All of the major and many
 
 ## Contributors
 
-<a href="https://twitter.com/jaredsinclair" target="_blank"><img src="http://jaredsinclair.com/img/pixel-jared.png" alt="Jared Sinclair" width="128" height="128"></a>  
-**Jared Sinclair** — Primary Author and API Design  
+<table><tr><td width="50%">
+<p><a href="https://twitter.com/jaredsinclair" target="_blank"><img src="http://jaredsinclair.com/img/pixel-jared.png" alt="Jared Sinclair" width="128" height="128"></a></p>
 
-Twitter: <a href="https://twitter.com/jaredsinclair" target="_blank">@jaredsinclair</a>
+<p><strong>Jared Sinclair</strong></p>
 
-App.net: <a href="https://alpha.app.net/jaredsinclair" target="_blank">@jaredsinclair</a>
+<p>Primary Author and API Design<br/>
+Twitter: <a href="https://twitter.com/jaredsinclair">@jaredsinclair</a><br/>
+App.net: <a href="https://alpha.app.net/jaredsinclair">@jaredsinclair</a></p>
 
-Jared is an independent iOS app designer and developer. He makes [Riposte](http://riposteapp.net) and [Whisper](http://riposteapp.net/whisper) for App.net along with [Jamin Guy](http://alpha.app.net/jaminguy).
+<p>Jared is an independent iOS app designer and developer. He makes apps like <a href="http://jaredsinclair.com/unread/">Unread an RSS Reader</a> and <a href="http://riposteapp.net">Riposte for App.net</a>.</p>
 
----
+</td><td width="50%">
+<p><a href="https://twitter.com/justin" target="_blank"><img src="http://www.jaredsinclair.com/img/justin-williams.jpeg" alt="Justin Williams" width="128" height="128"></a></p>
 
-<a href="https://twitter.com/justin" target="_blank"><img src="http://www.jaredsinclair.com/img/justin-williams.jpeg" alt="Justin Williams" width="128" height="128"></a>  
-**Justin Williams** — API Design & iOS Account Integration 
- 
-Twitter: <a href="https://twitter.com/justin" target="_blank">@justin</a>
+<p><strong>Justin Williams</strong></p>
 
-App.net: <a href="https://alpha.app.net/justin" target="_blank">@justin</a>
+<p>API Design & iOS Account Integration<br/>
+Twitter: <a href="https://twitter.com/justin">@justin</a><br/>
+App.net: <a href="https://alpha.app.net/justin">@justin</a></p>
 
-Justin is an independent iOS and Mac app developer at [Second Gear](http://www.secondgearsoftware.com). He is a frequent public speaker at tech events.
+<p>Justin is an independent iOS and Mac app developer at <a href="http://www.secondgearsoftware.com">Second Gear</a>. He is a frequent public speaker at tech events.</p>
+
+</td></tr></table>
 
 ## Apps Using OvershareKit
 
