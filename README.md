@@ -5,6 +5,8 @@
 
 *Note: day-to-day work is done on the dev branch. Bug fixes and new features will show up there first.*
 
+*OvershareKit also has a public Pivotal Tracker project [available here](https://www.pivotaltracker.com/s/projects/1026256).*
+
 ## Table of Contents    
 
 - [Why OvershareKit?](#why-oversharekit)
