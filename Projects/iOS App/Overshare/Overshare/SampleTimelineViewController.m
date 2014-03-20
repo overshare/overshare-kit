@@ -67,29 +67,31 @@
 #pragma mark - Sharing
 
 - (void)showShareSheetForTappedCell:(SampleTimelineCell *)tappedCell {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self showShareSheet_Phone];
-    } else {
-        [self showShareSheet_Pad_FromCell:tappedCell];
-    }
-}
-
-- (void)showShareSheet_Pad_FromCell:(SampleTimelineCell *)tappedCell {
     
-    [self setIPadPresentingIndexPath:[self.tableView indexPathForCell:tappedCell]];
+    // 1) Create the shareable content from the user's source content.
     
     NSString *text = @"Me and my dad make models of clipper ships. #Clipperships sail on the ocean.";
     NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
                         [UIImage imageNamed:@"rain.jpg"],
                         [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"https://github.com/overshare/overshare-kit";
+    NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
     NSString *authorName = @"testochango";
     
-    // 1) Create the shareable content from the user's source content.
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName
                                                                     canonicalURL:canonicalURL
                                                                           images:images];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self showShareSheet_Phone:content];
+    } else {
+        [self showShareSheet_Pad_FromCell:tappedCell content:content];
+    }
+}
+
+- (void)showShareSheet_Pad_FromCell:(SampleTimelineCell *)tappedCell content:(OSKShareableContent *)content {
+    
+    [self setIPadPresentingIndexPath:[self.tableView indexPathForCell:tappedCell]];
     
     // 2) Setup optional completion and dismissal handlers
     OSKActivityCompletionHandler completionHandler = [self activityCompletionHandler];
@@ -111,20 +113,7 @@
                                                                     options:options];
 }
 
-- (void)showShareSheet_Pad_FromBarButtonItem:(UIBarButtonItem *)barButtonItem {
-    
-    NSString *text = @"Me and my dad make models of clipper ships. #Clipperships sail on the ocean.";
-    NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
-                        [UIImage imageNamed:@"rain.jpg"],
-                        [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"https://github.com/overshare/overshare-kit";
-    NSString *authorName = @"testochango";
-    
-    // 1) Create the shareable content from the user's source content.
-    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
-                                                                      authorName:authorName
-                                                                    canonicalURL:canonicalURL
-                                                                          images:images];
+- (void)showShareSheet_Pad_FromBarButtonItem:(UIBarButtonItem *)barButtonItem content:(OSKShareableContent *)content {
     
     // 2) Setup optional completion and dismissal handlers
     OSKActivityCompletionHandler completionHandler = [self activityCompletionHandler];
@@ -143,19 +132,7 @@
                                                                     options:options];
 }
 
-- (void)showShareSheet_Phone {
-    NSString *text = @"Me and my dad make models of clipper ships. #Clipperships sail on the ocean.";
-    NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
-                        [UIImage imageNamed:@"rain.jpg"],
-                        [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"https://github.com/overshare/overshare-kit";
-    NSString *authorName = @"testochango";
-    
-    // 1) Create the shareable content from the user's source content.
-    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
-                                                                      authorName:authorName
-                                                                    canonicalURL:canonicalURL
-                                                                          images:images];
+- (void)showShareSheet_Phone:(OSKShareableContent *)content {
     
     // 2) Setup optional completion and dismissal handlers
     OSKActivityCompletionHandler completionHandler = [self activityCompletionHandler];
@@ -274,7 +251,22 @@
 }
 
 - (void)shareBarButtonTapped:(UIBarButtonItem *)item {
-    [self showShareSheet_Pad_FromBarButtonItem:item];
+    
+    // 1) Create the shareable content from the user's source content.
+    
+    NSString *text = @"Me and my dad make models of clipper ships. #Clipperships sail on the ocean.";
+    NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
+                        [UIImage imageNamed:@"rain.jpg"],
+                        [UIImage imageNamed:@"type.jpg"]];
+    NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
+    NSString *authorName = @"testochango";
+    
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images];
+    
+    [self showShareSheet_Pad_FromBarButtonItem:item content:content];
 }
 
 

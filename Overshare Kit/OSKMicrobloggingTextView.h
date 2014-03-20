@@ -24,6 +24,10 @@
 - (BOOL)textView:(OSKMicrobloggingTextView *)textView shouldAllowAttachmentsToBeEdited:(OSKTextViewAttachment *)attachment;
 - (void)textViewDidTapRemoveAttachment:(OSKMicrobloggingTextView *)textView;
 
+@optional
+
+- (BOOL)textViewShouldUseBorderedAttachmentView:(OSKMicrobloggingTextView *)textView;
+
 @end
 
 /// ------------------------------------------------------------

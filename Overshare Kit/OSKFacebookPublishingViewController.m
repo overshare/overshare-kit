@@ -28,7 +28,8 @@
     OSKUITextViewSubstituteDelegate,
     OSKMicrobloggingTextViewAttachmentsDelegate,
     OSKAccountChooserViewControllerDelegate,
-    OSKFacebookAudienceChooserDelegate
+    OSKFacebookAudienceChooserDelegate,
+    UIWebViewDelegate
 >
 
 @property (weak, nonatomic) IBOutlet OSKMicrobloggingTextView *textView;
@@ -38,6 +39,8 @@
 @property (strong, nonatomic) UIView *keyboardToolbar;
 @property (strong, nonatomic) UIButton *accountButton; // Used on iPhone
 @property (strong, nonatomic) UIButton *audienceButton; // Used on iPhone
+@property (strong, nonatomic) UIWebView *snapshotWebView;
+@property (assign, nonatomic) BOOL hasLoadedWebSnapshot;
 
 @end
 
@@ -53,6 +56,13 @@
 @implementation OSKFacebookPublishingViewController
 
 @synthesize oskPublishingDelegate = _oskPublishingDelegate;
+
+#pragma mark - NSObject
+
+- (void)dealloc {
+    [_snapshotWebView stopLoading];
+    _snapshotWebView = nil;
+}
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -103,6 +113,8 @@
         linkPlaceholderImage = [UIImage osk_maskedImage:linkPlaceholderImage color:accentColor];
         OSKTextViewAttachment *attachment = [[OSKTextViewAttachment alloc] initWithImages:@[linkPlaceholderImage]];
         [self.textView setOskAttachment:attachment];
+        
+        [self generateWebPageSnapshotForLink:self.contentItem.link];
     } else {
         NSUInteger numberOfImages = self.contentItem.images.count;
         if (numberOfImages > 0) {
@@ -235,6 +247,10 @@
 - (BOOL)textView:(OSKMicrobloggingTextView *)textView shouldAllowAttachmentsToBeEdited:(OSKTextViewAttachment *)attachment {
     BOOL isALinkPost = (self.contentItem.link != nil);
     return (isALinkPost == NO);
+}
+
+- (BOOL)textViewShouldUseBorderedAttachmentView:(OSKMicrobloggingTextView *)textView {
+    return (self.hasLoadedWebSnapshot);
 }
 
 - (void)textViewDidTapRemoveAttachment:(OSKMicrobloggingTextView *)textView {
@@ -408,7 +424,57 @@
     [self setNewCurrentAudience:audience];
 }
 
+#pragma mark - Web Page Snapshot
+
+- (void)generateWebPageSnapshotForLink:(NSURL *)link {
+    if (self.snapshotWebView == nil) {
+        self.snapshotWebView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        self.snapshotWebView.delegate = self;
+        self.snapshotWebView.suppressesIncrementalRendering = NO;
+        self.snapshotWebView.scalesPageToFit = YES;
+        [self.snapshotWebView loadRequest:[NSURLRequest requestWithURL:link]];
+    }
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    // Wait a second or two for page load animations to finish,
+    // especially for sites like Twitter or an Apple product announcement.
+    __weak OSKFacebookPublishingViewController *weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [weakSelf grabSnapShotFromLoadedWebView:webView];
+    });
+}
+
+- (void)grabSnapShotFromLoadedWebView:(UIWebView *)webView {
+    
+    CGFloat snapshotWidth = webView.frame.size.width;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(snapshotWidth, snapshotWidth), YES, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [webView.layer renderInContext:context];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [self setHasLoadedWebSnapshot:YES];
+    
+    OSKTextViewAttachment *attachment = [[OSKTextViewAttachment alloc] initWithImages:@[image]];
+    [self.textView setOskAttachment:attachment];
+    
+    [self setSnapshotWebView:nil];
+}
+
 @end
+
+
+
+
 
 
 

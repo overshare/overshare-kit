@@ -15,6 +15,7 @@
 #import "OSKTextViewAttachment.h"
 #import "OSKTextViewAttachmentView.h"
 #import "OSKCursorMovement.h"
+#import "UIColor+OSKUtility.h"
 
 @interface OSKMicrobloggingTextView ()
 <
@@ -212,6 +213,19 @@
     attachmentView.backgroundColor = [UIColor clearColor];
     [self.textView addSubview:attachmentView];
     [self setAttachmentView:attachmentView];
+    
+    if ([self.oskAttachmentsDelegate respondsToSelector:@selector(textViewShouldUseBorderedAttachmentView:)]) {
+        BOOL useBorders = [self.oskAttachmentsDelegate textViewShouldUseBorderedAttachmentView:self];
+        if (useBorders) {
+            OSKActivitySheetViewControllerStyle sheetStyle = [OSKPresentationManager sharedInstance].sheetStyle;
+            UIColor *contrastingColor = (sheetStyle == OSKActivitySheetViewControllerStyle_Dark)
+                                        ? [UIColor colorWithWhite:1 alpha:0.2]
+                                        : [UIColor colorWithWhite:0 alpha:0.2];
+            CGFloat borderWidth = ([UIScreen mainScreen].scale > 1) ? 0.5f : 1.0f;
+            self.attachmentView.layer.borderWidth = borderWidth;
+            self.attachmentView.layer.borderColor = contrastingColor.CGColor;
+        }
+    }
     
     if ([self.oskAttachmentsDelegate textView:self shouldAllowAttachmentsToBeEdited:newAttachment]) {
         [self.attachmentView setUserInteractionEnabled:YES];
