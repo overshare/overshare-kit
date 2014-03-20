@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7F049469188AFE4600BE7C4E /* NSString+OSKEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F049468188AFE4600BE7C4E /* NSString+OSKEmoji.m */; };
+		7F14C95618DB5D1D00E635FE /* OSKTextViewAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14C95518DB5D1D00E635FE /* OSKTextViewAttachment.m */; };
+		7F14C95918DB5DBC00E635FE /* OSKTextViewAttachmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14C95818DB5DBC00E635FE /* OSKTextViewAttachmentView.m */; };
+		7F14C95C18DB5E9200E635FE /* OSKUITextViewSubstitute.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14C95B18DB5E9200E635FE /* OSKUITextViewSubstitute.m */; };
+		7F14C95F18DB651800E635FE /* OSKCursorMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14C95E18DB651800E635FE /* OSKCursorMovement.m */; };
 		7F19F8FE181F227300E5EA52 /* osk-iap-badge-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F19F8FB181F227300E5EA52 /* osk-iap-badge-60@2x.png */; };
 		7F19F8FF181F227300E5EA52 /* osk-iap-badge-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F19F8FC181F227300E5EA52 /* osk-iap-badge-76.png */; };
 		7F19F900181F227300E5EA52 /* osk-iap-badge-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F19F8FD181F227300E5EA52 /* osk-iap-badge-76@2x.png */; };
@@ -223,7 +227,7 @@
 		7FEE77CC181ED8EF000F684A /* OSKShareableContentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7746181ED8EE000F684A /* OSKShareableContentItem.m */; };
 		7FEE77CD181ED8EF000F684A /* OSKSMSActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7748181ED8EE000F684A /* OSKSMSActivity.m */; };
 		7FEE77CE181ED8EF000F684A /* OSKSystemAccountStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE774A181ED8EF000F684A /* OSKSystemAccountStore.m */; };
-		7FEE77CF181ED8EF000F684A /* OSKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE774C181ED8EF000F684A /* OSKTextView.m */; };
+		7FEE77CF181ED8EF000F684A /* OSKMicrobloggingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE774C181ED8EF000F684A /* OSKMicrobloggingTextView.m */; };
 		7FEE77D0181ED8EF000F684A /* OSKThingsActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE774E181ED8EF000F684A /* OSKThingsActivity.m */; };
 		7FEE77D1181ED8EF000F684A /* OSKTwitterActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7750181ED8EF000F684A /* OSKTwitterActivity.m */; };
 		7FEE77D2181ED8EF000F684A /* OSKTwitterText.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7752181ED8EF000F684A /* OSKTwitterText.m */; };
@@ -262,6 +266,14 @@
 		7F049468188AFE4600BE7C4E /* NSString+OSKEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OSKEmoji.m"; sourceTree = "<group>"; };
 		7F14C95118DB3B3E00E635FE /* OSKFacebookSharing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKFacebookSharing.h; sourceTree = "<group>"; };
 		7F14C95218DB3C0A00E635FE /* OSKSyntaxHighlighting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKSyntaxHighlighting.h; sourceTree = "<group>"; };
+		7F14C95418DB5D1D00E635FE /* OSKTextViewAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTextViewAttachment.h; sourceTree = "<group>"; };
+		7F14C95518DB5D1D00E635FE /* OSKTextViewAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTextViewAttachment.m; sourceTree = "<group>"; };
+		7F14C95718DB5DBC00E635FE /* OSKTextViewAttachmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTextViewAttachmentView.h; sourceTree = "<group>"; };
+		7F14C95818DB5DBC00E635FE /* OSKTextViewAttachmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTextViewAttachmentView.m; sourceTree = "<group>"; };
+		7F14C95A18DB5E9200E635FE /* OSKUITextViewSubstitute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKUITextViewSubstitute.h; sourceTree = "<group>"; };
+		7F14C95B18DB5E9200E635FE /* OSKUITextViewSubstitute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKUITextViewSubstitute.m; sourceTree = "<group>"; };
+		7F14C95D18DB651800E635FE /* OSKCursorMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKCursorMovement.h; sourceTree = "<group>"; };
+		7F14C95E18DB651800E635FE /* OSKCursorMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKCursorMovement.m; sourceTree = "<group>"; };
 		7F19F8FB181F227300E5EA52 /* osk-iap-badge-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-60@2x.png"; sourceTree = "<group>"; };
 		7F19F8FC181F227300E5EA52 /* osk-iap-badge-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-76.png"; sourceTree = "<group>"; };
 		7F19F8FD181F227300E5EA52 /* osk-iap-badge-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-76@2x.png"; sourceTree = "<group>"; };
@@ -585,8 +597,8 @@
 		7FEE7748181ED8EE000F684A /* OSKSMSActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSMSActivity.m; sourceTree = "<group>"; };
 		7FEE7749181ED8EE000F684A /* OSKSystemAccountStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSystemAccountStore.h; sourceTree = "<group>"; };
 		7FEE774A181ED8EF000F684A /* OSKSystemAccountStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSystemAccountStore.m; sourceTree = "<group>"; };
-		7FEE774B181ED8EF000F684A /* OSKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTextView.h; sourceTree = "<group>"; };
-		7FEE774C181ED8EF000F684A /* OSKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTextView.m; sourceTree = "<group>"; };
+		7FEE774B181ED8EF000F684A /* OSKMicrobloggingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKMicrobloggingTextView.h; sourceTree = "<group>"; };
+		7FEE774C181ED8EF000F684A /* OSKMicrobloggingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKMicrobloggingTextView.m; sourceTree = "<group>"; };
 		7FEE774D181ED8EF000F684A /* OSKThingsActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKThingsActivity.h; sourceTree = "<group>"; };
 		7FEE774E181ED8EF000F684A /* OSKThingsActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKThingsActivity.m; sourceTree = "<group>"; };
 		7FEE774F181ED8EF000F684A /* OSKTwitterActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTwitterActivity.h; sourceTree = "<group>"; };
@@ -661,6 +673,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F14C95318DB5D0300E635FE /* OSKTextView */ = {
+			isa = PBXGroup;
+			children = (
+				7FEE774B181ED8EF000F684A /* OSKMicrobloggingTextView.h */,
+				7FEE774C181ED8EF000F684A /* OSKMicrobloggingTextView.m */,
+				7F14C95418DB5D1D00E635FE /* OSKTextViewAttachment.h */,
+				7F14C95518DB5D1D00E635FE /* OSKTextViewAttachment.m */,
+				7F14C95718DB5DBC00E635FE /* OSKTextViewAttachmentView.h */,
+				7F14C95818DB5DBC00E635FE /* OSKTextViewAttachmentView.m */,
+				7F14C95A18DB5E9200E635FE /* OSKUITextViewSubstitute.h */,
+				7F14C95B18DB5E9200E635FE /* OSKUITextViewSubstitute.m */,
+				7F14C95D18DB651800E635FE /* OSKCursorMovement.h */,
+				7F14C95E18DB651800E635FE /* OSKCursorMovement.m */,
+			);
+			name = OSKTextView;
+			sourceTree = "<group>";
+		};
 		7F43DEB418217964003BE9B6 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -1063,8 +1092,7 @@
 			isa = PBXGroup;
 			children = (
 				7F14C95218DB3C0A00E635FE /* OSKSyntaxHighlighting.h */,
-				7FEE774B181ED8EF000F684A /* OSKTextView.h */,
-				7FEE774C181ED8EF000F684A /* OSKTextView.m */,
+				7F14C95318DB5D0300E635FE /* OSKTextView */,
 				7FEE7729181ED8EE000F684A /* OSKNavigationController.h */,
 				7FEE772A181ED8EE000F684A /* OSKNavigationController.m */,
 				7FEE76FE181ED8EE000F684A /* OSKBorderedButton.h */,
@@ -1693,6 +1721,8 @@
 				7FEE7797181ED8EF000F684A /* OSKActionSheet.m in Sources */,
 				7F78E9AC1820E5630042CF02 /* OSKPocketAccountViewController.m in Sources */,
 				7FEE77AE181ED8EF000F684A /* OSKEmailActivity.m in Sources */,
+				7F14C95918DB5DBC00E635FE /* OSKTextViewAttachmentView.m in Sources */,
+				7F14C95F18DB651800E635FE /* OSKCursorMovement.m in Sources */,
 				7FEE77B7181ED8EF000F684A /* OSKKeychainUtility.m in Sources */,
 				7FE467391821F4010054D2BC /* OSKAccountTypeCell.m in Sources */,
 				7FEE778F181ED8EF000F684A /* NSHTTPURLResponse+OSKUtilities.m in Sources */,
@@ -1719,18 +1749,20 @@
 				7FEE7792181ED8EF000F684A /* NSString+OSKDerp.m in Sources */,
 				7FEE77A8181ED8EF000F684A /* OSKAppDotNetAuthenticationViewController.m in Sources */,
 				7F1DA9E3183C6B280082356D /* OSKLinkShorteningUtility.m in Sources */,
+				7F14C95C18DB5E9200E635FE /* OSKUITextViewSubstitute.m in Sources */,
 				7FEE77D5181ED8EF000F684A /* OSKUsernamePasswordCell.m in Sources */,
 				7FEE77DB181ED8EF000F684A /* UIViewController+OSKUtilities.m in Sources */,
 				7F341E1D18943EEE00CBA9B0 /* OSKSmartPunctuation.m in Sources */,
 				7FEE763F181ED83D000F684A /* main.m in Sources */,
 				7FEE779F181ED8EF000F684A /* OSKActivityIndicatorItem.m in Sources */,
 				7FEE778D181ED8EF000F684A /* NSDate+OSK_ISO8601.m in Sources */,
-				7FEE77CF181ED8EF000F684A /* OSKTextView.m in Sources */,
+				7FEE77CF181ED8EF000F684A /* OSKMicrobloggingTextView.m in Sources */,
 				7FEE77BD181ED8EF000F684A /* OSKMicroblogPublishingViewController.m in Sources */,
 				7F19F92A1820A34F00E5EA52 /* OSKAccountManagementViewController.m in Sources */,
 				7FEE77AF181ED8EF000F684A /* OSKFacebookActivity.m in Sources */,
 				7FEE77CB181ED8EF000F684A /* OSKShareableContent.m in Sources */,
 				7FEE7791181ED8EF000F684A /* NSString+OSK_UUID.m in Sources */,
+				7F14C95618DB5D1D00E635FE /* OSKTextViewAttachment.m in Sources */,
 				7FEE77C3181ED8EF000F684A /* OSKPinboardActivity.m in Sources */,
 				7F75BF401821588700D3681E /* SFHFKeychainUtils.m in Sources */,
 				7FEE77D8181ED8EF000F684A /* UIColor+OSKUtility.m in Sources */,

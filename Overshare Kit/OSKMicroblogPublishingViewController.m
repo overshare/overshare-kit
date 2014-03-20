@@ -18,16 +18,21 @@
 #import "OSKMicrobloggingActivity.h"
 #import "OSKShareableContentItem.h"
 #import "OSKPresentationManager.h"
-#import "OSKTextView.h"
+#import "OSKMicrobloggingTextView.h"
 #import "OSKManagedAccount.h"
 #import "OSKAccountChooserViewController.h"
 #import "UIImage+OSKUtilities.h"
 #import "OSKLinkShorteningUtility.h"
 #import "OSKTwitterText.h"
 
-@interface OSKMicroblogPublishingViewController () <OSKTextViewDelegate, OSKAccountChooserViewControllerDelegate>
+@interface OSKMicroblogPublishingViewController ()
+<
+    OSKUITextViewSubstituteDelegate,
+    OSKMicrobloggingTextViewAttachmentsDelegate,
+    OSKAccountChooserViewControllerDelegate
+>
 
-@property (weak, nonatomic) IBOutlet OSKTextView *textView;
+@property (weak, nonatomic) IBOutlet OSKMicrobloggingTextView *textView;
 
 @property (strong, nonatomic) OSKActivity <OSKMicrobloggingActivity> *activity;
 @property (strong, nonatomic) OSKMicroblogPostContentItem *contentItem;
@@ -99,7 +104,8 @@
 }
 
 - (void)setupTextView {
-    [self.textView setTextViewDelegate:self];
+    [self.textView setOskDelegate:self];
+    [self.textView setOskAttachmentsDelegate:self];
     [self.textView setSyntaxHighlighting:[self.activity syntaxHighlightingStyle]];
     [self.textView setText:self.contentItem.text];
     
@@ -229,16 +235,18 @@
     [self updateAccountButton];
 }
 
-#pragma mark - OSKTextView Delegate
+#pragma mark - OSKUITextViewSubstituteDelegate
 
-- (void)textViewDidChange:(OSKTextView *)textView {
+- (void)textViewDidChange:(OSKUITextViewSubstitute *)textView {
     [self.contentItem setText:textView.attributedText.string];
     [self updateRemainingCharacterCountLabel];
     [self updateDoneButton];
     [self updateLinkShorteningButton];
 }
 
-- (void)textViewDidTapRemoveAttachment:(OSKTextView *)textView {
+#pragma mark - OSKTextViewAttachmentsDelegate
+
+- (void)textViewDidTapRemoveAttachment:(OSKMicrobloggingTextView *)textView {
     [textView removeAttachment];
     [self.contentItem setImages:nil];
     [self updateRemainingCharacterCountLabel];
