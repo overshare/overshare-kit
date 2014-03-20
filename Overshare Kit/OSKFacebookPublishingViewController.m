@@ -61,6 +61,7 @@
 
 - (void)dealloc {
     [_snapshotWebView stopLoading];
+    [_snapshotWebView setDelegate:nil];
     _snapshotWebView = nil;
 }
 
@@ -467,6 +468,8 @@
     OSKTextViewAttachment *attachment = [[OSKTextViewAttachment alloc] initWithImages:@[image]];
     [self.textView setOskAttachment:attachment];
     
+    [self.snapshotWebView setDelegate:nil];
+    [self.snapshotWebView stopLoading];
     [self setSnapshotWebView:nil];
 }
 
