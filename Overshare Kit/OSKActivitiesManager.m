@@ -648,7 +648,7 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
         else if ([activityType isEqualToString:OSKActivityType_API_GooglePlus]) {
             appCredential = [[OSKApplicationCredential alloc]
                              initWithOvershareApplicationKey:OSKApplicationCredential_GooglePlus_Key
-                             applicationSecret:OSKApplicationCredential_Readability_Secret
+                             applicationSecret:nil
                              appName:@"Overshare"];
         }
     }
