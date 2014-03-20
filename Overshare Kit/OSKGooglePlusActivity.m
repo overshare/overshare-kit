@@ -169,8 +169,8 @@ static NSInteger OSKGooglePlusActivity_MaxImageCount = 3;
     return OSKGooglePlusActivity_MaxImageCount;
 }
 
-- (OSKMicroblogSyntaxHighlightingStyle)syntaxHighlightingStyle {
-    return OSKMicroblogSyntaxHighlightingStyle_LinksOnly;
+- (OSKSyntaxHighlightingStyle)syntaxHighlightingStyle {
+    return OSKSyntaxHighlightingStyle_LinksOnly;
 }
 
 - (NSInteger)maximumUsernameLength {

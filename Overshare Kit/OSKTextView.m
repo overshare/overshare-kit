@@ -403,10 +403,10 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     [self.textView setAttributedText:[[NSAttributedString alloc] initWithString:@"" attributes:_attributes_normal]];
 }
 
-- (void)setSyntaxHighlighting:(OSKMicroblogSyntaxHighlightingStyle)syntaxHighlighting {
+- (void)setSyntaxHighlighting:(OSKSyntaxHighlightingStyle)syntaxHighlighting {
     if (_syntaxHighlighting != syntaxHighlighting) {
         _syntaxHighlighting = syntaxHighlighting;
-        if (_syntaxHighlighting == OSKMicroblogSyntaxHighlightingStyle_Twitter) {
+        if (_syntaxHighlighting == OSKSyntaxHighlightingStyle_Twitter) {
             [self.textView setKeyboardType:UIKeyboardTypeTwitter];
         } else {
             [self.textView setKeyboardType:UIKeyboardTypeDefault];
@@ -580,7 +580,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
     // Apply default attributes to the entire string
     [textStorage addAttributes:self.attributes_normal range:NSMakeRange(0, textStorage.length)];
     
-    if (self.syntaxHighlighting == OSKMicroblogSyntaxHighlightingStyle_Twitter) {
+    if (self.syntaxHighlighting == OSKSyntaxHighlightingStyle_Twitter) {
         // Apply syntax highlighting for entities
         NSArray *allEntities = [OSKTwitterText entitiesInText:textStorage.string];
         NSMutableArray *links = [[NSMutableArray alloc] init];
@@ -606,7 +606,7 @@ static void * OSKTextViewAttachmentViewContext = "OSKTextViewAttachmentViewConte
         }
         [self setDetectedLinks:links];
     }
-    else if (self.syntaxHighlighting == OSKMicroblogSyntaxHighlightingStyle_LinksOnly) {
+    else if (self.syntaxHighlighting == OSKSyntaxHighlightingStyle_LinksOnly) {
         NSArray *allURLEntities = [OSKTwitterText URLsInText:textStorage.string];
         for (OSKTwitterTextEntity *urlEntitiy in allURLEntities) {
             [textStorage addAttributes:self.attributes_links range:urlEntitiy.range];

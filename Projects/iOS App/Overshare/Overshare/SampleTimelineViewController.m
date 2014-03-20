@@ -82,7 +82,7 @@
     NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
                         [UIImage imageNamed:@"rain.jpg"],
                         [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"http://twitter.com/testochango";
+    NSString *canonicalURL = @"https://github.com/overshare/overshare-kit";
     NSString *authorName = @"testochango";
     
     // 1) Create the shareable content from the user's source content.
@@ -117,7 +117,7 @@
     NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
                         [UIImage imageNamed:@"rain.jpg"],
                         [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"http://twitter.com/testochango";
+    NSString *canonicalURL = @"https://github.com/overshare/overshare-kit";
     NSString *authorName = @"testochango";
     
     // 1) Create the shareable content from the user's source content.
@@ -148,7 +148,7 @@
     NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
                         [UIImage imageNamed:@"rain.jpg"],
                         [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"http://twitter.com/testochango";
+    NSString *canonicalURL = @"https://github.com/overshare/overshare-kit";
     NSString *authorName = @"testochango";
     
     // 1) Create the shareable content from the user's source content.

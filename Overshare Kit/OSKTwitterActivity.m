@@ -170,8 +170,8 @@ static NSInteger OSKTwitterActivity_FallbackShortURLEstimate = 24;
     return remainingCharacterCount;
 }
 
-- (OSKMicroblogSyntaxHighlightingStyle)syntaxHighlightingStyle {
-    return OSKMicroblogSyntaxHighlightingStyle_Twitter;
+- (OSKSyntaxHighlightingStyle)syntaxHighlightingStyle {
+    return OSKSyntaxHighlightingStyle_Twitter;
 }
 
 - (BOOL)allowLinkShortening {

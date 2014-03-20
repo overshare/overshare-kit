@@ -54,7 +54,7 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
 #pragma mark - Methods for OSKActivity Subclasses
 
 + (NSString *)supportedContentItemType {
-    return OSKShareableContentItemType_MicroblogPost;
+    return OSKShareableContentItemType_Facebook;
 }
 
 + (BOOL)isAvailable {
@@ -98,23 +98,12 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
 - (BOOL)isReadyToPerform {
     BOOL accountPresent = (self.activeSystemAccount != nil);
     
-    OSKMicroblogPostContentItem *contentItem = (OSKMicroblogPostContentItem *)[self contentItem];
+    OSKFacebookContentItem *contentItem = (OSKFacebookContentItem *)[self contentItem];
     
     NSInteger maxCharacterCount = [self maximumCharacterCount];
     BOOL textIsValid = (0 <= self.remainingCharacterCount && self.remainingCharacterCount < maxCharacterCount && contentItem.text.length > 0);
     
     return (accountPresent && textIsValid);
-}
-
-- (NSInteger)updateRemainingCharacterCount:(OSKMicroblogPostContentItem *)contentItem urlEntities:(NSArray *)urlEntities {
-    
-    NSString *text = contentItem.text;
-    NSInteger composedLength = [text osk_lengthAdjustingForComposedCharacters];
-    NSInteger remainingCharacterCount = [self maximumCharacterCount] - composedLength;
-    
-    [self setRemainingCharacterCount:remainingCharacterCount];
-    
-    return remainingCharacterCount;
 }
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
@@ -124,7 +113,7 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
             completion(weakSelf, NO, nil);
         }
     }];
-    [OSKFacebookUtility postContentItem:(OSKMicroblogPostContentItem *)self.contentItem
+    [OSKFacebookUtility postContentItem:(OSKFacebookContentItem *)self.contentItem
                         toSystemAccount:self.activeSystemAccount
                                 options:@{ACFacebookAudienceKey:[self currentAudience]}
                              completion:^(BOOL success, NSError *error) {
@@ -143,7 +132,7 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
     return nil;
 }
 
-#pragma mark - Microblogging Activity Protocol
+#pragma mark - Facebook Sharing Protocol
 
 - (NSInteger)maximumCharacterCount {
     return OSKFacebookActivity_MaxCharacterCount;
@@ -153,12 +142,27 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
     return OSKFacebookActivity_MaxImageCount;
 }
 
-- (OSKMicroblogSyntaxHighlightingStyle)syntaxHighlightingStyle {
-    return OSKMicroblogSyntaxHighlightingStyle_LinksOnly;
+- (OSKSyntaxHighlightingStyle)syntaxHighlightingStyle {
+    return OSKSyntaxHighlightingStyle_LinksOnly;
 }
 
 - (NSInteger)maximumUsernameLength {
     return OSKFacebookActivity_MaxUsernameLength;
+}
+
+- (NSInteger)updateRemainingCharacterCount:(OSKFacebookContentItem *)contentItem urlEntities:(NSArray *)urlEntities {
+    
+    NSString *text = contentItem.text;
+    NSInteger composedLength = [text osk_lengthAdjustingForComposedCharacters];
+    NSInteger remainingCharacterCount = [self maximumCharacterCount] - composedLength;
+    
+    [self setRemainingCharacterCount:remainingCharacterCount];
+    
+    return remainingCharacterCount;
+}
+
+- (BOOL)allowLinkShortening {
+    return YES;
 }
 
 @end

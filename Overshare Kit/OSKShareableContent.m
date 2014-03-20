@@ -18,7 +18,11 @@
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
     
     content.title = text;
-        
+    
+    OSKFacebookContentItem *facebook = [[OSKFacebookContentItem alloc] init];
+    facebook.text = text;
+    content.facebookItem = facebook;
+    
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
     microblogPost.text = text;
     content.microblogPostItem = microblogPost;
@@ -59,6 +63,10 @@
     content.title = absoluteString;
     
     NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    
+    OSKFacebookContentItem *facebook = [[OSKFacebookContentItem alloc] init];
+    facebook.link = url;
+    content.facebookItem = facebook;
     
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
     microblogPost.text = absoluteString;
@@ -117,6 +125,24 @@
     
     content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
     
+    NSURL *URLforCanonicalURL = nil;
+    if (canonicalURL) {
+        URLforCanonicalURL = [NSURL URLWithString:canonicalURL];
+    }
+    
+    OSKFacebookContentItem *facebook = [[OSKFacebookContentItem alloc] init];
+    if (authorName) {
+        facebook.text = [NSString stringWithFormat:@"Check out this post by %@: ", authorName];
+    }
+    if (canonicalURL) {
+        facebook.link = URLforCanonicalURL;
+    }
+    else if (images) {
+        // Image posts cannot be link posts and vice versa.
+        facebook.images = images;
+    }
+    content.facebookItem = facebook;
+    
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
     microblogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
     microblogPost.images = images;
@@ -149,27 +175,24 @@
     smsItem.attachments = images;
     content.smsItem = smsItem;
     
-    if (canonicalURL) {
-        NSURL *URLforCanonicalURL = [NSURL URLWithString:canonicalURL];
-        if (URLforCanonicalURL) {
-            OSKReadLaterContentItem *readLater = [[OSKReadLaterContentItem alloc] init];
-            readLater.url = URLforCanonicalURL;
-            readLater.title = [NSString stringWithFormat:@"Post by %@", authorName];
-            readLater.description = text;
-            content.readLaterItem = readLater;
-            
-            OSKLinkBookmarkContentItem *linkBookmarking = [[OSKLinkBookmarkContentItem alloc] init];
-            linkBookmarking.url = URLforCanonicalURL;
-            linkBookmarking.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
-            NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-            linkBookmarking.tags = @[appName];
-            linkBookmarking.markToRead = YES;
-            content.linkBookmarkItem = linkBookmarking;
-            
-            OSKWebBrowserContentItem *browserItem = [[OSKWebBrowserContentItem alloc] init];
-            browserItem.url = URLforCanonicalURL;
-            content.webBrowserItem = browserItem;
-        }
+    if (URLforCanonicalURL) {
+        OSKReadLaterContentItem *readLater = [[OSKReadLaterContentItem alloc] init];
+        readLater.url = URLforCanonicalURL;
+        readLater.title = [NSString stringWithFormat:@"Post by %@", authorName];
+        readLater.description = text;
+        content.readLaterItem = readLater;
+        
+        OSKLinkBookmarkContentItem *linkBookmarking = [[OSKLinkBookmarkContentItem alloc] init];
+        linkBookmarking.url = URLforCanonicalURL;
+        linkBookmarking.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
+        NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        linkBookmarking.tags = @[appName];
+        linkBookmarking.markToRead = YES;
+        content.linkBookmarkItem = linkBookmarking;
+        
+        OSKWebBrowserContentItem *browserItem = [[OSKWebBrowserContentItem alloc] init];
+        browserItem.url = URLforCanonicalURL;
+        content.webBrowserItem = browserItem;
     }
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
@@ -219,6 +242,13 @@
     else {
         [content setTitle:@"Share"];
     }
+    
+    // FACEBOOK
+    
+    OSKFacebookContentItem *facebook = [[OSKFacebookContentItem alloc] init];
+    facebook.text = caption;
+    facebook.images = images;
+    content.facebookItem = facebook;
     
     // MICROBLOG POST
     

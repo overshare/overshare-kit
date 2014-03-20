@@ -1,25 +1,25 @@
 //
-//  OSKMicrobloggingActivity.h
+//  OSKFacebookSharing.h
 //  Overshare
 //
-//   
-//  Copyright (c) 2013 Overshare Kit. All rights reserved.
+//  Created by Jared on 3/20/14.
+//  Copyright (c) 2014 Overshare Kit. All rights reserved.
 //
 
 @import Foundation;
 
+@class OSKFacebookContentItem;
+
 #import "OSKSyntaxHighlighting.h"
 
-@class OSKMicroblogPostContentItem;
-
-@protocol OSKMicrobloggingActivity <NSObject>
+@protocol OSKFacebookSharing <NSObject>
 
 @property (assign, nonatomic) NSInteger remainingCharacterCount;
 
 - (NSInteger)maximumCharacterCount;
 - (NSInteger)maximumImageCount;
 - (NSInteger)maximumUsernameLength;
-- (NSInteger)updateRemainingCharacterCount:(OSKMicroblogPostContentItem *)contentItem urlEntities:(NSArray *)urlEntities;
+- (NSInteger)updateRemainingCharacterCount:(OSKFacebookContentItem *)contentItem urlEntities:(NSArray *)urlEntities;
 - (OSKSyntaxHighlightingStyle)syntaxHighlightingStyle;
 
 @optional

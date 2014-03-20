@@ -15,19 +15,24 @@
 #import "OSKBorderedButton.h"
 #import "OSKFacebookActivity.h"
 #import "OSKFacebookAudienceChooserViewController.h"
-#import "OSKMicrobloggingActivity.h"
+#import "OSKFacebookSharing.h"
 #import "OSKSystemAccountStore.h"
 #import "OSKShareableContentItem.h"
 #import "OSKPresentationManager.h"
 #import "OSKTextView.h"
 #import "UIImage+OSKUtilities.h"
 
-@interface OSKFacebookPublishingViewController () <OSKTextViewDelegate, OSKAccountChooserViewControllerDelegate, OSKFacebookAudienceChooserDelegate>
+@interface OSKFacebookPublishingViewController ()
+<
+    OSKTextViewDelegate,
+    OSKAccountChooserViewControllerDelegate,
+    OSKFacebookAudienceChooserDelegate
+>
 
 @property (weak, nonatomic) IBOutlet OSKTextView *textView;
 
 @property (strong, nonatomic) OSKFacebookActivity *activity;
-@property (strong, nonatomic) OSKMicroblogPostContentItem *contentItem;
+@property (strong, nonatomic) OSKFacebookContentItem *contentItem;
 @property (strong, nonatomic) UIView *keyboardToolbar;
 @property (strong, nonatomic) UIButton *accountButton; // Used on iPhone
 @property (strong, nonatomic) UIButton *audienceButton; // Used on iPhone
@@ -362,7 +367,7 @@
 
 - (void)preparePublishingViewForActivity:(OSKActivity *)activity delegate:(id <OSKPublishingViewControllerDelegate>)oskPublishingDelegate {
     [self setActivity:(OSKFacebookActivity *)activity];
-    [self setContentItem:(OSKMicroblogPostContentItem *)self.activity.contentItem];
+    [self setContentItem:(OSKFacebookContentItem *)self.activity.contentItem];
     [self setOskPublishingDelegate:oskPublishingDelegate];
     self.title = [self.activity.class activityName];
 }
