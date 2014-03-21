@@ -517,9 +517,14 @@
 - (void)showSystemAccountChooser {
     OSKSystemAccountStore *store = [OSKSystemAccountStore sharedInstance];
     OSKActivity <OSKActivity_SystemAccounts> *activity = (OSKActivity <OSKActivity_SystemAccounts> *)self.activity;
-    NSArray *accounts = [store accountsForAccountTypeIdentifier:[activity.class systemAccountTypeIdentifier]];
+    NSString *systemAccountTypeIdentifier = [activity.class systemAccountTypeIdentifier];
+    NSArray *accounts = [store accountsForAccountTypeIdentifier:systemAccountTypeIdentifier];
     ACAccount *activeAccount = activity.activeSystemAccount;
-    OSKAccountChooserViewController *chooser = [[OSKAccountChooserViewController alloc] initWithSystemAccounts:accounts activeAccount:activeAccount delegate:self];
+    OSKAccountChooserViewController *chooser = [[OSKAccountChooserViewController alloc]
+                                                initWithSystemAccounts:accounts
+                                                activeAccount:activeAccount
+                                                accountTypeIdentifier:systemAccountTypeIdentifier
+                                                delegate:self];
     [self.navigationController pushViewController:chooser animated:YES];
 }
 
