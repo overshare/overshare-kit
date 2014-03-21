@@ -20,7 +20,7 @@
 - (NSInteger)maximumImageCount;
 - (NSInteger)maximumUsernameLength;
 - (NSInteger)updateRemainingCharacterCount:(OSKMicroblogPostContentItem *)contentItem urlEntities:(NSArray *)urlEntities;
-- (OSKSyntaxHighlightingStyle)syntaxHighlightingStyle;
+- (OSKSyntaxHighlighting)syntaxHighlighting;
 
 @optional
 

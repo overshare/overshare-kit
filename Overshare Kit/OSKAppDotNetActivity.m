@@ -155,8 +155,8 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
     return OSKAppDotNetActivity_MaxImageCount;
 }
 
-- (OSKSyntaxHighlightingStyle)syntaxHighlightingStyle {
-    return OSKSyntaxHighlightingStyle_Twitter;
+- (OSKSyntaxHighlighting)syntaxHighlighting {
+    return OSKSyntaxHighlighting_Hashtags | OSKSyntaxHighlighting_Links | OSKSyntaxHighlighting_Usernames;
 }
 
 - (NSInteger)maximumUsernameLength {

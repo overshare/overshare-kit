@@ -20,7 +20,7 @@
 - (NSInteger)maximumImageCount;
 - (NSInteger)maximumUsernameLength;
 - (NSInteger)updateRemainingCharacterCount:(OSKFacebookContentItem *)contentItem urlEntities:(NSArray *)urlEntities;
-- (OSKSyntaxHighlightingStyle)syntaxHighlightingStyle;
+- (OSKSyntaxHighlighting)syntaxHighlighting;
 
 @optional
 

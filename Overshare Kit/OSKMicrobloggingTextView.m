@@ -130,57 +130,47 @@
     [self.textView setAttributedText:[[NSAttributedString alloc] initWithString:@"" attributes:_attributes_normal]];
 }
 
-- (void)setSyntaxHighlighting:(OSKSyntaxHighlightingStyle)syntaxHighlighting {
-    if (_syntaxHighlighting != syntaxHighlighting) {
-        _syntaxHighlighting = syntaxHighlighting;
-        if (_syntaxHighlighting == OSKSyntaxHighlightingStyle_Twitter) {
-            [self.textView setKeyboardType:UIKeyboardTypeTwitter];
-        } else {
-            [self.textView setKeyboardType:UIKeyboardTypeDefault];
-        }
-    }
-}
-
 - (void)updateSyntaxHighlighting:(NSTextStorage *)textStorage {
+    
+    // This method could have poor performance for very long runs of text.
+    // Consider refactoring to only inspect the region around the edited range. ~ JTS March 21, 2014.
     
     // Apply default attributes to the entire string
     [textStorage addAttributes:self.attributes_normal range:NSMakeRange(0, textStorage.length)];
     
-    if (self.syntaxHighlighting == OSKSyntaxHighlightingStyle_Twitter) {
-        // Apply syntax highlighting for entities
+    if (self.syntaxHighlighting == OSKSyntaxHighlighting_None) {
+        [self setDetectedLinks:nil];
+    } else {
+        BOOL useLinks = (self.syntaxHighlighting & OSKSyntaxHighlighting_Links);
+        BOOL useUsernames = (self.syntaxHighlighting & OSKSyntaxHighlighting_Usernames);
+        BOOL useHashtags = (self.syntaxHighlighting & OSKSyntaxHighlighting_Hashtags);
         NSArray *allEntities = [OSKTwitterText entitiesInText:textStorage.string];
         NSMutableArray *links = [[NSMutableArray alloc] init];
         for (OSKTwitterTextEntity *anEntity in allEntities) {
             switch (anEntity.type) {
                 case OSKTwitterTextEntityHashtag: {
-                    [textStorage addAttributes:self.attributes_hashtags range:anEntity.range];
+                    if (useHashtags) {
+                        [textStorage addAttributes:self.attributes_hashtags range:anEntity.range];
+                    }
                 } break;
-                    
                 case OSKTwitterTextEntityScreenName: {
-                    NSString *lowercaseName = [textStorage.string substringWithRange:anEntity.range].lowercaseString;
-                    [textStorage replaceCharactersInRange:anEntity.range withString:lowercaseName];
-                    [textStorage addAttributes:self.attributes_mentions range:anEntity.range];
+                    if (useUsernames) {
+                        NSString *lowercaseName = [textStorage.string substringWithRange:anEntity.range].lowercaseString;
+                        [textStorage replaceCharactersInRange:anEntity.range withString:lowercaseName];
+                        [textStorage addAttributes:self.attributes_mentions range:anEntity.range];
+                    }
                 } break;
-                    
                 case OSKTwitterTextEntityURL: {
-                    [textStorage addAttributes:self.attributes_links range:anEntity.range];
-                    [links addObject:anEntity];
+                    if (useLinks) {
+                        [textStorage addAttributes:self.attributes_links range:anEntity.range];
+                        [links addObject:anEntity];
+                    }
                 } break;
                 default:
                     break;
             }
         }
         [self setDetectedLinks:links];
-    }
-    else if (self.syntaxHighlighting == OSKSyntaxHighlightingStyle_LinksOnly) {
-        NSArray *allURLEntities = [OSKTwitterText URLsInText:textStorage.string];
-        for (OSKTwitterTextEntity *urlEntitiy in allURLEntities) {
-            [textStorage addAttributes:self.attributes_links range:urlEntitiy.range];
-        }
-        [self setDetectedLinks:allURLEntities];
-    }
-    else {
-        [self setDetectedLinks:nil];
     }
 }
 

@@ -106,7 +106,7 @@
 - (void)setupTextView {
     [self.textView setOskDelegate:self];
     [self.textView setOskAttachmentsDelegate:self];
-    [self.textView setSyntaxHighlighting:[self.activity syntaxHighlightingStyle]];
+    [self.textView setSyntaxHighlighting:[self.activity syntaxHighlighting]];
     [self.textView setText:self.contentItem.text];
     
     [self updateRemainingCharacterCountLabel];

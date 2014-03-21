@@ -8,7 +8,9 @@
 
 @import Foundation;
 
-typedef NS_ENUM(NSInteger, OSKSyntaxHighlightingStyle) {
-    OSKSyntaxHighlightingStyle_Twitter,
-    OSKSyntaxHighlightingStyle_LinksOnly,
+typedef NS_ENUM(NSInteger, OSKSyntaxHighlighting) {
+    OSKSyntaxHighlighting_None =        0,
+    OSKSyntaxHighlighting_Links =       1 << 1,
+    OSKSyntaxHighlighting_Usernames =   1 << 2,
+    OSKSyntaxHighlighting_Hashtags =    1 << 3,
 };

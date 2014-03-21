@@ -38,7 +38,7 @@
 
 @property (weak, nonatomic, readwrite) id <OSKMicrobloggingTextViewAttachmentsDelegate> oskAttachmentsDelegate;
 @property (strong, nonatomic, readwrite) OSKTextViewAttachment *oskAttachment;
-@property (assign, nonatomic, readwrite) OSKSyntaxHighlightingStyle syntaxHighlighting;
+@property (assign, nonatomic, readwrite) OSKSyntaxHighlighting syntaxHighlighting;
 @property (strong, nonatomic, readonly) NSArray *detectedLinks; // array of OSKTwitterTextEntities
 
 - (void)removeAttachment;

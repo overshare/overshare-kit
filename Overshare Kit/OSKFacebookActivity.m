@@ -166,8 +166,8 @@ static NSString * OSKFacebookActivity_PreviousAudienceKey = @"OSKFacebookActivit
     return OSKFacebookActivity_MaxImageCount;
 }
 
-- (OSKSyntaxHighlightingStyle)syntaxHighlightingStyle {
-    return OSKSyntaxHighlightingStyle_LinksOnly;
+- (OSKSyntaxHighlighting)syntaxHighlighting {
+    return OSKSyntaxHighlighting_Links | OSKSyntaxHighlighting_Hashtags;
 }
 
 - (NSInteger)maximumUsernameLength {
