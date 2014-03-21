@@ -17,6 +17,7 @@
 static NSInteger OSKFacebookActivity_MaxCharacterCount = 6000;
 static NSInteger OSKFacebookActivity_MaxUsernameLength = 20;
 static NSInteger OSKFacebookActivity_MaxImageCount = 3;
+static NSString * OSKFacebookActivity_PreviousAudienceKey = @"OSKFacebookActivity_PreviousAudienceKey";
 
 @implementation OSKFacebookActivity
 
@@ -26,9 +27,29 @@ static NSInteger OSKFacebookActivity_MaxImageCount = 3;
 - (instancetype)initWithContentItem:(OSKShareableContentItem *)item {
     self = [super initWithContentItem:item];
     if (self) {
-        _currentAudience = ACFacebookAudienceEveryone;
+        NSString *previousAudience = [[NSUserDefaults standardUserDefaults] objectForKey:OSKFacebookActivity_PreviousAudienceKey];
+        if (previousAudience) {
+            if( ([previousAudience isEqualToString:ACFacebookAudienceEveryone]) ||
+                ([previousAudience isEqualToString:ACFacebookAudienceFriends]) ||
+               ([previousAudience isEqualToString:ACFacebookAudienceOnlyMe]) ) {
+                _currentAudience = previousAudience;
+            } else {
+                _currentAudience = ACFacebookAudienceEveryone;
+            }
+        } else {
+            _currentAudience = ACFacebookAudienceEveryone;
+        }
     }
     return self;
+}
+
+- (void)setCurrentAudience:(NSString *)currentAudience {
+    if ([_currentAudience isEqualToString:currentAudience] == NO) {
+        _currentAudience = currentAudience;
+        if (_currentAudience) {
+            [[NSUserDefaults standardUserDefaults] setObject:_currentAudience forKey:OSKFacebookActivity_PreviousAudienceKey];
+        }
+    }
 }
 
 #pragma mark - System Accounts
