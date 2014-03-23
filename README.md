@@ -1,4 +1,4 @@
-# OvershareKit
+OvershareKit
 ============
 
 #### A soup-to-nuts sharing library for iOS.
