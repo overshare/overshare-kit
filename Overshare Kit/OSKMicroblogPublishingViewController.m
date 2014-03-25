@@ -101,6 +101,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.textView becomeFirstResponder];
+    [self updateDoneButton];
 }
 
 - (void)setupTextView {
@@ -478,6 +479,11 @@
         OSKManagedAccount *managedAccount = [(OSKActivity <OSKActivity_ManagedAccounts> *)self.activity activeManagedAccount];
         accountName = [managedAccount nonNilDisplayName];
     }
+    
+    if (accountName == nil) {
+        accountName = @"– – –";
+    }
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self updateAccountButton_Phone:accountName];
     } else {
@@ -486,7 +492,7 @@
 }
 
 - (void)updateAccountButton_Phone:(NSString *)accountName {
-    [self.accountButton setTitle:[NSString stringWithFormat:@"%@", accountName] forState:UIControlStateNormal];
+    [self.accountButton setTitle:accountName forState:UIControlStateNormal];
     CGSize newSize = [self.accountButton sizeThatFits:self.keyboardToolbar.bounds.size];
     CGRect buttonFrame = self.accountButton.frame;
     buttonFrame.size.width = newSize.width;
