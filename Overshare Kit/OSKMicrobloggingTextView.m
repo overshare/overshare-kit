@@ -177,6 +177,10 @@
 #pragma mark - Text Attachments
 
 - (void)setOskAttachment:(OSKTextViewAttachment *)attachment {
+    if (self.attachmentView) {
+        [self.attachmentView removeFromSuperview];
+        [self setAttachmentView:nil];
+    }
     _oskAttachment = attachment;
     if (_oskAttachment) {
         [self setupAttachmentView:attachment];
