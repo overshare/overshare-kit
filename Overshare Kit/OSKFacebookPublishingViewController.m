@@ -451,12 +451,15 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    // Wait a second or two for page load animations to finish,
-    // especially for sites like Twitter or an Apple product announcement.
-    __weak OSKFacebookPublishingViewController *weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [weakSelf grabSnapShotFromLoadedWebView:webView];
-    });
+    if (self.hasLoadedWebSnapshot == NO) {
+        [self setHasLoadedWebSnapshot:YES];
+        // Wait a second or two for page load animations to finish,
+        // especially for sites like Twitter or an Apple product announcement.
+        __weak OSKFacebookPublishingViewController *weakSelf = self;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [weakSelf grabSnapShotFromLoadedWebView:webView];
+        });
+    }
 }
 
 - (void)grabSnapShotFromLoadedWebView:(UIWebView *)webView {
@@ -467,8 +470,6 @@
     [webView.layer renderInContext:context];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
-    [self setHasLoadedWebSnapshot:YES];
     
     OSKTextViewAttachment *attachment = [[OSKTextViewAttachment alloc] initWithImages:@[image]];
     [self.textView setOskAttachment:attachment];
