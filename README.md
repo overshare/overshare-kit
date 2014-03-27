@@ -1,4 +1,4 @@
-# OvershareKit
+OvershareKit
 ============
 
 #### A soup-to-nuts sharing library for iOS.
@@ -12,6 +12,7 @@
 - [Why OvershareKit?](#why-oversharekit)
 - [Screenshot](#screenshot)
 - [How to Use OvershareKit](#how-to-use-oversharekit)
+- [OvershareKit Versus UIActivityViewController](#oversharekit-versus-uiactivityviewcontroller)
 - [Architecture](#architecture)
 - [Authentication](#authentication)
 - [Application-Specific Credentials](#application-specific-credentials)
@@ -59,6 +60,25 @@ After including OvershareKit in your Xcode project (see the detailed requirement
 2) Pass that shareable content to the `OSKPresentationManager` via one of the `presentActivitySheetForContent:` methods.
 
 3) There is no step 3. 
+
+
+## OvershareKit Versus UIActivityViewController
+
+We are frequently asked why someone would use OvershareKit instead of `UIActivityViewController` (UIAVC) and `UIActivity`. UIAVC is great for apps that know they’ll never have a need for any of the following:
+
+1. Never need to integrate with more than one or two third party services.
+2. Never need to tweak the UI for the activity sheet and sharing screens.
+3. Never care to provide separate, media-specific content for each sharing type (email versus SMS, etc.)
+4. Never need to have multiple items such as a Copy Text versus a Copy Link in the same sheet.
+5. Don't mind that all non-system-provided activities get stuck with boring monochromatic icons.
+
+Many apps can't fit comfortably within those restrictions, which is why we made OvershareKit. 
+
+The most important difference between UIAVC and OvershareKit is in how content is structured. UIAVC uses unstructured arrays of content (which contain one or more of a grab-bag of objects, usually strings, images and URLs). UIAVC lets each UIActivity decide which of these objects, if any, it will act upon and how. The shortcoming of this API design is that activities don't know anything about the context in which a sharing session is taking place. For example, the formatting for an email message generated from an Instagram post should look very different from an email generated from an RSS article. But with UIAVC, there's no easy way to communicate that context. Most crucially, it is impossible to do this using UIAVC without providing substitutes for the system-provided mail activities. 
+
+Activities should not be given that much responsibility over content. The content should be ready to consume *before* it is handed to an activity. Furthermore, the content should be formatted in a manner that is appropriate to each type of activity.
+
+This is why OvershareKit uses an instance of `OSKShareableContent` that bristles with many flavors of `OSKShareableContentItem`. This API design allows the part of your app that has knowledge of context to prepare all the various types of `OSKShareableContentItems` before handing it off to an OvershareKit sharing session. This results in a more satisfying sharing experience for the user, and less overall hassle for the developer. 
 
 
 ## Architecture
