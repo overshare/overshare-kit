@@ -22,7 +22,6 @@
 @class OSKPasswordManagementAppSearchContentItem;
 @class OSKAirDropContentItem;
 @class OSKTextEditingContentItem;
-@class OSKSaveToCameraRollContentItem;
 
 /**
  `OSKShareableContent` is the highest-level Overshare Kit model object for
@@ -92,11 +91,6 @@
  Content for pasteboard clippings.
  */
 @property (strong, nonatomic) OSKCopyToPasteboardContentItem *pasteboardItem;
-
-/**
- Content for saving to Camera Roll.
- */
-@property (strong, nonatomic) OSKSaveToCameraRollContentItem *cameraRollItem;
 
 /**
  Content for sending to read-later services like Instapaper or Pocket.

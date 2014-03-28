@@ -34,10 +34,10 @@
 #import "OSKPocketActivity.h"
 #import "OSKReadabilityActivity.h"
 #import "OSKSafariActivity.h"
+#import "OSKSaveToCameraRollActivity.h"
 #import "OSKSMSActivity.h"
 #import "OSKThingsActivity.h"
 #import "OSKTwitterActivity.h"
-#import "OSKSaveToCameraRollActivity.h"
 
 #if DEBUG == 1
 // DEVELOPMENT KEYS ONLY, YOUR APP SHOULD SUPPLY YOUR APP CREDENTIALS VIA THE CUSTOMIZATIONS DELEGATE.
@@ -151,10 +151,6 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
                                                  excludedActivityTypes:excludedActivityTypes
                                                      requireOperations:requireOperations];
         }
-        else if ([item.itemType isEqualToString:OSKShareableContentItemType_SaveToCameraRoll]) {
-            activitiesToAdd = [self builtInActivitiesForSaveToCameraRollItem:(OSKSaveToCameraRollContentItem *)item excludedActivityTypes:excludedActivityTypes
-                                                       requireOperations:requireOperations];
-        }
         else if ([item.itemType isEqualToString:OSKShareableContentItemType_CopyToPasteboard]) {
             activitiesToAdd = [self builtInActivitiesForCopyToPasteboardItem:(OSKCopyToPasteboardContentItem *)item
                                                      excludedActivityTypes:excludedActivityTypes
@@ -238,10 +234,6 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
     
     if (content.pasteboardItem) { [sortedItems addObject:content.pasteboardItem]; }
     additionals = [self contentItemsOfType:OSKShareableContentItemType_CopyToPasteboard inArray:content.additionalItems];
-    [sortedItems addObjectsFromArray:additionals];
-    
-    if (content.cameraRollItem) { [sortedItems addObject:content.cameraRollItem]; }
-    additionals = [self contentItemsOfType:OSKShareableContentItemType_SaveToCameraRoll inArray:content.additionalItems];
     [sortedItems addObjectsFromArray:additionals];
     
     if (content.webBrowserItem) { [sortedItems addObject:content.webBrowserItem]; }
@@ -414,11 +406,8 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
 }
 
 - (NSArray *)builtInActivitiesForPhotosharingItem:(OSKPhotoSharingContentItem *)item excludedActivityTypes:(NSArray *)excludedActivityTypes requireOperations:(BOOL)requireOperations {
-    return nil;
-}
-
-- (NSArray *)builtInActivitiesForSaveToCameraRollItem:(OSKSaveToCameraRollContentItem *)item excludedActivityTypes:(NSArray *)excludedActivityTypes requireOperations:(BOOL)requireOperations {
     NSMutableArray *activities = [[NSMutableArray alloc] init];
+    
     OSKSaveToCameraRollActivity *saveToCameraRoll = [self validActivityForType:[OSKSaveToCameraRollActivity activityType]
                                                                          class:[OSKSaveToCameraRollActivity class]
                                                                  excludedTypes:excludedActivityTypes

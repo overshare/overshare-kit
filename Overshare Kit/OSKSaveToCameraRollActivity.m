@@ -11,7 +11,7 @@
 
 @interface OSKSaveToCameraRollActivity ()
 
-@property (strong, nonatomic, readonly) OSKSaveToCameraRollContentItem *cameraRollItem;
+@property (strong, nonatomic, readonly) OSKPhotoSharingContentItem *photoSharingItem;
 
 @end
 
@@ -28,7 +28,7 @@
 #pragma mark - Methods for OSKActivity Subclasses
 
 + (NSString *)supportedContentItemType {
-    return OSKShareableContentItemType_SaveToCameraRoll;
+    return OSKShareableContentItemType_PhotoSharing;
 }
 
 + (BOOL)isAvailable {
@@ -40,7 +40,12 @@
 }
 
 + (NSString *)activityName {
-    return @"Camera Roll";
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]){
+        return @"Camera Roll";
+    }
+    else{
+        return @"Saved Photos";
+    }
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {
@@ -48,7 +53,7 @@
     if (idiom == UIUserInterfaceIdiomPhone) {
         image = [UIImage imageNamed:@"osk-photosIcon-60.png"];
     } else {
-        image = [UIImage imageNamed:@"oosk-photosIcon-76.png"];
+        image = [UIImage imageNamed:@"osk-photosIcon-76.png"];
     }
     return image;
 }
@@ -67,13 +72,18 @@
 }
 
 - (BOOL)isReadyToPerform {
-    return (self.cameraRollItem.image ? YES : NO);
+    return (self.photoSharingItem.images ? YES : NO);
 }
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
-    UIImageWriteToSavedPhotosAlbum(self.cameraRollItem.image, nil, nil, nil);
+    for (UIImage* image in self.photoSharingItem.images){
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    }
     if (completion) {
-        completion(self, YES, nil);
+        __weak OSKSaveToCameraRollActivity *weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(weakSelf, YES, nil);
+        });
     }
 }
 
@@ -87,8 +97,8 @@
 
 #pragma mark - Convenience
 
-- (OSKSaveToCameraRollContentItem *)cameraRollItem {
-    return (OSKSaveToCameraRollContentItem *)self.contentItem;
+- (OSKPhotoSharingContentItem *)photoSharingItem {
+    return (OSKPhotoSharingContentItem *)self.contentItem;
 }
 
 @end
