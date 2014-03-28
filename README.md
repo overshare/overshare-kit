@@ -3,9 +3,11 @@ OvershareKit
 
 #### A soup-to-nuts sharing library for iOS.
 
-*Note: day-to-day work is done on the dev branch. Bug fixes and new features will show up there first.*
+## Pull Requests & New Features
 
-*OvershareKit also has a public Pivotal Tracker project [available here](https://www.pivotaltracker.com/s/projects/1026256).*
+We happily accept any pull request that adds meaningful value for the OvershareKit community. Bug fixes can be submitted on any branch, but significant changes and new features *must* be submitted on the `dev` branch for wider testing and review. Our day-to-day work is done on the dev branch. Watch the `dev` branch for an idea of what’s coming.
+
+OvershareKit also has a public Pivotal Tracker project [available here](https://www.pivotaltracker.com/s/projects/1026256).
 
 ## Table of Contents    
 
