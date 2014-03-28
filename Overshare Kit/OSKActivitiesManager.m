@@ -34,6 +34,7 @@
 #import "OSKPocketActivity.h"
 #import "OSKReadabilityActivity.h"
 #import "OSKSafariActivity.h"
+#import "OSKSaveToCameraRollActivity.h"
 #import "OSKSMSActivity.h"
 #import "OSKThingsActivity.h"
 #import "OSKTwitterActivity.h"
@@ -405,7 +406,16 @@ static NSString * OSKActivitiesManagerPersistentExclusionsKey = @"OSKActivitiesM
 }
 
 - (NSArray *)builtInActivitiesForPhotosharingItem:(OSKPhotoSharingContentItem *)item excludedActivityTypes:(NSArray *)excludedActivityTypes requireOperations:(BOOL)requireOperations {
-    return nil;
+    NSMutableArray *activities = [[NSMutableArray alloc] init];
+    
+    OSKSaveToCameraRollActivity *saveToCameraRoll = [self validActivityForType:[OSKSaveToCameraRollActivity activityType]
+                                                                         class:[OSKSaveToCameraRollActivity class]
+                                                                 excludedTypes:excludedActivityTypes
+                                                             requireOperations:requireOperations
+                                                                          item:item];
+    if (saveToCameraRoll) { [activities addObject:saveToCameraRoll]; }
+    
+    return activities;
 }
 
 - (NSArray *)builtInActivitiesForReadLaterItem:(OSKReadLaterContentItem *)item excludedActivityTypes:(NSArray *)excludedActivityTypes requireOperations:(BOOL)requireOperations {
