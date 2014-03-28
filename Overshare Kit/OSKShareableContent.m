@@ -304,6 +304,10 @@
 	photoItem.caption = caption;
 	content.photoSharingItem = photoItem;
     
+    OSKSaveToCameraRollContentItem *saveToCameraRollItem = [[OSKSaveToCameraRollContentItem alloc] init];
+    saveToCameraRollItem.image = [images firstObject];
+    content.cameraRollItem = saveToCameraRollItem;
+    
     // TODO LIST
     
     // No to-do lists accept images at this time.

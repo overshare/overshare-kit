@@ -15,6 +15,7 @@ NSString * const OSKShareableContentItemType_Email = @"OSKShareableContentItemTy
 NSString * const OSKShareableContentItemType_SMS = @"OSKShareableContentItemType_SMS";
 NSString * const OSKShareableContentItemType_PhotoSharing = @"OSKShareableContentItemType_PhotoSharing";
 NSString * const OSKShareableContentItemType_CopyToPasteboard = @"OSKShareableContentItemType_CopyToPasteboard";
+NSString * const OSKShareableContentItemType_SaveToCameraRoll = @"OSKShareableContentItemType_SaveToCameraRoll";
 NSString * const OSKShareableContentItemType_ReadLater = @"OSKShareableContentItemType_ReadLater";
 NSString * const OSKShareableContentItemType_LinkBookmark = @"OSKShareableContentItemType_LinkBookmark";
 NSString * const OSKShareableContentItemType_WebBrowser = @"OSKShareableContentItemType_WebBrowser";
@@ -106,6 +107,14 @@ NSString * const OSKShareableContentItemType_TextEditing = @"OSKShareableContent
     if (_images) {
         [self setText:nil];
     }
+}
+
+@end
+
+@implementation OSKSaveToCameraRollContentItem
+
+- (NSString *)itemType {
+    return OSKShareableContentItemType_SaveToCameraRoll;
 }
 
 @end

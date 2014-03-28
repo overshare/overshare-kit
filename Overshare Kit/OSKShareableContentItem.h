@@ -15,6 +15,7 @@ extern NSString * const OSKShareableContentItemType_Email;
 extern NSString * const OSKShareableContentItemType_SMS;
 extern NSString * const OSKShareableContentItemType_PhotoSharing;
 extern NSString * const OSKShareableContentItemType_CopyToPasteboard;
+extern NSString * const OSKShareableContentItemType_SaveToCameraRoll;
 extern NSString * const OSKShareableContentItemType_ReadLater;
 extern NSString * const OSKShareableContentItemType_LinkBookmark;
 extern NSString * const OSKShareableContentItemType_WebBrowser;
@@ -332,6 +333,22 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
  other properties to nil. 
  */
 @property (copy, nonatomic) NSArray *images;
+
+@end
+
+///-----------------------------------------
+/// @name Save-to-Camera-Roll
+///-----------------------------------------
+
+/**
+ Content for saving to the Camera Roll.
+ */
+@interface OSKSaveToCameraRollContentItem : OSKShareableContentItem
+
+/**
+ Plain text content for copying & pasting.
+ */
+@property (copy, nonatomic) UIImage *image;
 
 @end
 
