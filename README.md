@@ -3,16 +3,11 @@ OvershareKit
 
 #### A soup-to-nuts sharing library for iOS.
 
-## Pull Requests & New Features
-
-We happily accept any pull request that adds meaningful value for the OvershareKit community. Bug fixes can be submitted on any branch, but significant changes and new features *must* be submitted on the `dev` branch for wider testing and review. Our day-to-day work is done on the dev branch. Watch the `dev` branch for an idea of what’s coming.
-
-OvershareKit also has a public Pivotal Tracker project [available here](https://www.pivotaltracker.com/s/projects/1026256).
-
 ## Table of Contents    
 
 - [Why OvershareKit?](#why-oversharekit)
 - [Screenshot](#screenshot)
+- [Pull Requests and New Features](#pull-requests-and-new-features)
 - [How to Use OvershareKit](#how-to-use-oversharekit)
 - [OvershareKit Versus UIActivityViewController](#oversharekit-versus-uiactivityviewcontroller)
 - [Architecture](#architecture)
@@ -31,8 +26,6 @@ OvershareKit also has a public Pivotal Tracker project [available here](https://
 
 Sharing is far too cumbersome to implement on iOS. UIActivityViewController is too limiting, and rolling your own library is too time-consuming. Most devs end up settling for underwhelming sharing options for lack of the time or inclination to make something better.
 
-Enter OvershareKit. 
-
 OvershareKit makes it trivial to add rich sharing options to your iOS apps. In a word, OvershareKit has everything:
 
 - Beautiful share sheets with pixel-perfect, **full-color** icons in a simple layout.
@@ -50,6 +43,12 @@ OvershareKit makes it trivial to add rich sharing options to your iOS apps. In a
 ## Screenshot
 
 <img src="https://jaredsinclair-dev.s3.amazonaws.com/web/jaredsinclair.com/overshare.png" width="320"/>
+
+## Pull Requests and New Features
+
+We happily accept any pull request that adds meaningful value for the OvershareKit community. Bug fixes can be submitted on any branch, but significant changes and new features *must* be submitted on the `dev` branch for wider testing and review. Our day-to-day work is done on the dev branch. Watch the `dev` branch for an idea of what’s coming.
+
+OvershareKit also has a public Pivotal Tracker project [available here](https://www.pivotaltracker.com/s/projects/1026256).
 
 ## How to Use OvershareKit
 
