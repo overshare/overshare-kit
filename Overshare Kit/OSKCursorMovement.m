@@ -187,7 +187,7 @@
      options:NSStringEnumerationByComposedCharacterSequences
      usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
          
-         if (nextCharacterReached == YES) {
+         if (nextCharacterReached) {
              indexChanged = YES;
              indexOfSpace = substringRange.location;
              *stop = YES;
@@ -232,7 +232,7 @@
      options:NSStringEnumerationByWords
      usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
          
-         if (firstWordFound == YES) {
+         if (firstWordFound) {
              indexChanged = YES;
              indexOfSpace = substringRange.location;
              *stop = YES;
@@ -279,7 +279,7 @@
      options:NSStringEnumerationByLines
      usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
          
-         if (firstWordFound == YES) {
+         if (firstWordFound) {
              indexChanged = YES;
              indexOfSpace = substringRange.location;
              *stop = YES;
