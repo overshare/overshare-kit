@@ -80,10 +80,28 @@ OSKXCallbackURLInfo
 - (void)showShareSheetForTappedCell:(SampleTimelineCell *)tappedCell {
     
     // 1) Grab the user's data that will be shared.
+    
+    NSString *text = @"Me and my dad make models of clipper ships. #Clipperships sail on the ocean.";
+    
+    NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
+                        [UIImage imageNamed:@"rain.jpg"],
+                        [UIImage imageNamed:@"type.jpg"]];
+    
+    NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
+    NSString *authorName = @"testochango";
 
     // 2) Create the shareable content from the user's source data.
     
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images];
+    
     // 3) Present the activity sheet via the presentation manager.
+    
+    [[OSKPresentationManager sharedInstance] presentActivitySheetForContent:content
+                                                   presentingViewController:self
+                                                                    options:nil];
 }
 
 
