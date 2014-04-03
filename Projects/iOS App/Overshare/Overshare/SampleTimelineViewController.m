@@ -17,11 +17,11 @@
 
 @interface SampleTimelineViewController ()
 <
-    SampleTimelineCellDelegate,
-    OSKPresentationViewControllers,
-    OSKPresentationStyle,
-    OSKPresentationColor,
-    OSKXCallbackURLInfo
+SampleTimelineCellDelegate,
+OSKPresentationViewControllers,
+OSKPresentationStyle,
+OSKPresentationColor,
+OSKXCallbackURLInfo
 >
 
 @property (assign, nonatomic) OSKActivitySheetViewControllerStyle sheetStyle;
@@ -66,28 +66,41 @@
 
 #pragma mark - Sharing
 
+
+
+
+
+
+
+
+
+
+
+
 - (void)showShareSheetForTappedCell:(SampleTimelineCell *)tappedCell {
     
-    // 1) Create the shareable content from the user's source content.
+    // 1) Grab the user's data that will be shared.
+
+    // 2) Create the shareable content from the user's source data.
     
-    NSString *text = @"Me and my dad make models of clipper ships. #Clipperships sail on the ocean.";
-    NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
-                        [UIImage imageNamed:@"rain.jpg"],
-                        [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
-    NSString *authorName = @"testochango";
-    
-    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
-                                                                      authorName:authorName
-                                                                    canonicalURL:canonicalURL
-                                                                          images:images];
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self showShareSheet_Phone:content];
-    } else {
-        [self showShareSheet_Pad_FromCell:tappedCell content:content];
-    }
+    // 3) Present the activity sheet via the presentation manager.
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)showShareSheet_Pad_FromCell:(SampleTimelineCell *)tappedCell content:(OSKShareableContent *)content {
     
@@ -99,7 +112,7 @@
     
     // 3) Create the options dictionary. See OSKActivity.h for more options.
     NSDictionary *options = @{    OSKPresentationOption_ActivityCompletionHandler : completionHandler,
-                              OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
+                                  OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
     
     // 4) Prep the iPad-specific presentation needs.
     CGRect presentationRect = [self presentationRectForCell:tappedCell];
@@ -129,22 +142,6 @@
                                                    popoverFromBarButtonItem:barButtonItem
                                                    permittedArrowDirections:UIPopoverArrowDirectionAny
                                                                    animated:YES
-                                                                    options:options];
-}
-
-- (void)showShareSheet_Phone:(OSKShareableContent *)content {
-    
-    // 2) Setup optional completion and dismissal handlers
-    OSKActivityCompletionHandler completionHandler = [self activityCompletionHandler];
-    OSKPresentationEndingHandler dismissalHandler = [self dismissalHandler];
-    
-    // 3) Create the options dictionary. See OSKActivity.h for more options.
-    NSDictionary *options = @{    OSKPresentationOption_ActivityCompletionHandler : completionHandler,
-                              OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
-    
-    // 4) Present the activity sheet via the presentation manager.
-    [[OSKPresentationManager sharedInstance] presentActivitySheetForContent:content
-                                                   presentingViewController:self
                                                                     options:options];
 }
 
@@ -244,7 +241,7 @@
 }
 
 
-#pragma mark - SampleTimelineViewController 
+#pragma mark - SampleTimelineViewController
 
 - (void)accountManagerButtonTapped:(id)sender {
     [self showAccountsManagement];
