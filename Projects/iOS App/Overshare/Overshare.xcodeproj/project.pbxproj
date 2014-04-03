@@ -73,7 +73,6 @@
 		7FD649E21895EAF20021BD50 /* Drafts-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DD1895EAF20021BD50 /* Drafts-Icon-60@2x.png */; };
 		7FD649E31895EAF20021BD50 /* Drafts-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DE1895EAF20021BD50 /* Drafts-Icon-76.png */; };
 		7FD649E41895EAF20021BD50 /* Drafts-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DF1895EAF20021BD50 /* Drafts-Icon-76@2x.png */; };
-		7FDCDE96181EE1BA00AC2985 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8E181EE1BA00AC2985 /* Icon-60@2x.png */; };
 		7FDCDE97181EE1BA00AC2985 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8F181EE1BA00AC2985 /* rain.jpg */; };
 		7FDCDE9A181EE1BA00AC2985 /* soda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE93181EE1BA00AC2985 /* soda.jpg */; };
 		7FDCDE9B181EE1BA00AC2985 /* type.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE94181EE1BA00AC2985 /* type.jpg */; };
@@ -124,6 +123,7 @@
 		7FE467391821F4010054D2BC /* OSKAccountTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE467381821F4010054D2BC /* OSKAccountTypeCell.m */; };
 		7FE4673B1821FB990054D2BC /* Pocket-Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE4673A1821FB990054D2BC /* Pocket-Icon-29@2x.png */; };
 		7FE4673D1821FEAC0054D2BC /* osk-settingsPlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FE4673C1821FEAC0054D2BC /* osk-settingsPlaceholder@2x.png */; };
+		7FEB3DC118EDDAC5007453C4 /* OSKSaveToCameraRollActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB3DC018EDDAC5007453C4 /* OSKSaveToCameraRollActivity.m */; };
 		7FEE7633181ED83D000F684A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7632181ED83D000F684A /* Foundation.framework */; };
 		7FEE7635181ED83D000F684A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7634181ED83D000F684A /* CoreGraphics.framework */; };
 		7FEE7637181ED83D000F684A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEE7636181ED83D000F684A /* UIKit.framework */; };
@@ -421,6 +421,8 @@
 		7FE467381821F4010054D2BC /* OSKAccountTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKAccountTypeCell.m; sourceTree = "<group>"; };
 		7FE4673A1821FB990054D2BC /* Pocket-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pocket-Icon-29@2x.png"; sourceTree = "<group>"; };
 		7FE4673C1821FEAC0054D2BC /* osk-settingsPlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-settingsPlaceholder@2x.png"; sourceTree = "<group>"; };
+		7FEB3DBF18EDDAC5007453C4 /* OSKSaveToCameraRollActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSaveToCameraRollActivity.h; sourceTree = "<group>"; };
+		7FEB3DC018EDDAC5007453C4 /* OSKSaveToCameraRollActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSaveToCameraRollActivity.m; sourceTree = "<group>"; };
 		7FEE762F181ED83D000F684A /* Overshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Overshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEE7632181ED83D000F684A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FEE7634181ED83D000F684A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -744,6 +746,15 @@
 			name = Drafts.app;
 			sourceTree = "<group>";
 		};
+		7FEB3DBE18EDDAAC007453C4 /* Save to Camera Roll */ = {
+			isa = PBXGroup;
+			children = (
+				7FEB3DBF18EDDAC5007453C4 /* OSKSaveToCameraRollActivity.h */,
+				7FEB3DC018EDDAC5007453C4 /* OSKSaveToCameraRollActivity.m */,
+			);
+			name = "Save to Camera Roll";
+			sourceTree = "<group>";
+		};
 		7FEE7626181ED83D000F684A = {
 			isa = PBXGroup;
 			children = (
@@ -1045,6 +1056,7 @@
 		7FEE78FF181ED969000F684A /* Activities (Subclasses) */ = {
 			isa = PBXGroup;
 			children = (
+				7FEB3DBE18EDDAAC007453C4 /* Save to Camera Roll */,
 				88B98D1218A28F05007676CA /* GooglePlus */,
 				7FEE78FD181ED94F000F684A /* 1Password (Browser) */,
 				7FEE78FE181ED95D000F684A /* 1Password (Search) */,
@@ -1521,7 +1533,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = OSK;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Overshare Kit";
 				TargetAttributes = {
 					7FEE762E181ED83D000F684A = {
@@ -1670,7 +1682,6 @@
 				7F77F4281822F6D10019452C /* osk-appDotNetIcon-29.png in Resources */,
 				7FEE7777181ED8EF000F684A /* osk-icon-border-60@2x.png in Resources */,
 				7FE467031821C9F20054D2BC /* osk-twitterIcon-76.png in Resources */,
-				7FDCDE96181EE1BA00AC2985 /* Icon-60@2x.png in Resources */,
 				7FE466ED1821C9F20054D2BC /* Chrome-Icon-29@2x.png in Resources */,
 				7FEE777A181ED8EF000F684A /* osk-iconMask-bw-60@2x.png in Resources */,
 				7F14C96518DB724000E635FE /* osk_linkPlaceholder_pad@2x.png in Resources */,
@@ -1720,6 +1731,7 @@
 				7F049469188AFE4600BE7C4E /* NSString+OSKEmoji.m in Sources */,
 				7FEE77D0181ED8EF000F684A /* OSKThingsActivity.m in Sources */,
 				7FEE77B9181ED8EF000F684A /* OSKManagedAccount.m in Sources */,
+				7FEB3DC118EDDAC5007453C4 /* OSKSaveToCameraRollActivity.m in Sources */,
 				7F43DEB818217986003BE9B6 /* OSKFacebookPublishingViewController.m in Sources */,
 				7F43DEBC1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.m in Sources */,
 				7FEE77B8181ED8EF000F684A /* OSKMailComposeViewController.m in Sources */,
@@ -1825,7 +1837,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1865,7 +1876,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
