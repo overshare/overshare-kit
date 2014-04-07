@@ -64,18 +64,7 @@ OSKXCallbackURLInfo
 }
 
 
-#pragma mark - Sharing
-
-
-
-
-
-
-
-
-
-
-
+#pragma mark - Intro to Overshare Kit Demo
 
 - (void)showShareSheetForTappedCell:(SampleTimelineCell *)tappedCell {
     
@@ -87,7 +76,7 @@ OSKXCallbackURLInfo
                         [UIImage imageNamed:@"rain.jpg"],
                         [UIImage imageNamed:@"type.jpg"]];
     
-    NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
+    NSString *canonicalURL = @"https://twitter.com/testochango/status/453193613900410881";
     NSString *authorName = @"testochango";
 
     // 2) Create the shareable content from the user's source data.
@@ -105,20 +94,7 @@ OSKXCallbackURLInfo
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#pragma mark - Sharing
 
 - (void)showShareSheet_Pad_FromCell:(SampleTimelineCell *)tappedCell content:(OSKShareableContent *)content {
     
@@ -190,10 +166,22 @@ OSKXCallbackURLInfo
 }
 
 - (BOOL)osk_toolbarsUseUnjustifiablyBorderlessButtons {
-#warning Override this to use bordered navigation bar buttons.
+#warning Override this and return NO to enable bordered navigation bar buttons.
     return YES;
 }
+/*
+- (UIFontDescriptor *)osk_normalFontDescriptor {
+    NSDictionary *attributes = @{UIFontDescriptorNameAttribute : @"AvenirNext-Regular"};
+    UIFontDescriptor *descriptor = [UIFontDescriptor fontDescriptorWithFontAttributes:attributes];
+    return descriptor;
+}
 
+- (UIFontDescriptor *)osk_boldFontDescriptor {
+    NSDictionary *attributes = @{UIFontDescriptorNameAttribute : @"AvenirNext-Bold"};
+    UIFontDescriptor *descriptor = [UIFontDescriptor fontDescriptorWithFontAttributes:attributes];
+    return descriptor;
+}
+*/
 
 #pragma mark - OSKPresentationManager Color Delegate
 
