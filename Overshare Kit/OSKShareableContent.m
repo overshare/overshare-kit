@@ -144,7 +144,7 @@
     content.facebookItem = facebook;
     
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
-    microblogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
+    microblogPost.text = [NSString stringWithFormat:@"“%@” (Via %@) %@ ", text, authorName, canonicalURL];
     microblogPost.images = images;
     content.microblogPostItem = microblogPost;
     
@@ -165,7 +165,7 @@
     content.additionalItems = @[copyURLToPasteboard];
     
     OSKEmailContentItem *emailItem = [[OSKEmailContentItem alloc] init];
-    emailItem.body = [NSString stringWithFormat:@"“%@”\n\n(Via @%@)\n\n%@ ", text, authorName, canonicalURL];
+    emailItem.body = [NSString stringWithFormat:@"“%@”\n\n(Via %@)\n\n%@ ", text, authorName, canonicalURL];
     emailItem.subject = @"Clipper Ships Sail On the Ocean";
     emailItem.attachments = images.copy;
     content.emailItem = emailItem;
