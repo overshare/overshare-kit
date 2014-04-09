@@ -169,6 +169,22 @@ static NSInteger OSKTextViewFontSize_Pad = 20.0f;
     [popover presentPopoverFromBarButtonItem:item permittedArrowDirections:arrowDirections animated:animated];
 }
 
+- (void)dismissActivitySheetAnimated:(BOOL)animated completion:(void (^)(void))completion {
+    OSKPresentationEndingHandler handler = [self.activitySheetViewController.session.presentationEndingHandler copy];
+
+    dispatch_block_t cancellationCompletion = ^{
+        if (handler) {
+            handler(OSKPresentationEnding_Cancelled, nil);
+        }
+
+        if (completion) {
+            completion();
+        }
+    };
+
+    [self _dismissActivitySheetAnimated:animated completion:cancellationCompletion];
+}
+
 #pragma mark - Presentation & Dismissal
 
 - (void)presentSheet:(OSKActivitySheetViewController *)sheet
@@ -229,28 +245,27 @@ static NSInteger OSKTextViewFontSize_Pad = 20.0f;
     }
 }
 
-- (void)dismissActivitySheet:(void(^)(void))completion {
-    
+- (void)_dismissActivitySheetAnimated:(BOOL)animated completion:(void (^)(void))completion {
     if ([self isPresentingViaPopover]) {
-        [self dismissActivitySheet_Pad:completion];
+        [self dismissActivitySheet_PadAnimated:animated completion:completion];
     } else {
-        [self dismissActivitySheet_Phone:completion];
+        [self dismissActivitySheet_PhoneAnimated:animated completion:completion];
     }
 }
 
-- (void)dismissActivitySheet_Phone:(void(^)(void))completion {
+- (void)dismissActivitySheet_PhoneAnimated:(BOOL)animated completion:(void(^)(void))completion {
     if ([self isAnimating] == NO && [self isPresenting]) {
-        [self setIsAnimating:YES];
+        [self setIsAnimating:animated];
         OSKActivitySheetViewController *sheet = self.activitySheetViewController;
         CGRect targetFrame = sheet.view.frame;
         targetFrame.origin.y += [sheet visibleSheetHeightForCurrentLayout];
-        [sheet viewWillDisappear:YES];
-        [UIView animateWithDuration:OSKPresentationManagerActivitySheetDismissalDuration delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [sheet viewWillDisappear:animated];
+        [UIView animateWithDuration:animated ? OSKPresentationManagerActivitySheetDismissalDuration : 0. delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             [sheet.view setFrame:targetFrame];
             [self.shadowView setAlpha:0];
         } completion:^(BOOL finished) {
             [sheet.view removeFromSuperview];
-            [sheet viewDidDisappear:YES];
+            [sheet viewDidDisappear:animated];
             [self tearDownShadowView];
             [self setActivitySheetViewController:nil];
             [self setPresentingViewController:nil];
@@ -262,10 +277,10 @@ static NSInteger OSKTextViewFontSize_Pad = 20.0f;
     }
 }
 
-- (void)dismissActivitySheet_Pad:(void(^)(void))completion {
+- (void)dismissActivitySheet_PadAnimated:(BOOL)animated completion:(void(^)(void))completion {
     if (self.isAnimating == NO) {
-        [self setIsAnimating:YES];
-        [self.popoverController dismissPopoverAnimated:YES];
+        [self setIsAnimating:animated];
+        [self.popoverController dismissPopoverAnimated:animated];
         [self setActivitySheetViewController:nil];
         [self setPopoverController:nil];
         [self setPresentingViewController:nil];
@@ -315,7 +330,7 @@ static NSInteger OSKTextViewFontSize_Pad = 20.0f;
     
     if ([self isPresentingViaPopover]) {
         if ([[activity.class activityType] isEqualToString:OSKActivityType_iOS_AirDrop] == NO) {
-            [self dismissActivitySheet:nil];
+            [self _dismissActivitySheetAnimated:YES completion:nil];
         }
     }
     
@@ -388,7 +403,7 @@ willRepositionPopoverToRect:(inout CGRect *)rect
         [sessionController dismissViewControllers];
         [self.sessionControllers removeObjectForKey:session.sessionIdentifier];
     }
-    [self dismissActivitySheet:^{
+    [self _dismissActivitySheetAnimated:YES completion:^{
         if (session.presentationEndingHandler) {
             session.presentationEndingHandler(OSKPresentationEnding_Cancelled, nil);
         }
@@ -1144,7 +1159,7 @@ willPresentViewController:(UIViewController *)viewController
         OSKSession *session = controller.session;
         OSKActivity *selectedActivity = controller.activity;
         if ([self isPresenting]) {
-            [self dismissActivitySheet:^{
+            [self _dismissActivitySheetAnimated:YES completion:^{
                 if (session.presentationEndingHandler) {
                     session.presentationEndingHandler(OSKPresentationEnding_ProceededWithActivity, selectedActivity);
                 }
@@ -1173,7 +1188,7 @@ willPresentViewController:(UIViewController *)viewController
     // In the interests of future changes, we'll check for a need to dismiss the activity
     // sheet here.
     if ([self isPresenting] && [session.sessionIdentifier isEqualToString:self.activitySheetViewController.session.sessionIdentifier]) {
-        [self dismissActivitySheet:^{
+        [self _dismissActivitySheetAnimated:YES completion:^{
             if (session.presentationEndingHandler) {
                 session.presentationEndingHandler(OSKPresentationEnding_ProceededWithActivity, selectedActivity);
             }
