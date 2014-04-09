@@ -10,9 +10,9 @@
 
 @interface OSKPagedHorizontalLayout ()
 
-@property (assign, nonatomic) CGFloat availableWidth;
-@property (assign, nonatomic) CGFloat availableHeight;
-@property (assign, nonatomic) UIEdgeInsets edgeInsets;
+@property (readonly, nonatomic) CGFloat availableWidth;
+@property (readonly, nonatomic) CGFloat availableHeight;
+@property (readonly, nonatomic) UIEdgeInsets edgeInsets;
 @property (strong, nonatomic) NSArray *attributes;
 @property (assign, nonatomic) NSInteger numberOfPages;
 
