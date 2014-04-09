@@ -120,7 +120,7 @@
     return content;
 }
 
-+ (instancetype)contentFromMicroblogPost:(NSString *)text authorName:(NSString *)authorName canonicalURL:(NSString *)canonicalURL images:(NSArray *)images {
++ (instancetype)contentFromMicroblogPost:(NSString *)text title:(NSString *)title authorName:(NSString *)authorName canonicalURL:(NSString *)canonicalURL images:(NSArray *)images {
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
     
     content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
@@ -166,7 +166,7 @@
     
     OSKEmailContentItem *emailItem = [[OSKEmailContentItem alloc] init];
     emailItem.body = [NSString stringWithFormat:@"“%@”\n\n(Via %@)\n\n%@ ", text, authorName, canonicalURL];
-    emailItem.subject = @"Clipper Ships Sail On the Ocean";
+    emailItem.subject = title ?: [NSString stringWithFormat:@"Post by %@", authorName];
     emailItem.attachments = images.copy;
     content.emailItem = emailItem;
     
@@ -178,7 +178,7 @@
     if (URLforCanonicalURL) {
         OSKReadLaterContentItem *readLater = [[OSKReadLaterContentItem alloc] init];
         readLater.url = URLforCanonicalURL;
-        readLater.title = [NSString stringWithFormat:@"Post by %@", authorName];
+        readLater.title = title ?: [NSString stringWithFormat:@"Post by %@", authorName];
         readLater.description = text;
         content.readLaterItem = readLater;
         
@@ -196,7 +196,7 @@
     }
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
-    toDoList.title = [NSString stringWithFormat:@"Look into message from %@", authorName];
+    toDoList.title = title ?: [NSString stringWithFormat:@"Look into message from %@", authorName];
     toDoList.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
     content.toDoListItem = toDoList;
     

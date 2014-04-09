@@ -159,6 +159,7 @@ These can be custom items, or additional instances of the official items above.
  Convenient constructor for content drawn from microblog posts (like Twitter or App.net).
  */
 + (instancetype)contentFromMicroblogPost:(NSString *)text
+                                   title:(NSString *)title
                               authorName:(NSString *)authorName
                             canonicalURL:(NSString *)canonicalURL
                                   images:(NSArray *)images;
