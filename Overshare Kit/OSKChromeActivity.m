@@ -134,7 +134,12 @@ static NSString * OSKChromeActivity_URLQueryKey = @"url";
     [[UIApplication sharedApplication] openURL:chromeURL];
     
     if (completion) {
-        completion(self, YES, nil);
+        if (chromeURL != nil) {
+            completion(self, YES, nil);
+        } else {
+            NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorBadURL userInfo:nil];
+            completion(self, NO, error);
+        }
     }
 }
 
