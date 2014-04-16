@@ -13,4 +13,6 @@
 - (instancetype)initWithIgnoredActivityClasses:(NSArray *)ignoredActivityClasses
                 optionalBespokeActivityClasses:(NSArray *)arrayOfClasses;
 
+@property (nonatomic, assign) BOOL showsDoneButton; // defaults to YES
+
 @end

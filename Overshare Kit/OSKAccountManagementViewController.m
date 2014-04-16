@@ -94,8 +94,7 @@ static NSString * OSKAccountManagementHeaderViewIdentifier = @"OSKAccountManagem
     if (self) {
         
         self.title = @"Sharing";
-        NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_Done];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(cancelButtonPressed:)];
+        _showsDoneButton = YES;
 
         [self setupManagedAccountClasses:ignoredActivityClasses optionalBespokeActivityClasses:arrayOfClasses];
         [self setupToggleClasses:ignoredActivityClasses optionalBespokeActivityClasses:arrayOfClasses];
@@ -212,6 +211,11 @@ static NSString * OSKAccountManagementHeaderViewIdentifier = @"OSKAccountManagem
     [self.tableView registerClass:[OSKAccountTypeCell class] forCellReuseIdentifier:OSKAccountTypeCellIdentifier];
     [self.tableView registerClass:[OSKActivityToggleCell class] forCellReuseIdentifier:OSKActivityToggleCellIdentifier];
     [self.tableView registerClass:[OSKAccountManagementHeaderView class] forHeaderFooterViewReuseIdentifier:OSKAccountManagementHeaderViewIdentifier];
+
+    if (self.showsDoneButton) {
+        NSString *doneTitle = [[OSKPresentationManager sharedInstance] localizedText_Done];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:doneTitle style:UIBarButtonItemStyleDone target:self action:@selector(cancelButtonPressed:)];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
