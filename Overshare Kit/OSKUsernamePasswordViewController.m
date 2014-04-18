@@ -122,7 +122,7 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:onePasswordCellIdentifier];
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
-            cell.textLabel.text = @"1Password";
+            cell.textLabel.text = [[OSKPresentationManager sharedInstance] localizedText_1PasswordPrompt];
             OSKPresentationManager *presentationManager = [OSKPresentationManager sharedInstance];
             cell.textLabel.textColor = [presentationManager color_action];
             cell.backgroundColor = [presentationManager color_groupedTableViewCells];

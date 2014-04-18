@@ -303,6 +303,7 @@ extern NSString * const OSKPresentationOption_PresentationEndingHandler;
 - (NSString *)localizedText_Username;
 - (NSString *)localizedText_Email;
 - (NSString *)localizedText_Password;
+- (NSString *)localizedText_1PasswordPrompt;
 - (NSString *)localizedText_Accounts;
 - (NSString *)localizedText_SignOut;
 - (NSString *)localizedText_SignIn;

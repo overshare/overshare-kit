@@ -855,6 +855,17 @@ willRepositionPopoverToRect:(inout CGRect *)rect
     return text;
 }
 
+- (NSString *)localizedText_1PasswordPrompt {
+    NSString *text = nil;
+    if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_1PasswordPrompt)]) {
+        text = [self.localizationDelegate osk_localizedText_1PasswordPrompt];
+    }
+    if (text == nil) {
+        text = @"1Password";
+    }
+    return text;
+}
+
 - (NSString *)localizedText_SignOut {
     NSString *text = nil;
     if ([self.localizationDelegate respondsToSelector:@selector(osk_localizedText_SignOut)]) {

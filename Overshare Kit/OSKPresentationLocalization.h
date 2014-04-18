@@ -38,6 +38,7 @@
 - (NSString *)osk_localizedText_Username;
 - (NSString *)osk_localizedText_Email;
 - (NSString *)osk_localizedText_Password;
+- (NSString *)osk_localizedText_1PasswordPrompt;
 - (NSString *)osk_localizedText_SignOut;
 - (NSString *)osk_localizedText_SignIn;
 - (NSString *)osk_localizedText_AreYouSure;
