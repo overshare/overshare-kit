@@ -7,8 +7,8 @@
 
 @import CoreMotion;
 
-#import <GooglePlus/GooglePlus.h>
-#import <GoogleOpenSource/GoogleOpenSource.h>
+#import <GooglePlus.h>
+#import <GoogleOpenSource.h>
 
 #import "OSKShareableContentItem.h"
 #import "OSKApplicationCredential.h"
