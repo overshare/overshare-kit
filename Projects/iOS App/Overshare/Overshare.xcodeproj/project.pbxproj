@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E8687E518E6436100D36F83 /* OSKSaveToCameraRollActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8687E418E6436100D36F83 /* OSKSaveToCameraRollActivity.m */; };
+		7F03EA2D18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F03EA2C18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m */; };
 		7F049469188AFE4600BE7C4E /* NSString+OSKEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F049468188AFE4600BE7C4E /* NSString+OSKEmoji.m */; };
 		7F14C95618DB5D1D00E635FE /* OSKTextViewAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14C95518DB5D1D00E635FE /* OSKTextViewAttachment.m */; };
 		7F14C95918DB5DBC00E635FE /* OSKTextViewAttachmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14C95818DB5DBC00E635FE /* OSKTextViewAttachmentView.m */; };
@@ -267,8 +267,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2E8687E318E6436100D36F83 /* OSKSaveToCameraRollActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSaveToCameraRollActivity.h; sourceTree = "<group>"; };
-		2E8687E418E6436100D36F83 /* OSKSaveToCameraRollActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSaveToCameraRollActivity.m; sourceTree = "<group>"; };
+		7F03EA2B18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSaveToCameraRollActivity.h; sourceTree = "<group>"; };
+		7F03EA2C18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSaveToCameraRollActivity.m; sourceTree = "<group>"; };
 		7F049467188AFE4600BE7C4E /* NSString+OSKEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OSKEmoji.h"; sourceTree = "<group>"; };
 		7F049468188AFE4600BE7C4E /* NSString+OSKEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OSKEmoji.m"; sourceTree = "<group>"; };
 		7F14C95118DB3B3E00E635FE /* OSKFacebookSharing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSKFacebookSharing.h; sourceTree = "<group>"; };
@@ -684,13 +684,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E8687E618E6436C00D36F83 /* Camera Roll */ = {
+		7F03EA2A18F5B8BD00A4CEE4 /* Save to Camera Roll */ = {
 			isa = PBXGroup;
 			children = (
-				2E8687E318E6436100D36F83 /* OSKSaveToCameraRollActivity.h */,
-				2E8687E418E6436100D36F83 /* OSKSaveToCameraRollActivity.m */,
+				7F03EA2B18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.h */,
+				7F03EA2C18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m */,
 			);
-			name = "Camera Roll";
+			name = "Save to Camera Roll";
 			sourceTree = "<group>";
 		};
 		7F14C95318DB5D0300E635FE /* OSKTextView */ = {
@@ -1057,12 +1057,12 @@
 		7FEE78FF181ED969000F684A /* Activities (Subclasses) */ = {
 			isa = PBXGroup;
 			children = (
+				7F03EA2A18F5B8BD00A4CEE4 /* Save to Camera Roll */,
 				88B98D1218A28F05007676CA /* GooglePlus */,
 				7FEE78FD181ED94F000F684A /* 1Password (Browser) */,
 				7FEE78FE181ED95D000F684A /* 1Password (Search) */,
 				7FEE7905181ED9DB000F684A /* App.net */,
 				7FEE7906181ED9EA000F684A /* AirDrop */,
-				2E8687E618E6436C00D36F83 /* Camera Roll */,
 				7FEE790C181EDA42000F684A /* Chrome */,
 				7FEE790E181EDA63000F684A /* Copy to Pasteboard */,
 				7FD649D71895BD6A0021BD50 /* Drafts.app */,
@@ -1733,7 +1733,7 @@
 				7F049469188AFE4600BE7C4E /* NSString+OSKEmoji.m in Sources */,
 				7FEE77D0181ED8EF000F684A /* OSKThingsActivity.m in Sources */,
 				7FEE77B9181ED8EF000F684A /* OSKManagedAccount.m in Sources */,
-				2E8687E518E6436100D36F83 /* OSKSaveToCameraRollActivity.m in Sources */,
+				7F03EA2D18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m in Sources */,
 				7F43DEB818217986003BE9B6 /* OSKFacebookPublishingViewController.m in Sources */,
 				7F43DEBC1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.m in Sources */,
 				7FEE77B8181ED8EF000F684A /* OSKMailComposeViewController.m in Sources */,
