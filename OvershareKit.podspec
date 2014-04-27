@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/overshare/overshare-kit.git", :tag => s.version.to_s }
   s.platform     = :ios, '7.0'
   s.requires_arc = true
-  s.frameworks   = 'UIKit'
+  s.frameworks   = 'UIKit', 'AddressBook', 'CoreMotion', 'CoreLocation'
   
   s.compiler_flags = "-fmodules"
   
