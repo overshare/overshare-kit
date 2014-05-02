@@ -127,7 +127,8 @@
 + (SLRequest *)photoUploadRequestForContentItem:(OSKFacebookContentItem *)item options:(NSDictionary *)options image:(UIImage *)image account:(ACAccount *)account {
     SLRequest *feedRequest = nil;
     
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"message": item.text.copy}];
+    NSDictionary* parametersDictionary = [item.text length] > 0 ? @{@"message": item.text.copy} : @{};
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:parametersDictionary];
     [parameters setObject:[self _queryParameterForAudience:options[ACFacebookAudienceKey]] forKey:@"privacy"];
     NSURL *feedURL = [NSURL URLWithString:@"https://graph.facebook.com/me/photos"];
     feedRequest = [SLRequest
