@@ -186,6 +186,11 @@ App.net: <a href="https://alpha.app.net/justin">@justin</a></p>
 
 *Recent additions are at the top of the list.*
 
+**NewsBlur**    
+*A personal news reader bringing people together to talk about the world.*    
+By Samuel Clay    
+[Website](http://www.newsblur.com/ios)  |  [App Store](http://itunes.apple.com/us/app/newsblur/id463981119)
+
 **nvNotes**    
 *The professional Note-taking App that allows you to focus on writing.*    
 [Website](http://www.nvnotes.co.uk)  |  [App Store](https://itunes.apple.com/us/app/nvnotes-note-taking-writing/id700659300?mt=8)
