@@ -186,6 +186,10 @@ App.net: <a href="https://alpha.app.net/justin">@justin</a></p>
 
 *Recent additions are at the top of the list.*
 
+**Cardasee**    
+*Modern Quick Notes.*    
+[Website](http://cardasee.com)  |  [App Store](https://itunes.apple.com/us/app/cardasee-modern-quick-notes/id870645092?ls=1&mt=8)
+
 **nvNotes**    
 *The professional Note-taking App that allows you to focus on writing.*    
 [Website](http://www.nvnotes.co.uk)  |  [App Store](https://itunes.apple.com/us/app/nvnotes-note-taking-writing/id700659300?mt=8)
