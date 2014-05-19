@@ -31,8 +31,8 @@
 @implementation NSString (OSKDerp)
 
 -(NSString *)osk_derp_stringByEscapingPercents{
-    NSString *result = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-																					(CFStringRef)self,
+    NSString *result = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+																					(__bridge CFStringRef)self,
 																					NULL,
 																					CFSTR("!*'();:@&=+$,/?%#[]"),
 																					kCFStringEncodingUTF8);
@@ -40,8 +40,8 @@
 }
 
 -(NSString *)osk_derp_stringByUnscapingPercents{
-    NSString *result = (__bridge NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
-																									(CFStringRef)self,
+    NSString *result = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+																									(__bridge CFStringRef)self,
 																									CFSTR(""),
 																									kCFStringEncodingUTF8);
 	return result;
