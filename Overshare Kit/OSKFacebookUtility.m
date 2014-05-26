@@ -106,13 +106,21 @@
 }
 
 + (SLRequest *)plainTextMessageRequestForContentItem:(OSKFacebookContentItem *)item options:(NSDictionary *)options account:(ACAccount *)account {
+    
     SLRequest *feedRequest = nil;
     
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"message" : item.text.copy}];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    
+    if (item.text.length) {
+        [parameters setObject:item.text.copy forKey:@"message"];
+    }
+    
     if (item.link.absoluteString) {
         [parameters setObject:item.link.absoluteString forKey:@"link"];
     }
+    
     [parameters setObject:[self _queryParameterForAudience:options[ACFacebookAudienceKey]] forKey:@"privacy"];
+    
     NSURL *feedURL = [NSURL URLWithString:@"https://graph.facebook.com/me/feed"];
     feedRequest = [SLRequest
                    requestForServiceType:SLServiceTypeFacebook
@@ -127,8 +135,14 @@
 + (SLRequest *)photoUploadRequestForContentItem:(OSKFacebookContentItem *)item options:(NSDictionary *)options image:(UIImage *)image account:(ACAccount *)account {
     SLRequest *feedRequest = nil;
     
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"message": item.text.copy}];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    
+    if (item.text.length) {
+        [parameters setObject:item.text.copy forKey:@"message"];
+    }
+    
     [parameters setObject:[self _queryParameterForAudience:options[ACFacebookAudienceKey]] forKey:@"privacy"];
+    
     NSURL *feedURL = [NSURL URLWithString:@"https://graph.facebook.com/me/photos"];
     feedRequest = [SLRequest
                    requestForServiceType:SLServiceTypeFacebook
