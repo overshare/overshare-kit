@@ -148,6 +148,10 @@
     microblogPost.images = images;
     content.microblogPostItem = microblogPost;
     
+    OSKBlogPostContentItem *blogPost = [[OSKBlogPostContentItem alloc] init];
+    microblogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
+    content.blogPostItem = blogPost;
+
     OSKCopyToPasteboardContentItem *copyTextToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
     copyTextToPasteboard.text = text;
     copyTextToPasteboard.alternateActivityName = @"Copy Text";

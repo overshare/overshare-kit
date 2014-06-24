@@ -18,6 +18,7 @@
 #import "OSKActivitySheetViewController.h"
 #import "OSKAirDropViewController.h"
 #import "OSKAppDotNetAuthenticationViewController.h"
+#import "OSKTumblrAuthenticationViewController.h"
 #import "OSKApplicationCredential.h"
 #import "OSKFacebookPublishingViewController.h"
 #import "OSKLogger.h"
@@ -1073,6 +1074,11 @@ willRepositionPopoverToRect:(inout CGRect *)rect
             OSKActivitiesManager *manager = [OSKActivitiesManager sharedInstance];
             OSKApplicationCredential *appCredential = [manager applicationCredentialForActivityType:[activity.class activityType]];
             viewController = [[OSKAppDotNetAuthenticationViewController alloc] initWithApplicationCredential:appCredential];
+        }
+        else if ([[activity.class activityType] isEqualToString:OSKActivityType_API_Tumblr]) {
+            OSKActivitiesManager *manager = [OSKActivitiesManager sharedInstance];
+            OSKApplicationCredential *appCredential = [manager applicationCredentialForActivityType:[activity.class activityType]];
+            viewController = [[OSKTumblrAuthenticationViewController alloc] initWithApplicationCredential:appCredential];
         }
     }
     return viewController;

@@ -5,3 +5,11 @@
 [submodule "ADNLogin-SDK-iOS"]
 	path = Dependencies/ADNLogin-SDK
 	url = https://github.com/appdotnet/ADNLogin-SDK-iOS.git
+
+[submodule "Dependencies/JXHTTP"]
+	path = Dependencies/JXHTTP
+	url = https://github.com/jstn/JXHTTP.git
+	
+[submodule "Dependencies/TMTumblrSDK"]
+	path = Dependencies/TMTumblrSDK
+	url = https://github.com/rsanchezsaez/TMTumblrSDK.git

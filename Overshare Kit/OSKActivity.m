@@ -33,6 +33,7 @@ NSString * const OSKActivityType_API_Readability = @"OSKActivityType_API_Readabi
 NSString * const OSKActivityType_API_Pocket = @"OSKActivityType_API_Pocket";
 NSString * const OSKActivityType_API_Pinboard = @"OSKActivityType_API_Pinboard";
 NSString * const OSKActivityType_API_GooglePlus = @"OSKActivityType_API_GooglePlus";
+NSString * const OSKActivityType_API_Tumblr = @"OSKActivityType_API_Tumblr";
 NSString * const OSKActivityType_URLScheme_Instagram = @"OSKActivityType_URLScheme_Instagram";
 NSString * const OSKActivityType_URLScheme_Riposte = @"OSKActivityType_URLScheme_Riposte";
 NSString * const OSKActivityType_URLScheme_Tweetbot = @"OSKActivityType_URLScheme_Tweetbot";

@@ -31,6 +31,7 @@ extern NSString * const OSKActivityType_API_Readability;
 extern NSString * const OSKActivityType_API_Pocket;
 extern NSString * const OSKActivityType_API_Pinboard;
 extern NSString * const OSKActivityType_API_GooglePlus;
+extern NSString * const OSKActivityType_API_Tumblr;
 extern NSString * const OSKActivityType_URLScheme_Instagram;
 extern NSString * const OSKActivityType_URLScheme_Riposte;
 extern NSString * const OSKActivityType_URLScheme_Tweetbot;

@@ -119,6 +119,8 @@
 		8895C34C18A3BA6B000B7F28 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C34B18A3BA6B000B7F28 /* MediaPlayer.framework */; };
 		8895C34E18A3BA70000B7F28 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C34D18A3BA70000B7F28 /* Security.framework */; };
 		8895C35018A3BA78000B7F28 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C34F18A3BA78000B7F28 /* SystemConfiguration.framework */; };
+		BCD528D11959F0A6004ED76F /* OSKTumblrAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD528CD1959F0A6004ED76F /* OSKTumblrAuthenticationViewController.m */; };
+		BCD528D21959F0A6004ED76F /* OSKTumblrActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD528CF1959F0A6004ED76F /* OSKTumblrActivity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -493,6 +495,15 @@
 		8895C34B18A3BA6B000B7F28 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		8895C34D18A3BA70000B7F28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8895C34F18A3BA78000B7F28 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BCD528C41959EBD6004ED76F /* osk-tumblrIcon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-29.png"; sourceTree = "<group>"; };
+		BCD528C51959EBD6004ED76F /* osk-tumblrIcon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-29@2x.png"; sourceTree = "<group>"; };
+		BCD528C61959EBD6004ED76F /* osk-tumblrIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-60@2x.png"; sourceTree = "<group>"; };
+		BCD528C71959EBD6004ED76F /* osk-tumblrIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-76.png"; sourceTree = "<group>"; };
+		BCD528C81959EBD6004ED76F /* osk-tumblrIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-76@2x.png"; sourceTree = "<group>"; };
+		BCD528CD1959F0A6004ED76F /* OSKTumblrAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTumblrAuthenticationViewController.m; sourceTree = "<group>"; };
+		BCD528CE1959F0A6004ED76F /* OSKTumblrAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTumblrAuthenticationViewController.h; sourceTree = "<group>"; };
+		BCD528CF1959F0A6004ED76F /* OSKTumblrActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTumblrActivity.m; sourceTree = "<group>"; };
+		BCD528D01959F0A6004ED76F /* OSKTumblrActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTumblrActivity.h; sourceTree = "<group>"; };
 		F2ED4093BD3864F639BD9AB1 /* GooglePlus-Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GooglePlus-Icon-76.png"; sourceTree = "<group>"; };
 		F2ED4477173538D750DC8F83 /* GooglePlus-Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GooglePlus-Icon-29.png"; sourceTree = "<group>"; };
 		F2ED44D42685E0B33F979699 /* GooglePlus-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GooglePlus-Icon-29@2x.png"; sourceTree = "<group>"; };
@@ -622,6 +633,10 @@
 		7FEE77DC181ED8FE000F684A /* Overshare Kit */ = {
 			isa = PBXGroup;
 			children = (
+				BCD528CD1959F0A6004ED76F /* OSKTumblrAuthenticationViewController.m */,
+				BCD528CE1959F0A6004ED76F /* OSKTumblrAuthenticationViewController.h */,
+				BCD528CF1959F0A6004ED76F /* OSKTumblrActivity.m */,
+				BCD528D01959F0A6004ED76F /* OSKTumblrActivity.h */,
 				7FEE77DD181ED8FE000F684A /* Images */,
 				7FE4109D1821994B00B13AB1 /* OvershareKit.h */,
 				7FD649EA1895EB480021BD50 /* OSKDraftsActivity.h */,
@@ -839,6 +854,11 @@
 		7FEE77DD181ED8FE000F684A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BCD528C41959EBD6004ED76F /* osk-tumblrIcon-29.png */,
+				BCD528C51959EBD6004ED76F /* osk-tumblrIcon-29@2x.png */,
+				BCD528C61959EBD6004ED76F /* osk-tumblrIcon-60@2x.png */,
+				BCD528C71959EBD6004ED76F /* osk-tumblrIcon-76.png */,
+				BCD528C81959EBD6004ED76F /* osk-tumblrIcon-76@2x.png */,
 				7FD649E51895EB3F0021BD50 /* Drafts-Icon-29.png */,
 				7FD649E61895EB3F0021BD50 /* Drafts-Icon-29@2x.png */,
 				7FD649E71895EB3F0021BD50 /* Drafts-Icon-60@2x.png */,
@@ -1030,6 +1050,7 @@
 				7FE4109E1821994B00B13AB1 /* OSKFacebookAudienceChooserViewController.m in Sources */,
 				7FEE78D6181ED8FE000F684A /* OSKInstapaperActivity.m in Sources */,
 				7FEE78CD181ED8FE000F684A /* OSKChromeActivity.m in Sources */,
+				BCD528D21959F0A6004ED76F /* OSKTumblrActivity.m in Sources */,
 				7FEE78C4181ED8FE000F684A /* OSKADNLoginManager.m in Sources */,
 				7FEE78CC181ED8FE000F684A /* OSKBorderedButton.m in Sources */,
 				7FEE78BD181ED8FE000F684A /* OSKActivity.m in Sources */,
@@ -1086,6 +1107,7 @@
 				7FEE78B6181ED8FE000F684A /* NSString+OSKDerp.m in Sources */,
 				7FEE78EF181ED8FE000F684A /* OSKMicrobloggingTextView.m in Sources */,
 				7FEE78D0181ED8FE000F684A /* OSKFacebookActivity.m in Sources */,
+				BCD528D11959F0A6004ED76F /* OSKTumblrAuthenticationViewController.m in Sources */,
 				7F75BEFF1821539700D3681E /* OSKFacebookUtility.m in Sources */,
 				7FEE78E0181ED8FE000F684A /* OSKOAuthUtility.m in Sources */,
 				7FB34FEB1895ADBE0081C91A /* OSKSmartPunctuation.m in Sources */,
