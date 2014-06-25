@@ -257,6 +257,36 @@
 		8895C33E18A3BA1B000B7F28 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C33D18A3BA1B000B7F28 /* Security.framework */; };
 		8895C34018A3BA24000B7F28 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C33F18A3BA24000B7F28 /* SystemConfiguration.framework */; };
 		8895C35218A3BFA2000B7F28 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8895C35118A3BFA2000B7F28 /* Icon-60@2x.png */; };
+		BC7778E0195AF055008867B9 /* OSKTumblrUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7778DF195AF055008867B9 /* OSKTumblrUtility.m */; };
+		BCD528B919597FFE004ED76F /* OSKTumblrActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD528B819597FFE004ED76F /* OSKTumblrActivity.m */; };
+		BCD528BF1959D7CD004ED76F /* osk-tumblrIcon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD528BA1959D7CD004ED76F /* osk-tumblrIcon-29.png */; };
+		BCD528C01959D7CD004ED76F /* osk-tumblrIcon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD528BB1959D7CD004ED76F /* osk-tumblrIcon-29@2x.png */; };
+		BCD528C11959D7CD004ED76F /* osk-tumblrIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD528BC1959D7CD004ED76F /* osk-tumblrIcon-60@2x.png */; };
+		BCD528C21959D7CD004ED76F /* osk-tumblrIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD528BD1959D7CD004ED76F /* osk-tumblrIcon-76.png */; };
+		BCD528C31959D7CD004ED76F /* osk-tumblrIcon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD528BE1959D7CD004ED76F /* osk-tumblrIcon-76@2x.png */; };
+		BCD528CC1959EBFD004ED76F /* OSKTumblrAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD528CB1959EBFD004ED76F /* OSKTumblrAuthenticationViewController.m */; };
+		BCD529651959F26F004ED76F /* TMTumblrActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529181959F26F004ED76F /* TMTumblrActivity.m */; };
+		BCD529661959F26F004ED76F /* UIActivityTumblr.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD529191959F26F004ED76F /* UIActivityTumblr.png */; };
+		BCD529671959F26F004ED76F /* UIActivityTumblr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD5291A1959F26F004ED76F /* UIActivityTumblr@2x.png */; };
+		BCD529681959F26F004ED76F /* UIActivityTumblr@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD5291B1959F26F004ED76F /* UIActivityTumblr@2x~ipad.png */; };
+		BCD529691959F26F004ED76F /* UIActivityTumblr~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD5291C1959F26F004ED76F /* UIActivityTumblr~ipad.png */; };
+		BCD5296A1959F26F004ED76F /* UIActivityTumblr~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD5291D1959F26F004ED76F /* UIActivityTumblr~ipad@2x.png */; };
+		BCD5296B1959F26F004ED76F /* TMAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529201959F26F004ED76F /* TMAPIClient.m */; };
+		BCD5296C1959F26F004ED76F /* TMTumblrAppClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529231959F26F004ED76F /* TMTumblrAppClient.m */; };
+		BCD5296D1959F26F004ED76F /* TMOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529261959F26F004ED76F /* TMOAuth.m */; };
+		BCD5296E1959F26F004ED76F /* TMTumblrAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529281959F26F004ED76F /* TMTumblrAuthenticator.m */; };
+		BCD5296F1959F26F004ED76F /* TMSDKFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5292B1959F26F004ED76F /* TMSDKFunctions.m */; };
+		BCD529A31959F58D004ED76F /* JXHTTPDataBody.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5298B1959F58D004ED76F /* JXHTTPDataBody.m */; };
+		BCD529A41959F58D004ED76F /* JXHTTPFileBody.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5298D1959F58D004ED76F /* JXHTTPFileBody.m */; };
+		BCD529A51959F58D004ED76F /* JXHTTPFormEncodedBody.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5298F1959F58D004ED76F /* JXHTTPFormEncodedBody.m */; };
+		BCD529A61959F58D004ED76F /* JXHTTPJSONBody.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529911959F58D004ED76F /* JXHTTPJSONBody.m */; };
+		BCD529A71959F58D004ED76F /* JXHTTPMultipartBody.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529931959F58D004ED76F /* JXHTTPMultipartBody.m */; };
+		BCD529A81959F58D004ED76F /* JXHTTPOperation+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529951959F58D004ED76F /* JXHTTPOperation+Convenience.m */; };
+		BCD529A91959F58D004ED76F /* JXHTTPOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529971959F58D004ED76F /* JXHTTPOperation.m */; };
+		BCD529AA1959F58D004ED76F /* JXHTTPOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5299A1959F58D004ED76F /* JXHTTPOperationQueue.m */; };
+		BCD529AB1959F58D004ED76F /* JXOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5299E1959F58D004ED76F /* JXOperation.m */; };
+		BCD529AC1959F58D004ED76F /* JXURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529A01959F58D004ED76F /* JXURLConnectionOperation.m */; };
+		BCD529AD1959F58D004ED76F /* JXURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD529A21959F58D004ED76F /* JXURLEncoding.m */; };
 		F2ED44FF27CCD7E9F8A34E77 /* GooglePlus-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = F2ED4DB1EC62FB9EF52F15D0 /* GooglePlus-Icon-76.png */; };
 		F2ED453AABB8833C66910E03 /* GooglePlus-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2ED46B9E187F11BFEF64BF2 /* GooglePlus-Icon-76@2x.png */; };
 		F2ED4696B1DB571FBBE9204A /* GooglePlus-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2ED40569B315A0A210DC081 /* GooglePlus-Icon-60@2x.png */; };
@@ -652,6 +682,61 @@
 		8895C33D18A3BA1B000B7F28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8895C33F18A3BA24000B7F28 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8895C35118A3BFA2000B7F28 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "Overshare/Icon-60@2x.png"; sourceTree = "<group>"; };
+		BC7778DE195AF055008867B9 /* OSKTumblrUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTumblrUtility.h; sourceTree = "<group>"; };
+		BC7778DF195AF055008867B9 /* OSKTumblrUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTumblrUtility.m; sourceTree = "<group>"; };
+		BCD528B719597FFE004ED76F /* OSKTumblrActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTumblrActivity.h; sourceTree = "<group>"; };
+		BCD528B819597FFE004ED76F /* OSKTumblrActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTumblrActivity.m; sourceTree = "<group>"; };
+		BCD528BA1959D7CD004ED76F /* osk-tumblrIcon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-29.png"; sourceTree = "<group>"; };
+		BCD528BB1959D7CD004ED76F /* osk-tumblrIcon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-29@2x.png"; sourceTree = "<group>"; };
+		BCD528BC1959D7CD004ED76F /* osk-tumblrIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-60@2x.png"; sourceTree = "<group>"; };
+		BCD528BD1959D7CD004ED76F /* osk-tumblrIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-76.png"; sourceTree = "<group>"; };
+		BCD528BE1959D7CD004ED76F /* osk-tumblrIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-76@2x.png"; sourceTree = "<group>"; };
+		BCD528CA1959EBFD004ED76F /* OSKTumblrAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTumblrAuthenticationViewController.h; sourceTree = "<group>"; };
+		BCD528CB1959EBFD004ED76F /* OSKTumblrAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTumblrAuthenticationViewController.m; sourceTree = "<group>"; };
+		BCD529171959F26F004ED76F /* TMTumblrActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTumblrActivity.h; sourceTree = "<group>"; };
+		BCD529181959F26F004ED76F /* TMTumblrActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTumblrActivity.m; sourceTree = "<group>"; };
+		BCD529191959F26F004ED76F /* UIActivityTumblr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIActivityTumblr.png; sourceTree = "<group>"; };
+		BCD5291A1959F26F004ED76F /* UIActivityTumblr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIActivityTumblr@2x.png"; sourceTree = "<group>"; };
+		BCD5291B1959F26F004ED76F /* UIActivityTumblr@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIActivityTumblr@2x~ipad.png"; sourceTree = "<group>"; };
+		BCD5291C1959F26F004ED76F /* UIActivityTumblr~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIActivityTumblr~ipad.png"; sourceTree = "<group>"; };
+		BCD5291D1959F26F004ED76F /* UIActivityTumblr~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIActivityTumblr~ipad@2x.png"; sourceTree = "<group>"; };
+		BCD5291F1959F26F004ED76F /* TMAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAPIClient.h; sourceTree = "<group>"; };
+		BCD529201959F26F004ED76F /* TMAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAPIClient.m; sourceTree = "<group>"; };
+		BCD529221959F26F004ED76F /* TMTumblrAppClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTumblrAppClient.h; sourceTree = "<group>"; };
+		BCD529231959F26F004ED76F /* TMTumblrAppClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTumblrAppClient.m; sourceTree = "<group>"; };
+		BCD529251959F26F004ED76F /* TMOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOAuth.h; sourceTree = "<group>"; };
+		BCD529261959F26F004ED76F /* TMOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOAuth.m; sourceTree = "<group>"; };
+		BCD529271959F26F004ED76F /* TMTumblrAuthenticator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMTumblrAuthenticator.h; sourceTree = "<group>"; };
+		BCD529281959F26F004ED76F /* TMTumblrAuthenticator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMTumblrAuthenticator.m; sourceTree = "<group>"; };
+		BCD5292A1959F26F004ED76F /* TMSDKFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSDKFunctions.h; sourceTree = "<group>"; };
+		BCD5292B1959F26F004ED76F /* TMSDKFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSDKFunctions.m; sourceTree = "<group>"; };
+		BCD5292C1959F26F004ED76F /* TMTumblrSDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMTumblrSDK-Prefix.pch"; sourceTree = "<group>"; };
+		BCD529891959F58D004ED76F /* JXHTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTP.h; sourceTree = "<group>"; };
+		BCD5298A1959F58D004ED76F /* JXHTTPDataBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPDataBody.h; sourceTree = "<group>"; };
+		BCD5298B1959F58D004ED76F /* JXHTTPDataBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXHTTPDataBody.m; sourceTree = "<group>"; };
+		BCD5298C1959F58D004ED76F /* JXHTTPFileBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPFileBody.h; sourceTree = "<group>"; };
+		BCD5298D1959F58D004ED76F /* JXHTTPFileBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXHTTPFileBody.m; sourceTree = "<group>"; };
+		BCD5298E1959F58D004ED76F /* JXHTTPFormEncodedBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPFormEncodedBody.h; sourceTree = "<group>"; };
+		BCD5298F1959F58D004ED76F /* JXHTTPFormEncodedBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXHTTPFormEncodedBody.m; sourceTree = "<group>"; };
+		BCD529901959F58D004ED76F /* JXHTTPJSONBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPJSONBody.h; sourceTree = "<group>"; };
+		BCD529911959F58D004ED76F /* JXHTTPJSONBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXHTTPJSONBody.m; sourceTree = "<group>"; };
+		BCD529921959F58D004ED76F /* JXHTTPMultipartBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPMultipartBody.h; sourceTree = "<group>"; };
+		BCD529931959F58D004ED76F /* JXHTTPMultipartBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXHTTPMultipartBody.m; sourceTree = "<group>"; };
+		BCD529941959F58D004ED76F /* JXHTTPOperation+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JXHTTPOperation+Convenience.h"; sourceTree = "<group>"; };
+		BCD529951959F58D004ED76F /* JXHTTPOperation+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JXHTTPOperation+Convenience.m"; sourceTree = "<group>"; };
+		BCD529961959F58D004ED76F /* JXHTTPOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPOperation.h; sourceTree = "<group>"; };
+		BCD529971959F58D004ED76F /* JXHTTPOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXHTTPOperation.m; sourceTree = "<group>"; };
+		BCD529981959F58D004ED76F /* JXHTTPOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPOperationDelegate.h; sourceTree = "<group>"; };
+		BCD529991959F58D004ED76F /* JXHTTPOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPOperationQueue.h; sourceTree = "<group>"; };
+		BCD5299A1959F58D004ED76F /* JXHTTPOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXHTTPOperationQueue.m; sourceTree = "<group>"; };
+		BCD5299B1959F58D004ED76F /* JXHTTPOperationQueueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPOperationQueueDelegate.h; sourceTree = "<group>"; };
+		BCD5299C1959F58D004ED76F /* JXHTTPRequestBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXHTTPRequestBody.h; sourceTree = "<group>"; };
+		BCD5299D1959F58D004ED76F /* JXOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXOperation.h; sourceTree = "<group>"; };
+		BCD5299E1959F58D004ED76F /* JXOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXOperation.m; sourceTree = "<group>"; };
+		BCD5299F1959F58D004ED76F /* JXURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXURLConnectionOperation.h; sourceTree = "<group>"; };
+		BCD529A01959F58D004ED76F /* JXURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXURLConnectionOperation.m; sourceTree = "<group>"; };
+		BCD529A11959F58D004ED76F /* JXURLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXURLEncoding.h; sourceTree = "<group>"; };
+		BCD529A21959F58D004ED76F /* JXURLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXURLEncoding.m; sourceTree = "<group>"; };
 		F2ED40569B315A0A210DC081 /* GooglePlus-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GooglePlus-Icon-60@2x.png"; sourceTree = "<group>"; };
 		F2ED41960B167BFC3B93056A /* GooglePlus-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GooglePlus-Icon-29@2x.png"; sourceTree = "<group>"; };
 		F2ED429BFCE742838350E97F /* OSKGooglePlusActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKGooglePlusActivity.m; sourceTree = "<group>"; };
@@ -860,6 +945,11 @@
 		7FEE7694181ED8EE000F684A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BCD528BA1959D7CD004ED76F /* osk-tumblrIcon-29.png */,
+				BCD528BB1959D7CD004ED76F /* osk-tumblrIcon-29@2x.png */,
+				BCD528BC1959D7CD004ED76F /* osk-tumblrIcon-60@2x.png */,
+				BCD528BD1959D7CD004ED76F /* osk-tumblrIcon-76.png */,
+				BCD528BE1959D7CD004ED76F /* osk-tumblrIcon-76@2x.png */,
 				7F14C96018DB724000E635FE /* osk_linkPlaceholder_pad.png */,
 				7F14C96118DB724000E635FE /* osk_linkPlaceholder_pad@2x.png */,
 				7F14C96218DB724000E635FE /* osk_linkPlaceholder_phone.png */,
@@ -1061,6 +1151,7 @@
 		7FEE78FF181ED969000F684A /* Activities (Subclasses) */ = {
 			isa = PBXGroup;
 			children = (
+				BCD528B619597FB6004ED76F /* Tumblr */,
 				7F03EA2A18F5B8BD00A4CEE4 /* Save to Camera Roll */,
 				88B98D1218A28F05007676CA /* GooglePlus */,
 				7FEE78FD181ED94F000F684A /* 1Password (Browser) */,
@@ -1222,6 +1313,7 @@
 		7FEE7909181EDA15000F684A /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				BCD528C91959EBEF004ED76F /* Tumblr */,
 				7FEE7920181EDBFC000F684A /* Username/Password */,
 				7FEE7908181EDA0F000F684A /* App.net */,
 			);
@@ -1468,6 +1560,8 @@
 		7FEE7922181EDC71000F684A /* Third-Party Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				BCD529881959F58D004ED76F /* JXHTTP */,
+				BCD529151959F26F004ED76F /* TMTumblrSDK */,
 				7FEE7924181EDC88000F684A /* ADNLogin */,
 				7FEE7923181EDC84000F684A /* Pocket */,
 			);
@@ -1509,6 +1603,126 @@
 				F2ED4D135AF50DF7D6D486B4 /* OSKGooglePlusActivity.h */,
 			);
 			name = GooglePlus;
+			sourceTree = "<group>";
+		};
+		BCD528B619597FB6004ED76F /* Tumblr */ = {
+			isa = PBXGroup;
+			children = (
+				BC7778DE195AF055008867B9 /* OSKTumblrUtility.h */,
+				BC7778DF195AF055008867B9 /* OSKTumblrUtility.m */,
+				BCD528B719597FFE004ED76F /* OSKTumblrActivity.h */,
+				BCD528B819597FFE004ED76F /* OSKTumblrActivity.m */,
+			);
+			name = Tumblr;
+			sourceTree = "<group>";
+		};
+		BCD528C91959EBEF004ED76F /* Tumblr */ = {
+			isa = PBXGroup;
+			children = (
+				BCD528CA1959EBFD004ED76F /* OSKTumblrAuthenticationViewController.h */,
+				BCD528CB1959EBFD004ED76F /* OSKTumblrAuthenticationViewController.m */,
+			);
+			name = Tumblr;
+			sourceTree = "<group>";
+		};
+		BCD529151959F26F004ED76F /* TMTumblrSDK */ = {
+			isa = PBXGroup;
+			children = (
+				BCD529161959F26F004ED76F /* Activity */,
+				BCD5291E1959F26F004ED76F /* APIClient */,
+				BCD529211959F26F004ED76F /* AppClient */,
+				BCD529241959F26F004ED76F /* Authentication */,
+				BCD529291959F26F004ED76F /* Core */,
+				BCD5292C1959F26F004ED76F /* TMTumblrSDK-Prefix.pch */,
+			);
+			name = TMTumblrSDK;
+			path = ../../../Dependencies/TMTumblrSDK/TMTumblrSDK;
+			sourceTree = "<group>";
+		};
+		BCD529161959F26F004ED76F /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				BCD529171959F26F004ED76F /* TMTumblrActivity.h */,
+				BCD529181959F26F004ED76F /* TMTumblrActivity.m */,
+				BCD529191959F26F004ED76F /* UIActivityTumblr.png */,
+				BCD5291A1959F26F004ED76F /* UIActivityTumblr@2x.png */,
+				BCD5291B1959F26F004ED76F /* UIActivityTumblr@2x~ipad.png */,
+				BCD5291C1959F26F004ED76F /* UIActivityTumblr~ipad.png */,
+				BCD5291D1959F26F004ED76F /* UIActivityTumblr~ipad@2x.png */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		BCD5291E1959F26F004ED76F /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				BCD5291F1959F26F004ED76F /* TMAPIClient.h */,
+				BCD529201959F26F004ED76F /* TMAPIClient.m */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		BCD529211959F26F004ED76F /* AppClient */ = {
+			isa = PBXGroup;
+			children = (
+				BCD529221959F26F004ED76F /* TMTumblrAppClient.h */,
+				BCD529231959F26F004ED76F /* TMTumblrAppClient.m */,
+			);
+			path = AppClient;
+			sourceTree = "<group>";
+		};
+		BCD529241959F26F004ED76F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				BCD529251959F26F004ED76F /* TMOAuth.h */,
+				BCD529261959F26F004ED76F /* TMOAuth.m */,
+				BCD529271959F26F004ED76F /* TMTumblrAuthenticator.h */,
+				BCD529281959F26F004ED76F /* TMTumblrAuthenticator.m */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		BCD529291959F26F004ED76F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BCD5292A1959F26F004ED76F /* TMSDKFunctions.h */,
+				BCD5292B1959F26F004ED76F /* TMSDKFunctions.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BCD529881959F58D004ED76F /* JXHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				BCD529891959F58D004ED76F /* JXHTTP.h */,
+				BCD5298A1959F58D004ED76F /* JXHTTPDataBody.h */,
+				BCD5298B1959F58D004ED76F /* JXHTTPDataBody.m */,
+				BCD5298C1959F58D004ED76F /* JXHTTPFileBody.h */,
+				BCD5298D1959F58D004ED76F /* JXHTTPFileBody.m */,
+				BCD5298E1959F58D004ED76F /* JXHTTPFormEncodedBody.h */,
+				BCD5298F1959F58D004ED76F /* JXHTTPFormEncodedBody.m */,
+				BCD529901959F58D004ED76F /* JXHTTPJSONBody.h */,
+				BCD529911959F58D004ED76F /* JXHTTPJSONBody.m */,
+				BCD529921959F58D004ED76F /* JXHTTPMultipartBody.h */,
+				BCD529931959F58D004ED76F /* JXHTTPMultipartBody.m */,
+				BCD529941959F58D004ED76F /* JXHTTPOperation+Convenience.h */,
+				BCD529951959F58D004ED76F /* JXHTTPOperation+Convenience.m */,
+				BCD529961959F58D004ED76F /* JXHTTPOperation.h */,
+				BCD529971959F58D004ED76F /* JXHTTPOperation.m */,
+				BCD529981959F58D004ED76F /* JXHTTPOperationDelegate.h */,
+				BCD529991959F58D004ED76F /* JXHTTPOperationQueue.h */,
+				BCD5299A1959F58D004ED76F /* JXHTTPOperationQueue.m */,
+				BCD5299B1959F58D004ED76F /* JXHTTPOperationQueueDelegate.h */,
+				BCD5299C1959F58D004ED76F /* JXHTTPRequestBody.h */,
+				BCD5299D1959F58D004ED76F /* JXOperation.h */,
+				BCD5299E1959F58D004ED76F /* JXOperation.m */,
+				BCD5299F1959F58D004ED76F /* JXURLConnectionOperation.h */,
+				BCD529A01959F58D004ED76F /* JXURLConnectionOperation.m */,
+				BCD529A11959F58D004ED76F /* JXURLEncoding.h */,
+				BCD529A21959F58D004ED76F /* JXURLEncoding.m */,
+			);
+			name = JXHTTP;
+			path = ../../../Dependencies/JXHTTP/JXHTTP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1569,6 +1783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FEE777B181ED8EF000F684A /* osk-iconMask-bw-76.png in Resources */,
+				BCD5296A1959F26F004ED76F /* UIActivityTumblr~ipad@2x.png in Resources */,
 				7FA91AE51889F53500A5DF9B /* ReadingList-Icon-29.png in Resources */,
 				7FEE7784181ED8EF000F684A /* Pocket-Icon-76@2x.png in Resources */,
 				7FEE77A2181ED8EF000F684A /* OSKActivitySheetViewController.xib in Resources */,
@@ -1579,18 +1794,23 @@
 				7FE467041821C9F20054D2BC /* osk-twitterIcon-76@2x.png in Resources */,
 				7FE466FE1821C9F20054D2BC /* osk-photosIcon-60@2x.png in Resources */,
 				7F19F908181F4C0A00E5EA52 /* osk-navbarButton.png in Resources */,
+				BCD528C21959D7CD004ED76F /* osk-tumblrIcon-76.png in Resources */,
 				7FE467361821F2C50054D2BC /* osk-iconMask-bw-29@2x.png in Resources */,
+				BCD529671959F26F004ED76F /* UIActivityTumblr@2x.png in Resources */,
+				BCD528BF1959D7CD004ED76F /* osk-tumblrIcon-29.png in Resources */,
 				7F77F42F1822F7FC0019452C /* Instapaper-Icon-29.png in Resources */,
 				7FEE7786181ED8EF000F684A /* Riposte-Icon-76.png in Resources */,
 				7FD649E11895EAF20021BD50 /* Drafts-Icon-29@2x.png in Resources */,
 				7FE467281821E9650054D2BC /* osk-appDotNetIcon-29@2x.png in Resources */,
 				7FEE7785181ED8EF000F684A /* Riposte-Icon-60@2x.png in Resources */,
+				BCD529661959F26F004ED76F /* UIActivityTumblr.png in Resources */,
 				7FD16DB01876367A0035960C /* link-button@2x.png in Resources */,
 				7FEE7773181ED8EF000F684A /* osk-copyIcon-purple-60@2x.png in Resources */,
 				7F77F4301822F7FC0019452C /* Pocket-Icon-29.png in Resources */,
 				7F77F4261822F60B0019452C /* osk-iconMask-bw-29.png in Resources */,
 				7F339D72185361AF0020CF9C /* Chrome-Icon-29.png in Resources */,
 				7F14C96618DB724000E635FE /* osk_linkPlaceholder_phone.png in Resources */,
+				BCD528C31959D7CD004ED76F /* osk-tumblrIcon-76@2x.png in Resources */,
 				7F77F4391822FAC60019452C /* Icon-76.png in Resources */,
 				7FEE777C181ED8EF000F684A /* osk-iconMask-bw-76@2x.png in Resources */,
 				7F19F907181F4C0A00E5EA52 /* osk-iap-badge-60.png in Resources */,
@@ -1618,7 +1838,9 @@
 				7FE467341821E9650054D2BC /* osk-readabilityIcon-76@2x.png in Resources */,
 				7F19F900181F227300E5EA52 /* osk-iap-badge-76@2x.png in Resources */,
 				7FEE7772181ED8EF000F684A /* osk-appDotNetIcon-60@2x.png in Resources */,
+				BCD529681959F26F004ED76F /* UIActivityTumblr@2x~ipad.png in Resources */,
 				7F19F911181F551800E5EA52 /* osk-navbarButton-highlighted.png in Resources */,
+				BCD528C01959D7CD004ED76F /* osk-tumblrIcon-29@2x.png in Resources */,
 				7F19F909181F4C0A00E5EA52 /* osk-navbarButton@2x.png in Resources */,
 				7FE466F51821C9F20054D2BC /* osk-facebookIcon-76.png in Resources */,
 				7FEE777E181ED8EF000F684A /* osk-pinboardIcon-60@2x.png in Resources */,
@@ -1678,6 +1900,7 @@
 				7FE467331821E9650054D2BC /* osk-readabilityIcon-76.png in Resources */,
 				7FEE7783181ED8EF000F684A /* Pocket-Icon-76.png in Resources */,
 				7FEE777D181ED8EF000F684A /* osk-messagesIcon-60@2x.png in Resources */,
+				BCD529691959F26F004ED76F /* UIActivityTumblr~ipad.png in Resources */,
 				7F19F8FF181F227300E5EA52 /* osk-iap-badge-76.png in Resources */,
 				7FE4672B1821E9650054D2BC /* osk-copyIcon-purple-76@2x.png in Resources */,
 				7FE467001821C9F20054D2BC /* osk-photosIcon-76@2x.png in Resources */,
@@ -1699,6 +1922,7 @@
 				7F19F8FE181F227300E5EA52 /* osk-iap-badge-60@2x.png in Resources */,
 				F2ED491AD707CFCC464BF817 /* GooglePlus-Icon-29.png in Resources */,
 				F2ED4C48AD68EA6C72DA6DB9 /* GooglePlus-Icon-29@2x.png in Resources */,
+				BCD528C11959D7CD004ED76F /* osk-tumblrIcon-60@2x.png in Resources */,
 				F2ED4C0E569909F3BCF64893 /* GooglePlus-Icon-60.png in Resources */,
 				F2ED4696B1DB571FBBE9204A /* GooglePlus-Icon-60@2x.png in Resources */,
 				7F14C96718DB724000E635FE /* osk_linkPlaceholder_phone@2x.png in Resources */,
@@ -1718,6 +1942,7 @@
 				7FEE77C5181ED8EF000F684A /* OSKPocketActivity.m in Sources */,
 				7FEE77B6181ED8EF000F684A /* OSKInstapaperUtility.m in Sources */,
 				7F55A30118425C46004A3BCC /* OSKSessionController_Phone.m in Sources */,
+				BC7778E0195AF055008867B9 /* OSKTumblrUtility.m in Sources */,
 				7FEE7643181ED83D000F684A /* OSKAppDelegate.m in Sources */,
 				7FEE77AD181ED8EF000F684A /* OSKCopyToPasteboardActivity.m in Sources */,
 				7FEE77B4181ED8EF000F684A /* OSKInMemoryImageCache.m in Sources */,
@@ -1732,22 +1957,31 @@
 				7FEE77BA181ED8EF000F684A /* OSKManagedAccountCredential.m in Sources */,
 				7F75BF321821587E00D3681E /* ADNPassportLaunchView.m in Sources */,
 				7FCD027F18539735005C5931 /* OSKActivityToggleCell.m in Sources */,
+				BCD5296E1959F26F004ED76F /* TMTumblrAuthenticator.m in Sources */,
 				7FEE778C181ED8EF000F684A /* NSData+OSKDerp.m in Sources */,
 				7F75BF311821587E00D3681E /* ADNLogin.m in Sources */,
+				BCD529A61959F58D004ED76F /* JXHTTPJSONBody.m in Sources */,
 				7F049469188AFE4600BE7C4E /* NSString+OSKEmoji.m in Sources */,
 				7FEE77D0181ED8EF000F684A /* OSKThingsActivity.m in Sources */,
+				BCD528CC1959EBFD004ED76F /* OSKTumblrAuthenticationViewController.m in Sources */,
+				BCD529A91959F58D004ED76F /* JXHTTPOperation.m in Sources */,
 				7FEE77B9181ED8EF000F684A /* OSKManagedAccount.m in Sources */,
+				BCD529AC1959F58D004ED76F /* JXURLConnectionOperation.m in Sources */,
 				7F03EA2D18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m in Sources */,
 				7F43DEB818217986003BE9B6 /* OSKFacebookPublishingViewController.m in Sources */,
 				7F43DEBC1821804C003BE9B6 /* OSKFacebookAudienceChooserViewController.m in Sources */,
+				BCD529AD1959F58D004ED76F /* JXURLEncoding.m in Sources */,
 				7FEE77B8181ED8EF000F684A /* OSKMailComposeViewController.m in Sources */,
 				7FEE7796181ED8EF000F684A /* OSKAccountChooserViewController.m in Sources */,
+				BCD529A81959F58D004ED76F /* JXHTTPOperation+Convenience.m in Sources */,
+				BCD529651959F26F004ED76F /* TMTumblrActivity.m in Sources */,
 				7F19F9271820442800E5EA52 /* OSKFacebookUtility.m in Sources */,
 				7FEE778E181ED8EF000F684A /* NSDictionary+OSKModel.m in Sources */,
 				7FEE77A6181ED8EF000F684A /* OSKAlertView.m in Sources */,
 				7F19F918181FE99A00E5EA52 /* UIImage+OSKUtilities.m in Sources */,
 				7FEE77CC181ED8EF000F684A /* OSKShareableContentItem.m in Sources */,
 				7FEE77A5181ED8EF000F684A /* OSKAirDropViewController.m in Sources */,
+				BCD5296C1959F26F004ED76F /* TMTumblrAppClient.m in Sources */,
 				7FEE77C0181ED8EF000F684A /* OSKOAuthUtility.m in Sources */,
 				7FEE77D1181ED8EF000F684A /* OSKTwitterActivity.m in Sources */,
 				7FEE77CD181ED8EF000F684A /* OSKSMSActivity.m in Sources */,
@@ -1758,32 +1992,40 @@
 				7F14C95918DB5DBC00E635FE /* OSKTextViewAttachmentView.m in Sources */,
 				7F14C95F18DB651800E635FE /* OSKCursorMovement.m in Sources */,
 				7FEE77B7181ED8EF000F684A /* OSKKeychainUtility.m in Sources */,
+				BCD5296B1959F26F004ED76F /* TMAPIClient.m in Sources */,
 				7FE467391821F4010054D2BC /* OSKAccountTypeCell.m in Sources */,
 				7FEE778F181ED8EF000F684A /* NSHTTPURLResponse+OSKUtilities.m in Sources */,
 				7FD649DA1895C7CA0021BD50 /* OSKDraftsActivity.m in Sources */,
 				7F75BF3E1821588700D3681E /* PocketAPILogin.m in Sources */,
 				7FEE77C7181ED8EF000F684A /* OSKReadabilityActivity.m in Sources */,
+				BCD5296D1959F26F004ED76F /* TMOAuth.m in Sources */,
 				7F55A30218425C46004A3BCC /* OSKSessionController.m in Sources */,
 				7FEE77C1181ED8EF000F684A /* OSKOmnifocusActivity.m in Sources */,
 				7FEE7794181ED8EF000F684A /* OSK1PasswordBrowserActivity.m in Sources */,
+				BCD529A71959F58D004ED76F /* JXHTTPMultipartBody.m in Sources */,
 				7FEE77C6181ED8EF000F684A /* OSKPresentationManager.m in Sources */,
+				BCD529A41959F58D004ED76F /* JXHTTPFileBody.m in Sources */,
 				7FEE77A1181ED8EF000F684A /* OSKActivitySheetViewController.m in Sources */,
 				7FEE77CA181ED8EF000F684A /* OSKSafariActivity.m in Sources */,
 				7FEE77AA181ED8EF000F684A /* OSKApplicationCredential.m in Sources */,
 				7F43DEB01821596D003BE9B6 /* SampleTimelineCell.m in Sources */,
 				7FEE77B5181ED8EF000F684A /* OSKInstapaperActivity.m in Sources */,
+				BCD529AA1959F58D004ED76F /* JXHTTPOperationQueue.m in Sources */,
 				7FEE778B181ED8EF000F684A /* NSCoder+OSKCoder.m in Sources */,
 				7FA91AF41889F56F00A5DF9B /* OSKReadingListActivity.m in Sources */,
 				7FEE77B0181ED8EF000F684A /* OSKFileManager.m in Sources */,
 				7FEE77C4181ED8EF000F684A /* OSKPinboardUtility.m in Sources */,
 				7FEE77D9181ED8EF000F684A /* UIDevice+OSKHardware.m in Sources */,
 				7FEE77CE181ED8EF000F684A /* OSKSystemAccountStore.m in Sources */,
+				BCD529AB1959F58D004ED76F /* JXOperation.m in Sources */,
 				7FDCDEA2181EFF5500AC2985 /* SampleAppPurchasingViewController.m in Sources */,
 				7F43DEAD18215916003BE9B6 /* SampleTimelineViewController.m in Sources */,
 				7FEE7792181ED8EF000F684A /* NSString+OSKDerp.m in Sources */,
 				7FEE77A8181ED8EF000F684A /* OSKAppDotNetAuthenticationViewController.m in Sources */,
+				BCD528B919597FFE004ED76F /* OSKTumblrActivity.m in Sources */,
 				7F1DA9E3183C6B280082356D /* OSKLinkShorteningUtility.m in Sources */,
 				7F14C95C18DB5E9200E635FE /* OSKUITextViewSubstitute.m in Sources */,
+				BCD5296F1959F26F004ED76F /* TMSDKFunctions.m in Sources */,
 				7FEE77D5181ED8EF000F684A /* OSKUsernamePasswordCell.m in Sources */,
 				7FEE77DB181ED8EF000F684A /* UIViewController+OSKUtilities.m in Sources */,
 				7F341E1D18943EEE00CBA9B0 /* OSKSmartPunctuation.m in Sources */,
@@ -1794,6 +2036,7 @@
 				7FEE77BD181ED8EF000F684A /* OSKMicroblogPublishingViewController.m in Sources */,
 				7F19F92A1820A34F00E5EA52 /* OSKAccountManagementViewController.m in Sources */,
 				7FEE77AF181ED8EF000F684A /* OSKFacebookActivity.m in Sources */,
+				BCD529A51959F58D004ED76F /* JXHTTPFormEncodedBody.m in Sources */,
 				7FEE77CB181ED8EF000F684A /* OSKShareableContent.m in Sources */,
 				7FEE7791181ED8EF000F684A /* NSString+OSK_UUID.m in Sources */,
 				7F14C95618DB5D1D00E635FE /* OSKTextViewAttachment.m in Sources */,
@@ -1817,6 +2060,7 @@
 				7FEE77D2181ED8EF000F684A /* OSKTwitterText.m in Sources */,
 				7FEE7799181ED8EF000F684A /* OSKActivity.m in Sources */,
 				7FEE77C2181ED8EF000F684A /* OSKPagedHorizontalLayout.m in Sources */,
+				BCD529A31959F58D004ED76F /* JXHTTPDataBody.m in Sources */,
 				7FEE77C8181ED8EF000F684A /* OSKReadabilityUtility.m in Sources */,
 				7FEE77D6181ED8EF000F684A /* OSKUsernamePasswordViewController.m in Sources */,
 				7FEE77AB181ED8EF000F684A /* OSKBorderedButton.m in Sources */,
@@ -1927,7 +2171,7 @@
 				INFOPLIST_FILE = "Overshare/Overshare-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "E19C5994-378D-471D-BB05-082EAC50E508";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1948,7 +2192,7 @@
 				INFOPLIST_FILE = "Overshare/Overshare-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "E19C5994-378D-471D-BB05-082EAC50E508";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

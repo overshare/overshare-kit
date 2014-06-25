@@ -148,6 +148,13 @@
     microblogPost.images = images;
     content.microblogPostItem = microblogPost;
     
+    OSKBlogPostContentItem *blogPost = [[OSKBlogPostContentItem alloc] init];
+    blogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
+    blogPost.title = @"My cool tumblr post";
+    blogPost.textHeader = @"<strong>Post header with a strong tag.</strong>";
+    blogPost.textFooter = @"<em>Post footer with an em tag.</em>";
+    content.blogPostItem = blogPost;
+
     OSKCopyToPasteboardContentItem *copyTextToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
     copyTextToPasteboard.text = text;
     copyTextToPasteboard.alternateActivityName = @"Copy Text";

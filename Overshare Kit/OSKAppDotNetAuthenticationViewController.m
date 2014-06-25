@@ -75,7 +75,7 @@ static NSString * OSKAppDotNetAuthentication_Scopes_Key = @"scope";
 - (void)createUserWithAccessToken:(NSString *)accessToken {
     [OSKAppDotNetUtility createNewUserWithAccessToken:accessToken appCredential:self.applicationCredential completion:^(OSKManagedAccount *account, NSError *error) {
         if (account) {
-            [self.delegate authenticationViewController:self didAuthenticateNewAccount:account withActivity:self.activity];
+            [self.delegate authenticationViewController:self didAuthenticateNewAccounts:@[account] withActivity:self.activity];
         }
     }];
 }

@@ -189,6 +189,21 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
 @property (copy, nonatomic) NSString *text;
 
 /**
+ The optional title of the blog post.
+ */
+@property (copy, nonatomic) NSString *title;
+
+/**
+ A plain-text optional header for the blog post. Usefult for embedding HTML content in Tumblr text posts.
+ */
+@property (copy, nonatomic) NSString *textHeader;
+
+/**
+ A plain-text optional suffix for the blog post. . Usefult for embedding HTML content in Tumblr text posts.
+ */
+@property (copy, nonatomic) NSString *textFooter;
+
+/**
  An optional array of `<UIImage>` objects to be attached to the outgoing post.
  */
 @property (strong, nonatomic) NSArray *images;

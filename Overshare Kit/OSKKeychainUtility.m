@@ -64,8 +64,8 @@
     
 	OSStatus status = SecItemDelete((__bridge CFDictionaryRef)query);
     
-	if (status != errSecSuccess) {
-		OSKLog(@"SecItemDelete failed: %d", (int)status);
+	if (status != errSecSuccess && status != errSecItemNotFound) {
+        OSKLog(@"SecItemDelete failed: %d", (int)status);
 	}
 }
 

@@ -126,8 +126,9 @@ static NSString * OSKFacebookActivity_PreviousAudienceKey = @"OSKFacebookActivit
     BOOL textIsWithinTheMaxCount = (0 <= self.remainingCharacterCount && self.remainingCharacterCount < maxCharacterCount);
     BOOL textIsValid = (textIsLongerThanZero && textIsWithinTheMaxCount);
     BOOL isALinkPost = (contentItem.link != nil);
+    BOOL hasImageAttachment = [contentItem.images count] > 0;
     
-    return (accountPresent && (textIsValid || isALinkPost));
+    return (accountPresent && (textIsValid || isALinkPost || hasImageAttachment));
 }
 
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
