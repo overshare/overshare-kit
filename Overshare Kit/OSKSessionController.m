@@ -216,10 +216,20 @@
     [alert show];
 }
 
-- (void)finishUpAuthenticationWithFirstNewManagedAccount:(OSKManagedAccount *)account activity:(OSKActivity <OSKActivity_ManagedAccounts> *)activity {
+- (void)finishUpAuthenticationWithFirstNewManagedAccounts:(NSArray *)accounts activity:(OSKActivity <OSKActivity_ManagedAccounts> *)activity {
     OSKManagedAccountStore *accountStore = [OSKManagedAccountStore sharedInstance];
-    [accountStore addAccount:account forActivityType:[activity.class activityType]];
-    [activity setActiveManagedAccount:account];
+    
+    BOOL isFirstAccount = YES;
+    for (OSKManagedAccount *account in accounts)
+    {
+        [accountStore addAccount:account forActivityType:[activity.class activityType]];
+        
+        if (isFirstAccount)
+        {
+            [activity setActiveManagedAccount:account];
+            isFirstAccount = NO;
+        }
+    }
     [self handlePublishingStepForActivity:activity];
 }
 
@@ -240,7 +250,7 @@
         __weak OSKSessionController *weakSelf = self;
         [theActivity authenticateNewAccountWithoutViewController:^(OSKManagedAccount *account, NSError *error) {
             if (account) {
-                [weakSelf finishUpAuthenticationWithFirstNewManagedAccount:account activity:theActivity];
+                [weakSelf finishUpAuthenticationWithFirstNewManagedAccounts:@[account] activity:theActivity];
             } else {
                 OSKLog(@"Failed to add account for activity: %@ error: %@", activity, error);
                 [weakSelf cancel];
@@ -361,8 +371,8 @@
 
 #pragma mark - Authentication View Controller Delegate
 
-- (void)authenticationViewController:(UIViewController <OSKAuthenticationViewController> *)viewController didAuthenticateNewAccount:(OSKManagedAccount *)account withActivity:(OSKActivity *)activity {
-    [self finishUpAuthenticationWithFirstNewManagedAccount:account activity:(OSKActivity <OSKActivity_ManagedAccounts> *)activity];
+- (void)authenticationViewController:(UIViewController <OSKAuthenticationViewController> *)viewController didAuthenticateNewAccounts:(NSArray *)accounts withActivity:(OSKActivity *)activity {
+    [self finishUpAuthenticationWithFirstNewManagedAccounts:accounts activity:(OSKActivity <OSKActivity_ManagedAccounts> *)activity];
 }
 
 - (void)authenticationViewControllerDidCancel:(UIViewController <OSKAuthenticationViewController> *)viewController withActivity:(OSKActivity *)activity {

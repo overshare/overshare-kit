@@ -213,7 +213,7 @@
 - (void)doneButtonPressed:(id)sender {
     [self authenticateWithUsername:self.username password:self.password completion:^(OSKManagedAccount *account, NSError *error) {
         if (account) {
-            [self.delegate authenticationViewController:self didAuthenticateNewAccount:account withActivity:self.activity];
+            [self.delegate authenticationViewController:self didAuthenticateNewAccounts:@[account] withActivity:self.activity];
         } else {
             [self showUnableToSignInAlert];
         }

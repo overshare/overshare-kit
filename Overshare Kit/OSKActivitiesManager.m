@@ -49,7 +49,7 @@ static NSString * OSKApplicationCredential_Readability_Key = @"oversharedev";
 static NSString * OSKApplicationCredential_Readability_Secret = @"hWA7rwPqzvNEaK8ZbRBw9fc5kKBQMdRK";
 static NSString * OSKApplicationCredential_Facebook_Key = @"554155471323751";
 static NSString * OSKApplicationCredential_GooglePlus_Key = @"810720596839-qccfsg2b2ljn0cnu76rha48f5dguns3j.apps.googleusercontent.com";
-static NSString * OSKApplicationCredential_Tumblr_Key = @"ClA5jd4kxI51UZL4tdUP8ZtCsO8qvoIHZ1XdJC0GoEVmLcPevOShow";
+static NSString * OSKApplicationCredential_Tumblr_Key = @"ClA5jd4kxI51UZL4tdUP8ZtCsO8qvoIHZ1XdJC0GoEVmLcPevO";
 static NSString * OSKApplicationCredential_Tumblr_Secret = @"bs6DLGe9A1W5BmT8FnVbXVjtCFI5F4fNwCBfm6tYj51RnN5UUN";
 #endif
 

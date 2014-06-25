@@ -18,7 +18,7 @@
 @protocol OSKAuthenticationViewControllerDelegate <NSObject>
 
 - (void)authenticationViewController:(UIViewController <OSKAuthenticationViewController> *)viewController
-           didAuthenticateNewAccount:(OSKManagedAccount *)account
+          didAuthenticateNewAccounts:(NSArray *)accounts
                         withActivity:(OSKActivity <OSKActivity_ManagedAccounts>*)activity;
 
 - (void)authenticationViewControllerDidCancel:(UIViewController <OSKAuthenticationViewController> *)viewController
