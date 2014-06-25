@@ -119,6 +119,12 @@
 		8895C34C18A3BA6B000B7F28 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C34B18A3BA6B000B7F28 /* MediaPlayer.framework */; };
 		8895C34E18A3BA70000B7F28 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C34D18A3BA70000B7F28 /* Security.framework */; };
 		8895C35018A3BA78000B7F28 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C34F18A3BA78000B7F28 /* SystemConfiguration.framework */; };
+		BC7778EF195B0DB1008867B9 /* OSKGooglePlusActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7778E3195B0DB1008867B9 /* OSKGooglePlusActivity.m */; };
+		BC7778F0195B0DB1008867B9 /* OSKTextViewAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7778E6195B0DB1008867B9 /* OSKTextViewAttachment.m */; };
+		BC7778F1195B0DB1008867B9 /* OSKTextViewAttachmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7778E8195B0DB1008867B9 /* OSKTextViewAttachmentView.m */; };
+		BC7778F2195B0DB1008867B9 /* OSKTumblrUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7778EA195B0DB1008867B9 /* OSKTumblrUtility.m */; };
+		BC7778F3195B0DB1008867B9 /* OSKUITextViewSubstitute.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7778EC195B0DB1008867B9 /* OSKUITextViewSubstitute.m */; };
+		BC7778F4195B0DB1008867B9 /* OSKWebPageTitleUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7778EE195B0DB1008867B9 /* OSKWebPageTitleUtility.m */; };
 		BCD528D11959F0A6004ED76F /* OSKTumblrAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD528CD1959F0A6004ED76F /* OSKTumblrAuthenticationViewController.m */; };
 		BCD528D21959F0A6004ED76F /* OSKTumblrActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD528CF1959F0A6004ED76F /* OSKTumblrActivity.m */; };
 /* End PBXBuildFile section */
@@ -495,6 +501,20 @@
 		8895C34B18A3BA6B000B7F28 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		8895C34D18A3BA70000B7F28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8895C34F18A3BA78000B7F28 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BC7778E1195B0DB1008867B9 /* OSKFacebookSharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKFacebookSharing.h; sourceTree = "<group>"; };
+		BC7778E2195B0DB1008867B9 /* OSKGooglePlusActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKGooglePlusActivity.h; sourceTree = "<group>"; };
+		BC7778E3195B0DB1008867B9 /* OSKGooglePlusActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKGooglePlusActivity.m; sourceTree = "<group>"; };
+		BC7778E4195B0DB1008867B9 /* OSKSyntaxHighlighting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSyntaxHighlighting.h; sourceTree = "<group>"; };
+		BC7778E5195B0DB1008867B9 /* OSKTextViewAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTextViewAttachment.h; sourceTree = "<group>"; };
+		BC7778E6195B0DB1008867B9 /* OSKTextViewAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTextViewAttachment.m; sourceTree = "<group>"; };
+		BC7778E7195B0DB1008867B9 /* OSKTextViewAttachmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTextViewAttachmentView.h; sourceTree = "<group>"; };
+		BC7778E8195B0DB1008867B9 /* OSKTextViewAttachmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTextViewAttachmentView.m; sourceTree = "<group>"; };
+		BC7778E9195B0DB1008867B9 /* OSKTumblrUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKTumblrUtility.h; sourceTree = "<group>"; };
+		BC7778EA195B0DB1008867B9 /* OSKTumblrUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKTumblrUtility.m; sourceTree = "<group>"; };
+		BC7778EB195B0DB1008867B9 /* OSKUITextViewSubstitute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKUITextViewSubstitute.h; sourceTree = "<group>"; };
+		BC7778EC195B0DB1008867B9 /* OSKUITextViewSubstitute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKUITextViewSubstitute.m; sourceTree = "<group>"; };
+		BC7778ED195B0DB1008867B9 /* OSKWebPageTitleUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKWebPageTitleUtility.h; sourceTree = "<group>"; };
+		BC7778EE195B0DB1008867B9 /* OSKWebPageTitleUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKWebPageTitleUtility.m; sourceTree = "<group>"; };
 		BCD528C41959EBD6004ED76F /* osk-tumblrIcon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-29.png"; sourceTree = "<group>"; };
 		BCD528C51959EBD6004ED76F /* osk-tumblrIcon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-29@2x.png"; sourceTree = "<group>"; };
 		BCD528C61959EBD6004ED76F /* osk-tumblrIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-tumblrIcon-60@2x.png"; sourceTree = "<group>"; };
@@ -633,6 +653,20 @@
 		7FEE77DC181ED8FE000F684A /* Overshare Kit */ = {
 			isa = PBXGroup;
 			children = (
+				BC7778E1195B0DB1008867B9 /* OSKFacebookSharing.h */,
+				BC7778E2195B0DB1008867B9 /* OSKGooglePlusActivity.h */,
+				BC7778E3195B0DB1008867B9 /* OSKGooglePlusActivity.m */,
+				BC7778E4195B0DB1008867B9 /* OSKSyntaxHighlighting.h */,
+				BC7778E5195B0DB1008867B9 /* OSKTextViewAttachment.h */,
+				BC7778E6195B0DB1008867B9 /* OSKTextViewAttachment.m */,
+				BC7778E7195B0DB1008867B9 /* OSKTextViewAttachmentView.h */,
+				BC7778E8195B0DB1008867B9 /* OSKTextViewAttachmentView.m */,
+				BC7778E9195B0DB1008867B9 /* OSKTumblrUtility.h */,
+				BC7778EA195B0DB1008867B9 /* OSKTumblrUtility.m */,
+				BC7778EB195B0DB1008867B9 /* OSKUITextViewSubstitute.h */,
+				BC7778EC195B0DB1008867B9 /* OSKUITextViewSubstitute.m */,
+				BC7778ED195B0DB1008867B9 /* OSKWebPageTitleUtility.h */,
+				BC7778EE195B0DB1008867B9 /* OSKWebPageTitleUtility.m */,
 				BCD528CD1959F0A6004ED76F /* OSKTumblrAuthenticationViewController.m */,
 				BCD528CE1959F0A6004ED76F /* OSKTumblrAuthenticationViewController.h */,
 				BCD528CF1959F0A6004ED76F /* OSKTumblrActivity.m */,
@@ -1032,6 +1066,7 @@
 			files = (
 				7FEE78B0181ED8FE000F684A /* NSData+OSKDerp.m in Sources */,
 				7F75BEFE1821539700D3681E /* OSKAccountManagementViewController.m in Sources */,
+				BC7778EF195B0DB1008867B9 /* OSKGooglePlusActivity.m in Sources */,
 				7FEE78C8181ED8FE000F684A /* OSKAppDotNetActivity.m in Sources */,
 				7FEE78F6181ED8FE000F684A /* OSKUsernamePasswordViewController.m in Sources */,
 				7FEE78BE181ED8FE000F684A /* OSKActivityCollectionViewCell.m in Sources */,
@@ -1046,6 +1081,7 @@
 				7F55A30E18425C6C004A3BCC /* OSKSessionController_Phone.m in Sources */,
 				7FEE78DD181ED8FE000F684A /* OSKMessageComposeViewController.m in Sources */,
 				7FEE78E1181ED8FE000F684A /* OSKOmnifocusActivity.m in Sources */,
+				BC7778F4195B0DB1008867B9 /* OSKWebPageTitleUtility.m in Sources */,
 				7FEE78E4181ED8FE000F684A /* OSKPinboardUtility.m in Sources */,
 				7FE4109E1821994B00B13AB1 /* OSKFacebookAudienceChooserViewController.m in Sources */,
 				7FEE78D6181ED8FE000F684A /* OSKInstapaperActivity.m in Sources */,
@@ -1067,8 +1103,10 @@
 				7FEE78ED181ED8FE000F684A /* OSKSMSActivity.m in Sources */,
 				7F55A30F18425C6C004A3BCC /* OSKSessionController.m in Sources */,
 				7FEE78FA181ED8FE000F684A /* UIView+OSKUtilities.m in Sources */,
+				BC7778F2195B0DB1008867B9 /* OSKTumblrUtility.m in Sources */,
 				7FEE78FB181ED8FE000F684A /* UIViewController+OSKUtilities.m in Sources */,
 				7FEE78CF181ED8FE000F684A /* OSKEmailActivity.m in Sources */,
+				BC7778F0195B0DB1008867B9 /* OSKTextViewAttachment.m in Sources */,
 				7FEE78BC181ED8FE000F684A /* OSKActivitiesManager.m in Sources */,
 				7FEE78DB181ED8FE000F684A /* OSKManagedAccountCredential.m in Sources */,
 				7FEE78F2181ED8FE000F684A /* OSKTwitterText.m in Sources */,
@@ -1105,6 +1143,7 @@
 				7FEE78D7181ED8FE000F684A /* OSKInstapaperUtility.m in Sources */,
 				7FEE78CE181ED8FE000F684A /* OSKCopyToPasteboardActivity.m in Sources */,
 				7FEE78B6181ED8FE000F684A /* NSString+OSKDerp.m in Sources */,
+				BC7778F1195B0DB1008867B9 /* OSKTextViewAttachmentView.m in Sources */,
 				7FEE78EF181ED8FE000F684A /* OSKMicrobloggingTextView.m in Sources */,
 				7FEE78D0181ED8FE000F684A /* OSKFacebookActivity.m in Sources */,
 				BCD528D11959F0A6004ED76F /* OSKTumblrAuthenticationViewController.m in Sources */,
@@ -1119,6 +1158,7 @@
 				7FEE78C0181ED8FE000F684A /* OSKActivityIcon.m in Sources */,
 				7FEE78C7181ED8FE000F684A /* OSKAlertView.m in Sources */,
 				7FEE78B1181ED8FE000F684A /* NSDate+OSK_ISO8601.m in Sources */,
+				BC7778F3195B0DB1008867B9 /* OSKUITextViewSubstitute.m in Sources */,
 				7FCD02821853975D005C5931 /* OSKActivityToggleCell.m in Sources */,
 				7FE4109F1821994B00B13AB1 /* OSKFacebookPublishingViewController.m in Sources */,
 				7FEE78B4181ED8FE000F684A /* NSMutableURLRequest+OSKUtilities.m in Sources */,
