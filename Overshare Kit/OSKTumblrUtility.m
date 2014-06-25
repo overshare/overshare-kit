@@ -21,7 +21,20 @@
 
 + (void)postContentItem:(OSKBlogPostContentItem *)item withCredential:(OSKManagedAccountCredential *)credential appCredential:(OSKApplicationCredential *)appCredential completion:(void(^)(BOOL success, NSError *error))completion {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
-    parameters[@"body"] = item.text;
+    
+    NSMutableString *body = [NSMutableString new];
+    if (item.textHeader && item.textHeader.length > 0)
+    {
+        [body appendFormat:@"%@\n", item.textHeader];
+    }
+    [body appendString:item.text];
+    if (item.textFooter && item.textFooter.length > 0)
+    {
+        [body appendFormat:@"\n%@", item.textFooter];
+    }
+    
+    parameters[@"body"] = body;
+    
     if (item.title)
     {
         parameters[@"title"] = item.title;
