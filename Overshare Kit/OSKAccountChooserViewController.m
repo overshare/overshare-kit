@@ -329,8 +329,12 @@
 
 #pragma mark - Authentication View Controller Delegate
 
-- (void)authenticationViewController:(UIViewController <OSKAuthenticationViewController> *)viewController didAuthenticateNewAccounts:(OSKManagedAccount *)account withActivity:(OSKActivity <OSKActivity_ManagedAccounts>*)activity {
-    [self handleNewManagedAccount:account];
+- (void)authenticationViewController:(UIViewController <OSKAuthenticationViewController> *)viewController didAuthenticateNewAccounts:(NSArray *)accounts withActivity:(OSKActivity <OSKActivity_ManagedAccounts>*)activity {
+    for (OSKManagedAccount *account in accounts)
+    {
+        [self handleNewManagedAccount:account];
+    }
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [viewController dismissViewControllerAnimated:YES completion:nil];
     } else {
