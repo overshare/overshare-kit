@@ -149,7 +149,8 @@
     content.microblogPostItem = microblogPost;
     
     OSKBlogPostContentItem *blogPost = [[OSKBlogPostContentItem alloc] init];
-    microblogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
+    blogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
+    blogPost.title = @"My cool tumblr post";
     content.blogPostItem = blogPost;
 
     OSKCopyToPasteboardContentItem *copyTextToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];

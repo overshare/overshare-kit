@@ -11,8 +11,7 @@
 
 #import "OSKActivitiesManager.h"
 #import "OSKActivity_ManagedAccounts.h"
-#import "OSKADNLoginManager.h"
-#import "OSKAppDotNetUtility.h"
+#import "OSKTumblrUtility.h"
 #import "OSKLogger.h"
 #import "OSKManagedAccount.h"
 #import "OSKShareableContentItem.h"
@@ -96,6 +95,10 @@ static NSInteger OSKTumblrActivity_MaxImageCount = 0;
     return OSKPublishingMethod_ViewController_Microblogging;
 }
 
+- (BOOL)allowLinkShortening {
+    return NO;
+}
+
 - (BOOL)isReadyToPerform {
     BOOL appCredentialPreset = ([self.class applicationCredential] != nil);
     BOOL credentialPresent = (self.activeManagedAccount.credential != nil);
@@ -110,16 +113,17 @@ static NSInteger OSKTumblrActivity_MaxImageCount = 0;
 - (void)performActivity:(OSKActivityCompletionHandler)completion {
     __weak OSKTumblrActivity *weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [OSKAppDotNetUtility
-         postContentItem:(OSKMicroblogPostContentItem *)weakSelf.contentItem
-         withCredential:weakSelf.activeManagedAccount.credential
-         appCredential:[weakSelf.class applicationCredential]
-         completion:^(BOOL success, NSError *error) {
-             OSKLog(@"Success! Sent new post to Tumblr.");
-             if (completion) {
-                 completion(weakSelf, success, error);
-             }
-         }];
+        [OSKTumblrUtility postContentItem:(OSKBlogPostContentItem *)weakSelf.contentItem
+                           withCredential:weakSelf.activeManagedAccount.credential
+                            appCredential:[weakSelf.class applicationCredential]
+                               completion:^(BOOL success, NSError *error) {
+                                   if (success) {
+                                       OSKLog(@"Success! Sent new post to Tumblr.");
+                                   }
+                                   if (completion) {
+                                       completion(weakSelf, success, error);
+                                   }
+                               }];
     });
 }
 

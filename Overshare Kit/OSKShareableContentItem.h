@@ -189,6 +189,11 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
 @property (copy, nonatomic) NSString *text;
 
 /**
+ The optional plain-text title of the blog post.
+ */
+@property (copy, nonatomic) NSString *title;
+
+/**
  An optional array of `<UIImage>` objects to be attached to the outgoing post.
  */
 @property (strong, nonatomic) NSArray *images;
