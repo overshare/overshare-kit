@@ -47,7 +47,13 @@ static NSString * OSKManagedAccountStoreSavedActiveAccountIDsKey = @"OSKManagedA
 
 - (NSArray *)accountsForActivityType:(NSString *)activityType {
     NSParameterAssert(activityType);
-    return [[self _mutableAccountsDictionaryForActivityType:activityType] allValues];
+    
+    NSArray *activityAccounts = [[self _mutableAccountsDictionaryForActivityType:activityType] allValues];
+    
+    NSSortDescriptor *usernameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"username" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSSortDescriptor *IDSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"accountID" ascending:YES];
+
+    return [activityAccounts sortedArrayUsingDescriptors:@[ usernameSortDescriptor, IDSortDescriptor ]];
 }
 
 - (OSKManagedAccount *)existingAccountMatchingPotentialDuplicateAccount:(OSKManagedAccount *)account {
