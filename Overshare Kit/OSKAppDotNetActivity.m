@@ -129,7 +129,9 @@ static NSInteger OSKAppDotNetActivity_MaxImageCount = 4;
          withCredential:weakSelf.activeManagedAccount.credential
          appCredential:[weakSelf.class applicationCredential]
          completion:^(BOOL success, NSError *error) {
-             OSKLog(@"Success! Sent new post to App.net.");
+             if (success) {
+                 OSKLog(@"Success! Sent new post to App.net.");
+             }
              if (completion) {
                  completion(weakSelf, success, error);
              }
