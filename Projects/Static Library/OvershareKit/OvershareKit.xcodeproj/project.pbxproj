@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2EA7594318E5831E00078A1D /* OSKSaveToCameraRollActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7594218E5831E00078A1D /* OSKSaveToCameraRollActivity.m */; };
+		32C2B9B7190337BC0055C98B /* OSKMimeAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C2B9B6190337BC0055C98B /* OSKMimeAttachment.m */; };
 		7F04946C188AFE5400BE7C4E /* NSString+OSKEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F04946B188AFE5400BE7C4E /* NSString+OSKEmoji.m */; };
 		7F1DA9E0183C6B050082356D /* OSKLinkShorteningUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DA9DF183C6B050082356D /* OSKLinkShorteningUtility.m */; };
 		7F55A30C18425C6C004A3BCC /* OSKSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A30518425C6C004A3BCC /* OSKSession.m */; };
@@ -145,6 +146,8 @@
 /* Begin PBXFileReference section */
 		2EA7594118E5831E00078A1D /* OSKSaveToCameraRollActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSaveToCameraRollActivity.h; sourceTree = "<group>"; };
 		2EA7594218E5831E00078A1D /* OSKSaveToCameraRollActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSaveToCameraRollActivity.m; sourceTree = "<group>"; };
+		32C2B9B5190337BC0055C98B /* OSKMimeAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKMimeAttachment.h; sourceTree = "<group>"; };
+		32C2B9B6190337BC0055C98B /* OSKMimeAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKMimeAttachment.m; sourceTree = "<group>"; };
 		7F04946A188AFE5400BE7C4E /* NSString+OSKEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OSKEmoji.h"; sourceTree = "<group>"; };
 		7F04946B188AFE5400BE7C4E /* NSString+OSKEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OSKEmoji.m"; sourceTree = "<group>"; };
 		7F19F901181F228200E5EA52 /* osk-iap-badge-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "osk-iap-badge-60@2x.png"; sourceTree = "<group>"; };
@@ -831,6 +834,8 @@
 				7FB34FEA1895ADBE0081C91A /* OSKXCallbackURLInfo.h */,
 				7F75BEFC1821539700D3681E /* UIImage+OSKUtilities.h */,
 				7F75BEFD1821539700D3681E /* UIImage+OSKUtilities.m */,
+				32C2B9B5190337BC0055C98B /* OSKMimeAttachment.h */,
+				32C2B9B6190337BC0055C98B /* OSKMimeAttachment.m */,
 			);
 			name = "Overshare Kit";
 			path = "../../../Overshare Kit";
@@ -1053,6 +1058,7 @@
 				7FEE78F2181ED8FE000F684A /* OSKTwitterText.m in Sources */,
 				7FEE78BB181ED8FE000F684A /* OSKActionSheet.m in Sources */,
 				7FEE78F4181ED8FE000F684A /* OSKTwitterUtility.m in Sources */,
+				32C2B9B7190337BC0055C98B /* OSKMimeAttachment.m in Sources */,
 				7FEE78B3181ED8FE000F684A /* NSHTTPURLResponse+OSKUtilities.m in Sources */,
 				7FEE78F3181ED8FE000F684A /* OSKTwitterTextEntity.m in Sources */,
 				7FEE78B2181ED8FE000F684A /* NSDictionary+OSKModel.m in Sources */,

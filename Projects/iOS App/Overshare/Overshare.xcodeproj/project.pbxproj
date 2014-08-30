@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32C2B9BA19033F350055C98B /* OSKMimeAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C2B9B919033F350055C98B /* OSKMimeAttachment.m */; };
 		7F03EA2D18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F03EA2C18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m */; };
 		7F049469188AFE4600BE7C4E /* NSString+OSKEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F049468188AFE4600BE7C4E /* NSString+OSKEmoji.m */; };
 		7F14C95618DB5D1D00E635FE /* OSKTextViewAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14C95518DB5D1D00E635FE /* OSKTextViewAttachment.m */; };
@@ -267,6 +268,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32C2B9B819033F350055C98B /* OSKMimeAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKMimeAttachment.h; sourceTree = "<group>"; };
+		32C2B9B919033F350055C98B /* OSKMimeAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKMimeAttachment.m; sourceTree = "<group>"; };
 		7F03EA2B18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSaveToCameraRollActivity.h; sourceTree = "<group>"; };
 		7F03EA2C18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSaveToCameraRollActivity.m; sourceTree = "<group>"; };
 		7F049467188AFE4600BE7C4E /* NSString+OSKEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OSKEmoji.h"; sourceTree = "<group>"; };
@@ -1399,6 +1402,8 @@
 		7FEE791A181EDB81000F684A /* Shareable Content */ = {
 			isa = PBXGroup;
 			children = (
+				32C2B9B819033F350055C98B /* OSKMimeAttachment.h */,
+				32C2B9B919033F350055C98B /* OSKMimeAttachment.m */,
 				7FEE7743181ED8EE000F684A /* OSKShareableContent.h */,
 				7FEE7744181ED8EE000F684A /* OSKShareableContent.m */,
 				7FEE7745181ED8EE000F684A /* OSKShareableContentItem.h */,
@@ -1767,6 +1772,7 @@
 				7FEE77C1181ED8EF000F684A /* OSKOmnifocusActivity.m in Sources */,
 				7FEE7794181ED8EF000F684A /* OSK1PasswordBrowserActivity.m in Sources */,
 				7FEE77C6181ED8EF000F684A /* OSKPresentationManager.m in Sources */,
+				32C2B9BA19033F350055C98B /* OSKMimeAttachment.m in Sources */,
 				7FEE77A1181ED8EF000F684A /* OSKActivitySheetViewController.m in Sources */,
 				7FEE77CA181ED8EF000F684A /* OSKSafariActivity.m in Sources */,
 				7FEE77AA181ED8EF000F684A /* OSKApplicationCredential.m in Sources */,
