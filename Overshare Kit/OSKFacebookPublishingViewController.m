@@ -354,22 +354,26 @@
 #pragma mark - Audience Changes
 
 - (void)updateAudienceButton {
-    NSString *audienceName = nil;
-    NSString *audienceKey = [self.activity currentAudience];
-    if ([audienceKey isEqualToString:ACFacebookAudienceEveryone]) {
-        audienceName = @"Public";
-    }
+	NSString *audienceName = nil;
+	NSString *audienceKey = [self.activity currentAudience];
+    
+	OSKPresentationManager *presManager = [OSKPresentationManager sharedInstance];
+    
+	if ([audienceKey isEqualToString:ACFacebookAudienceEveryone]) {
+		audienceName = [presManager localizedText_FacebookAudience_Public];
+	}
     else if ([audienceKey isEqualToString:ACFacebookAudienceFriends]) {
-        audienceName = @"Friends";
-    }
+		audienceName = [presManager localizedText_FacebookAudience_Friends];
+	}
     else if ([audienceKey isEqualToString:ACFacebookAudienceOnlyMe]) {
-        audienceName = @"Only Me";
-    }
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self updateAudienceButton_Phone:audienceName];
-    } else {
-        [self updateAudienceButton_Pad:audienceName];
-    }
+		audienceName = [presManager localizedText_FacebookAudience_OnlyMe];
+	}
+    
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		[self updateAudienceButton_Phone:audienceName];
+	} else {
+		[self updateAudienceButton_Pad:audienceName];
+	}
 }
 
 - (void)updateAudienceButton_Phone:(NSString *)audienceName {
