@@ -357,7 +357,7 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
 /**
  An optional description. Not all activities use this.
  */
-@property (copy, nonatomic) NSString *description;
+@property (copy, nonatomic) NSString *itemDescription;
 
 @end
 

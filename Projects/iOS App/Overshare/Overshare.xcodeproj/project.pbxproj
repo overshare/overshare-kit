@@ -1547,7 +1547,7 @@
 				ORGANIZATIONNAME = "Overshare Kit";
 				TargetAttributes = {
 					7FEE762E181ED83D000F684A = {
-						DevelopmentTeam = YGAZHQXHH4;
+						DevelopmentTeam = J854U2BUWB;
 					};
 				};
 			};
@@ -1931,9 +1931,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Overshare/Overshare-Prefix.pch";
 				INFOPLIST_FILE = "Overshare/Overshare-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "58a447bf-9bf4-4beb-8b7b-8ddd4ebb0ae2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1952,9 +1953,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Overshare/Overshare-Prefix.pch";
 				INFOPLIST_FILE = "Overshare/Overshare-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "58a447bf-9bf4-4beb-8b7b-8ddd4ebb0ae2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

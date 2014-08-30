@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "OvershareKit"
-  s.version      = "1.2.0"
+  s.version      = "1.3.0"
   s.summary      = "A soup-to-nuts sharing library for iOS."
   s.homepage     = "https://github.com/overshare/overshare-kit"
   s.license      = { :type => 'MIT', :file => 'LICENSE'  }
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/overshare/overshare-kit.git", :tag => s.version.to_s }
   s.platform     = :ios, '7.0'
   s.requires_arc = true
-  s.frameworks   = 'UIKit', 'AddressBook', 'CoreMotion', 'CoreLocation'
+  s.frameworks   = 'UIKit', 'AddressBook', 'CoreMotion', 'CoreLocation', 'MediaPlayer'
   
   s.compiler_flags = "-fmodules"
   
