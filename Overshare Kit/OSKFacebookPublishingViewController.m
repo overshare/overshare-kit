@@ -37,6 +37,7 @@
 @property (strong, nonatomic) OSKFacebookActivity *activity;
 @property (strong, nonatomic) OSKFacebookContentItem *contentItem;
 @property (strong, nonatomic) UIView *keyboardToolbar;
+@property (strong, nonatomic) UIView *keyboardToolbarContainer; // Workaround for iOS 8 bug. Sigh...
 @property (strong, nonatomic) UIButton *accountButton; // Used on iPhone
 @property (strong, nonatomic) UIButton *audienceButton; // Used on iPhone
 @property (strong, nonatomic) UIWebView *snapshotWebView;
@@ -130,10 +131,16 @@
 - (void)setupKeyboardToolbar {
     OSKPresentationManager *presManager = [OSKPresentationManager sharedInstance];
     
+    // TOOLBAR
     self.keyboardToolbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44.0f)];
     self.keyboardToolbar.backgroundColor = presManager.color_toolbarBackground;
     self.keyboardToolbar.clipsToBounds = YES;
-    [self.textView setOSK_inputAccessoryView:self.keyboardToolbar];
+    self.keyboardToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    
+    self.keyboardToolbarContainer = [[UIView alloc] initWithFrame:self.keyboardToolbar.bounds];
+    [self.keyboardToolbarContainer addSubview:self.keyboardToolbar];
+    [self.textView setOSK_inputAccessoryView:self.keyboardToolbarContainer];
+    
     CGRect borderedViewFrame = CGRectInset(self.keyboardToolbar.bounds,-1,0);
     borderedViewFrame.origin.y = 0;
     UIView *borderedView = [[UIView alloc] initWithFrame:borderedViewFrame];
@@ -263,15 +270,20 @@
 #pragma mark - Autorotation
 
 - (void)viewDidLayoutSubviews {
-    CGRect toolbarBounds = self.keyboardToolbar.bounds;
     CGFloat targetHeight;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        targetHeight = UIInterfaceOrientationIsLandscape(self.interfaceOrientation) ? 32.0f : 44.0f;
+        if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+            targetHeight = 32.0f;
+        } else {
+            targetHeight = 44.0f;
+        }
     } else {
         targetHeight = 44.0f;
     }
-    toolbarBounds.size.height = targetHeight;
-    [self.keyboardToolbar setBounds:toolbarBounds];
+    CGRect toolbarFrame = self.keyboardToolbar.frame;
+    toolbarFrame.size.height = targetHeight;
+    toolbarFrame.origin.y = self.keyboardToolbarContainer.frame.size.height - targetHeight;
+    self.keyboardToolbar.frame = toolbarFrame;
     [self updateAccountButton];
     [self updateAudienceButton];
     [self adjustTextViewTopInset];
