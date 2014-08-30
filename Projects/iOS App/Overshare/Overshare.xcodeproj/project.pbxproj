@@ -43,6 +43,7 @@
 		7F55A30018425C46004A3BCC /* OSKSessionController_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A2FA18425C46004A3BCC /* OSKSessionController_Pad.m */; };
 		7F55A30118425C46004A3BCC /* OSKSessionController_Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A2FC18425C46004A3BCC /* OSKSessionController_Phone.m */; };
 		7F55A30218425C46004A3BCC /* OSKSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F55A2FE18425C46004A3BCC /* OSKSessionController.m */; };
+		7F606EC21911C6AF008D3833 /* OSKWebPageTitleUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F606EC01911C6AF008D3833 /* OSKWebPageTitleUtility.m */; };
 		7F75BF311821587E00D3681E /* ADNLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F75BF2E1821587E00D3681E /* ADNLogin.m */; };
 		7F75BF321821587E00D3681E /* ADNPassportLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F75BF301821587E00D3681E /* ADNPassportLaunchView.m */; };
 		7F75BF3D1821588700D3681E /* PocketAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F75BF341821588700D3681E /* PocketAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -74,7 +75,6 @@
 		7FD649E21895EAF20021BD50 /* Drafts-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DD1895EAF20021BD50 /* Drafts-Icon-60@2x.png */; };
 		7FD649E31895EAF20021BD50 /* Drafts-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DE1895EAF20021BD50 /* Drafts-Icon-76.png */; };
 		7FD649E41895EAF20021BD50 /* Drafts-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FD649DF1895EAF20021BD50 /* Drafts-Icon-76@2x.png */; };
-		7FDCDE96181EE1BA00AC2985 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8E181EE1BA00AC2985 /* Icon-60@2x.png */; };
 		7FDCDE97181EE1BA00AC2985 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE8F181EE1BA00AC2985 /* rain.jpg */; };
 		7FDCDE9A181EE1BA00AC2985 /* soda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE93181EE1BA00AC2985 /* soda.jpg */; };
 		7FDCDE9B181EE1BA00AC2985 /* type.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FDCDE94181EE1BA00AC2985 /* type.jpg */; };
@@ -328,6 +328,8 @@
 		7F55A2FC18425C46004A3BCC /* OSKSessionController_Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSessionController_Phone.m; sourceTree = "<group>"; };
 		7F55A2FD18425C46004A3BCC /* OSKSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSessionController.h; sourceTree = "<group>"; };
 		7F55A2FE18425C46004A3BCC /* OSKSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSessionController.m; sourceTree = "<group>"; };
+		7F606EBF1911C6AF008D3833 /* OSKWebPageTitleUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKWebPageTitleUtility.h; sourceTree = "<group>"; };
+		7F606EC01911C6AF008D3833 /* OSKWebPageTitleUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKWebPageTitleUtility.m; sourceTree = "<group>"; };
 		7F75BF2D1821587E00D3681E /* ADNLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADNLogin.h; path = "../../../Dependencies/ADNLogin-SDK/SDK/ADNLogin.h"; sourceTree = "<group>"; };
 		7F75BF2E1821587E00D3681E /* ADNLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADNLogin.m; path = "../../../Dependencies/ADNLogin-SDK/SDK/ADNLogin.m"; sourceTree = "<group>"; };
 		7F75BF2F1821587E00D3681E /* ADNPassportLaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADNPassportLaunchView.h; path = "../../../Dependencies/ADNLogin-SDK/SDK/ADNPassportLaunchView.h"; sourceTree = "<group>"; };
@@ -985,6 +987,8 @@
 		7FEE78FC181ED929000F684A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7F606EBF1911C6AF008D3833 /* OSKWebPageTitleUtility.h */,
+				7F606EC01911C6AF008D3833 /* OSKWebPageTitleUtility.m */,
 				7F049467188AFE4600BE7C4E /* NSString+OSKEmoji.h */,
 				7F049468188AFE4600BE7C4E /* NSString+OSKEmoji.m */,
 				7F1DA9E1183C6B280082356D /* OSKLinkShorteningUtility.h */,
@@ -1534,7 +1538,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = OSK;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Overshare Kit";
 				TargetAttributes = {
 					7FEE762E181ED83D000F684A = {
@@ -1683,7 +1687,6 @@
 				7F77F4281822F6D10019452C /* osk-appDotNetIcon-29.png in Resources */,
 				7FEE7777181ED8EF000F684A /* osk-icon-border-60@2x.png in Resources */,
 				7FE467031821C9F20054D2BC /* osk-twitterIcon-76.png in Resources */,
-				7FDCDE96181EE1BA00AC2985 /* Icon-60@2x.png in Resources */,
 				7FE466ED1821C9F20054D2BC /* Chrome-Icon-29@2x.png in Resources */,
 				7FEE777A181ED8EF000F684A /* osk-iconMask-bw-60@2x.png in Resources */,
 				7F14C96518DB724000E635FE /* osk_linkPlaceholder_pad@2x.png in Resources */,
@@ -1724,6 +1727,7 @@
 				7FEE779A181ED8EF000F684A /* OSKActivityCollectionViewCell.m in Sources */,
 				7FEE77D4181ED8EF000F684A /* OSKTwitterUtility.m in Sources */,
 				7FEE77DA181ED8EF000F684A /* UIView+OSKUtilities.m in Sources */,
+				7F606EC21911C6AF008D3833 /* OSKWebPageTitleUtility.m in Sources */,
 				7FEE77BC181ED8EF000F684A /* OSKMessageComposeViewController.m in Sources */,
 				7FEE77BA181ED8EF000F684A /* OSKManagedAccountCredential.m in Sources */,
 				7F75BF321821587E00D3681E /* ADNPassportLaunchView.m in Sources */,
@@ -1839,7 +1843,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1879,7 +1882,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
