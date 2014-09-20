@@ -113,6 +113,11 @@ CGFloat const OSKUsernamePasswordCellHeight = 44.0f;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // call this to do one more update of the field, since
+    // they may have expanded a shortcut, which does not
+    // call textFieldDidChange.
+    [self textFieldDidChange:nil];
+    
     [self.delegate usernamePasswordCellDidTapReturn:self];
     return NO;
 }
