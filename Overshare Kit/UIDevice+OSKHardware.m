@@ -84,7 +84,7 @@
     static BOOL isAvailable;
     dispatch_once(&once, ^ {
         OSKHardwareType hardwareType = [self osk_hardwareType];
-        if (OSKHardwareType_NotAvailable) {
+        if (hardwareType==OSKHardwareType_NotAvailable) {
             isAvailable = YES;
         } else {
             NSString *hardwareString = [self osk_hardwareString];
