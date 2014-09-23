@@ -44,6 +44,8 @@
     if ([hardware isEqualToString:@"iPhone5,4"])    return OSKHardwareType_iPhone_5C_CDMA_GSM;
     if ([hardware isEqualToString:@"iPhone6,1"])    return OSKHardwareType_iPhone_5S;
     if ([hardware isEqualToString:@"iPhone6,2"])    return OSKHardwareType_iPhone_5S_CDMA_GSM;
+    if ([hardware isEqualToString:@"iPhone7,1"])    return OSKHardwareType_iPhone_6Plus;
+    if ([hardware isEqualToString:@"iPhone7,2"])    return OSKHardwareType_iPhone_6;
     
     if ([hardware isEqualToString:@"iPod1,1"])      return OSKHardwareType_iPodTouch_1G;
     if ([hardware isEqualToString:@"iPod2,1"])      return OSKHardwareType_iPodTouch_2G;
@@ -117,6 +119,8 @@
     if ([hardware isEqualToString:@"iPhone5,4"])    return @"iPhone 5C CDMA GSM";
     if ([hardware isEqualToString:@"iPhone6,1"])    return @"iPhone 5S";
     if ([hardware isEqualToString:@"iPhone6,2"])    return @"iPhone 5S CDMA GSM";
+    if ([hardware isEqualToString:@"iPhone7,1"])    return @"iPhone 6 Plus";
+    if ([hardware isEqualToString:@"iPhone7,2"])    return @"iPhone 6";
     
     if ([hardware isEqualToString:@"iPod1,1"])      return @"iPodTouch 1G";
     if ([hardware isEqualToString:@"iPod2,1"])      return @"iPodTouch 2G";
