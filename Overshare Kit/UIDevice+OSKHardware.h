@@ -30,6 +30,8 @@ typedef NS_ENUM(NSInteger, OSKHardwareType) {
     OSKHardwareType_iPhone_5C_CDMA_GSM,
     OSKHardwareType_iPhone_5S,
     OSKHardwareType_iPhone_5S_CDMA_GSM,
+    OSKHardwareType_iPhone_6,
+    OSKHardwareType_iPhone_6Plus,
     
     OSKHardwareType_iPodTouch_1G,
     OSKHardwareType_iPodTouch_2G,
