@@ -23,17 +23,8 @@
     if (self) {
         [self setExcludedActivityTypes:@[UIActivityTypePostToFacebook,
                                          UIActivityTypePostToTwitter,
-                                         UIActivityTypePostToWeibo,
                                          UIActivityTypeMessage,
-                                         UIActivityTypeMail,
-                                         UIActivityTypePrint,
-                                         UIActivityTypeCopyToPasteboard,
-                                         UIActivityTypeAssignToContact,
-                                         UIActivityTypeSaveToCameraRoll,
-                                         UIActivityTypeAddToReadingList,
-                                         UIActivityTypePostToFlickr,
-                                         UIActivityTypePostToVimeo,
-                                         UIActivityTypePostToTencentWeibo]];
+                                         UIActivityTypeMail]];
     }
     return self;
 }

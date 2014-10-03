@@ -40,7 +40,7 @@
 }
 
 + (NSString *)activityName {
-    return @"AirDrop";
+    return @"More";
 }
 
 + (UIImage *)iconForIdiom:(UIUserInterfaceIdiom)idiom {
