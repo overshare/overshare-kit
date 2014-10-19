@@ -8,7 +8,7 @@
 
 #import "OSKAirDropActivity.h"
 
-#import "UIDevice+OSKHardware.h"
+#import "JTSHardwareInfo.h"
 #import "OSKShareableContentItem.h"
 
 @interface OSKAirDropActivity ()
@@ -32,7 +32,7 @@
 }
 
 + (BOOL)isAvailable {
-    return [[UIDevice currentDevice] osk_airDropIsAvailable];
+    return [JTSHardwareInfo airDropIsAvailable];
 }
 
 + (NSString *)activityType {
