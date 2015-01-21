@@ -21,4 +21,5 @@ Pod::Spec.new do |s|
   
   s.dependency 'ADNLogin'
   s.dependency 'PocketAPI'
+  s.dependency 'Branch'
 end
