@@ -90,5 +90,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>bnc_app_key</key>
+	<string>84499351119855798</string>
 </dict>
 </plist>
