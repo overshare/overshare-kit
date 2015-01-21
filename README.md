@@ -36,6 +36,8 @@ OvershareKit makes it trivial to add rich sharing options to your iOS apps. In a
 
 - Built-in integration with popular third-party services like App.net, Instapaper, and more.
 
+- Built-in integration with Branch.io, enabling custom downloads for every new user.
+
 - Complete multi-account management, including authentication and storing credentials securely in the Keychain.
 
 - Killer text editing views with as-you-type Twitter syntax highlighting, [Riposte](http://riposteapp.net)-style swipe gesture cursor navigation, and automatic smart quotes.
@@ -127,6 +129,8 @@ The list of services currently requiring application credentials are:
 
 - **Google Plus:** You'll need to obtain an application key by registering your app with Google Plus.
 
+- **Branch:** Branch enables custom downloads for every new user. Visit http://branch.io for more information. You'll need to obtain an API key by registering your app with Branch.
+
 If you have any questions about this setup process, don’t hesitate to [ask].
 
 ### URL Schemes
@@ -139,11 +143,13 @@ If you have any questions about this setup process, don’t hesitate to [ask].
 
 OvershareKit is almost entirely a standalone library. All of its categories and classes have been properly namespaced with the `OSK` prefix to avoid collisions.
 
-There are two required external libraries, which are included as git submodules in the Depedencies directory:
+There are three required external libraries, which are included as git submodules in the Depedencies directory:
 
 - [App.net Login SDK](https://github.com/appdotnet/ADNLogin-SDK-iOS)
 
 - [Pocket-iOS-SDK](https://github.com/Pocket/Pocket-ObjC-SDK)
+
+- [Branch-iOS-SDK](https://github.com/BranchMetrics/Branch-iOS-SDK)
 
 *The Google Plus framework in the Dependencies directory is not a submodule.*
 
