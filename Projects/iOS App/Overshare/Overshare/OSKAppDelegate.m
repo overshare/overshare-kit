@@ -36,6 +36,8 @@
      5. Embed custom dictionaries that live on through clicking a link - even through the app store - to build a customized experience for each new user and make it really easy to deep link.
      6. Customize links with OG tags to display content in Facebook, Twitter, etc.
      7. Reward new or reffering users! Power the link with referral tracking, reward attribution, and credit balance!
+     
+     For full documentation, see README.md in https://github.com/BranchMetrics/Branch-iOS-SDK
      */
     
     // A Pointer to the signleton instance of Branch. The first time this is called in the app lifecycle, a Branch instance is synchronously instatiated.
