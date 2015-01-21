@@ -5,3 +5,6 @@
 [submodule "ADNLogin-SDK-iOS"]
 	path = Dependencies/ADNLogin-SDK
 	url = https://github.com/appdotnet/ADNLogin-SDK-iOS.git
+[submodule "Dependencies/Branch-iOS-SDK"]
+	path = Dependencies/Branch-iOS-SDK
+	url = https://github.com/BranchMetrics/Branch-iOS-SDK
