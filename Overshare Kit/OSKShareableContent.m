@@ -10,8 +10,96 @@
 
 #import "OSKShareableContentItem.h"
 
+#import "Branch.h"
+
 @implementation OSKShareableContent
 
+- (void)processURLForBranchWithURL:(NSURL *)url
+            andTags:(NSArray *)tags
+            andChannel:(NSString *)channel
+            andFeature:(NSString *)feature
+            andStage:(NSString *)stage
+            andAlias:(NSString *)alias {
+    
+    // Sinleton Branch instance
+    Branch *branch = [Branch getInstance];
+    
+    // Branch Link params
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    //probably remove
+    [params setObject:[url absoluteString] forKey:@"$desktop_url"];
+    //certainly remove
+    [params setObject:[url absoluteString] forKey:@"$ios_url"];
+    [params setObject:[url absoluteString] forKey:@"$android_url"];
+    
+    // Weak block reference to self
+    __weak OSKShareableContent *weakContent = self;
+    
+    // Create Branch Short URL for each channel
+    if([channel isEqualToString:@"facebook"]) {
+        [branch getShortURLWithParams:params
+            andTags:tags
+            andChannel:channel
+            andFeature:feature
+            andStage:stage
+            andAlias:alias
+            andCallback:^(NSString *url, NSError *error) {
+                __strong OSKShareableContent *strongContent = weakContent;
+                strongContent.facebookItem.link = [NSURL URLWithString:url];
+        }];
+    } else if ([channel isEqualToString:@"browser"]) {
+        [branch getShortURLWithParams:params
+            andTags:tags
+            andChannel:channel
+            andFeature:feature
+            andStage:stage
+            andAlias:alias
+            andCallback:^(NSString *url, NSError *error) {
+                __strong OSKShareableContent *strongContent = weakContent;
+                strongContent.webBrowserItem.url = [NSURL URLWithString:url];
+        }];
+    } else if ([channel isEqualToString:@"read_later"]) {
+        [branch getShortURLWithParams:params
+            andTags:tags
+            andChannel:channel
+            andFeature:feature
+            andStage:stage
+            andAlias:alias
+            andCallback:^(NSString *url, NSError *error) {
+                __strong OSKShareableContent *strongContent = weakContent;
+                strongContent.readLaterItem.url = [NSURL URLWithString:url];
+        }];
+    } else if ([channel isEqualToString:@"bookmark"]) {
+        [branch getShortURLWithParams:params
+            andTags:tags
+            andChannel:channel
+            andFeature:feature
+            andStage:stage
+            andAlias:alias
+            andCallback:^(NSString *url, NSError *error) {
+                __strong OSKShareableContent *strongContent = weakContent;
+                strongContent.linkBookmarkItem.url = [NSURL URLWithString:url];
+        }];
+    }
+}
+
+/*
+// identifies all links in a string, and replaces them with Branch short links
+- (void)identifyAllUrlsAndReplaceInString:(NSString *)string {
+    // Find all URLs in a string
+    NSLog(@"String: %@", string);
+    NSDataDetector *detect = [[NSDataDetector alloc] initWithTypes:NSTextCheckingTypeLink error:nil];
+    self.allURLs = [[detect matchesInString:string options:0 range:NSMakeRange(0, [string length])] mutableCopy];
+    NSLog(@"Matches: %@", self.allURLs);
+    
+    // Replace each URL in the string with a Branch Short URL
+    for (int i=0; i<[self.allURLs count]; i++) {
+        NSTextCheckingResult *linkResult = self.allURLs[i];
+        [self processURLForBranch:linkResult.URL withArrayIndex:(NSUInteger *)(unsigned long)i];
+    }
+}
+*/
 + (instancetype)contentFromText:(NSString *)text {
     NSParameterAssert(text.length);
     
@@ -141,25 +229,22 @@
         // Image posts cannot be link posts and vice versa.
         facebook.images = images;
     }
-    [facebook setBranchUrl];
     content.facebookItem = facebook;
     
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
     microblogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
     microblogPost.images = images;
-    [microblogPost setBranchUrl];
+    //[microblogPost setBranchUrl];
     content.microblogPostItem = microblogPost;
     
     OSKCopyToPasteboardContentItem *copyTextToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
     copyTextToPasteboard.text = text;
     copyTextToPasteboard.alternateActivityName = @"Copy Text";
-    //[copyTextToPasteboard setBranchUrl];
     content.pasteboardItem = copyTextToPasteboard;
     
     OSKCopyToPasteboardContentItem *copyURLToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
     copyURLToPasteboard.text = canonicalURL;
     copyURLToPasteboard.alternateActivityName = @"Copy URL";
-    //[copyURLToPasteboard setBranchUrl];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         copyURLToPasteboard.alternateActivityIcon = [UIImage imageNamed:@"osk-copyIcon-purple-76.png"];
     } else {
@@ -172,13 +257,11 @@
     emailItem.body = [NSString stringWithFormat:@"“%@”\n\n(Via @%@)\n\n%@ ", text, authorName, canonicalURL];
     emailItem.subject = @"Clipper Ships Sail On the Ocean";
     emailItem.attachments = images.copy;
-    //[emailItem setBranchUrl];
     content.emailItem = emailItem;
     
     OSKSMSContentItem *smsItem = [[OSKSMSContentItem alloc] init];
     smsItem.body = microblogPost.text;
     smsItem.attachments = images;
-    //[smsItem setBranchUrl];
     content.smsItem = smsItem;
     
     if (URLforCanonicalURL) {
@@ -186,7 +269,6 @@
         readLater.url = URLforCanonicalURL;
         readLater.title = [NSString stringWithFormat:@"Post by %@", authorName];
         readLater.itemDescription = text;
-        //[readLater setBranchUrl];
         content.readLaterItem = readLater;
         
         OSKLinkBookmarkContentItem *linkBookmarking = [[OSKLinkBookmarkContentItem alloc] init];
@@ -195,19 +277,16 @@
         NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
         linkBookmarking.tags = @[appName];
         linkBookmarking.markToRead = YES;
-        //[linkBookmarking setBranchUrl];
         content.linkBookmarkItem = linkBookmarking;
         
         OSKWebBrowserContentItem *browserItem = [[OSKWebBrowserContentItem alloc] init];
         browserItem.url = URLforCanonicalURL;
-        //[browserItem setBranchUrl];
         content.webBrowserItem = browserItem;
     }
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
     toDoList.title = [NSString stringWithFormat:@"Look into message from %@", authorName];
     toDoList.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
-    //[toDoList setBranchUrl];
     content.toDoListItem = toDoList;
     
     OSKPasswordManagementAppSearchContentItem *passwordSearchItem = [[OSKPasswordManagementAppSearchContentItem alloc] init];
@@ -232,8 +311,35 @@
     
     OSKTextEditingContentItem *textEditing = [[OSKTextEditingContentItem alloc] init];
     textEditing.text = emailItem.body;
-    //[textEditing setBranchUrl];
     content.textEditingItem = textEditing;
+    
+    // Call Branch URLs
+    if (URLforCanonicalURL) {
+        [content processURLForBranchWithURL:URLforCanonicalURL
+            andTags:nil
+            andChannel:@"facebook"
+            andFeature:nil
+            andStage:nil
+            andAlias:nil];
+        [content processURLForBranchWithURL:URLforCanonicalURL
+            andTags:nil
+            andChannel:@"browser"
+            andFeature:nil
+            andStage:nil
+            andAlias:nil];
+        [content processURLForBranchWithURL:URLforCanonicalURL
+            andTags:nil
+            andChannel:@"read_later"
+            andFeature:nil
+            andStage:nil
+            andAlias:nil];
+        [content processURLForBranchWithURL:URLforCanonicalURL
+            andTags:nil
+            andChannel:@"bookmark"
+            andFeature:nil
+            andStage:nil
+            andAlias:nil];
+    }
     
     return content;
 }

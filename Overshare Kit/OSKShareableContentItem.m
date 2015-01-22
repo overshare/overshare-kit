@@ -23,17 +23,12 @@ NSString * const OSKShareableContentItemType_ToDoListEntry = @"OSKShareableConte
 NSString * const OSKShareableContentItemType_AirDrop = @"OSKShareableContentItemType_AirDrop";
 NSString * const OSKShareableContentItemType_TextEditing = @"OSKShareableContentItemType_TextEditing";
 
-NSMutableArray *allURLs;
-NSMutableArray *branchURLs;
-NSURL *branchURL;
-
 @implementation OSKShareableContentItem
 
 - (instancetype)init {
     self = [super init];
     if (self) {
         _userInfo = [[NSMutableDictionary alloc] init];
-        _branchURLs = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -42,99 +37,6 @@ NSURL *branchURL;
     NSAssert(NO, @"OSKShareableContentItem subclasses must override itemType without calling super.");
     return nil;
 }
-
-// --- Branch ---
-// Branch URL Methods
-
-- (void)setBranchUrl {
-    if ([self.itemType isEqualToString:OSKShareableContentItemType_Facebook]) {
-        [self processURLForBranch:((OSKFacebookContentItem*)self).link withArrayIndex:nil];
-    } else if ([@[
-                  OSKShareableContentItemType_ReadLater,
-                  OSKShareableContentItemType_LinkBookmark]
-                containsObject:self.itemType]) {
-        [self processURLForBranch:((OSKReadLaterContentItem*)self).url withArrayIndex:nil];
-    } else if ([@[
-                  OSKShareableContentItemType_MicroblogPost,
-                  OSKShareableContentItemType_BlogPost,
-                  OSKShareableContentItemType_CopyToPasteboard,
-                  OSKShareableContentItemType_TextEditing
-                  ] containsObject:self.itemType]) {
-        NSString *text = ((OSKBlogPostContentItem*)self).text;
-        [self identifyAllUrlsAndReplaceInString:text];
-    } else if ([@[
-                  OSKShareableContentItemType_Email,
-                  OSKShareableContentItemType_SMS
-                  ] containsObject:self.itemType]) {
-        NSString *body = ((OSKEmailContentItem*)self).body;
-        [self identifyAllUrlsAndReplaceInString:body];
-    } else if (self.itemType == OSKShareableContentItemType_ToDoListEntry) {
-        NSString *notes = ((OSKToDoListEntryContentItem*)self).notes;
-        [self identifyAllUrlsAndReplaceInString:notes];
-    }
-}
-
-// identifies all links in a string, and replaces them with Branch short links
-- (void)identifyAllUrlsAndReplaceInString:(NSString *)string {
-    // Find all URLs in a string
-    NSLog(@"String: %@", string);
-    NSDataDetector *detect = [[NSDataDetector alloc] initWithTypes:NSTextCheckingTypeLink error:nil];
-    self.allURLs = [[detect matchesInString:string options:0 range:NSMakeRange(0, [string length])] mutableCopy];
-    NSLog(@"Matches: %@", self.allURLs);
-    
-    // Replace each URL in the string with a Branch Short URL
-    for (int i=0; i<[self.allURLs count]; i++) {
-        NSTextCheckingResult *linkResult = self.allURLs[i];
-        [self processURLForBranch:linkResult.URL withArrayIndex:(NSUInteger *)(unsigned long)i];
-    }
-}
-
-- (void)processURLForBranch:(NSURL *)url withArrayIndex:(NSUInteger *)index  {
-    // Sinleton Branch instance
-    Branch *branch = [Branch getInstance];
-    
-    // Branch Link params
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:[url absoluteString] forKey:@"$desktop_url"];
-    [params setObject:[url absoluteString] forKey:@"$ios_url"];
-    [params setObject:[url absoluteString] forKey:@"$android_url"];
-    
-    __weak OSKShareableContentItem *weakSelf = self;
-    
-    [branch getShortURLWithParams:params andCallback:^(NSString *branchURL, NSError *error) {
-        if(!error) {
-            __strong OSKShareableContentItem *strongSelf = weakSelf;
-            if (index) {
-                [strongSelf.branchURLs addObject:[NSURL URLWithString:branchURL]];
-                NSLog(@"URL Array: %@", strongSelf.branchURLs);
-            } else {
-                strongSelf.branchURL = [NSURL URLWithString:branchURL];
-                NSLog(@"URL: %@", strongSelf.branchURL);
-            }
-        }
-    }];
-}
-
-// come back to this, need to define multiple methods for any combination of arguments
-- (void)shareableBranchWithUrl:(NSURL *)url
-            andParams:(NSDictionary *)params
-            andTags:(NSArray *)tags
-            andChannel:(NSString *)channel
-            andFeature:(NSString *)feature
-            andStage:(NSString *)stage
-            andAlias:(NSString *)alias
-            andCallback:(callbackWithUrl)callback {
-    NSLog(@"url: %@", url);
-    NSLog(@"params: %@", params);
-    NSLog(@"tags: %@", tags);
-    NSLog(@"channel: %@", channel);
-    NSLog(@"feature: %@", feature);
-    NSLog(@"stage: %@", stage);
-    NSLog(@"alias: %@", alias);
-    NSLog(@"callback: %@", callback);
-}
-
-// --- End Branch ---
 
 @end
 

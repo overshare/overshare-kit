@@ -7,7 +7,6 @@
 //
 
 @import UIKit;
-#import "Branch.h"
 
 extern NSString * const OSKShareableContentItemType_MicroblogPost;
 extern NSString * const OSKShareableContentItemType_Facebook;
@@ -58,26 +57,6 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
  */
 @property (strong, nonatomic) UIImage *alternateActivityIcon;
 
-
-// --- Branch ---
-
-/**
- A mutable array of all the URL Results found in any test, body, or notes NSString
- */
-@property(strong, nonatomic) NSMutableArray *allURLs;
-
-/**
- A mutable array of all the branch URLs of URLs found in any test, body, or notes NSString
- */
-@property(strong, nonatomic) NSMutableArray *branchURLs;
-
-/**
- The Branch URL of the original link or url
- */
-@property (strong, nonatomic) NSURL *branchURL;
-
-// --- End Branch ---
-
 /**
  Returns either one of the officially supported item types listed above,
  or a custom item type.
@@ -86,10 +65,6 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
  */
 
 - (NSString *)itemType;
-
-// --- Branch ---
-// Processes all URLs in the content item with Branch getShortUrl
-- (void)setBranchUrl;
 
 /**
  Additional activity-specific or contextual info.
