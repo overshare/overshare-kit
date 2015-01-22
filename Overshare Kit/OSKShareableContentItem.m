@@ -115,10 +115,6 @@ NSURL *branchURL;
     }];
 }
 
-- (void)branchURLCallback {
-    
-}
-
 // come back to this, need to define multiple methods for any combination of arguments
 - (void)shareableBranchWithUrl:(NSURL *)url
             andParams:(NSDictionary *)params
