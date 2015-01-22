@@ -23,6 +23,8 @@ NSString * const OSKShareableContentItemType_ToDoListEntry = @"OSKShareableConte
 NSString * const OSKShareableContentItemType_AirDrop = @"OSKShareableContentItemType_AirDrop";
 NSString * const OSKShareableContentItemType_TextEditing = @"OSKShareableContentItemType_TextEditing";
 
+NSMutableArray *allURLs;
+
 @implementation OSKShareableContentItem
 
 - (instancetype)init {
@@ -37,6 +39,95 @@ NSString * const OSKShareableContentItemType_TextEditing = @"OSKShareableContent
     NSAssert(NO, @"OSKShareableContentItem subclasses must override itemType without calling super.");
     return nil;
 }
+
+// --- Branch ---
+// Branch URL Methods
+
+- (NSURL *)setBranchUrl {
+    NSURL *returnUrl;
+    if ([self.itemType isEqualToString:OSKShareableContentItemType_Facebook]) {
+        returnUrl = ((OSKFacebookContentItem*)self).link;
+    } else if ([@[
+                  OSKShareableContentItemType_ReadLater,
+                  OSKShareableContentItemType_LinkBookmark]
+                containsObject:self.itemType]) {
+        returnUrl = ((OSKReadLaterContentItem*)self).url;
+    } else if ([@[
+                  OSKShareableContentItemType_MicroblogPost,
+                  OSKShareableContentItemType_BlogPost,
+                  OSKShareableContentItemType_CopyToPasteboard,
+                  OSKShareableContentItemType_TextEditing
+                  ] containsObject:self.itemType]) {
+        NSString *text = ((OSKBlogPostContentItem*)self).text;
+        [self identifyAllUrlsAndReplaceInString:text];
+        returnUrl = [NSURL URLWithString:text];
+    } else if ([@[
+                  OSKShareableContentItemType_Email,
+                  OSKShareableContentItemType_SMS
+                  ] containsObject:self.itemType]) {
+        NSString *body = ((OSKEmailContentItem*)self).body;
+        [self identifyAllUrlsAndReplaceInString:body];
+        returnUrl = [NSURL URLWithString:body];
+    } else if (self.itemType == OSKShareableContentItemType_ToDoListEntry) {
+        NSString *notes = ((OSKToDoListEntryContentItem*)self).notes;
+        [self identifyAllUrlsAndReplaceInString:notes];
+        returnUrl = [NSURL URLWithString:notes];
+    }
+    return returnUrl;
+}
+
+// identifies all links in a string, and replaces them with Branch short links
+- (void)identifyAllUrlsAndReplaceInString:(NSString *)string {
+    // Find all URLs in a string
+    NSDataDetector *detect = [[NSDataDetector alloc] initWithTypes:NSTextCheckingTypeLink error:nil];
+    self.allURLs = [[detect matchesInString:string options:0 range:NSMakeRange(0, [string length])] mutableCopy];
+    
+    // Replace each URL in the string with a Branch Short URL
+    for (int i=0; i<[self.allURLs count]; i++) {
+        NSTextCheckingResult *linkResult = self.allURLs[i];
+        [self processURLForBranch:linkResult.URL];
+    }
+}
+
+- (void)processURLForBranch:(NSURL *)url {
+    // Sinleton Branch instance
+    Branch *branch = [Branch getInstance];
+    
+    // Branch Link params
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:url forKey:@"$desktop_url"];
+    [params setObject:url forKey:@"$ios_url"];
+    [params setObject:url forKey:@"$android_url"];
+    /*
+    [branch getShortURLWithParams:params andCallback:^(NSString *url, NSError *error) {
+        if(!error) {
+            // put the link somewhere
+        }
+    }];
+     */
+}
+
+// come back to this, need to define multiple methods for any combination of arguments
+- (void)shareableBranchWithUrl:(NSURL *)url
+            andParams:(NSDictionary *)params
+            andTags:(NSArray *)tags
+            andChannel:(NSString *)channel
+            andFeature:(NSString *)feature
+            andStage:(NSString *)stage
+            andAlias:(NSString *)alias
+            andCallback:(callbackWithUrl)callback {
+    NSLog(@"url: %@", url);
+    NSLog(@"params: %@", params);
+    NSLog(@"tags: %@", tags);
+    NSLog(@"channel: %@", channel);
+    NSLog(@"feature: %@", feature);
+    NSLog(@"stage: %@", stage);
+    NSLog(@"alias: %@", alias);
+    NSLog(@"callback: %@", callback);
+}
+
+// End Branch Url Methods
+// --- Branch ---
 
 @end
 

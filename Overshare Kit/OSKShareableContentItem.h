@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+#import "Branch.h"
 
 extern NSString * const OSKShareableContentItemType_MicroblogPost;
 extern NSString * const OSKShareableContentItemType_Facebook;
@@ -57,13 +58,22 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
  */
 @property (strong, nonatomic) UIImage *alternateActivityIcon;
 
+
+// --- Branch ---
+@property(strong, nonatomic) NSMutableArray *allURLs;
+
 /**
  Returns either one of the officially supported item types listed above,
  or a custom item type.
 
  @warning Required. Subclasses must override without calling super.
  */
+
 - (NSString *)itemType;
+
+// --- Branch ---
+// Processes all URLs in the content item with Branch getShortUrl
+- (NSURL *)setBranchUrl;
 
 /**
  Additional activity-specific or contextual info.
