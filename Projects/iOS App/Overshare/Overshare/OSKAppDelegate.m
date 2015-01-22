@@ -110,6 +110,16 @@
     
     BOOL success = NO;
     
+    // Branch deep link handeler
+    // pass the url to the handle deep link call
+    // if handleDeepLink returns YES, and you registered a callback in initSessionAndRegisterDeepLinkHandler, the callback will be called with the data associated with the deep link.
+    if (![@"bnc_no_value" isEqualToString:[BNCPreferenceHelper getAppKey]] &&
+        ![[Branch getInstance] handleDeepLink:url]) {
+        
+        // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
+    }
+    
+    // OvershareKit deep link routing
     if ([[OSKADNLoginManager sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {
         success = YES;
     }
@@ -118,13 +128,6 @@
     }
     else if ([GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation]) {
         success = YES;
-    }
-    // Branch deep link handeler
-    // pass the url to the handle deep link call
-    // if handleDeepLink returns YES, and you registered a callback in initSessionAndRegisterDeepLinkHandler, the callback will be called with the data associated with the deep link
-    else if (![[Branch getInstance] handleDeepLink:url]) {
-        success = YES;
-        // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
     }
     else {
         // if you handle your own custom url-schemes, do it here
