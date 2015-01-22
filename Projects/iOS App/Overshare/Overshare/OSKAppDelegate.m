@@ -16,7 +16,6 @@
 
 // Include Branch, and Branch preference helper
 #import "Branch.h"
-#import "BNCPreferenceHelper.h"
 
 @implementation OSKAppDelegate
 
@@ -43,28 +42,25 @@
      For full documentation, see README.md in https://github.com/BranchMetrics/Branch-iOS-SDK
      */
     
-    // Only initiate Branch if API key is defined in plist
-    if (![@"bnc_no_value" isEqualToString:[BNCPreferenceHelper getAppKey]]) {
-        // A Pointer to the signleton instance of Branch. The first time this is called in the app lifecycle, a Branch instance is synchronously instatiated.
-        Branch *branch = [Branch getInstance];
-    
+    // A Pointer to the signleton instance of Branch. The first time this is called in the app lifecycle, a Branch instance is synchronously instatiated.
+    Branch *branch = [Branch getInstance];
+
 #ifdef DEBUG
-        // Verbose logs for debugging
-        [Branch setDebug];
+    // Verbose logs for debugging
+    [Branch setDebug];
 #endif
-    
-        // Initiates a Branch session, and registers a callback. If you created a custom link with your own custom dictionary data, you probably want to know when the user session init finishes, so you can check that data. Think of this callback as your "deep link router". If your app opens with some data, you want to route the user depending on the data you passed in. Otherwise, send them to a generic install flow.
-        [branch initSessionWithLaunchOptions:launchOptions isReferrable:YES andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {
-            if (!error) {
-                NSLog(@"finished init with params = %@", [params description]);
-                
-                // example dictionary data
-                // NSString *name = [params objectForKey:@"user"];
-                // NSString *profileUrl = [params objectForKey:@"profile_pic"];
-                // NSString *description = [params objectForKey:@"description"];
-            }
-        }];
-    }
+
+    // Initiates a Branch session, and registers a callback. If you created a custom link with your own custom dictionary data, you probably want to know when the user session init finishes, so you can check that data. Think of this callback as your "deep link router". If your app opens with some data, you want to route the user depending on the data you passed in. Otherwise, send them to a generic install flow.
+    [branch initSessionWithLaunchOptions:launchOptions isReferrable:YES andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {
+        if (!error) {
+            NSLog(@"finished init with params = %@", [params description]);
+            
+            // example dictionary data
+            // NSString *name = [params objectForKey:@"user"];
+            // NSString *profileUrl = [params objectForKey:@"profile_pic"];
+            // NSString *description = [params objectForKey:@"description"];
+        }
+    }];
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self setWindow:window];
@@ -113,8 +109,7 @@
     // Branch deep link handeler
     // pass the url to the handle deep link call
     // if handleDeepLink returns YES, and you registered a callback in initSessionAndRegisterDeepLinkHandler, the callback will be called with the data associated with the deep link.
-    if (![@"bnc_no_value" isEqualToString:[BNCPreferenceHelper getAppKey]] &&
-        ![[Branch getInstance] handleDeepLink:url]) {
+    if (![[Branch getInstance] handleDeepLink:url]) {
         
         // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
     }
