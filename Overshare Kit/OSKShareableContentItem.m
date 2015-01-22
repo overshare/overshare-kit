@@ -24,6 +24,8 @@ NSString * const OSKShareableContentItemType_AirDrop = @"OSKShareableContentItem
 NSString * const OSKShareableContentItemType_TextEditing = @"OSKShareableContentItemType_TextEditing";
 
 NSMutableArray *allURLs;
+NSMutableArray *branchURLs;
+NSURL *branchURL;
 
 @implementation OSKShareableContentItem
 
@@ -31,6 +33,7 @@ NSMutableArray *allURLs;
     self = [super init];
     if (self) {
         _userInfo = [[NSMutableDictionary alloc] init];
+        _branchURLs = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -43,15 +46,14 @@ NSMutableArray *allURLs;
 // --- Branch ---
 // Branch URL Methods
 
-- (NSURL *)setBranchUrl {
-    NSURL *returnUrl;
+- (void)setBranchUrl {
     if ([self.itemType isEqualToString:OSKShareableContentItemType_Facebook]) {
-        returnUrl = ((OSKFacebookContentItem*)self).link;
+        [self processURLForBranch:((OSKFacebookContentItem*)self).link withArrayIndex:nil];
     } else if ([@[
                   OSKShareableContentItemType_ReadLater,
                   OSKShareableContentItemType_LinkBookmark]
                 containsObject:self.itemType]) {
-        returnUrl = ((OSKReadLaterContentItem*)self).url;
+        [self processURLForBranch:((OSKReadLaterContentItem*)self).url withArrayIndex:nil];
     } else if ([@[
                   OSKShareableContentItemType_MicroblogPost,
                   OSKShareableContentItemType_BlogPost,
@@ -60,51 +62,61 @@ NSMutableArray *allURLs;
                   ] containsObject:self.itemType]) {
         NSString *text = ((OSKBlogPostContentItem*)self).text;
         [self identifyAllUrlsAndReplaceInString:text];
-        returnUrl = [NSURL URLWithString:text];
     } else if ([@[
                   OSKShareableContentItemType_Email,
                   OSKShareableContentItemType_SMS
                   ] containsObject:self.itemType]) {
         NSString *body = ((OSKEmailContentItem*)self).body;
         [self identifyAllUrlsAndReplaceInString:body];
-        returnUrl = [NSURL URLWithString:body];
     } else if (self.itemType == OSKShareableContentItemType_ToDoListEntry) {
         NSString *notes = ((OSKToDoListEntryContentItem*)self).notes;
         [self identifyAllUrlsAndReplaceInString:notes];
-        returnUrl = [NSURL URLWithString:notes];
     }
-    return returnUrl;
 }
 
 // identifies all links in a string, and replaces them with Branch short links
 - (void)identifyAllUrlsAndReplaceInString:(NSString *)string {
     // Find all URLs in a string
+    NSLog(@"String: %@", string);
     NSDataDetector *detect = [[NSDataDetector alloc] initWithTypes:NSTextCheckingTypeLink error:nil];
     self.allURLs = [[detect matchesInString:string options:0 range:NSMakeRange(0, [string length])] mutableCopy];
+    NSLog(@"Matches: %@", self.allURLs);
     
     // Replace each URL in the string with a Branch Short URL
     for (int i=0; i<[self.allURLs count]; i++) {
         NSTextCheckingResult *linkResult = self.allURLs[i];
-        [self processURLForBranch:linkResult.URL];
+        [self processURLForBranch:linkResult.URL withArrayIndex:(NSUInteger *)(unsigned long)i];
     }
 }
 
-- (void)processURLForBranch:(NSURL *)url {
+- (void)processURLForBranch:(NSURL *)url withArrayIndex:(NSUInteger *)index  {
     // Sinleton Branch instance
     Branch *branch = [Branch getInstance];
     
     // Branch Link params
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:url forKey:@"$desktop_url"];
-    [params setObject:url forKey:@"$ios_url"];
-    [params setObject:url forKey:@"$android_url"];
-    /*
-    [branch getShortURLWithParams:params andCallback:^(NSString *url, NSError *error) {
+    [params setObject:[url absoluteString] forKey:@"$desktop_url"];
+    [params setObject:[url absoluteString] forKey:@"$ios_url"];
+    [params setObject:[url absoluteString] forKey:@"$android_url"];
+    
+    __weak OSKShareableContentItem *weakSelf = self;
+    
+    [branch getShortURLWithParams:params andCallback:^(NSString *branchURL, NSError *error) {
         if(!error) {
-            // put the link somewhere
+            __strong OSKShareableContentItem *strongSelf = weakSelf;
+            if (index) {
+                [strongSelf.branchURLs addObject:[NSURL URLWithString:branchURL]];
+                NSLog(@"URL Array: %@", strongSelf.branchURLs);
+            } else {
+                strongSelf.branchURL = [NSURL URLWithString:branchURL];
+                NSLog(@"URL: %@", strongSelf.branchURL);
+            }
         }
     }];
-     */
+}
+
+- (void)branchURLCallback {
+    
 }
 
 // come back to this, need to define multiple methods for any combination of arguments
@@ -126,8 +138,7 @@ NSMutableArray *allURLs;
     NSLog(@"callback: %@", callback);
 }
 
-// End Branch Url Methods
-// --- Branch ---
+// --- End Branch ---
 
 @end
 

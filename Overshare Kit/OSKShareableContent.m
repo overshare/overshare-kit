@@ -153,13 +153,13 @@
     OSKCopyToPasteboardContentItem *copyTextToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
     copyTextToPasteboard.text = text;
     copyTextToPasteboard.alternateActivityName = @"Copy Text";
-    [copyTextToPasteboard setBranchUrl];
+    //[copyTextToPasteboard setBranchUrl];
     content.pasteboardItem = copyTextToPasteboard;
     
     OSKCopyToPasteboardContentItem *copyURLToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
     copyURLToPasteboard.text = canonicalURL;
     copyURLToPasteboard.alternateActivityName = @"Copy URL";
-    [copyURLToPasteboard setBranchUrl];
+    //[copyURLToPasteboard setBranchUrl];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         copyURLToPasteboard.alternateActivityIcon = [UIImage imageNamed:@"osk-copyIcon-purple-76.png"];
     } else {
@@ -172,13 +172,13 @@
     emailItem.body = [NSString stringWithFormat:@"“%@”\n\n(Via @%@)\n\n%@ ", text, authorName, canonicalURL];
     emailItem.subject = @"Clipper Ships Sail On the Ocean";
     emailItem.attachments = images.copy;
-    [emailItem setBranchUrl];
+    //[emailItem setBranchUrl];
     content.emailItem = emailItem;
     
     OSKSMSContentItem *smsItem = [[OSKSMSContentItem alloc] init];
     smsItem.body = microblogPost.text;
     smsItem.attachments = images;
-    [smsItem setBranchUrl];
+    //[smsItem setBranchUrl];
     content.smsItem = smsItem;
     
     if (URLforCanonicalURL) {
@@ -186,7 +186,7 @@
         readLater.url = URLforCanonicalURL;
         readLater.title = [NSString stringWithFormat:@"Post by %@", authorName];
         readLater.itemDescription = text;
-        [readLater setBranchUrl];
+        //[readLater setBranchUrl];
         content.readLaterItem = readLater;
         
         OSKLinkBookmarkContentItem *linkBookmarking = [[OSKLinkBookmarkContentItem alloc] init];
@@ -195,19 +195,19 @@
         NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
         linkBookmarking.tags = @[appName];
         linkBookmarking.markToRead = YES;
-        [linkBookmarking setBranchUrl];
+        //[linkBookmarking setBranchUrl];
         content.linkBookmarkItem = linkBookmarking;
         
         OSKWebBrowserContentItem *browserItem = [[OSKWebBrowserContentItem alloc] init];
         browserItem.url = URLforCanonicalURL;
-        [browserItem setBranchUrl];
+        //[browserItem setBranchUrl];
         content.webBrowserItem = browserItem;
     }
     
     OSKToDoListEntryContentItem *toDoList = [[OSKToDoListEntryContentItem alloc] init];
     toDoList.title = [NSString stringWithFormat:@"Look into message from %@", authorName];
     toDoList.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
-    [toDoList setBranchUrl];
+    //[toDoList setBranchUrl];
     content.toDoListItem = toDoList;
     
     OSKPasswordManagementAppSearchContentItem *passwordSearchItem = [[OSKPasswordManagementAppSearchContentItem alloc] init];
@@ -232,7 +232,7 @@
     
     OSKTextEditingContentItem *textEditing = [[OSKTextEditingContentItem alloc] init];
     textEditing.text = emailItem.body;
-    [textEditing setBranchUrl];
+    //[textEditing setBranchUrl];
     content.textEditingItem = textEditing;
     
     return content;

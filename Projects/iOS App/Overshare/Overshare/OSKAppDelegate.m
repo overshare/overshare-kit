@@ -106,6 +106,7 @@
     
     BOOL success = NO;
     
+    // --- Branch ---
     // Branch deep link handeler
     // pass the url to the handle deep link call
     // if handleDeepLink returns YES, and you registered a callback in initSessionAndRegisterDeepLinkHandler, the callback will be called with the data associated with the deep link.
@@ -113,6 +114,7 @@
         
         // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
     }
+    // --- End Branch ---
     
     // OvershareKit deep link routing
     if ([[OSKADNLoginManager sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {

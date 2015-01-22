@@ -60,7 +60,23 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
 
 
 // --- Branch ---
+
+/**
+ A mutable array of all the URL Results found in any test, body, or notes NSString
+ */
 @property(strong, nonatomic) NSMutableArray *allURLs;
+
+/**
+ A mutable array of all the branch URLs of URLs found in any test, body, or notes NSString
+ */
+@property(strong, nonatomic) NSMutableArray *branchURLs;
+
+/**
+ The Branch URL of the original link or url
+ */
+@property (strong, nonatomic) NSURL *branchURL;
+
+// --- End Branch ---
 
 /**
  Returns either one of the officially supported item types listed above,
@@ -73,7 +89,7 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
 
 // --- Branch ---
 // Processes all URLs in the content item with Branch getShortUrl
-- (NSURL *)setBranchUrl;
+- (void)setBranchUrl;
 
 /**
  Additional activity-specific or contextual info.
