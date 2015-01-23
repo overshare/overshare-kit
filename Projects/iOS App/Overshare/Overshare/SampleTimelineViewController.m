@@ -86,6 +86,7 @@
      */
     
     // --- Branch ---
+    
     // Sets up sample Branch data
     NSArray *branchTags = @[@"test_tag1", @"test_tag2"];
     
@@ -95,7 +96,7 @@
     [branchParams setObject:@"https://s3-us-west-1.amazonaws.com/myapp/joes_pic.jpg" forKey:@"profile_pic"];
     [branchParams setObject:@"Joe likes long walks on the beach..." forKey:@"description"];
     
-    // Example OG params
+    // Example OG params (for social media... http://ogp.me/)
     [branchParams setObject:@"Joe is a super cool guy!" forKey:@"$og_title"];
     [branchParams setObject:@"https://branch.io/img/logo_icon_black.png" forKey:@"$og_image_url"];
     [branchParams setObject:@"Because he likes long walks on the beach..." forKey:@"$og_description"];
@@ -106,8 +107,19 @@
     // Example Feature
     NSString *branchFeature = @"test_feature";
     
-    // OSK with Branch tags
+    // OSK Content with Branch tags exmaples...
+    
+    // OSK Content with all arguments
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images
+                                                              branchTrackingTags:branchTags
+                                                                    branchParams:branchParams
+                                                                     branchStage:branchStage
+                                                                   branchFeature:branchFeature];
     /*
+    // OSK with tracking tags
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName canonicalURL:canonicalURL
                                                                           images:images branchTrackingTags:branchTags];
@@ -160,11 +172,22 @@
      */
     
     // OSK with Branch Stage
+    /*
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName
                                                                     canonicalURL:canonicalURL
                                                                           images:images
                                                                      branchStage:branchStage];
+     */
+    
+    // OSK with Branch Feature
+    /*
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images
+                                                                     branchFeature:branchFeature];
+     */
     
     // --- End Branch ---
     
