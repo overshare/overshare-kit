@@ -152,7 +152,11 @@ These can be custom items, or additional instances of the official items above.
 
 @property (strong, nonatomic) NSString *branchStage;
 
-@property (strong, nonatomic) NSString *branchAlias;
+@property (strong, nonatomic) NSString *branchCampaign;
+
+@property (strong, nonatomic) NSDictionary *branchParams;
+
+@property (strong, nonatomic) NSDictionary *branchOGTags;
 
 // --- End Branch ---
 @end
@@ -180,6 +184,32 @@ These can be custom items, or additional instances of the official items above.
                               authorName:(NSString *)authorName
                             canonicalURL:(NSString *)canonicalURL
                                   images:(NSArray *)images;
+
+// --- Branch ---
+/**
+ Branch extensions to convenient constructors for microblog posts
+ */
+
+// Tracking, OG, Deep link params, Stage, Feature, and Campagin tags
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchOGTags:(NSDictionary *)branchOGTags
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature
+                          branchCampaign:(NSString *)branchCampaign;
+
+// Tracking tags
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags;
+
+// --- End Branch ---
 
 /**
  Convenient constructor for sharing one or more images with a common caption.

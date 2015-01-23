@@ -77,10 +77,16 @@
     NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
     NSString *authorName = @"testochango";
     
+    /*
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName
                                                                     canonicalURL:canonicalURL
                                                                           images:images];
+     */
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName canonicalURL:canonicalURL
+                                                                          images:images branchTrackingTags:
+                                                                        @[@"tag1", @"tag2"]];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self showShareSheet_Phone:content];

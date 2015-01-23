@@ -53,7 +53,8 @@
     //[params setObject:self.urlToProcessToBranch forKey:@"$ios_url"];
     //[params setObject:self.urlToProcessToBranch forKey:@"$android_url"];
     
-    // OG tags
+    // Tracking tags
+    NSLog(@"Tags: %@", self.branchTags);
     
     // Weak block reference to self
     __weak OSKShareableContent *weakContent = self;
@@ -67,7 +68,6 @@
         andChannel:channel
         andFeature:self.branchFeature
         andStage:self.branchStage
-        andAlias:self.branchAlias
         andCallback:^(NSString *url, NSError *error) {
             __strong OSKShareableContent *strongContent = weakContent;
             
@@ -261,8 +261,26 @@
     return content;
 }
 
-+ (instancetype)contentFromMicroblogPost:(NSString *)text authorName:(NSString *)authorName canonicalURL:(NSString *)canonicalURL images:(NSArray *)images {
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchOGTags:(NSDictionary *)branchOGTags
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature
+                          branchCampaign:(NSString *)branchCampaign {
+    
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
+    
+    // Branch arguments
+    content.branchTags = branchTrackingTags;
+    content.branchStage = branchStage;
+    content.branchFeature = branchFeature;
+    content.branchCampaign = branchCampaign;
+    content.branchParams = branchParams;
+    content.branchOGTags = branchOGTags;
     
     content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
     
@@ -373,6 +391,31 @@
     
     return content;
 }
+
+// --- Branch ---
+
+/**
+ Original class allocation method without Branch arguments
+ */
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchOGTags:nil branchParams:nil branchStage:nil branchFeature:nil branchCampaign:nil];
+}
+
+/**
+ Branch extensions to conveninvce constructors for Microblog posts
+ */
+
+// Tracking tags
++ (instancetype)contentFromMicroblogPost:(NSString *)text authorName:(NSString *)authorName canonicalURL:(NSString *)canonicalURL images:(NSArray *)images branchTrackingTags:(NSArray *)branchTrackingTags {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchOGTags:nil branchParams:nil branchStage:nil branchFeature:nil branchCampaign:nil];
+}
+
+//--- End Branch ---
 
 + (instancetype)contentFromImages:(NSArray *)images caption:(NSString *)caption {
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
