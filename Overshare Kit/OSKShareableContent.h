@@ -188,7 +188,7 @@ These can be custom items, or additional instances of the official items above.
  Branch extensions to convenient constructors for microblog posts
  */
 
-// Tracking, OG, Deep link params, Stage, Feature, and Campaign tags
+// All Branch Arguments: Tracking, OG, Deep link params, Stage, Feature, and Campaign tags
 + (instancetype)contentFromMicroblogPost:(NSString *)text
                               authorName:(NSString *)authorName
                             canonicalURL:(NSString *)canonicalURL
@@ -219,6 +219,38 @@ These can be custom items, or additional instances of the official items above.
                             canonicalURL:(NSString *)canonicalURL
                                   images:(NSArray *)images
                             branchParams:(NSDictionary *)branchPrams;
+
+// Tracking Tags, Deep link params, Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams
+                                branchStage:(NSString *)branchStage;
+
+// Deep link params, Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchPrams
+                             branchStage:(NSString *)branchStage;
+
+// Tracking Tags, Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage;
+
+// Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                             branchStage:(NSString *)branchStage;
 
 // --- End Branch ---
 

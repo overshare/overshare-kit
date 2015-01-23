@@ -106,9 +106,6 @@
     // Example Feature
     NSString *branchFeature = @"test_feature";
     
-    // Example Campaign
-    NSString *branchCampaign = @"test_campaign";
-    
     // OSK with Branch tags
     /*
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
@@ -124,11 +121,21 @@
      */
     
     // OSK with Params for deep links
+    /*
      OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                      authorName:authorName
                                                                      canonicalURL:canonicalURL
                                                                      images:images
                                                                      branchParams:branchParams];
+     */
+    // OSK with Branch tags and Params for deep links
+     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                       authorName:authorName
+                                                                     canonicalURL:canonicalURL
+                                                                         images:images
+                                                               branchTrackingTags:branchTags
+                                                                     branchParams:branchParams
+                                                                      branchStage:branchStage];
     
     // --- End Branch ---
     
