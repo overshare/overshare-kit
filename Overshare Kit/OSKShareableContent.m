@@ -61,8 +61,70 @@
                 strongContent.linkBookmarkItem.url = [NSURL URLWithString:url];
                 NSLog(@"Bookmark: %@", strongContent.linkBookmarkItem.url);
             } else if ([channel isEqualToString:@"microblog_twitter"]) {
-                //strongContent.linkBookmarkItem.url = [NSURL URLWithString:url];
-                //NSLog(@"Twitter / Microblog: %@", strongContent.linkBookmarkItem.url);
+                NSTextCheckingResult *urlCheckingResult =
+                    [self identifyAllUrlsAndReplaceInString:strongContent.microblogPostItem.text];
+                
+                //get the URL from the end of the string
+                NSString *url = urlCheckingResult.URL.absoluteString;
+                
+                //remove the original URL from the end of the string
+                NSString *truncatedString = [strongContent.microblogPostItem.text stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
+                
+                strongContent.microblogPostItem.text = [truncatedString stringByAppendingString:url];
+                
+                NSLog(@"Twitter / Microblog: %@", strongContent.microblogPostItem.text);
+            } else if ([channel isEqualToString:@"email"]) {
+                NSTextCheckingResult *urlCheckingResult =
+                [self identifyAllUrlsAndReplaceInString:strongContent.emailItem.body];
+                
+                //get the URL from the end of the string
+                NSString *url = urlCheckingResult.URL.absoluteString;
+                
+                //remove the original URL from the end of the string
+                NSString *truncatedString = [strongContent.emailItem.body stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
+                
+                strongContent.emailItem.body = [truncatedString stringByAppendingString:url];
+                
+                NSLog(@"Email: %@", strongContent.emailItem.body);
+            } else if ([channel isEqualToString:@"sms"]) {
+                NSTextCheckingResult *urlCheckingResult =
+                [self identifyAllUrlsAndReplaceInString:strongContent.smsItem.body];
+                
+                //get the URL from the end of the string
+                NSString *url = urlCheckingResult.URL.absoluteString;
+                
+                //remove the original URL from the end of the string
+                NSString *truncatedString = [strongContent.smsItem.body stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
+                
+                strongContent.smsItem.body = [truncatedString stringByAppendingString:url];
+                
+                NSLog(@"SMS: %@", strongContent.smsItem.body);
+            } else if ([channel isEqualToString:@"todo"]) {
+                NSTextCheckingResult *urlCheckingResult =
+                [self identifyAllUrlsAndReplaceInString:strongContent.toDoListItem.notes];
+                
+                //get the URL from the end of the string
+                NSString *url = urlCheckingResult.URL.absoluteString;
+                
+                //remove the original URL from the end of the string
+                NSString *truncatedString = [strongContent.toDoListItem.notes stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
+                
+                strongContent.toDoListItem.notes = [truncatedString stringByAppendingString:url];
+                
+                NSLog(@"Todo: %@", strongContent.toDoListItem.notes);
+            } else if ([channel isEqualToString:@"text_editor"]) {
+                NSTextCheckingResult *urlCheckingResult =
+                [self identifyAllUrlsAndReplaceInString:strongContent.textEditingItem.text];
+                
+                //get the URL from the end of the string
+                NSString *url = urlCheckingResult.URL.absoluteString;
+                
+                //remove the original URL from the end of the string
+                NSString *truncatedString = [strongContent.textEditingItem.text stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
+                
+                strongContent.textEditingItem.text = [truncatedString stringByAppendingString:url];
+                
+                NSLog(@"Text editor: %@", strongContent.textEditingItem.text);
             }
             
             // Next channel
@@ -72,98 +134,6 @@
             }
     }];
 }
-
-- (void)processURLForBranchWithString:(NSString *)stringWithURL
-                           andTags:(NSArray *)tags
-                        andChannel:(NSString *)channel
-                        andFeature:(NSString *)feature
-                          andStage:(NSString *)stage
-                          andAlias:(NSString *)alias {
-    
-    // Sinleton Branch instance
-    Branch *branch = [Branch getInstance];
-    
-    NSTextCheckingResult *urlCheckingResult = [self identifyAllUrlsAndReplaceInString:stringWithURL];
-    
-    //get the URL from the end of the string
-    NSString *url = urlCheckingResult.URL.absoluteString;
-    
-    //remove the original URL from the end of the string
-    NSString *truncatedString = [stringWithURL stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
-    
-    // Branch Link params
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    
-    //probably remove
-    [params setObject:url forKey:@"$desktop_url"];
-    //certainly remove
-    [params setObject:url forKey:@"$ios_url"];
-    [params setObject:url forKey:@"$android_url"];
-    
-    // Weak block reference to self
-    __weak OSKShareableContent *weakContent = self;
-    
-    // Content items that put the URL in an NSString
-    // Create Branch Short URL for each channel
-    if([channel isEqualToString:@"microblog_twitter"]) {
-        [branch getShortURLWithParams:params
-            andTags:tags
-            andChannel:channel
-            andFeature:feature
-            andStage:stage
-            andAlias:alias
-            andCallback:^(NSString *url, NSError *error) {
-                __strong OSKShareableContent *strongContent = weakContent;
-                strongContent.microblogPostItem.text = [truncatedString stringByAppendingString:url];
-        }];
-    } else if([channel isEqualToString:@"email"]) {
-        [branch getShortURLWithParams:params
-            andTags:tags
-            andChannel:channel
-            andFeature:feature
-            andStage:stage
-            andAlias:alias
-            andCallback:^(NSString *url, NSError *error) {
-                __strong OSKShareableContent *strongContent = weakContent;
-                strongContent.emailItem.body = [truncatedString stringByAppendingString:url];
-        }];
-    } else if([channel isEqualToString:@"sms"]) {
-        [branch getShortURLWithParams:params
-            andTags:tags
-            andChannel:channel
-            andFeature:feature
-            andStage:stage
-            andAlias:alias
-            andCallback:^(NSString *url, NSError *error) {
-                __strong OSKShareableContent *strongContent = weakContent;
-                strongContent.smsItem.body = [truncatedString stringByAppendingString:url];
-        }];
-    } else if([channel isEqualToString:@"todo"]) {
-        [branch getShortURLWithParams:params
-            andTags:tags
-            andChannel:channel
-            andFeature:feature
-            andStage:stage
-            andAlias:alias
-            andCallback:^(NSString *url, NSError *error) {
-                __strong OSKShareableContent *strongContent = weakContent;
-                strongContent.toDoListItem.notes = [truncatedString stringByAppendingString:url];
-        }];
-    } else if([channel isEqualToString:@"text_editor"]) {
-        [branch getShortURLWithParams:params
-            andTags:tags
-            andChannel:channel
-            andFeature:feature
-            andStage:stage
-            andAlias:alias
-            andCallback:^(NSString *url, NSError *error) {
-                __strong OSKShareableContent *strongContent = weakContent;
-                strongContent.textEditingItem.text = [truncatedString stringByAppendingString:url];
-        }];
-    }
-    
-}
-
 
 // identifies all links in a string
 - (NSTextCheckingResult *)identifyAllUrlsAndReplaceInString:(NSString *)string {
@@ -411,16 +381,6 @@
         
         //Content iterms that have a url or link attribute
         [content processURLsForBranch];
-        
-        /*
-        //content items that put the URL in an NSString
-        [content processURLForBranchWithString:content.microblogPostItem.text
-            andTags:nil
-            andChannel:@"microblog_twitter"
-            andFeature:nil
-            andStage:nil
-            andAlias:nil];
-         */
     }
     
     return content;
