@@ -196,7 +196,6 @@ These can be custom items, or additional instances of the official items above.
                             canonicalURL:(NSString *)canonicalURL
                                   images:(NSArray *)images
                       branchTrackingTags:(NSArray *)branchTrackingTags
-                            branchOGTags:(NSDictionary *)branchOGTags
                             branchParams:(NSDictionary *)branchParams
                              branchStage:(NSString *)branchStage
                            branchFeature:(NSString *)branchFeature
@@ -208,6 +207,14 @@ These can be custom items, or additional instances of the official items above.
                             canonicalURL:(NSString *)canonicalURL
                                   images:(NSArray *)images
                       branchTrackingTags:(NSArray *)branchTrackingTags;
+
+// Tracking Tags, Deep link params
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams;
 
 // --- End Branch ---
 

@@ -77,16 +77,41 @@
     NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
     NSString *authorName = @"testochango";
     
+    // Original method call
+    /*
+     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+     authorName:authorName
+     canonicalURL:canonicalURL
+     images:images];
+     */
+    
+    // --- Branch ---
+    // Sets up sample Branch data
+    NSArray *branchTags = @[@"test_tag1", @"test_tag2"];
+    
+    NSMutableDictionary *branchParams = [[NSMutableDictionary alloc] init];
+    // Example params
+    [branchParams setObject:@"Joe" forKey:@"user"];
+    [branchParams setObject:@"https://s3-us-west-1.amazonaws.com/myapp/joes_pic.jpg" forKey:@"profile_pic"];
+    [branchParams setObject:@"Joe likes long walks on the beach..." forKey:@"description"];
+    
+    // Example OG params
+    [branchParams setObject:@"Joe is a super cool guy!" forKey:@"$og_title"];
+    [branchParams setObject:@"https://s3-us-west-1.amazonaws.com/myapp/joes_pic.jpg" forKey:@"$og_image_url"];
+    [branchParams setObject:@"Because he likes long walks on the beach..." forKey:@"$og_description"];
+    
+    // Test Branch tags
     /*
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
-                                                                      authorName:authorName
-                                                                    canonicalURL:canonicalURL
-                                                                          images:images];
+                                                                      authorName:authorName canonicalURL:canonicalURL
+                                                                          images:images branchTrackingTags:branchTags];
      */
+    // Test Branch tags and params
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName canonicalURL:canonicalURL
-                                                                          images:images branchTrackingTags:
-                                                                        @[@"tag1", @"tag2"]];
+                                                                          images:images branchTrackingTags:branchTags branchParams:branchParams];
+    
+    // --- End Branch ---
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self showShareSheet_Phone:content];
