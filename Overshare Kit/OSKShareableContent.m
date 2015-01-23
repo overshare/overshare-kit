@@ -64,9 +64,6 @@
                 NSTextCheckingResult *urlCheckingResult =
                     [self identifyAllUrlsAndReplaceInString:strongContent.microblogPostItem.text];
                 
-                //get the URL from the end of the string
-                NSString *url = urlCheckingResult.URL.absoluteString;
-                
                 //remove the original URL from the end of the string
                 NSString *truncatedString = [strongContent.microblogPostItem.text stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
                 
@@ -76,9 +73,6 @@
             } else if ([channel isEqualToString:@"email"]) {
                 NSTextCheckingResult *urlCheckingResult =
                 [self identifyAllUrlsAndReplaceInString:strongContent.emailItem.body];
-                
-                //get the URL from the end of the string
-                NSString *url = urlCheckingResult.URL.absoluteString;
                 
                 //remove the original URL from the end of the string
                 NSString *truncatedString = [strongContent.emailItem.body stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
@@ -90,9 +84,6 @@
                 NSTextCheckingResult *urlCheckingResult =
                 [self identifyAllUrlsAndReplaceInString:strongContent.smsItem.body];
                 
-                //get the URL from the end of the string
-                NSString *url = urlCheckingResult.URL.absoluteString;
-                
                 //remove the original URL from the end of the string
                 NSString *truncatedString = [strongContent.smsItem.body stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
                 
@@ -103,9 +94,6 @@
                 NSTextCheckingResult *urlCheckingResult =
                 [self identifyAllUrlsAndReplaceInString:strongContent.toDoListItem.notes];
                 
-                //get the URL from the end of the string
-                NSString *url = urlCheckingResult.URL.absoluteString;
-                
                 //remove the original URL from the end of the string
                 NSString *truncatedString = [strongContent.toDoListItem.notes stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
                 
@@ -115,9 +103,6 @@
             } else if ([channel isEqualToString:@"text_editor"]) {
                 NSTextCheckingResult *urlCheckingResult =
                 [self identifyAllUrlsAndReplaceInString:strongContent.textEditingItem.text];
-                
-                //get the URL from the end of the string
-                NSString *url = urlCheckingResult.URL.absoluteString;
                 
                 //remove the original URL from the end of the string
                 NSString *truncatedString = [strongContent.textEditingItem.text stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
