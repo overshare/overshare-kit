@@ -44,9 +44,6 @@
     // Sinleton Branch instance
     Branch *branch = [Branch getInstance];
     
-    // Tracking tags
-    NSLog(@"Tags: %@", self.branchTags);
-    
     // Weak block reference to self
     __weak OSKShareableContent *weakContent = self;
     
@@ -382,7 +379,7 @@
 // --- Branch ---
 
 /**
- Original class allocation method without Branch arguments
+ Original class method without Branch arguments
  */
 + (instancetype)contentFromMicroblogPost:(NSString *)text
                               authorName:(NSString *)authorName
@@ -393,7 +390,7 @@
 }
 
 /**
- Branch extensions to conveninvce constructors for Microblog posts
+ Branch extensions to convenient constructors for Microblog posts
  */
 
 // Tracking tags
@@ -459,6 +456,85 @@
                              branchStage:(NSString *)branchStage {
     
     return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:nil branchStage:branchStage branchFeature:nil];
+};
+
+// Tracking tags, Deep link params, and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:branchParams branchStage:nil branchFeature:branchFeature];
+};
+
+// Tracking tags, Stage, and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:nil branchStage:branchStage branchFeature:branchFeature];
+};
+
+// Deep link params, Stage and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:branchParams branchStage:branchStage branchFeature:branchFeature];
+};
+
+// Deep link params and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:branchParams branchStage:nil branchFeature:branchFeature];
+};
+
+// Stage and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:nil branchStage:branchStage branchFeature:branchFeature];
+};
+
+// Tracking tags and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:nil branchStage:nil branchFeature:branchFeature];
+};
+
+// Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:nil branchStage:nil branchFeature:branchFeature];
 };
 
 // Stage

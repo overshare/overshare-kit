@@ -188,7 +188,7 @@ These can be custom items, or additional instances of the official items above.
  Branch extensions to convenient constructors for microblog posts
  */
 
-// All Branch Arguments: Tracking, OG, Deep link params, Stage, Feature, and Campaign tags
+// All Branch Arguments: Tracking, Deep link params, Stage, and Feature
 + (instancetype)contentFromMicroblogPost:(NSString *)text
                               authorName:(NSString *)authorName
                             canonicalURL:(NSString *)canonicalURL
@@ -252,6 +252,64 @@ These can be custom items, or additional instances of the official items above.
                                   images:(NSArray *)images
                              branchStage:(NSString *)branchStage;
 
+// Tracking tags, Deep link params, and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature;
+
+// Tracking tags, Stage, and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Deep link params, Stage and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Deep link params and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature;
+
+// Stage and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Tracking tags and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                           branchFeature:(NSString *)branchFeature;
+
+// Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                           branchFeature:(NSString *)branchFeature;
+
 // --- End Branch ---
 
 /**
@@ -260,7 +318,14 @@ These can be custom items, or additional instances of the official items above.
 + (instancetype)contentFromImages:(NSArray *)images
                           caption:(NSString *)caption;
 
+// --- Branch ---
+
+/**
+ Processes URLs in all Content Items and replaces with Branch URLs
+ */
 - (void)processURLsForBranch;
+
+// --- Branch ---
 
 @end
 
