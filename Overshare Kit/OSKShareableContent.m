@@ -266,6 +266,8 @@
     
     content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
     
+    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    
     NSURL *URLforCanonicalURL = nil;
     if (canonicalURL) {
         URLforCanonicalURL = [NSURL URLWithString:canonicalURL];
@@ -307,7 +309,7 @@
     
     OSKEmailContentItem *emailItem = [[OSKEmailContentItem alloc] init];
     emailItem.body = [NSString stringWithFormat:@"“%@”\n\n(Via @%@)\n\n%@ ", text, authorName, canonicalURL];
-    emailItem.subject = @"Clipper Ships Sail On the Ocean";
+    emailItem.subject = [NSString stringWithFormat:@"Link from %@", appName];
     emailItem.attachments = images.copy;
     content.emailItem = emailItem;
     
@@ -326,7 +328,6 @@
         OSKLinkBookmarkContentItem *linkBookmarking = [[OSKLinkBookmarkContentItem alloc] init];
         linkBookmarking.url = URLforCanonicalURL;
         linkBookmarking.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
-        NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
         linkBookmarking.tags = @[appName];
         linkBookmarking.markToRead = YES;
         content.linkBookmarkItem = linkBookmarking;
