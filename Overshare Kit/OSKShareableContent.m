@@ -417,6 +417,16 @@
     return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:branchPrams branchStage:nil branchFeature:nil];
 }
 
+// Deep link params
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchPrams {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:branchPrams branchStage:nil branchFeature:nil];
+}
+
 //--- End Branch ---
 
 + (instancetype)contentFromImages:(NSArray *)images caption:(NSString *)caption {

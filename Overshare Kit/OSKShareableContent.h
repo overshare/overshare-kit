@@ -213,6 +213,13 @@ These can be custom items, or additional instances of the official items above.
                       branchTrackingTags:(NSArray *)branchTrackingTags
                             branchParams:(NSDictionary *)branchPrams;
 
+// Deep link params
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchPrams;
+
 // --- End Branch ---
 
 /**

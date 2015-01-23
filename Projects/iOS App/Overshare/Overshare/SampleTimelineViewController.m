@@ -97,7 +97,7 @@
     
     // Example OG params
     [branchParams setObject:@"Joe is a super cool guy!" forKey:@"$og_title"];
-    [branchParams setObject:@"https://s3-us-west-1.amazonaws.com/myapp/joes_pic.jpg" forKey:@"$og_image_url"];
+    [branchParams setObject:@"https://branch.io/img/logo_icon_black.png" forKey:@"$og_image_url"];
     [branchParams setObject:@"Because he likes long walks on the beach..." forKey:@"$og_description"];
     
     // Example Stage
@@ -115,10 +115,20 @@
                                                                       authorName:authorName canonicalURL:canonicalURL
                                                                           images:images branchTrackingTags:branchTags];
      */
-    // OSK with Branch tags and Params
+    
+    // OSK with Branch tags and Params for deep links
+    /*
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName canonicalURL:canonicalURL
                                                                           images:images branchTrackingTags:branchTags branchParams:branchParams];
+     */
+    
+    // OSK with Params for deep links
+     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                     authorName:authorName
+                                                                     canonicalURL:canonicalURL
+                                                                     images:images
+                                                                     branchParams:branchParams];
     
     // --- End Branch ---
     
