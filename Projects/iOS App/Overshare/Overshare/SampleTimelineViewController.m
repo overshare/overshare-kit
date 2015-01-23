@@ -128,7 +128,8 @@
                                                                      images:images
                                                                      branchParams:branchParams];
      */
-    // OSK with Branch tags and Params for deep links
+    // OSK with Branch tags, Params for deep links, and Branch Stage
+    /*
      OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                        authorName:authorName
                                                                      canonicalURL:canonicalURL
@@ -136,6 +137,34 @@
                                                                branchTrackingTags:branchTags
                                                                      branchParams:branchParams
                                                                       branchStage:branchStage];
+     */
+    
+    // OSK with Branch tags and Branch Stage
+    /*
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images
+                                                              branchTrackingTags:branchTags
+                                                                     branchStage:branchStage];
+     */
+    
+    // OSK with Branch Params for deep links and Branch Stage
+    /*
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images
+                                                                    branchParams:branchParams
+                                                                     branchStage:branchStage];
+     */
+    
+    // OSK with Branch Stage
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images
+                                                                     branchStage:branchStage];
     
     // --- End Branch ---
     
