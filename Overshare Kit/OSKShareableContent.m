@@ -46,7 +46,7 @@
         andCallback:^(NSString *url, NSError *error) {
             __strong OSKShareableContent *strongContent = weakContent;
             
-            NSString *channel = [self.channelsToProcessToBranch firstObject];
+            NSString *channel = [strongContent.channelsToProcessToBranch firstObject];
             
             if([channel isEqualToString:@"facebook"]) {
                 strongContent.facebookItem.link = [NSURL URLWithString:url];
@@ -78,10 +78,10 @@
             }
             
             // Next channel
-            [self.channelsToProcessToBranch removeObjectAtIndex:0];
-            if (self.channelsToProcessToBranch.count > 0) {
+            [strongContent.channelsToProcessToBranch removeObjectAtIndex:0];
+            if (strongContent.channelsToProcessToBranch.count > 0) {
                 NSLog(@"\n--------------------------------------\n");
-                [self processURLsForBranch];
+                [strongContent processURLsForBranch];
             }
     }];
 }
