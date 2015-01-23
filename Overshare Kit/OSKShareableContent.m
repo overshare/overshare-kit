@@ -56,10 +56,21 @@
     return content;
 }
 
-+ (instancetype)contentFromURL:(NSURL *)url {
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchParams
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature {
     NSParameterAssert(url.absoluteString.length);
     
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
+    
+    // Branch arguments
+    content.branchTags = branchTrackingTags;
+    content.branchStage = branchStage;
+    content.branchFeature = branchFeature;
+    content.branchParams = branchParams;
+    
     NSString *absoluteString = url.absoluteString;
 
     content.title = absoluteString;
@@ -126,6 +137,190 @@
     
     return content;
 }
+
+// --- Branch ---
+
+/**
+ Original class method without Branch arguments
+ */
++ (instancetype)contentFromURL:(NSURL *)url {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:nil
+                                   branchStage:nil
+                                 branchFeature:nil];
+};
+
+// Tracking tags
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:nil
+                                   branchStage:nil
+                                 branchFeature:nil];
+};
+
+// Tracking Tags, Deep link params
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchPrams {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:branchPrams
+                                   branchStage:nil
+                                 branchFeature:nil];
+};
+
+// Deep link params
++ (instancetype)contentFromURL:(NSURL *)url
+                  branchParams:(NSDictionary *)branchPrams {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:branchPrams
+                                   branchStage:nil
+                                 branchFeature:nil];
+};
+
+// Tracking Tags, Deep link params, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchPrams
+                   branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:branchPrams
+                                   branchStage:branchStage
+                                 branchFeature:nil];
+};
+
+// Deep link params, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                  branchParams:(NSDictionary *)branchPrams
+                   branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:branchPrams
+                                   branchStage:branchStage
+                                 branchFeature:nil];
+};
+
+// Tracking Tags, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                   branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:nil
+                                   branchStage:branchStage
+                                 branchFeature:nil];
+};
+
+// Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                   branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:nil
+                                   branchStage:branchStage
+                                 branchFeature:nil];
+};
+
+// Tracking tags, Deep link params, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchParams
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:branchParams
+                                   branchStage:nil
+                                 branchFeature:branchFeature];
+};
+
+// Tracking tags, Stage, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:nil
+                                   branchStage:branchStage
+                                 branchFeature:branchFeature];
+};
+
+// Deep link params, Stage and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                  branchParams:(NSDictionary *)branchParams
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:branchParams
+                                   branchStage:branchStage
+                                 branchFeature:branchFeature];
+};
+
+// Deep link params and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                  branchParams:(NSDictionary *)branchParams
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:branchParams
+                                   branchStage:nil
+                                 branchFeature:branchFeature];
+};
+
+// Stage and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:nil
+                                   branchStage:branchStage
+                                 branchFeature:branchFeature];
+};
+
+// Tracking tags and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:nil
+                                   branchStage:nil
+                                 branchFeature:branchFeature];
+};
+
+// Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:nil
+                                   branchStage:nil
+                                 branchFeature:branchFeature];
+};
+
+// --- End Branch ---
 
 + (instancetype)contentFromMicroblogPost:(NSString *)text
                               authorName:(NSString *)authorName

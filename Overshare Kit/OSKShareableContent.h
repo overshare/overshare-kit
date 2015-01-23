@@ -175,6 +175,90 @@ These can be custom items, or additional instances of the official items above.
  */
 + (instancetype)contentFromURL:(NSURL *)url;
 
+// --- Branch ---
+/**
+ Branch extensions to convenient constructors for links
+ */
+
+// All Branch Arguments: Tracking, Deep link params, Stage, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchParams
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature;
+
+// Tracking tags
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags;
+
+// Tracking Tags, Deep link params
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams;
+
+// Deep link params
++ (instancetype)contentFromURL:(NSURL *)url
+                            branchParams:(NSDictionary *)branchPrams;
+
+// Tracking Tags, Deep link params, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams
+                             branchStage:(NSString *)branchStage;
+
+// Deep link params, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                            branchParams:(NSDictionary *)branchPrams
+                             branchStage:(NSString *)branchStage;
+
+// Tracking Tags, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage;
+
+// Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                             branchStage:(NSString *)branchStage;
+
+// Tracking tags, Deep link params, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature;
+
+// Tracking tags, Stage, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Deep link params, Stage and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Deep link params and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature;
+
+// Stage and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Tracking tags and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                           branchFeature:(NSString *)branchFeature;
+
+// Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                           branchFeature:(NSString *)branchFeature;
+
+// --- End Branch ---
+
 /**
  Convenient constructor for content drawn from microblog posts (like Twitter or App.net).
  */
