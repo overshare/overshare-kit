@@ -47,7 +47,7 @@
 
 #ifdef DEBUG
     // Verbose logs for debugging
-    //[Branch setDebug];
+    [Branch setDebug];
 #endif
 
     // Initiates a Branch session, and registers a callback. If you created a custom link with your own custom dictionary data, you probably want to know when the user session init finishes, so you can check that data. Think of this callback as your "deep link router". If your app opens with some data, you want to route the user depending on the data you passed in. Otherwise, send them to a generic install flow.
