@@ -47,11 +47,13 @@
     // Branch Link params
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    //probably remove
+    // probably remove
     [params setObject:self.urlToProcessToBranch forKey:@"$desktop_url"];
     //certainly remove
     //[params setObject:self.urlToProcessToBranch forKey:@"$ios_url"];
     //[params setObject:self.urlToProcessToBranch forKey:@"$android_url"];
+    
+    // OG tags
     
     // Weak block reference to self
     __weak OSKShareableContent *weakContent = self;
