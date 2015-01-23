@@ -80,9 +80,9 @@
     // Original method call
     /*
      OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
-     authorName:authorName
-     canonicalURL:canonicalURL
-     images:images];
+                                                                     authorName:authorName
+                                                                     canonicalURL:canonicalURL
+                                                                     images:images];
      */
     
     // --- Branch ---
@@ -90,7 +90,7 @@
     NSArray *branchTags = @[@"test_tag1", @"test_tag2"];
     
     NSMutableDictionary *branchParams = [[NSMutableDictionary alloc] init];
-    // Example params
+    // Example params Deep Link data
     [branchParams setObject:@"Joe" forKey:@"user"];
     [branchParams setObject:@"https://s3-us-west-1.amazonaws.com/myapp/joes_pic.jpg" forKey:@"profile_pic"];
     [branchParams setObject:@"Joe likes long walks on the beach..." forKey:@"description"];
@@ -100,13 +100,22 @@
     [branchParams setObject:@"https://s3-us-west-1.amazonaws.com/myapp/joes_pic.jpg" forKey:@"$og_image_url"];
     [branchParams setObject:@"Because he likes long walks on the beach..." forKey:@"$og_description"];
     
-    // Test Branch tags
+    // Example Stage
+    NSString *branchStage = @"test_stage";
+    
+    // Example Feature
+    NSString *branchFeature = @"test_feature";
+    
+    // Example Campaign
+    NSString *branchCampaign = @"test_campaign";
+    
+    // OSK with Branch tags
     /*
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName canonicalURL:canonicalURL
                                                                           images:images branchTrackingTags:branchTags];
      */
-    // Test Branch tags and params
+    // OSK with Branch tags and Params
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName canonicalURL:canonicalURL
                                                                           images:images branchTrackingTags:branchTags branchParams:branchParams];

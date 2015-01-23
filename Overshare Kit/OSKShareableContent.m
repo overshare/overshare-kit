@@ -259,8 +259,7 @@
                       branchTrackingTags:(NSArray *)branchTrackingTags
                             branchParams:(NSDictionary *)branchParams
                              branchStage:(NSString *)branchStage
-                           branchFeature:(NSString *)branchFeature
-                          branchCampaign:(NSString *)branchCampaign {
+                           branchFeature:(NSString *)branchFeature {
     
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
     
@@ -268,7 +267,6 @@
     content.branchTags = branchTrackingTags;
     content.branchStage = branchStage;
     content.branchFeature = branchFeature;
-    content.branchCampaign = branchCampaign;
     content.branchParams = branchParams;
     
     content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
@@ -391,7 +389,7 @@
                             canonicalURL:(NSString *)canonicalURL
                                   images:(NSArray *)images {
     
-    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:nil branchStage:nil branchFeature:nil branchCampaign:nil];
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:nil branchStage:nil branchFeature:nil];
 }
 
 /**
@@ -405,7 +403,7 @@
                                   images:(NSArray *)images
                       branchTrackingTags:(NSArray *)branchTrackingTags {
     
-    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:nil branchStage:nil branchFeature:nil branchCampaign:nil];
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:nil branchStage:nil branchFeature:nil];
 }
 
 // Tracking tags, Deep link params
@@ -416,7 +414,7 @@
                       branchTrackingTags:(NSArray *)branchTrackingTags
                             branchParams:(NSDictionary *)branchPrams {
     
-    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:branchPrams branchStage:nil branchFeature:nil branchCampaign:nil];
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:branchPrams branchStage:nil branchFeature:nil];
 }
 
 //--- End Branch ---

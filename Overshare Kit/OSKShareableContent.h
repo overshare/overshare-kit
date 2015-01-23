@@ -152,8 +152,6 @@ These can be custom items, or additional instances of the official items above.
 
 @property (strong, nonatomic) NSString *branchStage;
 
-@property (strong, nonatomic) NSString *branchCampaign;
-
 @property (strong, nonatomic) NSDictionary *branchParams;
 
 @property (strong, nonatomic) NSDictionary *branchOGTags;
@@ -190,7 +188,7 @@ These can be custom items, or additional instances of the official items above.
  Branch extensions to convenient constructors for microblog posts
  */
 
-// Tracking, OG, Deep link params, Stage, Feature, and Campagin tags
+// Tracking, OG, Deep link params, Stage, Feature, and Campaign tags
 + (instancetype)contentFromMicroblogPost:(NSString *)text
                               authorName:(NSString *)authorName
                             canonicalURL:(NSString *)canonicalURL
@@ -198,8 +196,7 @@ These can be custom items, or additional instances of the official items above.
                       branchTrackingTags:(NSArray *)branchTrackingTags
                             branchParams:(NSDictionary *)branchParams
                              branchStage:(NSString *)branchStage
-                           branchFeature:(NSString *)branchFeature
-                          branchCampaign:(NSString *)branchCampaign;
+                           branchFeature:(NSString *)branchFeature;
 
 // Tracking tags
 + (instancetype)contentFromMicroblogPost:(NSString *)text
