@@ -50,8 +50,8 @@
     //probably remove
     [params setObject:self.urlToProcessToBranch forKey:@"$desktop_url"];
     //certainly remove
-    [params setObject:self.urlToProcessToBranch forKey:@"$ios_url"];
-    [params setObject:self.urlToProcessToBranch forKey:@"$android_url"];
+    //[params setObject:self.urlToProcessToBranch forKey:@"$ios_url"];
+    //[params setObject:self.urlToProcessToBranch forKey:@"$android_url"];
     
     // Weak block reference to self
     __weak OSKShareableContent *weakContent = self;
