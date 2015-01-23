@@ -137,6 +137,24 @@ These can be custom items, or additional instances of the official items above.
 */
 @property (copy, nonatomic) NSString *title;
 
+
+// --- Branch ---
+
+@property (strong, nonatomic) NSMutableArray *channelsToProcessToBranch;
+
+@property (strong, nonatomic) NSMutableArray *channelsWithStringsToProcessToBranch;
+
+@property (strong, nonatomic) NSString *urlToProcessToBranch;
+
+@property (strong, nonatomic) NSArray *branchTags;
+
+@property (strong, nonatomic) NSString *branchFeature;
+
+@property (strong, nonatomic) NSString *branchStage;
+
+@property (strong, nonatomic) NSString *branchAlias;
+
+// --- End Branch ---
 @end
 
 /// -----------------------------------------
@@ -168,6 +186,8 @@ These can be custom items, or additional instances of the official items above.
  */
 + (instancetype)contentFromImages:(NSArray *)images
                           caption:(NSString *)caption;
+
+- (void)processURLsForBranch;
 
 @end
 

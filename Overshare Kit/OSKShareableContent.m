@@ -14,12 +14,9 @@
 
 @implementation OSKShareableContent
 
-- (void)processURLForBranchWithURL:(NSURL *)url
-            andTags:(NSArray *)tags
-            andChannel:(NSString *)channel
-            andFeature:(NSString *)feature
-            andStage:(NSString *)stage
-            andAlias:(NSString *)alias {
+// --- Branch ---
+
+- (void)processURLsForBranch {
     
     // Sinleton Branch instance
     Branch *branch = [Branch getInstance];
@@ -28,78 +25,158 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     //probably remove
-    [params setObject:[url absoluteString] forKey:@"$desktop_url"];
+    [params setObject:self.urlToProcessToBranch forKey:@"$desktop_url"];
     //certainly remove
-    [params setObject:[url absoluteString] forKey:@"$ios_url"];
-    [params setObject:[url absoluteString] forKey:@"$android_url"];
+    [params setObject:self.urlToProcessToBranch forKey:@"$ios_url"];
+    [params setObject:self.urlToProcessToBranch forKey:@"$android_url"];
     
     // Weak block reference to self
     __weak OSKShareableContent *weakContent = self;
     
+    NSString *channel = [self.channelsToProcessToBranch firstObject];
+    
+    // Content items that take a single URL as an argument
     // Create Branch Short URL for each channel
-    if([channel isEqualToString:@"facebook"]) {
-        [branch getShortURLWithParams:params
-            andTags:tags
-            andChannel:channel
-            andFeature:feature
-            andStage:stage
-            andAlias:alias
-            andCallback:^(NSString *url, NSError *error) {
-                __strong OSKShareableContent *strongContent = weakContent;
+    [branch getShortURLWithParams:params
+        andTags:self.branchTags
+        andChannel:channel
+        andFeature:self.branchFeature
+        andStage:self.branchStage
+        andAlias:self.branchAlias
+        andCallback:^(NSString *url, NSError *error) {
+            __strong OSKShareableContent *strongContent = weakContent;
+            
+            NSString *channel = [self.channelsToProcessToBranch firstObject];
+            
+            if([channel isEqualToString:@"facebook"]) {
                 strongContent.facebookItem.link = [NSURL URLWithString:url];
-        }];
-    } else if ([channel isEqualToString:@"browser"]) {
-        [branch getShortURLWithParams:params
-            andTags:tags
-            andChannel:channel
-            andFeature:feature
-            andStage:stage
-            andAlias:alias
-            andCallback:^(NSString *url, NSError *error) {
-                __strong OSKShareableContent *strongContent = weakContent;
+                NSLog(@"Facebook: %@", strongContent.facebookItem.link);
+            } else if ([channel isEqualToString:@"browser"]) {
                 strongContent.webBrowserItem.url = [NSURL URLWithString:url];
-        }];
-    } else if ([channel isEqualToString:@"read_later"]) {
-        [branch getShortURLWithParams:params
-            andTags:tags
-            andChannel:channel
-            andFeature:feature
-            andStage:stage
-            andAlias:alias
-            andCallback:^(NSString *url, NSError *error) {
-                __strong OSKShareableContent *strongContent = weakContent;
+                NSLog(@"Browser: %@", strongContent.webBrowserItem.url);
+            } else if ([channel isEqualToString:@"read_later"]) {
                 strongContent.readLaterItem.url = [NSURL URLWithString:url];
-        }];
-    } else if ([channel isEqualToString:@"bookmark"]) {
-        [branch getShortURLWithParams:params
-            andTags:tags
-            andChannel:channel
-            andFeature:feature
-            andStage:stage
-            andAlias:alias
-            andCallback:^(NSString *url, NSError *error) {
-                __strong OSKShareableContent *strongContent = weakContent;
+                NSLog(@"Read Later: %@", strongContent.readLaterItem.url);
+            } else if ([channel isEqualToString:@"bookmark"]) {
                 strongContent.linkBookmarkItem.url = [NSURL URLWithString:url];
-        }];
-    }
+                NSLog(@"Bookmark: %@", strongContent.linkBookmarkItem.url);
+            } else if ([channel isEqualToString:@"microblog_twitter"]) {
+                //strongContent.linkBookmarkItem.url = [NSURL URLWithString:url];
+                //NSLog(@"Twitter / Microblog: %@", strongContent.linkBookmarkItem.url);
+            }
+            
+            // Next channel
+            [self.channelsToProcessToBranch removeObjectAtIndex:0];
+            if (self.channelsToProcessToBranch.count > 0) {
+                [self processURLsForBranch];
+            }
+    }];
 }
 
-/*
-// identifies all links in a string, and replaces them with Branch short links
-- (void)identifyAllUrlsAndReplaceInString:(NSString *)string {
-    // Find all URLs in a string
-    NSLog(@"String: %@", string);
-    NSDataDetector *detect = [[NSDataDetector alloc] initWithTypes:NSTextCheckingTypeLink error:nil];
-    self.allURLs = [[detect matchesInString:string options:0 range:NSMakeRange(0, [string length])] mutableCopy];
-    NSLog(@"Matches: %@", self.allURLs);
+- (void)processURLForBranchWithString:(NSString *)stringWithURL
+                           andTags:(NSArray *)tags
+                        andChannel:(NSString *)channel
+                        andFeature:(NSString *)feature
+                          andStage:(NSString *)stage
+                          andAlias:(NSString *)alias {
     
-    // Replace each URL in the string with a Branch Short URL
-    for (int i=0; i<[self.allURLs count]; i++) {
-        NSTextCheckingResult *linkResult = self.allURLs[i];
-        [self processURLForBranch:linkResult.URL withArrayIndex:(NSUInteger *)(unsigned long)i];
+    // Sinleton Branch instance
+    Branch *branch = [Branch getInstance];
+    
+    NSTextCheckingResult *urlCheckingResult = [self identifyAllUrlsAndReplaceInString:stringWithURL];
+    
+    //get the URL from the end of the string
+    NSString *url = urlCheckingResult.URL.absoluteString;
+    
+    //remove the original URL from the end of the string
+    NSString *truncatedString = [stringWithURL stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
+    
+    // Branch Link params
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    //probably remove
+    [params setObject:url forKey:@"$desktop_url"];
+    //certainly remove
+    [params setObject:url forKey:@"$ios_url"];
+    [params setObject:url forKey:@"$android_url"];
+    
+    // Weak block reference to self
+    __weak OSKShareableContent *weakContent = self;
+    
+    // Content items that put the URL in an NSString
+    // Create Branch Short URL for each channel
+    if([channel isEqualToString:@"microblog_twitter"]) {
+        [branch getShortURLWithParams:params
+            andTags:tags
+            andChannel:channel
+            andFeature:feature
+            andStage:stage
+            andAlias:alias
+            andCallback:^(NSString *url, NSError *error) {
+                __strong OSKShareableContent *strongContent = weakContent;
+                strongContent.microblogPostItem.text = [truncatedString stringByAppendingString:url];
+        }];
+    } else if([channel isEqualToString:@"email"]) {
+        [branch getShortURLWithParams:params
+            andTags:tags
+            andChannel:channel
+            andFeature:feature
+            andStage:stage
+            andAlias:alias
+            andCallback:^(NSString *url, NSError *error) {
+                __strong OSKShareableContent *strongContent = weakContent;
+                strongContent.emailItem.body = [truncatedString stringByAppendingString:url];
+        }];
+    } else if([channel isEqualToString:@"sms"]) {
+        [branch getShortURLWithParams:params
+            andTags:tags
+            andChannel:channel
+            andFeature:feature
+            andStage:stage
+            andAlias:alias
+            andCallback:^(NSString *url, NSError *error) {
+                __strong OSKShareableContent *strongContent = weakContent;
+                strongContent.smsItem.body = [truncatedString stringByAppendingString:url];
+        }];
+    } else if([channel isEqualToString:@"todo"]) {
+        [branch getShortURLWithParams:params
+            andTags:tags
+            andChannel:channel
+            andFeature:feature
+            andStage:stage
+            andAlias:alias
+            andCallback:^(NSString *url, NSError *error) {
+                __strong OSKShareableContent *strongContent = weakContent;
+                strongContent.toDoListItem.notes = [truncatedString stringByAppendingString:url];
+        }];
+    } else if([channel isEqualToString:@"text_editor"]) {
+        [branch getShortURLWithParams:params
+            andTags:tags
+            andChannel:channel
+            andFeature:feature
+            andStage:stage
+            andAlias:alias
+            andCallback:^(NSString *url, NSError *error) {
+                __strong OSKShareableContent *strongContent = weakContent;
+                strongContent.textEditingItem.text = [truncatedString stringByAppendingString:url];
+        }];
     }
+    
 }
-*/
+
+
+// identifies all links in a string
+- (NSTextCheckingResult *)identifyAllUrlsAndReplaceInString:(NSString *)string {
+    // Find all URLs in a string
+    NSDataDetector *detect = [[NSDataDetector alloc] initWithTypes:NSTextCheckingTypeLink error:nil];
+    NSMutableArray *allURLs = [[detect matchesInString:string options:0 range:NSMakeRange(0, [string length])] mutableCopy];
+    
+    //return the URL checking result at the end of the string
+    return [allURLs lastObject];
+}
+
+// --- Branch ---
+
 + (instancetype)contentFromText:(NSString *)text {
     NSParameterAssert(text.length);
     
@@ -234,7 +311,6 @@
     OSKMicroblogPostContentItem *microblogPost = [[OSKMicroblogPostContentItem alloc] init];
     microblogPost.text = [NSString stringWithFormat:@"“%@” (Via @%@) %@ ", text, authorName, canonicalURL];
     microblogPost.images = images;
-    //[microblogPost setBranchUrl];
     content.microblogPostItem = microblogPost;
     
     OSKCopyToPasteboardContentItem *copyTextToPasteboard = [[OSKCopyToPasteboardContentItem alloc] init];
@@ -315,30 +391,36 @@
     
     // Call Branch URLs
     if (URLforCanonicalURL) {
-        [content processURLForBranchWithURL:URLforCanonicalURL
+        
+        // Arrays of all channels
+        // Channels that have a url or link attribute
+        content.channelsToProcessToBranch = [@[
+                                               @"facebook",
+                                               @"browser",
+                                               @"read_later",
+                                               @"bookmark",
+                                               @"microblog_twitter",
+                                               @"email",
+                                               @"sms",
+                                               @"todo",
+                                               @"text_editor"
+                                               ] mutableCopy];
+        
+        // URL to process for each channel
+        content.urlToProcessToBranch = [URLforCanonicalURL absoluteString];
+        
+        //Content iterms that have a url or link attribute
+        [content processURLsForBranch];
+        
+        /*
+        //content items that put the URL in an NSString
+        [content processURLForBranchWithString:content.microblogPostItem.text
             andTags:nil
-            andChannel:@"facebook"
+            andChannel:@"microblog_twitter"
             andFeature:nil
             andStage:nil
             andAlias:nil];
-        [content processURLForBranchWithURL:URLforCanonicalURL
-            andTags:nil
-            andChannel:@"browser"
-            andFeature:nil
-            andStage:nil
-            andAlias:nil];
-        [content processURLForBranchWithURL:URLforCanonicalURL
-            andTags:nil
-            andChannel:@"read_later"
-            andFeature:nil
-            andStage:nil
-            andAlias:nil];
-        [content processURLForBranchWithURL:URLforCanonicalURL
-            andTags:nil
-            andChannel:@"bookmark"
-            andFeature:nil
-            andStage:nil
-            andAlias:nil];
+         */
     }
     
     return content;
