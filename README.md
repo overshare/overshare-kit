@@ -176,9 +176,24 @@ The original Branch iOS SDK and Documentation can [be found here](https://github
 
 1. To get started with the Branch integration in OvershareKit, first signup for a [Branch account](https://dashboard.branch.io/)
 2. Add the Branch API key found in the [Settings panel](https://dashboard.branch.io/#/settings) of the dashboard, to your app's plist file, as "bnc_app_key". To do this, open the "Info" tab in your XCode project, and add a key to the "Custom iOS Target Properties."
+
 3. Register a URI scheme in your app's plist file, so your app responds to direct deep links (example: myapp://...). This step is optional, but highly recomended. Full instructions [found here](https://github.com/BranchMetrics/Branch-iOS-SDK#register-a-uri-scheme-direct-deep-linking-optional-but-recommended)
-4. **Initialize the Branch SDK**. Branch has a singleton instance that can be refferenced by calling [Branch getInstance]. The first time this is called, a singleton is allocated that can be referrenced throughout the app. To initliaize a Branch session, call [[Branch getInstance] initSessionWithLaunchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {...}];. There is an example of this in the OvershareKit Sample App. 
-5. **Register for deeplinks**. You'll likely want your app to respond to it's customer URI scheme, and handle showing the user the correct content with the data your app is passed via the Branch deep link. To do this, your app delegate should respond to - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation. The url passed in via this method, should be sent to the Branch singleton with the method if [[Branch getInstance] handleDeepLink:url]. There is also an example of this in the OvershareKit sample app.
+
+4. **Initialize the Branch SDK**. Branch has a singleton instance that can be refferenced by calling [Branch getInstance]. The first time this is called, a singleton is allocated that can be referrenced throughout the app. To initliaize a Branch session, call:
+```objc
+[[Branch getInstance] initSessionWithLaunchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {...}];
+```
+There is an example of this in the OvershareKit Sample App in the app delegate.
+
+5. **Register for deeplinks**. You'll likely want your app to respond to it's customer URI scheme, and handle showing the user the correct content with the data your app is passed via the Branch deep link. To do this, your app delegate should respond to
+```objc
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+```
+The url passed in via this method, should be sent to the Branch singleton with:
+```objc
+[[Branch getInstance] handleDeepLink:url];
+```
+There is also an example of this in the OvershareKit sample app delegate.
 
 ## Branch Links in OSK Content
 Once you've setup the Branch Integration with the steps in the previous section, you're ready to initiate an OvershareKit Content with Branch short URLs! Normally, you call contentFromMicroblogPost or contentFromURL on an OSKShareableContent instance to setup a collection of Content Items for each share channel (Facebook, Twitter, etc). This integration extends those methods to include the Branch parameters: tracking tags, stage, feature, and deep linking & OG params. An example of this can be seen in the OvershareKit Sample app, in SampleTimelineViewController.m starting at line 82.
@@ -188,34 +203,35 @@ These  methods will seamlessly generate OSK shareable content items, and attach 
 ####All availabe Branch OSK extended methods
 (All of these methods also available as contentFromMicroblogPost)
 
-- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchParams branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature
+```objc
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchParams branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature;
 
-- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags;
 
-- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchPrams
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchPrams;
 
-- contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchPrams
++ (instancetype)contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchPrams;
 
-- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary branchStage:(NSString *)branchStage
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary branchStage:(NSString *)branchStage;
 
-- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchStage:(NSString *)branchStage
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchStage:(NSString *)branchStage;
 
-- contentFromURL:(NSURL *)url branchStage:(NSString *)branchStage
++ (instancetype)contentFromURL:(NSURL *)url branchStage:(NSString *)branchStage;
 
-- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchParams branchFeature:(NSString *)branchFeature
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchParams branchFeature:(NSString *)branchFeature;
 
-- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature;
 
-- contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchParams branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature
++ (instancetype)contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchParams branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature;
 
-- contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchParams branchFeature:(NSString *)branchFeature
++ (instancetype)contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchParams branchFeature:(NSString *)branchFeature;
 
-- contentFromURL:(NSURL *)url branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature
++ (instancetype)contentFromURL:(NSURL *)url branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature;
 
-- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchFeature:(NSString *)branchFeature
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchFeature:(NSString *)branchFeature;
 
-- contentFromURL:(NSURL *)url branchFeature:(NSString *)branchFeature
-
++ (instancetype)contentFromURL:(NSURL *)url branchFeature:(NSString *)branchFeature;
+```
 ## Setting Branch Identity
 
 Often, you might have your own user IDs, or want referral and event data to persist across platforms or uninstall/reinstall. It's helpful if you know your users access your service from different devices. This where we introduce the concept of an 'identity'.
@@ -234,7 +250,7 @@ If you provide a logout function in your app, be sure to clear the user when the
 **Warning** this call will clear the referral credits and attribution on the device.
 
 ```objc
-[[Branch getInstance] logout];	// previously clearUser
+[[Branch getInstance] logout];
 ```
 
 ## So Much More
