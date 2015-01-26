@@ -18,6 +18,7 @@ OvershareKit
 - [In-App Purchases](#in-app-purchases)
 - [Branch Setup](#branch-setup)
 - [Branch Links](#branch-links-in-osk-content)
+- [Branch Identity](#setting-branch-identity)
 - [So Much More](#so-much-more)
 - [Contributors](#contributors)
 - [Apps Using OvershareKit](#apps-using-oversharekit)
@@ -214,6 +215,27 @@ These  methods will seamlessly generate OSK shareable content items, and attach 
 - contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchFeature:(NSString *)branchFeature
 
 - contentFromURL:(NSURL *)url branchFeature:(NSString *)branchFeature
+
+## Setting Branch Identity
+
+Often, you might have your own user IDs, or want referral and event data to persist across platforms or uninstall/reinstall. It's helpful if you know your users access your service from different devices. This where we introduce the concept of an 'identity'.
+
+To identify a user, just call:
+```objc
+ [[Branch getInstance] setIdentity:@"your user id"];
+```
+**Note:**
+OvershareKit does have a number of authentication services for Facebook, Twitter, App.net, etc. However, each one of these services will return a unique user id. So if one time the user authenticates in with Twitter, then a different time or on a different device, authenticates with Facebook, they will not be identified as the same user! Therefore, you'll need to be sure that you authenticate users on Branch via the same method, or in a way that returns the same user id.
+
+#### Logout
+
+If you provide a logout function in your app, be sure to clear the user when the logout completes. This will ensure that all the stored parameters get cleared and all events are properly attributed to the right identity.
+
+**Warning** this call will clear the referral credits and attribution on the device.
+
+```objc
+[[Branch getInstance] logout];	// previously clearUser
+```
 
 ## So Much More
 
