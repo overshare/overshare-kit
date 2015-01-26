@@ -174,18 +174,19 @@ Our linking infrastructure will support anything you want to build. If it doesn'
 
 The original Branch iOS SDK and Documentation can [be found here](https://github.com/BranchMetrics/Branch-iOS-SDK)
 
-1. To get started with the Branch integration in OvershareKit, first signup for a [Branch account](https://dashboard.branch.io/)
-2. Add the Branch API key found in the [Settings panel](https://dashboard.branch.io/#/settings) of the dashboard, to your app's plist file, as "bnc_app_key". To do this, open the "Info" tab in your XCode project, and add a key to the "Custom iOS Target Properties."
+**To get started** with the Branch integration in OvershareKit, first signup for a [Branch account](https://dashboard.branch.io/)
 
-3. Register a URI scheme in your app's plist file, so your app responds to direct deep links (example: myapp://...). This step is optional, but highly recomended. Full instructions [found here](https://github.com/BranchMetrics/Branch-iOS-SDK#register-a-uri-scheme-direct-deep-linking-optional-but-recommended)
+**Add the Branch API key** found in the [Settings panel](https://dashboard.branch.io/#/settings) of the dashboard, to your app's plist file, as "bnc_app_key". To do this, open the "Info" tab in your XCode project, and add a key to the "Custom iOS Target Properties."
 
-4. **Initialize the Branch SDK**. Branch has a singleton instance that can be refferenced by calling [Branch getInstance]. The first time this is called, a singleton is allocated that can be referrenced throughout the app. To initliaize a Branch session, call:
+**Register a URI scheme** in your app's plist file, so your app responds to direct deep links (example: myapp://...). This step is optional, but highly recomended. Full instructions [found here](https://github.com/BranchMetrics/Branch-iOS-SDK#register-a-uri-scheme-direct-deep-linking-optional-but-recommended)
+
+**Initialize the Branch SDK**. Branch has a singleton instance that can be refferenced by calling [Branch getInstance]. The first time this is called, a singleton is allocated that can be referrenced throughout the app. To initliaize a Branch session, call:
 ```objc
 [[Branch getInstance] initSessionWithLaunchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {...}];
 ```
 There is an example of this in the OvershareKit Sample App in the app delegate.
 
-5. **Register for deeplinks**. You'll likely want your app to respond to it's customer URI scheme, and handle showing the user the correct content with the data your app is passed via the Branch deep link. To do this, your app delegate should respond to
+**Register for deeplinks**. You'll likely want your app to respond to it's customer URI scheme, and handle showing the user the correct content with the data your app is passed via the Branch deep link. To do this, your app delegate should respond to
 ```objc
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 ```
