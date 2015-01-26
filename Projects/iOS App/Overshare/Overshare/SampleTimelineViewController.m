@@ -17,11 +17,11 @@
 
 @interface SampleTimelineViewController ()
 <
-    SampleTimelineCellDelegate,
-    OSKPresentationViewControllers,
-    OSKPresentationStyle,
-    OSKPresentationColor,
-    OSKXCallbackURLInfo
+SampleTimelineCellDelegate,
+OSKPresentationViewControllers,
+OSKPresentationStyle,
+OSKPresentationColor,
+OSKXCallbackURLInfo
 >
 
 @property (assign, nonatomic) OSKActivitySheetViewControllerStyle sheetStyle;
@@ -64,18 +64,22 @@
 }
 
 
-#pragma mark - Sharing
+#pragma mark - Intro to Overshare Kit Demo
 
 - (void)showShareSheetForTappedCell:(SampleTimelineCell *)tappedCell {
     
-    // 1) Create the shareable content from the user's source content.
+    // 1) Grab the user's data that will be shared.
     
     NSString *text = @"Me and my dad make models of clipper ships. #Clipperships sail on the ocean.";
+    
     NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
                         [UIImage imageNamed:@"rain.jpg"],
                         [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
+    
+    NSString *canonicalURL = @"https://twitter.com/testochango/status/453193613900410881";
     NSString *authorName = @"testochango";
+
+    // 2) Create the shareable content from the user's source data.
     
     // Original OvershareKit Shareable Content Method
     // This fork of OvershareKit is 100% backwards compatible, meaning the original shareable content items will still work. If the Branch API key is not present, OvershareKit will behave exactly as it does without Branch: directing the user to the URL that is provided.
@@ -232,12 +236,15 @@
     
     // ========== End Branch ==========
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self showShareSheet_Phone:content];
-    } else {
-        [self showShareSheet_Pad_FromCell:tappedCell content:content];
-    }
+    // 3) Present the activity sheet via the presentation manager.
+    
+    [[OSKPresentationManager sharedInstance] presentActivitySheetForContent:content
+                                                   presentingViewController:self
+                                                                    options:nil];
 }
+
+
+#pragma mark - Sharing
 
 - (void)showShareSheet_Pad_FromCell:(SampleTimelineCell *)tappedCell content:(OSKShareableContent *)content {
     
@@ -249,7 +256,7 @@
     
     // 3) Create the options dictionary. See OSKActivity.h for more options.
     NSDictionary *options = @{    OSKPresentationOption_ActivityCompletionHandler : completionHandler,
-                              OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
+                                  OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
     
     // 4) Prep the iPad-specific presentation needs.
     CGRect presentationRect = [self presentationRectForCell:tappedCell];
@@ -282,22 +289,6 @@
                                                                     options:options];
 }
 
-- (void)showShareSheet_Phone:(OSKShareableContent *)content {
-    
-    // 2) Setup optional completion and dismissal handlers
-    OSKActivityCompletionHandler completionHandler = [self activityCompletionHandler];
-    OSKPresentationEndingHandler dismissalHandler = [self dismissalHandler];
-    
-    // 3) Create the options dictionary. See OSKActivity.h for more options.
-    NSDictionary *options = @{    OSKPresentationOption_ActivityCompletionHandler : completionHandler,
-                              OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
-    
-    // 4) Present the activity sheet via the presentation manager.
-    [[OSKPresentationManager sharedInstance] presentActivitySheetForContent:content
-                                                   presentingViewController:self
-                                                                    options:options];
-}
-
 
 #pragma mark - OSKActivitiesManager X-Callback-URL Delegate
 
@@ -325,10 +316,22 @@
 }
 
 - (BOOL)osk_toolbarsUseUnjustifiablyBorderlessButtons {
-#warning Override this to use bordered navigation bar buttons.
+#warning Override this and return NO to enable bordered navigation bar buttons.
     return YES;
 }
+/*
+- (UIFontDescriptor *)osk_normalFontDescriptor {
+    NSDictionary *attributes = @{UIFontDescriptorNameAttribute : @"AvenirNext-Regular"};
+    UIFontDescriptor *descriptor = [UIFontDescriptor fontDescriptorWithFontAttributes:attributes];
+    return descriptor;
+}
 
+- (UIFontDescriptor *)osk_boldFontDescriptor {
+    NSDictionary *attributes = @{UIFontDescriptorNameAttribute : @"AvenirNext-Bold"};
+    UIFontDescriptor *descriptor = [UIFontDescriptor fontDescriptorWithFontAttributes:attributes];
+    return descriptor;
+}
+*/
 
 #pragma mark - OSKPresentationManager Color Delegate
 
@@ -394,7 +397,7 @@
 }
 
 
-#pragma mark - SampleTimelineViewController 
+#pragma mark - SampleTimelineViewController
 
 - (void)accountManagerButtonTapped:(id)sender {
     [self showAccountsManagement];
