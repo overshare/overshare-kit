@@ -162,12 +162,21 @@ You can optionally configure certain activity types to require in-app purchase. 
 ## Branch Integration
 Branch.io enables tracking, and personalized downloads for every user of your app through deep links, that pass data **thourgh install and open**. An example use case: Your app has a microblog post the user shares via OvershareKit. Rather than the user sharing the original URL, the Branch integration with OvershareKit automatically converts the original URL into a unique Brach short url for each action. Each short URL auto embeds the sharing channel (facebook, twitter, etc), and extends the OvershareKit Content methods to easily pass in deep link parameters, and tags to track app stage, and specific features.
 
+Ideally, you want to use Branch links any time you have an external link pointing to your app (share, invite, referral, etc) because:
+
+1. The Branch dashboard can tell you where your installs are coming from
+2. Branch links are the highest possible converting channel to new downloads and users
+3. You can pass shared data across install to give new users a custom welcome or show them the content they expect to see
+ 
+Our linking infrastructure will support anything you want to build. If it doesn't, we'll fix it so that it does: just reach out to [alex@branch.io](mailto:alex@branch.io) with requests.
+
 The original Branch iOS SDK and Documentation can [be found here](https://github.com/BranchMetrics/Branch-iOS-SDK)
 
-1. To get started with the Branch integration in OvershareKit, first signup for a [free Branch account](https://branch.io/).
-2. Add the Branch API key found in the [Settings panel](https://dashboard.branch.io/#/settings) of the dashboard, to your app's plist file, as "bnc_app_key". Full instructions [found here](https://github.com/BranchMetrics/Branch-iOS-SDK#add-your-app-key-to-your-project).
-3. Register a URI scheme in your app's plist file, so your app responds to direct deep links (example: myapp://...). This step is optional, but highly recomended. Full instructions [found here](https://github.com/BranchMetrics/Branch-iOS-SDK#register-a-uri-scheme-direct-deep-linking-optional-but-recommended).
-4. Initialize the Branch SDK, and register deep links in the app delegate. (See the sample OvershareKit app for an example).
+1. To get started with the Branch integration in OvershareKit, first signup for a [Branch account](https://dashboard.branch.io/)
+2. Add the Branch API key found in the [Settings panel](https://dashboard.branch.io/#/settings) of the dashboard, to your app's plist file, as "bnc_app_key". To do this, open the "Info" tab in your XCode project, and add a key to the "Custom iOS Target Properties."
+3. Register a URI scheme in your app's plist file, so your app responds to direct deep links (example: myapp://...). This step is optional, but highly recomended. Full instructions [found here](https://github.com/BranchMetrics/Branch-iOS-SDK#register-a-uri-scheme-direct-deep-linking-optional-but-recommended)
+4. **Initialize the Branch SDK**. Branch has a singleton instance that can be refferenced by calling [Branch getInstance]. The first time this is called, a singleton is allocated that can be referrenced throughout the app. To initliaize a Branch session, call [[Branch getInstance] initSessionWithLaunchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {...}];. There is an example of this in the OvershareKit Sample App. 
+5. **Register for deeplinks**. You'll likely want your app to respond to it's customer URI scheme, and handle showing the user the correct content with the data your app is passed via the Branch deep link. To do this, your app delegate should respond to - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation. The url passed in via this method, should be sent to the Branch singleton with the method if [[Branch getInstance] handleDeepLink:url]. There is also an example of this in the OvershareKit sample app.
 
 ## So Much More
 
