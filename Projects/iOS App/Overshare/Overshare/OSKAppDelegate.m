@@ -14,7 +14,7 @@
 
 #import "SampleTimelineViewController.h"
 
-// Include Branch, and Branch preference helper
+// Include Branch
 #import "Branch.h"
 
 @implementation OSKAppDelegate
@@ -42,7 +42,7 @@
      For full documentation, see README.md in https://github.com/BranchMetrics/Branch-iOS-SDK
      */
     
-    // A Pointer to the signleton instance of Branch. The first time this is called in the app lifecycle, a Branch instance is synchronously instatiated.
+    // Signleton instance of Branch. The first time this is called in the app lifecycle, a Branch instance is synchronously instatiated.
     Branch *branch = [Branch getInstance];
 
 #ifdef DEBUG
@@ -59,6 +59,11 @@
             // NSString *name = [params objectForKey:@"user"];
             // NSString *profileUrl = [params objectForKey:@"profile_pic"];
             // NSString *description = [params objectForKey:@"description"];
+            
+            // --- Setting User Identity with Branch ---
+            // If you want to track indidvidual users in Branch and/or store reward point baances for referral, pass in a unique user id string here! This method could be implemented a number of ways. You'll most certainly want to implement the setIdentity method on app launch if the user is already logged in, and the ID is stored in the user preferences for example. You will also want to implement this method whent he user signs up or authenticates into your app.
+            // OvershareKit does have a number of authentication services for Facebook, Twitter, App.net, etc. However, note that each one of these services will return a unique user_id. So if one time the user authenticates in with Twitter, then a different time or on a different device, authenticates with Facebook, they will not be identified as the same user!
+            [[Branch getInstance] setIdentity:@"your user id"];
         }
     }];
     
@@ -106,7 +111,7 @@
     
     BOOL success = NO;
     
-    // --- Branch ---
+    // ========== Branch ==========
     // Branch deep link handeler
     // pass the url to the handle deep link call
     // if handleDeepLink returns YES, and you registered a callback in initSessionAndRegisterDeepLinkHandler, the callback will be called with the data associated with the deep link.
@@ -114,7 +119,7 @@
         
         // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
     }
-    // --- End Branch ---
+    // ========== End Branch ==========
     
     // OvershareKit deep link routing
     if ([[OSKADNLoginManager sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {

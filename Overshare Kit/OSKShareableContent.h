@@ -138,7 +138,7 @@ These can be custom items, or additional instances of the official items above.
 @property (copy, nonatomic) NSString *title;
 
 
-// --- Branch ---
+// ========== Branch ==========
 
 @property (strong, nonatomic) NSMutableArray *channelsToProcessToBranch;
 
@@ -156,7 +156,7 @@ These can be custom items, or additional instances of the official items above.
 
 @property (strong, nonatomic) NSDictionary *branchOGTags;
 
-// --- End Branch ---
+// ========== End Branch ==========
 @end
 
 /// -----------------------------------------
@@ -175,7 +175,7 @@ These can be custom items, or additional instances of the official items above.
  */
 + (instancetype)contentFromURL:(NSURL *)url;
 
-// --- Branch ---
+// ========== Branch ==========
 /**
  Branch extensions to convenient constructors for links
  */
@@ -257,7 +257,7 @@ These can be custom items, or additional instances of the official items above.
 + (instancetype)contentFromURL:(NSURL *)url
                            branchFeature:(NSString *)branchFeature;
 
-// --- End Branch ---
+// ========== End Branch ==========
 
 /**
  Convenient constructor for content drawn from microblog posts (like Twitter or App.net).
@@ -267,7 +267,7 @@ These can be custom items, or additional instances of the official items above.
                             canonicalURL:(NSString *)canonicalURL
                                   images:(NSArray *)images;
 
-// --- Branch ---
+// ========== Branch ==========
 /**
  Branch extensions to convenient constructors for microblog posts
  */
@@ -394,7 +394,7 @@ These can be custom items, or additional instances of the official items above.
                                   images:(NSArray *)images
                            branchFeature:(NSString *)branchFeature;
 
-// --- End Branch ---
+// ========== End Branch ==========
 
 /**
  Convenient constructor for sharing one or more images with a common caption.
@@ -402,14 +402,14 @@ These can be custom items, or additional instances of the official items above.
 + (instancetype)contentFromImages:(NSArray *)images
                           caption:(NSString *)caption;
 
-// --- Branch ---
+// ========== Branch ==========
 
 /**
  Processes URLs in all Content Items and replaces with Branch URLs
  */
 - (void)processURLsForBranch;
 
-// --- Branch ---
+// ========== Branch ==========
 
 @end
 

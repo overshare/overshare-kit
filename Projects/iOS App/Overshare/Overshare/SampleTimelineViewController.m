@@ -77,7 +77,8 @@
     NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
     NSString *authorName = @"testochango";
     
-    // Original method call
+    // Original OvershareKit Shareable Content Method
+    // This fork of OvershareKit is 100% backwards compatible, meaning the original shareable content items will still work. If the Branch API key is not present, OvershareKit will behave exactly as it does without Branch: directing the user to the URL that is provided.
     /*
      OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                      authorName:authorName
@@ -85,30 +86,70 @@
                                                                      images:images];
      */
     
-    // --- Branch ---
+    // ========== Branch ==========
+    // Now let's use Branch!!
+    // Provided you have set the Branch API key provided to you here: https://dashboard.branch.io/#/settings
+    // ...the following methods will seamlessly generate OSK shareable content items, and attach a Branch Short URL to each content channel AND automatically tag it with "facebook," "bookmark," etc. for each channel!
     
-    // Sets up sample Branch data
+    // To see this in action, let's setup some dummy data that we'd like to be passed thru download and install of sharing content with another user
+    
+    // For a complete explanation of creating Branch links, see: https://github.com/BranchMetrics/Branch-Integration-Guides/blob/master/url-creation-guide.md
+    
+    // Branch tags
+    // ====================================================
+    // Accepts an unlimited number of strings in an NSArray.
+    // This is more a free form entry of anything that
+    // helps you collect your thoughts. It’s a place where
+    // you can add meaningful labels for organizing links
+    // that aren’t confined to a channel or campaign
     NSArray *branchTags = @[@"test_tag1", @"test_tag2"];
     
+    // Brach deep link params
+    // ====================================================
+    // These are the params you want passed thru the link.
+    // This could be _anything_ you want: A user id of who shared the content,
+    // an image URL, an internal URI to direct the user to the content within
+    // your app, etc. Here are just a few samples...
     NSMutableDictionary *branchParams = [[NSMutableDictionary alloc] init];
     // Example params Deep Link data
     [branchParams setObject:@"Joe" forKey:@"user"];
     [branchParams setObject:@"https://s3-us-west-1.amazonaws.com/myapp/joes_pic.jpg" forKey:@"profile_pic"];
     [branchParams setObject:@"Joe likes long walks on the beach..." forKey:@"description"];
     
-    // Example OG params (for social media... http://ogp.me/)
+    // OpenGraph tags
+    // ====================================================
+    // OpenGraph tags are a way of sharing content attributes
+    // with social media platforms: http://ogp.me/) <<-- Thanks Facebook!
+    // These can also be set in the params. A Great thing to do
+    // If you want your app's name or icon to show up on a Facebook timeline
+    // when a user shares this on Facebook.
     [branchParams setObject:@"Joe is a super cool guy!" forKey:@"$og_title"];
     [branchParams setObject:@"https://branch.io/img/logo_icon_black.png" forKey:@"$og_image_url"];
     [branchParams setObject:@"Because he likes long walks on the beach..." forKey:@"$og_description"];
     
-    // Example Stage
+    // Branch Stage
+    // ====================================================
+    // This is a label typically used to categorize the progress
+    // or category of a user when the link was generated. For example,
+    // if the customer has an invite system accessible on level 1, level 3 and 5,
+    // the customer could differentiate links generated at each level with this parameter
     NSString *branchStage = @"test_stage";
     
-    // Example Feature
+    // Branch Feature
+    // ====================================================
+    // This is the feature of the customer’s product that the
+    // link might be associated with. For example, if the customer
+    // had built a referral program in their app, they might have
+    // tagged all links with the String ‘referral’.
     NSString *branchFeature = @"test_feature";
     
-    // OSK Content with Branch tags exmaples...
-    
+    // OSK Content with Branch params
+    // ====================================================
+    // These methods all return a instance of an OSKShareableContent object
+    // but they also automatically generate a Branch Short URL with all of the Branch
+    // params they are provided with!
+    // you can also call contentFromURL with all of these optional params.
+
     // OSK Content with all arguments
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName
@@ -189,7 +230,7 @@
                                                                      branchFeature:branchFeature];
      */
     
-    // --- End Branch ---
+    // ========== End Branch ==========
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self showShareSheet_Phone:content];

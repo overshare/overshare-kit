@@ -10,7 +10,10 @@
 
 #import "OSKShareableContentItem.h"
 
+
+// Include Branch, and Branch preference helper
 #import "Branch.h"
+#import "BNCPreferenceHelper.h"
 
 @implementation OSKShareableContent
 
@@ -130,15 +133,24 @@
     textEditing.text = url.absoluteString;
     content.textEditingItem = textEditing;
     
-    // Process all content for Branch URLs
-    if (url) {
+    // ========== Branch ==========
+    // Check to see if a URL is present, and that the Branch API key is present. If so, process all the Content Items for a Branch short URL
+    if (url && ![[BNCPreferenceHelper getAppKey] isEqualToString:@"bnc_no_value"]) {
+        
+        // Branch arguments
+        content.branchTags = branchTrackingTags;
+        content.branchStage = branchStage;
+        content.branchFeature = branchFeature;
+        content.branchParams = branchParams;
+        
         [content initiateBranchWithURL:url];
     }
+    // --- End Branch
     
     return content;
 }
 
-// --- Branch ---
+// ========== Branch ==========
 
 /**
  Original class method without Branch arguments
@@ -320,7 +332,7 @@
                                  branchFeature:branchFeature];
 };
 
-// --- End Branch ---
+// ========== End Branch ==========
 
 + (instancetype)contentFromMicroblogPost:(NSString *)text
                               authorName:(NSString *)authorName
@@ -332,12 +344,6 @@
                            branchFeature:(NSString *)branchFeature {
     
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
-    
-    // Branch arguments
-    content.branchTags = branchTrackingTags;
-    content.branchStage = branchStage;
-    content.branchFeature = branchFeature;
-    content.branchParams = branchParams;
     
     content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
     
@@ -441,15 +447,24 @@
     textEditing.text = emailItem.body;
     content.textEditingItem = textEditing;
     
-    // Process all content for Branch URLs
-    if (URLforCanonicalURL) {
+    // ========== Branch ==========
+    // Check to see if a URL is present, and that the Branch API key is present. If so, process all the Content Items for a Branch short URL
+    if (URLforCanonicalURL && ![[BNCPreferenceHelper getAppKey] isEqualToString:@"bnc_no_value"]) {
+        
+        // Branch arguments
+        content.branchTags = branchTrackingTags;
+        content.branchStage = branchStage;
+        content.branchFeature = branchFeature;
+        content.branchParams = branchParams;
+        
         [content initiateBranchWithURL:URLforCanonicalURL];
     }
+    // --- End Branch
     
     return content;
 }
 
-// --- Branch ---
+// ========== Branch ==========
 
 /**
  Original class method without Branch arguments
@@ -620,7 +635,7 @@
     return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:nil branchStage:branchStage branchFeature:nil];
 };
 
-//--- End Branch ---
+//========== End Branch ==========
 
 + (instancetype)contentFromImages:(NSArray *)images caption:(NSString *)caption {
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
@@ -714,8 +729,10 @@
     return content;
 }
 
-// --- Branch ---
+// ========== Branch ==========
+// Private calls
 
+// Initates all of the share channels to generate a Branch URL for
 - (void)initiateBranchWithURL:(NSURL *)url {
     // Arrays of all channels
     // Channels that have a url or link attribute
@@ -739,14 +756,19 @@
     [self processURLsForBranch];
 }
 
+// Gets a Branch short URL for each channel
+// The Branch SDK cannot generate more then one URL simultaniously, otherwise the callback block will be over written
+// To work around this, each channel is stored as an NSString in an NSMutableArray. Once the callback from the first URL is fired, the processed channel is removed from the NSMutable Array. If another NSString is present in the NSMutableArray, processURLsForBranch is called on the OSKShareableContent instance again which processes the next channel in the array
 - (void)processURLsForBranch {
     
     // Sinleton Branch instance
     Branch *branch = [Branch getInstance];
     
     // Weak block reference to self
+    // This is so we can reference the self instance from inside the callback block
     __weak OSKShareableContent *weakContent = self;
     
+    //The next channel we're going to process for getShortUrl
     NSString *channel = [self.channelsToProcessToBranch firstObject];
     
     // Content items that take a single URL as an argument
@@ -760,35 +782,38 @@
                           __strong OSKShareableContent *strongContent = weakContent;
                           
                           if(!error) {
+                              
+                              // Grab the channel we need to process again
                               NSString *channel = [strongContent.channelsToProcessToBranch firstObject];
                               
+                              // Each channel type stores the URL in a different property. So we'll make sure we update the correct property here. Once the property is updated with the new URL, the user will be sent to the new Branch URL rather than the original URL
                               if([channel isEqualToString:@"facebook"]) {
                                   strongContent.facebookItem.link = [NSURL URLWithString:url];
-                                  NSLog(@"Facebook: %@", strongContent.facebookItem.link);
+                                  //NSLog(@"Facebook: %@", strongContent.facebookItem.link);
                               } else if ([channel isEqualToString:@"browser"]) {
                                   strongContent.webBrowserItem.url = [NSURL URLWithString:url];
-                                  NSLog(@"Browser: %@", strongContent.webBrowserItem.url);
+                                  //NSLog(@"Browser: %@", strongContent.webBrowserItem.url);
                               } else if ([channel isEqualToString:@"read_later"]) {
                                   strongContent.readLaterItem.url = [NSURL URLWithString:url];
-                                  NSLog(@"Read Later: %@", strongContent.readLaterItem.url);
+                                  //NSLog(@"Read Later: %@", strongContent.readLaterItem.url);
                               } else if ([channel isEqualToString:@"bookmark"]) {
                                   strongContent.linkBookmarkItem.url = [NSURL URLWithString:url];
-                                  NSLog(@"Bookmark: %@", strongContent.linkBookmarkItem.url);
+                                  //NSLog(@"Bookmark: %@", strongContent.linkBookmarkItem.url);
                               } else if ([channel isEqualToString:@"microblog_twitter"]) {
                                   strongContent.microblogPostItem.text = [self branchifiedStringWithURL:url andOriginalString:strongContent.microblogPostItem.text];
-                                  NSLog(@"Twitter / Microblog: %@", strongContent.microblogPostItem.text);
+                                  //NSLog(@"Twitter / Microblog: %@", strongContent.microblogPostItem.text);
                               } else if ([channel isEqualToString:@"email"]) {
                                   strongContent.emailItem.body = [self branchifiedStringWithURL:url andOriginalString:strongContent.emailItem.body];
-                                  NSLog(@"Email: %@", strongContent.emailItem.body);
+                                  //NSLog(@"Email: %@", strongContent.emailItem.body);
                               } else if ([channel isEqualToString:@"sms"]) {
                                   strongContent.smsItem.body = [self branchifiedStringWithURL:url andOriginalString:strongContent.smsItem.body];
-                                  NSLog(@"SMS: %@", strongContent.smsItem.body);
+                                  //NSLog(@"SMS: %@", strongContent.smsItem.body);
                               } else if ([channel isEqualToString:@"todo"]) {
                                   strongContent.toDoListItem.notes = [ self branchifiedStringWithURL:url andOriginalString:strongContent.toDoListItem.notes];
-                                  NSLog(@"Todo: %@", strongContent.toDoListItem.notes);
+                                  //NSLog(@"Todo: %@", strongContent.toDoListItem.notes);
                               } else if ([channel isEqualToString:@"text_editor"]) {
                                   strongContent.textEditingItem.text = [self branchifiedStringWithURL:url andOriginalString:strongContent.textEditingItem.text];
-                                  NSLog(@"Text editor: %@", strongContent.textEditingItem.text);
+                                  //NSLog(@"Text editor: %@", strongContent.textEditingItem.text);
                               } else if ([channel isEqualToString:@"airdrop"]) {
                                   NSMutableArray *airdropItems = [strongContent.airDropItem.items mutableCopy];
                                   for (int i = 0; i < [airdropItems count]; i++) {
@@ -796,7 +821,7 @@
                                           airdropItems[i] =
                                           [self branchifiedStringWithURL:url
                                                        andOriginalString:airdropItems[i]];
-                                          NSLog(@"AirDrop: %@", airdropItems[i]);
+                                          //NSLog(@"AirDrop: %@", airdropItems[i]);
                                       }
                                   }
                                   strongContent.airDropItem.items = airdropItems;
@@ -806,7 +831,7 @@
                           // Next channel
                           [strongContent.channelsToProcessToBranch removeObjectAtIndex:0];
                           if (strongContent.channelsToProcessToBranch.count > 0) {
-                              NSLog(@"\n--------------------------------------\n");
+                              //NSLog(@"\n--------------------------------------\n");
                               [strongContent processURLsForBranch];
                           }
                       }];
@@ -824,7 +849,7 @@
     return [truncatedString stringByAppendingString:branchURL];
 }
 
-// identifies all links in a string
+// Identifies all links in a string
 - (NSTextCheckingResult *)identifyAllUrlsAndReplaceInString:(NSString *)string {
     // Find all URLs in a string
     NSDataDetector *detect = [[NSDataDetector alloc] initWithTypes:NSTextCheckingTypeLink error:nil];
@@ -834,7 +859,7 @@
     return [allURLs lastObject];
 }
 
-// --- End Branch ---
+// ========== End Branch ==========
 
 - (instancetype)init {
     self = [super init];
