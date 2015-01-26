@@ -19,6 +19,7 @@ OvershareKit
 - [Branch Setup](#branch-setup)
 - [Branch Links](#branch-links-in-osk-content)
 - [Branch Identity](#setting-branch-identity)
+- [Branch Events](#branch-events)
 - [So Much More](#so-much-more)
 - [Contributors](#contributors)
 - [Apps Using OvershareKit](#apps-using-oversharekit)
@@ -252,6 +253,26 @@ If you provide a logout function in your app, be sure to clear the user when the
 
 ```objc
 [[Branch getInstance] logout];
+```
+
+## Branch Events
+The Branch OvershareKit integration automatically registers four events:
+- **click_share** registered when a user clicks a share channel option in OvershareKit
+- **cancelled_share** registered when a user cancelles sharing a link
+- **successful_share** registered when the OvershareKit completion handeler returns with a successful response
+- **failed_share** registered when the OvershareKit completion handeler returns with a unseccessful response
+
+#### Register custom events
+
+This is very easy to do by calling:
+```objc
+Branch *branch = [Branch getInstance];
+[branch userCompletedAction:@"your_custom_event"];
+```
+Optionally, you can save the app state with the event:
+```objc
+Branch *branch = [Branch getInstance];
+[branch userCompletedAction:@"your_custom_event" withState:(NSDictionary *)appState];
 ```
 
 ## So Much More
