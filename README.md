@@ -180,6 +180,40 @@ The original Branch iOS SDK and Documentation can [be found here](https://github
 5. **Register for deeplinks**. You'll likely want your app to respond to it's customer URI scheme, and handle showing the user the correct content with the data your app is passed via the Branch deep link. To do this, your app delegate should respond to - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation. The url passed in via this method, should be sent to the Branch singleton with the method if [[Branch getInstance] handleDeepLink:url]. There is also an example of this in the OvershareKit sample app.
 
 ## Branch Links in OSK Content
+Once you've setup the Branch Integration with the steps in the previous section, you're ready to initiate an OvershareKit Content with Branch short URLs! Normally, you call contentFromMicroblogPost or contentFromURL on an OSKShareableContent instance to setup a collection of Content Items for each share channel (Facebook, Twitter, etc). This integration extends those methods to include the Branch parameters: tracking tags, stage, feature, and deep linking & OG params. An example of this can be seen in the OvershareKit Sample app, in SampleTimelineViewController.m starting at line 82.
+
+These  methods will seamlessly generate OSK shareable content items, and attach a Branch Short URL to each content channel AND automatically tag it with "facebook," "bookmark," etc. for each channel! If you do not have the Branch API key set, OSK will behave as it does without Branch.
+
+####All availabe Branch OSK extended methods
+(All of these methods also available as contentFromMicroblogPost)
+
+- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchParams branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature
+
+- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags
+
+- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchPrams
+
+- contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchPrams
+
+- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary branchStage:(NSString *)branchStage
+
+- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchStage:(NSString *)branchStage
+
+- contentFromURL:(NSURL *)url branchStage:(NSString *)branchStage
+
+- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchParams branchFeature:(NSString *)branchFeature
+
+- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature
+
+- contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchParams branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature
+
+- contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchParams branchFeature:(NSString *)branchFeature
+
+- contentFromURL:(NSURL *)url branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature
+
+- contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchFeature:(NSString *)branchFeature
+
+- contentFromURL:(NSURL *)url branchFeature:(NSString *)branchFeature
 
 ## So Much More
 
