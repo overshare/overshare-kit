@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
-  s.name         = "OvershareKit"
-  s.version      = "1.0.0"
-  s.summary      = "A soup-to-nuts sharing library for iOS."
-  s.homepage     = "https://github.com/overshare/overshare-kit"
+  s.name         = "OvershareKit+Branch"
+  s.version      = "1.3.2"
+  s.summary      = "A soup-to-nuts sharing library for iOS, with a little extra zest from Branch."
+  s.homepage     = "https://github.com/BranchMetrics/overshare-kit"
   s.license      = { :type => 'MIT', :file => 'LICENSE'  }
-  s.author       = { "Jared Sinclair" => "desk@jaredsinclair.com", "Justin Williams" => "justin@carpeaqua.com" }
-  s.source       = { :git => "https://github.com/overshare/overshare-kit.git", :tag => s.version.to_s }
+  s.author       = { "Scott Hasbrouck" => "scott@branch.io" }
+  s.source       = { :git => "https://github.com/BranchMetrics/overshare-kit.git", :tag => s.version.to_s }
   s.platform     = :ios, '7.0'
   s.requires_arc = true
   s.frameworks   = 'UIKit', 'AddressBook', 'CoreMotion', 'CoreLocation', 'MediaPlayer'
