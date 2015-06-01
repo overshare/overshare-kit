@@ -3,6 +3,8 @@ OvershareKit
 
 #### A soup-to-nuts sharing library for iOS.
 
+**NOTA BENE: OVERSHAREKIT IS NO LONGER UNDER ACTIVE DEVELOPMENT. SEE http://blog.jaredsinclair.com/post/90064823470/oversharekit-to-be-maintenance-only-for-ios-8**
+
 ## Table of Contents    
 
 - [Why OvershareKit?](#why-oversharekit)
