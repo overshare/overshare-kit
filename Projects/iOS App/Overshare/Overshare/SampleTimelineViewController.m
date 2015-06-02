@@ -17,11 +17,11 @@
 
 @interface SampleTimelineViewController ()
 <
-    SampleTimelineCellDelegate,
-    OSKPresentationViewControllers,
-    OSKPresentationStyle,
-    OSKPresentationColor,
-    OSKXCallbackURLInfo
+SampleTimelineCellDelegate,
+OSKPresentationViewControllers,
+OSKPresentationStyle,
+OSKPresentationColor,
+OSKXCallbackURLInfo
 >
 
 @property (assign, nonatomic) OSKActivitySheetViewControllerStyle sheetStyle;
@@ -64,30 +64,187 @@
 }
 
 
-#pragma mark - Sharing
+#pragma mark - Intro to Overshare Kit Demo
 
 - (void)showShareSheetForTappedCell:(SampleTimelineCell *)tappedCell {
     
-    // 1) Create the shareable content from the user's source content.
+    // 1) Grab the user's data that will be shared.
     
     NSString *text = @"Me and my dad make models of clipper ships. #Clipperships sail on the ocean.";
+    
     NSArray *images = @[[UIImage imageNamed:@"soda.jpg"],
                         [UIImage imageNamed:@"rain.jpg"],
                         [UIImage imageNamed:@"type.jpg"]];
-    NSString *canonicalURL = @"http://github.com/overshare/overshare-kit";
-    NSString *authorName = @"testochango";
     
+    NSString *canonicalURL = @"https://twitter.com/testochango/status/453193613900410881";
+    NSString *authorName = @"testochango";
+
+    // 2) Create the shareable content from the user's source data.
+    
+    // Original OvershareKit Shareable Content Method
+    // This fork of OvershareKit is 100% backwards compatible, meaning the original shareable content items will still work. If the Branch API key is not present, OvershareKit will behave exactly as it does without Branch: directing the user to the URL that is provided.
+    /*
+     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                     authorName:authorName
+                                                                     canonicalURL:canonicalURL
+                                                                     images:images];
+     */
+    
+    // ========== Branch ==========
+    // Now let's use Branch!!
+    // Provided you have set the Branch API key provided to you here: https://dashboard.branch.io/#/settings
+    // ...the following methods will seamlessly generate OSK shareable content items, and attach a Branch Short URL to each content channel AND automatically tag it with "facebook," "bookmark," etc. for each channel!
+    
+    // To see this in action, let's setup some dummy data that we'd like to be passed thru download and install of sharing content with another user
+    
+    // For a complete explanation of creating Branch links, see: https://github.com/BranchMetrics/Branch-Integration-Guides/blob/master/url-creation-guide.md
+    
+    // Branch tags
+    // ====================================================
+    // Accepts an unlimited number of strings in an NSArray.
+    // This is more a free form entry of anything that
+    // helps you collect your thoughts. It’s a place where
+    // you can add meaningful labels for organizing links
+    // that aren’t confined to a channel or campaign
+    NSArray *branchTags = @[@"test_tag1", @"test_tag2"];
+    
+    // Brach deep link params
+    // ====================================================
+    // These are the params you want passed thru the link.
+    // This could be _anything_ you want: A user id of who shared the content,
+    // an image URL, an internal URI to direct the user to the content within
+    // your app, etc. Here are just a few samples...
+    NSMutableDictionary *branchParams = [[NSMutableDictionary alloc] init];
+    // Example params Deep Link data
+    [branchParams setObject:@"Joe" forKey:@"user"];
+    [branchParams setObject:@"https://s3-us-west-1.amazonaws.com/myapp/joes_pic.jpg" forKey:@"profile_pic"];
+    [branchParams setObject:@"Joe likes long walks on the beach..." forKey:@"description"];
+    
+    // OpenGraph tags
+    // ====================================================
+    // OpenGraph tags are a way of sharing content attributes
+    // with social media platforms: http://ogp.me/) <<-- Thanks Facebook!
+    // These can also be set in the params. A Great thing to do
+    // If you want your app's name or icon to show up on a Facebook timeline
+    // when a user shares this on Facebook.
+    [branchParams setObject:@"Joe is a super cool guy!" forKey:@"$og_title"];
+    [branchParams setObject:@"https://branch.io/img/logo_icon_black.png" forKey:@"$og_image_url"];
+    [branchParams setObject:@"Because he likes long walks on the beach..." forKey:@"$og_description"];
+    
+    // Branch Stage
+    // ====================================================
+    // This is a label typically used to categorize the progress
+    // or category of a user when the link was generated. For example,
+    // if the customer has an invite system accessible on level 1, level 3 and 5,
+    // the customer could differentiate links generated at each level with this parameter
+    NSString *branchStage = @"test_stage";
+    
+    // Branch Feature
+    // ====================================================
+    // This is the feature of the customer’s product that the
+    // link might be associated with. For example, if the customer
+    // had built a referral program in their app, they might have
+    // tagged all links with the String ‘referral’.
+    NSString *branchFeature = @"test_feature";
+    
+    // OSK Content with Branch params
+    // ====================================================
+    // These methods all return a instance of an OSKShareableContent object
+    // but they also automatically generate a Branch Short URL with all of the Branch
+    // params they are provided with!
+    // you can also call contentFromURL with all of these optional params.
+
+    // OSK Content with all arguments
     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
                                                                       authorName:authorName
                                                                     canonicalURL:canonicalURL
-                                                                          images:images];
+                                                                          images:images
+                                                              branchTrackingTags:branchTags
+                                                                    branchParams:branchParams
+                                                                     branchStage:branchStage
+                                                                   branchFeature:branchFeature];
+    /*
+    // OSK with tracking tags
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName canonicalURL:canonicalURL
+                                                                          images:images branchTrackingTags:branchTags];
+     */
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self showShareSheet_Phone:content];
-    } else {
-        [self showShareSheet_Pad_FromCell:tappedCell content:content];
-    }
+    // OSK with Branch tags and Params for deep links
+    /*
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName canonicalURL:canonicalURL
+                                                                          images:images branchTrackingTags:branchTags branchParams:branchParams];
+     */
+    
+    // OSK with Params for deep links
+    /*
+     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                     authorName:authorName
+                                                                     canonicalURL:canonicalURL
+                                                                     images:images
+                                                                     branchParams:branchParams];
+     */
+    // OSK with Branch tags, Params for deep links, and Branch Stage
+    /*
+     OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                       authorName:authorName
+                                                                     canonicalURL:canonicalURL
+                                                                         images:images
+                                                               branchTrackingTags:branchTags
+                                                                     branchParams:branchParams
+                                                                      branchStage:branchStage];
+     */
+    
+    // OSK with Branch tags and Branch Stage
+    /*
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images
+                                                              branchTrackingTags:branchTags
+                                                                     branchStage:branchStage];
+     */
+    
+    // OSK with Branch Params for deep links and Branch Stage
+    /*
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images
+                                                                    branchParams:branchParams
+                                                                     branchStage:branchStage];
+     */
+    
+    // OSK with Branch Stage
+    /*
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images
+                                                                     branchStage:branchStage];
+     */
+    
+    // OSK with Branch Feature
+    /*
+    OSKShareableContent *content = [OSKShareableContent contentFromMicroblogPost:text
+                                                                      authorName:authorName
+                                                                    canonicalURL:canonicalURL
+                                                                          images:images
+                                                                     branchFeature:branchFeature];
+     */
+    
+    // ========== End Branch ==========
+    
+    // 3) Present the activity sheet via the presentation manager.
+    
+    [[OSKPresentationManager sharedInstance] presentActivitySheetForContent:content
+                                                   presentingViewController:self
+                                                                    options:nil];
 }
+
+
+#pragma mark - Sharing
 
 - (void)showShareSheet_Pad_FromCell:(SampleTimelineCell *)tappedCell content:(OSKShareableContent *)content {
     
@@ -99,7 +256,7 @@
     
     // 3) Create the options dictionary. See OSKActivity.h for more options.
     NSDictionary *options = @{    OSKPresentationOption_ActivityCompletionHandler : completionHandler,
-                              OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
+                                  OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
     
     // 4) Prep the iPad-specific presentation needs.
     CGRect presentationRect = [self presentationRectForCell:tappedCell];
@@ -132,22 +289,6 @@
                                                                     options:options];
 }
 
-- (void)showShareSheet_Phone:(OSKShareableContent *)content {
-    
-    // 2) Setup optional completion and dismissal handlers
-    OSKActivityCompletionHandler completionHandler = [self activityCompletionHandler];
-    OSKPresentationEndingHandler dismissalHandler = [self dismissalHandler];
-    
-    // 3) Create the options dictionary. See OSKActivity.h for more options.
-    NSDictionary *options = @{    OSKPresentationOption_ActivityCompletionHandler : completionHandler,
-                              OSKPresentationOption_PresentationEndingHandler : dismissalHandler};
-    
-    // 4) Present the activity sheet via the presentation manager.
-    [[OSKPresentationManager sharedInstance] presentActivitySheetForContent:content
-                                                   presentingViewController:self
-                                                                    options:options];
-}
-
 
 #pragma mark - OSKActivitiesManager X-Callback-URL Delegate
 
@@ -175,10 +316,22 @@
 }
 
 - (BOOL)osk_toolbarsUseUnjustifiablyBorderlessButtons {
-#warning Override this to use bordered navigation bar buttons.
+#warning Override this and return NO to enable bordered navigation bar buttons.
     return YES;
 }
+/*
+- (UIFontDescriptor *)osk_normalFontDescriptor {
+    NSDictionary *attributes = @{UIFontDescriptorNameAttribute : @"AvenirNext-Regular"};
+    UIFontDescriptor *descriptor = [UIFontDescriptor fontDescriptorWithFontAttributes:attributes];
+    return descriptor;
+}
 
+- (UIFontDescriptor *)osk_boldFontDescriptor {
+    NSDictionary *attributes = @{UIFontDescriptorNameAttribute : @"AvenirNext-Bold"};
+    UIFontDescriptor *descriptor = [UIFontDescriptor fontDescriptorWithFontAttributes:attributes];
+    return descriptor;
+}
+*/
 
 #pragma mark - OSKPresentationManager Color Delegate
 
@@ -244,7 +397,7 @@
 }
 
 
-#pragma mark - SampleTimelineViewController 
+#pragma mark - SampleTimelineViewController
 
 - (void)accountManagerButtonTapped:(id)sender {
     [self showAccountsManagement];

@@ -10,6 +10,11 @@
 
 #import "OSKShareableContentItem.h"
 
+
+// Include Branch, and Branch preference helper
+#import "Branch.h"
+#import "BNCPreferenceHelper.h"
+
 @implementation OSKShareableContent
 
 + (instancetype)contentFromText:(NSString *)text {
@@ -54,10 +59,21 @@
     return content;
 }
 
-+ (instancetype)contentFromURL:(NSURL *)url {
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchParams
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature {
     NSParameterAssert(url.absoluteString.length);
     
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
+    
+    // Branch arguments
+    content.branchTags = branchTrackingTags;
+    content.branchStage = branchStage;
+    content.branchFeature = branchFeature;
+    content.branchParams = branchParams;
+    
     NSString *absoluteString = url.absoluteString;
 
     content.title = absoluteString;
@@ -117,13 +133,221 @@
     textEditing.text = url.absoluteString;
     content.textEditingItem = textEditing;
     
+    // ========== Branch ==========
+    // Check to see if a URL is present, and that the Branch API key is present. If so, process all the Content Items for a Branch short URL
+    if (url && ![[BNCPreferenceHelper getAppKey] isEqualToString:@"bnc_no_value"]) {
+        
+        // Branch arguments
+        content.branchTags = branchTrackingTags;
+        content.branchStage = branchStage;
+        content.branchFeature = branchFeature;
+        content.branchParams = branchParams;
+        
+        [content initiateBranchWithURL:url];
+    }
+    // --- End Branch
+    
     return content;
 }
 
-+ (instancetype)contentFromMicroblogPost:(NSString *)text authorName:(NSString *)authorName canonicalURL:(NSString *)canonicalURL images:(NSArray *)images {
+// ========== Branch ==========
+
+/**
+ Original class method without Branch arguments
+ */
++ (instancetype)contentFromURL:(NSURL *)url {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:nil
+                                   branchStage:nil
+                                 branchFeature:nil];
+};
+
+// Tracking tags
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:nil
+                                   branchStage:nil
+                                 branchFeature:nil];
+};
+
+// Tracking Tags, Deep link params
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchPrams {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:branchPrams
+                                   branchStage:nil
+                                 branchFeature:nil];
+};
+
+// Deep link params
++ (instancetype)contentFromURL:(NSURL *)url
+                  branchParams:(NSDictionary *)branchPrams {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:branchPrams
+                                   branchStage:nil
+                                 branchFeature:nil];
+};
+
+// Tracking Tags, Deep link params, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchPrams
+                   branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:branchPrams
+                                   branchStage:branchStage
+                                 branchFeature:nil];
+};
+
+// Deep link params, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                  branchParams:(NSDictionary *)branchPrams
+                   branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:branchPrams
+                                   branchStage:branchStage
+                                 branchFeature:nil];
+};
+
+// Tracking Tags, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                   branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:nil
+                                   branchStage:branchStage
+                                 branchFeature:nil];
+};
+
+// Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                   branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:nil
+                                   branchStage:branchStage
+                                 branchFeature:nil];
+};
+
+// Tracking tags, Deep link params, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchParams
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:branchParams
+                                   branchStage:nil
+                                 branchFeature:branchFeature];
+};
+
+// Tracking tags, Stage, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:nil
+                                   branchStage:branchStage
+                                 branchFeature:branchFeature];
+};
+
+// Deep link params, Stage and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                  branchParams:(NSDictionary *)branchParams
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:branchParams
+                                   branchStage:branchStage
+                                 branchFeature:branchFeature];
+};
+
+// Deep link params and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                  branchParams:(NSDictionary *)branchParams
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:branchParams
+                                   branchStage:nil
+                                 branchFeature:branchFeature];
+};
+
+// Stage and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:nil
+                                   branchStage:branchStage
+                                 branchFeature:branchFeature];
+};
+
+// Tracking tags and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:branchTrackingTags
+                                  branchParams:nil
+                                   branchStage:nil
+                                 branchFeature:branchFeature];
+};
+
+// Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                 branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromURL:url
+                            branchTrackingTags:nil
+                                  branchParams:nil
+                                   branchStage:nil
+                                 branchFeature:branchFeature];
+};
+
+// ========== End Branch ==========
+
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature {
+    
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
     
     content.title = [NSString stringWithFormat:@"Post by %@: “%@”", authorName, text];
+    
+    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     
     NSURL *URLforCanonicalURL = nil;
     if (canonicalURL) {
@@ -166,7 +390,7 @@
     
     OSKEmailContentItem *emailItem = [[OSKEmailContentItem alloc] init];
     emailItem.body = [NSString stringWithFormat:@"“%@”\n\n(Via @%@)\n\n%@ ", text, authorName, canonicalURL];
-    emailItem.subject = @"Clipper Ships Sail On the Ocean";
+    emailItem.subject = [NSString stringWithFormat:@"Link from %@", appName];
     emailItem.attachments = images.copy;
     content.emailItem = emailItem;
     
@@ -185,7 +409,6 @@
         OSKLinkBookmarkContentItem *linkBookmarking = [[OSKLinkBookmarkContentItem alloc] init];
         linkBookmarking.url = URLforCanonicalURL;
         linkBookmarking.notes = [NSString stringWithFormat:@"%@\n\n%@", text, canonicalURL];
-        NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
         linkBookmarking.tags = @[appName];
         linkBookmarking.markToRead = YES;
         content.linkBookmarkItem = linkBookmarking;
@@ -224,8 +447,195 @@
     textEditing.text = emailItem.body;
     content.textEditingItem = textEditing;
     
+    // ========== Branch ==========
+    // Check to see if a URL is present, and that the Branch API key is present. If so, process all the Content Items for a Branch short URL
+    if (URLforCanonicalURL && ![[BNCPreferenceHelper getAppKey] isEqualToString:@"bnc_no_value"]) {
+        
+        // Branch arguments
+        content.branchTags = branchTrackingTags;
+        content.branchStage = branchStage;
+        content.branchFeature = branchFeature;
+        content.branchParams = branchParams;
+        
+        [content initiateBranchWithURL:URLforCanonicalURL];
+    }
+    // --- End Branch
+    
     return content;
 }
+
+// ========== Branch ==========
+
+/**
+ Original class method without Branch arguments
+ */
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:nil branchStage:nil branchFeature:nil];
+}
+
+/**
+ Branch extensions to convenient constructors for Microblog posts
+ */
+
+// Tracking tags
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:nil branchStage:nil branchFeature:nil];
+}
+
+// Tracking tags, Deep link params
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:branchPrams branchStage:nil branchFeature:nil];
+}
+
+// Deep link params
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchPrams {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:branchPrams branchStage:nil branchFeature:nil];
+}
+
+// Tracking Tags, Deep link params, Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams
+                             branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:branchPrams branchStage:branchStage branchFeature:nil];
+}
+
+// Deep link params, Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchPrams
+                             branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:branchPrams branchStage:branchStage branchFeature:nil];
+};
+
+// Tracking Tags, Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:nil branchStage:branchStage branchFeature:nil];
+};
+
+// Tracking tags, Deep link params, and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:branchParams branchStage:nil branchFeature:branchFeature];
+};
+
+// Tracking tags, Stage, and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:nil branchStage:branchStage branchFeature:branchFeature];
+};
+
+// Deep link params, Stage and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:branchParams branchStage:branchStage branchFeature:branchFeature];
+};
+
+// Deep link params and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:branchParams branchStage:nil branchFeature:branchFeature];
+};
+
+// Stage and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:nil branchStage:branchStage branchFeature:branchFeature];
+};
+
+// Tracking tags and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:branchTrackingTags branchParams:nil branchStage:nil branchFeature:branchFeature];
+};
+
+// Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                           branchFeature:(NSString *)branchFeature {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:nil branchStage:nil branchFeature:branchFeature];
+};
+
+// Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                             branchStage:(NSString *)branchStage {
+    
+    return [OSKShareableContent contentFromMicroblogPost:text authorName:authorName canonicalURL:canonicalURL images:images branchTrackingTags:nil branchParams:nil branchStage:branchStage branchFeature:nil];
+};
+
+//========== End Branch ==========
 
 + (instancetype)contentFromImages:(NSArray *)images caption:(NSString *)caption {
     OSKShareableContent *content = [[OSKShareableContent alloc] init];
@@ -318,6 +728,138 @@
     
     return content;
 }
+
+// ========== Branch ==========
+// Private calls
+
+// Initates all of the share channels to generate a Branch URL for
+- (void)initiateBranchWithURL:(NSURL *)url {
+    // Arrays of all channels
+    // Channels that have a url or link attribute
+    self.channelsToProcessToBranch = [@[
+                                        @"facebook",
+                                        @"browser",
+                                        @"read_later",
+                                        @"bookmark",
+                                        @"microblog_twitter",
+                                        @"email",
+                                        @"sms",
+                                        @"todo",
+                                        @"text_editor",
+                                        @"airdrop"
+                                        ] mutableCopy];
+    
+    // URL to process for each channel
+    self.urlToProcessToBranch = [url absoluteString];
+    
+    // begin processing URLs for Branch
+    [self processURLsForBranch];
+}
+
+// Gets a Branch short URL for each channel
+// The Branch SDK cannot generate more then one URL simultaniously, otherwise the callback block will be over written
+// To work around this, each channel is stored as an NSString in an NSMutableArray. Once the callback from the first URL is fired, the processed channel is removed from the NSMutable Array. If another NSString is present in the NSMutableArray, processURLsForBranch is called on the OSKShareableContent instance again which processes the next channel in the array
+- (void)processURLsForBranch {
+    
+    // Sinleton Branch instance
+    Branch *branch = [Branch getInstance];
+    
+    // Weak block reference to self
+    // This is so we can reference the self instance from inside the callback block
+    __weak OSKShareableContent *weakContent = self;
+    
+    //The next channel we're going to process for getShortUrl
+    NSString *channel = [self.channelsToProcessToBranch firstObject];
+    
+    // Content items that take a single URL as an argument
+    // Create Branch Short URL for each channel
+    [branch getShortURLWithParams:self.branchParams
+                          andTags:self.branchTags
+                       andChannel:channel
+                       andFeature:self.branchFeature
+                         andStage:self.branchStage
+                      andCallback:^(NSString *url, NSError *error) {
+                          __strong OSKShareableContent *strongContent = weakContent;
+                          
+                          if(!error) {
+                              
+                              // Grab the channel we need to process again
+                              NSString *channel = [strongContent.channelsToProcessToBranch firstObject];
+                              
+                              // Each channel type stores the URL in a different property. So we'll make sure we update the correct property here. Once the property is updated with the new URL, the user will be sent to the new Branch URL rather than the original URL
+                              if([channel isEqualToString:@"facebook"]) {
+                                  strongContent.facebookItem.link = [NSURL URLWithString:url];
+                                  //NSLog(@"Facebook: %@", strongContent.facebookItem.link);
+                              } else if ([channel isEqualToString:@"browser"]) {
+                                  strongContent.webBrowserItem.url = [NSURL URLWithString:url];
+                                  //NSLog(@"Browser: %@", strongContent.webBrowserItem.url);
+                              } else if ([channel isEqualToString:@"read_later"]) {
+                                  strongContent.readLaterItem.url = [NSURL URLWithString:url];
+                                  //NSLog(@"Read Later: %@", strongContent.readLaterItem.url);
+                              } else if ([channel isEqualToString:@"bookmark"]) {
+                                  strongContent.linkBookmarkItem.url = [NSURL URLWithString:url];
+                                  //NSLog(@"Bookmark: %@", strongContent.linkBookmarkItem.url);
+                              } else if ([channel isEqualToString:@"microblog_twitter"]) {
+                                  strongContent.microblogPostItem.text = [self branchifiedStringWithURL:url andOriginalString:strongContent.microblogPostItem.text];
+                                  //NSLog(@"Twitter / Microblog: %@", strongContent.microblogPostItem.text);
+                              } else if ([channel isEqualToString:@"email"]) {
+                                  strongContent.emailItem.body = [self branchifiedStringWithURL:url andOriginalString:strongContent.emailItem.body];
+                                  //NSLog(@"Email: %@", strongContent.emailItem.body);
+                              } else if ([channel isEqualToString:@"sms"]) {
+                                  strongContent.smsItem.body = [self branchifiedStringWithURL:url andOriginalString:strongContent.smsItem.body];
+                                  //NSLog(@"SMS: %@", strongContent.smsItem.body);
+                              } else if ([channel isEqualToString:@"todo"]) {
+                                  strongContent.toDoListItem.notes = [ self branchifiedStringWithURL:url andOriginalString:strongContent.toDoListItem.notes];
+                                  //NSLog(@"Todo: %@", strongContent.toDoListItem.notes);
+                              } else if ([channel isEqualToString:@"text_editor"]) {
+                                  strongContent.textEditingItem.text = [self branchifiedStringWithURL:url andOriginalString:strongContent.textEditingItem.text];
+                                  //NSLog(@"Text editor: %@", strongContent.textEditingItem.text);
+                              } else if ([channel isEqualToString:@"airdrop"]) {
+                                  NSMutableArray *airdropItems = [strongContent.airDropItem.items mutableCopy];
+                                  for (int i = 0; i < [airdropItems count]; i++) {
+                                      if ([airdropItems[i] isKindOfClass:[NSString class]]) {
+                                          airdropItems[i] =
+                                          [self branchifiedStringWithURL:url
+                                                       andOriginalString:airdropItems[i]];
+                                          //NSLog(@"AirDrop: %@", airdropItems[i]);
+                                      }
+                                  }
+                                  strongContent.airDropItem.items = airdropItems;
+                              }
+                          }
+                          
+                          // Next channel
+                          [strongContent.channelsToProcessToBranch removeObjectAtIndex:0];
+                          if (strongContent.channelsToProcessToBranch.count > 0) {
+                              //NSLog(@"\n--------------------------------------\n");
+                              [strongContent processURLsForBranch];
+                          }
+                      }];
+}
+
+// Processes strings of content, and replaces the URL at the end with the Branch URL provided
+- (NSString *)branchifiedStringWithURL:(NSString *)branchURL andOriginalString:(NSString *)string {
+    // Identifies all links in a string
+    NSTextCheckingResult *urlCheckingResult = [self identifyAllUrlsAndReplaceInString:string];
+    
+    // Remove the original URL from the end of the string
+    NSString *truncatedString = [string stringByReplacingCharactersInRange:urlCheckingResult.range withString:@""];
+    
+    // Append the original string with the Branch URL and return
+    return [truncatedString stringByAppendingString:branchURL];
+}
+
+// Identifies all links in a string
+- (NSTextCheckingResult *)identifyAllUrlsAndReplaceInString:(NSString *)string {
+    // Find all URLs in a string
+    NSDataDetector *detect = [[NSDataDetector alloc] initWithTypes:NSTextCheckingTypeLink error:nil];
+    NSMutableArray *allURLs = [[detect matchesInString:string options:0 range:NSMakeRange(0, [string length])] mutableCopy];
+    
+    //return the URL checking result at the end of the string
+    return [allURLs lastObject];
+}
+
+// ========== End Branch ==========
 
 - (instancetype)init {
     self = [super init];

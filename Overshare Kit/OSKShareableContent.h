@@ -137,6 +137,26 @@ These can be custom items, or additional instances of the official items above.
 */
 @property (copy, nonatomic) NSString *title;
 
+
+// ========== Branch ==========
+
+@property (strong, nonatomic) NSMutableArray *channelsToProcessToBranch;
+
+@property (strong, nonatomic) NSMutableArray *channelsWithStringsToProcessToBranch;
+
+@property (strong, nonatomic) NSString *urlToProcessToBranch;
+
+@property (strong, nonatomic) NSArray *branchTags;
+
+@property (strong, nonatomic) NSString *branchFeature;
+
+@property (strong, nonatomic) NSString *branchStage;
+
+@property (strong, nonatomic) NSDictionary *branchParams;
+
+@property (strong, nonatomic) NSDictionary *branchOGTags;
+
+// ========== End Branch ==========
 @end
 
 /// -----------------------------------------
@@ -155,6 +175,90 @@ These can be custom items, or additional instances of the official items above.
  */
 + (instancetype)contentFromURL:(NSURL *)url;
 
+// ========== Branch ==========
+/**
+ Branch extensions to convenient constructors for links
+ */
+
+// All Branch Arguments: Tracking, Deep link params, Stage, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+            branchTrackingTags:(NSArray *)branchTrackingTags
+                  branchParams:(NSDictionary *)branchParams
+                   branchStage:(NSString *)branchStage
+                 branchFeature:(NSString *)branchFeature;
+
+// Tracking tags
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags;
+
+// Tracking Tags, Deep link params
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams;
+
+// Deep link params
++ (instancetype)contentFromURL:(NSURL *)url
+                            branchParams:(NSDictionary *)branchPrams;
+
+// Tracking Tags, Deep link params, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams
+                             branchStage:(NSString *)branchStage;
+
+// Deep link params, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                            branchParams:(NSDictionary *)branchPrams
+                             branchStage:(NSString *)branchStage;
+
+// Tracking Tags, Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage;
+
+// Stage
++ (instancetype)contentFromURL:(NSURL *)url
+                             branchStage:(NSString *)branchStage;
+
+// Tracking tags, Deep link params, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature;
+
+// Tracking tags, Stage, and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Deep link params, Stage and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Deep link params and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature;
+
+// Stage and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Tracking tags and Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                           branchFeature:(NSString *)branchFeature;
+
+// Feature
++ (instancetype)contentFromURL:(NSURL *)url
+                           branchFeature:(NSString *)branchFeature;
+
+// ========== End Branch ==========
+
 /**
  Convenient constructor for content drawn from microblog posts (like Twitter or App.net).
  */
@@ -163,11 +267,149 @@ These can be custom items, or additional instances of the official items above.
                             canonicalURL:(NSString *)canonicalURL
                                   images:(NSArray *)images;
 
+// ========== Branch ==========
+/**
+ Branch extensions to convenient constructors for microblog posts
+ */
+
+// All Branch Arguments: Tracking, Deep link params, Stage, and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Tracking tags
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags;
+
+// Tracking Tags, Deep link params
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams;
+
+// Deep link params
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchPrams;
+
+// Tracking Tags, Deep link params, Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchPrams
+                                branchStage:(NSString *)branchStage;
+
+// Deep link params, Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchPrams
+                             branchStage:(NSString *)branchStage;
+
+// Tracking Tags, Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage;
+
+// Stage
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                             branchStage:(NSString *)branchStage;
+
+// Tracking tags, Deep link params, and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature;
+
+// Tracking tags, Stage, and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Deep link params, Stage and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchParams
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Deep link params and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                            branchParams:(NSDictionary *)branchParams
+                           branchFeature:(NSString *)branchFeature;
+
+// Stage and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                             branchStage:(NSString *)branchStage
+                           branchFeature:(NSString *)branchFeature;
+
+// Tracking tags and Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                      branchTrackingTags:(NSArray *)branchTrackingTags
+                           branchFeature:(NSString *)branchFeature;
+
+// Feature
++ (instancetype)contentFromMicroblogPost:(NSString *)text
+                              authorName:(NSString *)authorName
+                            canonicalURL:(NSString *)canonicalURL
+                                  images:(NSArray *)images
+                           branchFeature:(NSString *)branchFeature;
+
+// ========== End Branch ==========
+
 /**
  Convenient constructor for sharing one or more images with a common caption.
  */
 + (instancetype)contentFromImages:(NSArray *)images
                           caption:(NSString *)caption;
+
+// ========== Branch ==========
+
+/**
+ Processes URLs in all Content Items and replaces with Branch URLs
+ */
+- (void)processURLsForBranch;
+
+// ========== Branch ==========
 
 @end
 

@@ -258,6 +258,16 @@
 		8895C33E18A3BA1B000B7F28 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C33D18A3BA1B000B7F28 /* Security.framework */; };
 		8895C34018A3BA24000B7F28 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C33F18A3BA24000B7F28 /* SystemConfiguration.framework */; };
 		8895C35218A3BFA2000B7F28 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8895C35118A3BFA2000B7F28 /* Icon-60@2x.png */; };
+		D24CF7261A6FF57000540A64 /* BNCError.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF7121A6FF57000540A64 /* BNCError.m */; };
+		D24CF7271A6FF57000540A64 /* BNCPreferenceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF7141A6FF57000540A64 /* BNCPreferenceHelper.m */; };
+		D24CF7281A6FF57000540A64 /* BNCServerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF7161A6FF57000540A64 /* BNCServerInterface.m */; };
+		D24CF7291A6FF57000540A64 /* BNCServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF7181A6FF57000540A64 /* BNCServerRequest.m */; };
+		D24CF72A1A6FF57000540A64 /* BNCServerRequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF71A1A6FF57000540A64 /* BNCServerRequestQueue.m */; };
+		D24CF72B1A6FF57000540A64 /* BNCServerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF71C1A6FF57000540A64 /* BNCServerResponse.m */; };
+		D24CF72C1A6FF57000540A64 /* BNCSystemObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF71E1A6FF57000540A64 /* BNCSystemObserver.m */; };
+		D24CF72D1A6FF57000540A64 /* Branch.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF7211A6FF57000540A64 /* Branch.m */; };
+		D24CF72E1A6FF57000540A64 /* BranchServerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF7231A6FF57000540A64 /* BranchServerInterface.m */; };
+		D24CF72F1A6FF57000540A64 /* UIViewController+BNCDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CF7251A6FF57000540A64 /* UIViewController+BNCDebugging.m */; };
 		F2ED44FF27CCD7E9F8A34E77 /* GooglePlus-Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = F2ED4DB1EC62FB9EF52F15D0 /* GooglePlus-Icon-76.png */; };
 		F2ED453AABB8833C66910E03 /* GooglePlus-Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2ED46B9E187F11BFEF64BF2 /* GooglePlus-Icon-76@2x.png */; };
 		F2ED4696B1DB571FBBE9204A /* GooglePlus-Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2ED40569B315A0A210DC081 /* GooglePlus-Icon-60@2x.png */; };
@@ -655,6 +665,28 @@
 		8895C33D18A3BA1B000B7F28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8895C33F18A3BA24000B7F28 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8895C35118A3BFA2000B7F28 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "Overshare/Icon-60@2x.png"; sourceTree = "<group>"; };
+		D24CF7101A6FF57000540A64 /* BNCConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCConfig.h; sourceTree = "<group>"; };
+		D24CF7111A6FF57000540A64 /* BNCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCError.h; sourceTree = "<group>"; };
+		D24CF7121A6FF57000540A64 /* BNCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCError.m; sourceTree = "<group>"; };
+		D24CF7131A6FF57000540A64 /* BNCPreferenceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCPreferenceHelper.h; sourceTree = "<group>"; };
+		D24CF7141A6FF57000540A64 /* BNCPreferenceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCPreferenceHelper.m; sourceTree = "<group>"; };
+		D24CF7151A6FF57000540A64 /* BNCServerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCServerInterface.h; sourceTree = "<group>"; };
+		D24CF7161A6FF57000540A64 /* BNCServerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCServerInterface.m; sourceTree = "<group>"; };
+		D24CF7171A6FF57000540A64 /* BNCServerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCServerRequest.h; sourceTree = "<group>"; };
+		D24CF7181A6FF57000540A64 /* BNCServerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCServerRequest.m; sourceTree = "<group>"; };
+		D24CF7191A6FF57000540A64 /* BNCServerRequestQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCServerRequestQueue.h; sourceTree = "<group>"; };
+		D24CF71A1A6FF57000540A64 /* BNCServerRequestQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCServerRequestQueue.m; sourceTree = "<group>"; };
+		D24CF71B1A6FF57000540A64 /* BNCServerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCServerResponse.h; sourceTree = "<group>"; };
+		D24CF71C1A6FF57000540A64 /* BNCServerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCServerResponse.m; sourceTree = "<group>"; };
+		D24CF71D1A6FF57000540A64 /* BNCSystemObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCSystemObserver.h; sourceTree = "<group>"; };
+		D24CF71E1A6FF57000540A64 /* BNCSystemObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCSystemObserver.m; sourceTree = "<group>"; };
+		D24CF71F1A6FF57000540A64 /* Branch-SDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Branch-SDK-Prefix.pch"; sourceTree = "<group>"; };
+		D24CF7201A6FF57000540A64 /* Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Branch.h; sourceTree = "<group>"; };
+		D24CF7211A6FF57000540A64 /* Branch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Branch.m; sourceTree = "<group>"; };
+		D24CF7221A6FF57000540A64 /* BranchServerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchServerInterface.h; sourceTree = "<group>"; };
+		D24CF7231A6FF57000540A64 /* BranchServerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchServerInterface.m; sourceTree = "<group>"; };
+		D24CF7241A6FF57000540A64 /* UIViewController+BNCDebugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BNCDebugging.h"; sourceTree = "<group>"; };
+		D24CF7251A6FF57000540A64 /* UIViewController+BNCDebugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BNCDebugging.m"; sourceTree = "<group>"; };
 		F2ED40569B315A0A210DC081 /* GooglePlus-Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GooglePlus-Icon-60@2x.png"; sourceTree = "<group>"; };
 		F2ED41960B167BFC3B93056A /* GooglePlus-Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GooglePlus-Icon-29@2x.png"; sourceTree = "<group>"; };
 		F2ED429BFCE742838350E97F /* OSKGooglePlusActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKGooglePlusActivity.m; sourceTree = "<group>"; };
@@ -1473,6 +1505,7 @@
 		7FEE7922181EDC71000F684A /* Third-Party Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				D24CF70F1A6FF57000540A64 /* Branch-SDK */,
 				7FEE7924181EDC88000F684A /* ADNLogin */,
 				7FEE7923181EDC84000F684A /* Pocket */,
 			);
@@ -1516,6 +1549,36 @@
 			name = GooglePlus;
 			sourceTree = "<group>";
 		};
+		D24CF70F1A6FF57000540A64 /* Branch-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				D24CF7101A6FF57000540A64 /* BNCConfig.h */,
+				D24CF7111A6FF57000540A64 /* BNCError.h */,
+				D24CF7121A6FF57000540A64 /* BNCError.m */,
+				D24CF7131A6FF57000540A64 /* BNCPreferenceHelper.h */,
+				D24CF7141A6FF57000540A64 /* BNCPreferenceHelper.m */,
+				D24CF7151A6FF57000540A64 /* BNCServerInterface.h */,
+				D24CF7161A6FF57000540A64 /* BNCServerInterface.m */,
+				D24CF7171A6FF57000540A64 /* BNCServerRequest.h */,
+				D24CF7181A6FF57000540A64 /* BNCServerRequest.m */,
+				D24CF7191A6FF57000540A64 /* BNCServerRequestQueue.h */,
+				D24CF71A1A6FF57000540A64 /* BNCServerRequestQueue.m */,
+				D24CF71B1A6FF57000540A64 /* BNCServerResponse.h */,
+				D24CF71C1A6FF57000540A64 /* BNCServerResponse.m */,
+				D24CF71D1A6FF57000540A64 /* BNCSystemObserver.h */,
+				D24CF71E1A6FF57000540A64 /* BNCSystemObserver.m */,
+				D24CF71F1A6FF57000540A64 /* Branch-SDK-Prefix.pch */,
+				D24CF7201A6FF57000540A64 /* Branch.h */,
+				D24CF7211A6FF57000540A64 /* Branch.m */,
+				D24CF7221A6FF57000540A64 /* BranchServerInterface.h */,
+				D24CF7231A6FF57000540A64 /* BranchServerInterface.m */,
+				D24CF7241A6FF57000540A64 /* UIViewController+BNCDebugging.h */,
+				D24CF7251A6FF57000540A64 /* UIViewController+BNCDebugging.m */,
+			);
+			name = "Branch-SDK";
+			path = "../../../Dependencies/Branch-iOS-SDK/Branch-SDK/Branch-SDK";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1557,6 +1620,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7FEE7626181ED83D000F684A;
 			productRefGroup = 7FEE7630181ED83D000F684A /* Products */;
@@ -1722,9 +1786,11 @@
 				7FEE7790181ED8EF000F684A /* NSMutableURLRequest+OSKUtilities.m in Sources */,
 				7FEE77C5181ED8EF000F684A /* OSKPocketActivity.m in Sources */,
 				7FEE77B6181ED8EF000F684A /* OSKInstapaperUtility.m in Sources */,
+				D24CF7291A6FF57000540A64 /* BNCServerRequest.m in Sources */,
 				7F55A30118425C46004A3BCC /* OSKSessionController_Phone.m in Sources */,
 				7FEE7643181ED83D000F684A /* OSKAppDelegate.m in Sources */,
 				7FEE77AD181ED8EF000F684A /* OSKCopyToPasteboardActivity.m in Sources */,
+				D24CF7261A6FF57000540A64 /* BNCError.m in Sources */,
 				7FEE77B4181ED8EF000F684A /* OSKInMemoryImageCache.m in Sources */,
 				7FEE77A3181ED8EF000F684A /* OSKADNLoginManager.m in Sources */,
 				7F75BF3D1821588700D3681E /* PocketAPI.m in Sources */,
@@ -1760,7 +1826,9 @@
 				7FEE7797181ED8EF000F684A /* OSKActionSheet.m in Sources */,
 				7F78E9AC1820E5630042CF02 /* OSKPocketAccountViewController.m in Sources */,
 				7FEE77AE181ED8EF000F684A /* OSKEmailActivity.m in Sources */,
+				D24CF7281A6FF57000540A64 /* BNCServerInterface.m in Sources */,
 				7F14C95918DB5DBC00E635FE /* OSKTextViewAttachmentView.m in Sources */,
+				D24CF72D1A6FF57000540A64 /* Branch.m in Sources */,
 				7F14C95F18DB651800E635FE /* OSKCursorMovement.m in Sources */,
 				7FEE77B7181ED8EF000F684A /* OSKKeychainUtility.m in Sources */,
 				7FE467391821F4010054D2BC /* OSKAccountTypeCell.m in Sources */,
@@ -1768,6 +1836,7 @@
 				7FD649DA1895C7CA0021BD50 /* OSKDraftsActivity.m in Sources */,
 				7F75BF3E1821588700D3681E /* PocketAPILogin.m in Sources */,
 				7FEE77C7181ED8EF000F684A /* OSKReadabilityActivity.m in Sources */,
+				D24CF72B1A6FF57000540A64 /* BNCServerResponse.m in Sources */,
 				7F55A30218425C46004A3BCC /* OSKSessionController.m in Sources */,
 				7FEE77C1181ED8EF000F684A /* OSKOmnifocusActivity.m in Sources */,
 				7FEE7794181ED8EF000F684A /* OSK1PasswordBrowserActivity.m in Sources */,
@@ -1808,21 +1877,26 @@
 				7FEE77D8181ED8EF000F684A /* UIColor+OSKUtility.m in Sources */,
 				7FEE77A4181ED8EF000F684A /* OSKAirDropActivity.m in Sources */,
 				7F75BF3F1821588700D3681E /* PocketAPIOperation.m in Sources */,
+				D24CF72A1A6FF57000540A64 /* BNCServerRequestQueue.m in Sources */,
 				7FEE77A7181ED8EF000F684A /* OSKAppDotNetActivity.m in Sources */,
 				7FEE7798181ED8EF000F684A /* OSKActivitiesManager.m in Sources */,
 				7FEE77D3181ED8EF000F684A /* OSKTwitterTextEntity.m in Sources */,
 				7FEE77BF181ED8EF000F684A /* OSKNavigationController.m in Sources */,
 				7FEE77D7181ED8EF000F684A /* OSKWebViewController.m in Sources */,
 				7FEE77A0181ED8EF000F684A /* OSKActivityOperation.m in Sources */,
+				D24CF72F1A6FF57000540A64 /* UIViewController+BNCDebugging.m in Sources */,
 				7FEE77A9181ED8EF000F684A /* OSKAppDotNetUtility.m in Sources */,
 				7F55A30018425C46004A3BCC /* OSKSessionController_Pad.m in Sources */,
 				7FEE77C9181ED8EF000F684A /* OSKRPSTPasswordManagementAppService.m in Sources */,
+				D24CF72E1A6FF57000540A64 /* BranchServerInterface.m in Sources */,
 				7FEE77AC181ED8EF000F684A /* OSKChromeActivity.m in Sources */,
 				7FEE7795181ED8EF000F684A /* OSK1PasswordSearchActivity.m in Sources */,
 				7F55A2FF18425C46004A3BCC /* OSKSession.m in Sources */,
+				D24CF72C1A6FF57000540A64 /* BNCSystemObserver.m in Sources */,
 				7FEE77D2181ED8EF000F684A /* OSKTwitterText.m in Sources */,
 				7FEE7799181ED8EF000F684A /* OSKActivity.m in Sources */,
 				7FEE77C2181ED8EF000F684A /* OSKPagedHorizontalLayout.m in Sources */,
+				D24CF7271A6FF57000540A64 /* BNCPreferenceHelper.m in Sources */,
 				7FEE77C8181ED8EF000F684A /* OSKReadabilityUtility.m in Sources */,
 				7FEE77D6181ED8EF000F684A /* OSKUsernamePasswordViewController.m in Sources */,
 				7FEE77AB181ED8EF000F684A /* OSKBorderedButton.m in Sources */,
@@ -1927,6 +2001,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"../../../Dependencies/GooglePlus-SDK",
+					"/Users/scott/Code/ObjC/overshare-deeplinking-kit/Dependencies/Branch-iOS-SDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Overshare/Overshare-Prefix.pch";
@@ -1949,6 +2024,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"../../../Dependencies/GooglePlus-SDK",
+					"/Users/scott/Code/ObjC/overshare-deeplinking-kit/Dependencies/Branch-iOS-SDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Overshare/Overshare-Prefix.pch";

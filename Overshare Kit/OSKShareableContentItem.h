@@ -63,6 +63,7 @@ extern NSString * const OSKShareableContentItemType_TextEditing;
 
  @warning Required. Subclasses must override without calling super.
  */
+
 - (NSString *)itemType;
 
 /**

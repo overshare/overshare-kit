@@ -18,6 +18,10 @@ OvershareKit
 - [URL Schemes](#url-schemes)
 - [Dependencies](#dependencies)
 - [In-App Purchases](#in-app-purchases)
+- [Branch Setup](#branch-setup)
+- [Branch Links](#branch-links-in-osk-content)
+- [Branch Identity](#setting-branch-identity)
+- [Branch Events](#branch-events)
 - [So Much More](#so-much-more)
 - [Contributors](#contributors)
 - [Apps Using OvershareKit](#apps-using-oversharekit)
@@ -37,6 +41,8 @@ OvershareKit makes it trivial to add rich sharing options to your iOS apps. In a
 - Built-in integration with iOS Twitter and Facebook accounts.
 
 - Built-in integration with popular third-party services like App.net, Instapaper, and more.
+
+- Built-in integration with Branch.io, enabling custom downloads for every new user.
 
 - Complete multi-account management, including authentication and storing credentials securely in the Keychain.
 
@@ -129,6 +135,8 @@ The list of services currently requiring application credentials are:
 
 - **Google Plus:** You'll need to obtain an application key by registering your app with Google Plus.
 
+- **Branch:** Branch enables custom downloads for every new user. Visit http://branch.io for more information. You'll need to obtain an API key by registering your app with Branch.
+
 If you have any questions about this setup process, don’t hesitate to [ask].
 
 ### URL Schemes
@@ -141,11 +149,13 @@ If you have any questions about this setup process, don’t hesitate to [ask].
 
 OvershareKit is almost entirely a standalone library. All of its categories and classes have been properly namespaced with the `OSK` prefix to avoid collisions.
 
-There are two required external libraries, which are included as git submodules in the Depedencies directory:
+There are three required external libraries, which are included as git submodules in the Depedencies directory:
 
 - [App.net Login SDK](https://github.com/appdotnet/ADNLogin-SDK-iOS)
 
 - [Pocket-iOS-SDK](https://github.com/Pocket/Pocket-ObjC-SDK)
+
+- [Branch-iOS-SDK](https://github.com/BranchMetrics/Branch-iOS-SDK)
 
 *The Google Plus framework in the Dependencies directory is not a submodule.*
 
@@ -153,6 +163,119 @@ There are two required external libraries, which are included as git submodules 
 ## In-App Purchases
 
 You can optionally configure certain activity types to require in-app purchase. OvershareKit does not handle purchasing or receipt validation, but it does handle the logic around presenting your custom purchasing view controller at the appropriate time. OvershareKit will even badge the activity icons with cute little price tags when they have not yet been purchased. See the header files for `OSKActivitiesManager` and `OSKPurchasingViewController` for more details.
+
+## Branch Setup
+Branch.io enables tracking, and personalized downloads for every user of your app through deep links, that pass data **thourgh install and open**. An example use case: Your app has a microblog post the user shares via OvershareKit. Rather than the user sharing the original URL, the Branch integration with OvershareKit automatically converts the original URL into a unique Brach short url for each action. Each short URL auto embeds the sharing channel (facebook, twitter, etc), and extends the OvershareKit Content methods to easily pass in deep link parameters, and tags to track app stage, and specific features.
+
+Ideally, you want to use Branch links any time you have an external link pointing to your app (share, invite, referral, etc) because:
+
+1. The Branch dashboard can tell you where your installs are coming from
+2. Branch links are the highest possible converting channel to new downloads and users
+3. You can pass shared data across install to give new users a custom welcome or show them the content they expect to see
+ 
+Our linking infrastructure will support anything you want to build. If it doesn't, we'll fix it so that it does: just reach out to [alex@branch.io](mailto:alex@branch.io) with requests.
+
+The original Branch iOS SDK and Documentation can [be found here](https://github.com/BranchMetrics/Branch-iOS-SDK)
+
+**To get started** with the Branch integration in OvershareKit, first signup for a [Branch account](https://dashboard.branch.io/)
+
+**Add the Branch API key** found in the [Settings panel](https://dashboard.branch.io/#/settings) of the dashboard, to your app's plist file, as "bnc_app_key". To do this, open the "Info" tab in your XCode project, and add a key to the "Custom iOS Target Properties."
+
+**Register a URI scheme** in your app's plist file, so your app responds to direct deep links (example: myapp://...). This step is optional, but highly recomended. Full instructions [found here](https://github.com/BranchMetrics/Branch-iOS-SDK#register-a-uri-scheme-direct-deep-linking-optional-but-recommended)
+
+**Initialize the Branch SDK**. Branch has a singleton instance that can be refferenced by calling [Branch getInstance]. The first time this is called, a singleton is allocated that can be referrenced throughout the app. To initliaize a Branch session, call:
+```objc
+[[Branch getInstance] initSessionWithLaunchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {...}];
+```
+There is an example of this in the OvershareKit Sample App in the app delegate.
+
+**Register for deeplinks**. You'll likely want your app to respond to it's customer URI scheme, and handle showing the user the correct content with the data your app is passed via the Branch deep link. To do this, your app delegate should respond to
+```objc
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+```
+The url passed in via this method, should be sent to the Branch singleton with:
+```objc
+[[Branch getInstance] handleDeepLink:url];
+```
+There is also an example of this in the OvershareKit sample app delegate.
+
+## Branch Links in OSK Content
+Once you've setup the Branch Integration with the steps in the previous section, you're ready to initiate an OvershareKit Content with Branch short URLs! Normally, you call contentFromMicroblogPost or contentFromURL on an OSKShareableContent instance to setup a collection of Content Items for each share channel (Facebook, Twitter, etc). This integration extends those methods to include the Branch parameters: tracking tags, stage, feature, and deep linking & OG params. An example of this can be seen in the OvershareKit Sample app, in SampleTimelineViewController.m starting at line 82.
+
+These  methods will seamlessly generate OSK shareable content items, and attach a Branch Short URL to each content channel AND automatically tag it with "facebook," "bookmark," etc. for each channel! If you do not have the Branch API key set, OSK will behave as it does without Branch.
+
+####All availabe Branch OSK extended methods
+(All of these methods also available as contentFromMicroblogPost)
+
+```objc
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchParams branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature;
+
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags;
+
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchPrams;
+
++ (instancetype)contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchPrams;
+
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary branchStage:(NSString *)branchStage;
+
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchStage:(NSString *)branchStage;
+
++ (instancetype)contentFromURL:(NSURL *)url branchStage:(NSString *)branchStage;
+
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchParams:(NSDictionary *)branchParams branchFeature:(NSString *)branchFeature;
+
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature;
+
++ (instancetype)contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchParams branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature;
+
++ (instancetype)contentFromURL:(NSURL *)url branchParams:(NSDictionary *)branchParams branchFeature:(NSString *)branchFeature;
+
++ (instancetype)contentFromURL:(NSURL *)url branchStage:(NSString *)branchStage branchFeature:(NSString *)branchFeature;
+
++ (instancetype)contentFromURL:(NSURL *)url branchTrackingTags:(NSArray *)branchTrackingTags branchFeature:(NSString *)branchFeature;
+
++ (instancetype)contentFromURL:(NSURL *)url branchFeature:(NSString *)branchFeature;
+```
+## Setting Branch Identity
+
+Often, you might have your own user IDs, or want referral and event data to persist across platforms or uninstall/reinstall. It's helpful if you know your users access your service from different devices. This where we introduce the concept of an 'identity'.
+
+To identify a user, just call:
+```objc
+ [[Branch getInstance] setIdentity:@"your user id"];
+```
+**Note:**
+OvershareKit does have a number of authentication services for Facebook, Twitter, App.net, etc. However, each one of these services will return a unique user id. So if one time the user authenticates in with Twitter, then a different time or on a different device, authenticates with Facebook, they will not be identified as the same user! Therefore, you'll need to be sure that you authenticate users on Branch via the same method, or in a way that returns the same user id.
+
+#### Logout
+
+If you provide a logout function in your app, be sure to clear the user when the logout completes. This will ensure that all the stored parameters get cleared and all events are properly attributed to the right identity.
+
+**Warning** this call will clear the referral credits and attribution on the device.
+
+```objc
+[[Branch getInstance] logout];
+```
+
+## Branch Events
+The Branch OvershareKit integration automatically registers four events:
+- **click_share** registered when a user clicks a share channel option in OvershareKit
+- **cancelled_share** registered when a user cancelles sharing a link
+- **successful_share** registered when the OvershareKit completion handeler returns with a successful response
+- **failed_share** registered when the OvershareKit completion handeler returns with a unseccessful response
+
+#### Register custom events
+
+This is very easy to do by calling:
+```objc
+Branch *branch = [Branch getInstance];
+[branch userCompletedAction:@"your_custom_event"];
+```
+Optionally, you can save the app state with the event:
+```objc
+Branch *branch = [Branch getInstance];
+[branch userCompletedAction:@"your_custom_event" withState:(NSDictionary *)appState];
+```
 
 ## So Much More
 

@@ -37,6 +37,9 @@
 #import "UIViewController+OSKUtilities.h"
 #import "UIColor+OSKUtility.h"
 
+// --- Branch ---
+#import "Branch.h"
+
 NSString * const OSKPresentationOption_ActivityCompletionHandler = @"OSKPresentationOption_ActivityCompletionHandler";
 NSString * const OSKPresentationOption_PresentationEndingHandler = @"OSKPresentationOption_PresentationEndingHandler";
 
@@ -374,6 +377,11 @@ willRepositionPopoverToRect:(inout CGRect *)rect
 
 - (void)activitySheet:(OSKActivitySheetViewController *)viewController didSelectActivity:(OSKActivity *)activity {
 
+    // --- Branch ---
+    // Registers that user clicked the share button in the app
+    Branch *branch = [Branch getInstance];
+    [branch userCompletedAction:@"click_share"];
+    
     [self _proceedWithSession:viewController.session
              selectedActivity:activity
      presentingViewController:self.presentingViewController
@@ -1159,6 +1167,17 @@ willPresentViewController:(UIViewController *)viewController
 
 - (void)sessionControllerDidFinish:(OSKSessionController *)controller successful:(BOOL)successful error:(NSError *)error {
     
+    
+    // --- Branch ---
+    // Registers if the user was successful or not in sharing
+    Branch *branch = [Branch getInstance];
+    if (successful) {
+        [branch userCompletedAction:@"successful_share"];
+    } else {
+        [branch userCompletedAction:@"failed_share"];
+    }
+    
+    
     OSKSession *session = controller.session;
     OSKActivity *selectedActivity = controller.activity;
     
@@ -1192,6 +1211,11 @@ willPresentViewController:(UIViewController *)viewController
      On iPad: The activity sheet popover will already have been dismissed by the time we get here, so there's
      no need to dismiss it.
      */
+    
+    // --- Branch ---
+    // Registers that user cancelled the share
+    Branch *branch = [Branch getInstance];
+    [branch userCompletedAction:@"cancelled_share"];
     
     if ([self isPresenting] == NO) {
         // Don't perform the presentation ending block unless the activity sheet
