@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0223C119F3506D00D68B4A /* JTSHardwareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0223BF19F3506D00D68B4A /* JTSHardwareInfo.m */; };
 		32C2B9BA19033F350055C98B /* OSKMimeAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C2B9B919033F350055C98B /* OSKMimeAttachment.m */; };
 		7F03EA2D18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F03EA2C18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.m */; };
 		7F049469188AFE4600BE7C4E /* NSString+OSKEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F049468188AFE4600BE7C4E /* NSString+OSKEmoji.m */; };
@@ -243,7 +244,6 @@
 		7FEE77D6181ED8EF000F684A /* OSKUsernamePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE775A181ED8EF000F684A /* OSKUsernamePasswordViewController.m */; };
 		7FEE77D7181ED8EF000F684A /* OSKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE775C181ED8EF000F684A /* OSKWebViewController.m */; };
 		7FEE77D8181ED8EF000F684A /* UIColor+OSKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE775F181ED8EF000F684A /* UIColor+OSKUtility.m */; };
-		7FEE77D9181ED8EF000F684A /* UIDevice+OSKHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7761181ED8EF000F684A /* UIDevice+OSKHardware.m */; };
 		7FEE77DA181ED8EF000F684A /* UIView+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7763181ED8EF000F684A /* UIView+OSKUtilities.m */; };
 		7FEE77DB181ED8EF000F684A /* UIViewController+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE7765181ED8EF000F684A /* UIViewController+OSKUtilities.m */; };
 		8895C32E18A3B967000B7F28 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C32B18A3B967000B7F28 /* GoogleOpenSource.framework */; };
@@ -268,6 +268,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A0223BE19F3506D00D68B4A /* JTSHardwareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JTSHardwareInfo.h; path = ../../../Dependencies/JTSHardwareInfo/Source/JTSHardwareInfo.h; sourceTree = "<group>"; };
+		1A0223BF19F3506D00D68B4A /* JTSHardwareInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JTSHardwareInfo.m; path = ../../../Dependencies/JTSHardwareInfo/Source/JTSHardwareInfo.m; sourceTree = "<group>"; };
 		32C2B9B819033F350055C98B /* OSKMimeAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKMimeAttachment.h; sourceTree = "<group>"; };
 		32C2B9B919033F350055C98B /* OSKMimeAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKMimeAttachment.m; sourceTree = "<group>"; };
 		7F03EA2B18F5B8D000A4CEE4 /* OSKSaveToCameraRollActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSaveToCameraRollActivity.h; sourceTree = "<group>"; };
@@ -689,6 +691,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A0223C019F3506D00D68B4A /* JTSHardwareInfo */ = {
+			isa = PBXGroup;
+			children = (
+				1A0223BE19F3506D00D68B4A /* JTSHardwareInfo.h */,
+				1A0223BF19F3506D00D68B4A /* JTSHardwareInfo.m */,
+			);
+			name = JTSHardwareInfo;
+			path = "../../Static Library/OvershareKit";
+			sourceTree = "<group>";
+		};
 		7F03EA2A18F5B8BD00A4CEE4 /* Save to Camera Roll */ = {
 			isa = PBXGroup;
 			children = (
@@ -1474,6 +1486,7 @@
 			isa = PBXGroup;
 			children = (
 				7FEE7924181EDC88000F684A /* ADNLogin */,
+				1A0223C019F3506D00D68B4A /* JTSHardwareInfo */,
 				7FEE7923181EDC84000F684A /* Pocket */,
 			);
 			name = "Third-Party Dependencies";
@@ -1758,6 +1771,7 @@
 				7FEE77CD181ED8EF000F684A /* OSKSMSActivity.m in Sources */,
 				7FEE779E181ED8EF000F684A /* OSKActivityIcon.m in Sources */,
 				7FEE7797181ED8EF000F684A /* OSKActionSheet.m in Sources */,
+				1A0223C119F3506D00D68B4A /* JTSHardwareInfo.m in Sources */,
 				7F78E9AC1820E5630042CF02 /* OSKPocketAccountViewController.m in Sources */,
 				7FEE77AE181ED8EF000F684A /* OSKEmailActivity.m in Sources */,
 				7F14C95918DB5DBC00E635FE /* OSKTextViewAttachmentView.m in Sources */,
@@ -1782,7 +1796,6 @@
 				7FA91AF41889F56F00A5DF9B /* OSKReadingListActivity.m in Sources */,
 				7FEE77B0181ED8EF000F684A /* OSKFileManager.m in Sources */,
 				7FEE77C4181ED8EF000F684A /* OSKPinboardUtility.m in Sources */,
-				7FEE77D9181ED8EF000F684A /* UIDevice+OSKHardware.m in Sources */,
 				7FEE77CE181ED8EF000F684A /* OSKSystemAccountStore.m in Sources */,
 				7FDCDEA2181EFF5500AC2985 /* SampleAppPurchasingViewController.m in Sources */,
 				7F43DEAD18215916003BE9B6 /* SampleTimelineViewController.m in Sources */,

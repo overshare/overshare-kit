@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0223BD19F3503C00D68B4A /* JTSHardwareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0223BC19F3503C00D68B4A /* JTSHardwareInfo.m */; };
 		2EA7594318E5831E00078A1D /* OSKSaveToCameraRollActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7594218E5831E00078A1D /* OSKSaveToCameraRollActivity.m */; };
 		32C2B9B7190337BC0055C98B /* OSKMimeAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C2B9B6190337BC0055C98B /* OSKMimeAttachment.m */; };
 		7F04946C188AFE5400BE7C4E /* NSString+OSKEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F04946B188AFE5400BE7C4E /* NSString+OSKEmoji.m */; };
@@ -107,7 +108,6 @@
 		7FEE78F6181ED8FE000F684A /* OSKUsernamePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE78A3181ED8FE000F684A /* OSKUsernamePasswordViewController.m */; };
 		7FEE78F7181ED8FE000F684A /* OSKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE78A5181ED8FE000F684A /* OSKWebViewController.m */; };
 		7FEE78F8181ED8FE000F684A /* UIColor+OSKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE78A8181ED8FE000F684A /* UIColor+OSKUtility.m */; };
-		7FEE78F9181ED8FE000F684A /* UIDevice+OSKHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE78AA181ED8FE000F684A /* UIDevice+OSKHardware.m */; };
 		7FEE78FA181ED8FE000F684A /* UIView+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE78AC181ED8FE000F684A /* UIView+OSKUtilities.m */; };
 		7FEE78FB181ED8FE000F684A /* UIViewController+OSKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE78AE181ED8FE000F684A /* UIViewController+OSKUtilities.m */; };
 		8895C32918A3B890000B7F28 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8895C32618A3B890000B7F28 /* GoogleOpenSource.framework */; };
@@ -144,6 +144,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A0223BB19F3503C00D68B4A /* JTSHardwareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JTSHardwareInfo.h; path = ../../../Dependencies/JTSHardwareInfo/Source/JTSHardwareInfo.h; sourceTree = "<group>"; };
+		1A0223BC19F3503C00D68B4A /* JTSHardwareInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JTSHardwareInfo.m; path = ../../../Dependencies/JTSHardwareInfo/Source/JTSHardwareInfo.m; sourceTree = "<group>"; };
 		2EA7594118E5831E00078A1D /* OSKSaveToCameraRollActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKSaveToCameraRollActivity.h; sourceTree = "<group>"; };
 		2EA7594218E5831E00078A1D /* OSKSaveToCameraRollActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSKSaveToCameraRollActivity.m; sourceTree = "<group>"; };
 		32C2B9B5190337BC0055C98B /* OSKMimeAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSKMimeAttachment.h; sourceTree = "<group>"; };
@@ -475,8 +477,6 @@
 		7FEE78A6181ED8FE000F684A /* OvershareKit-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OvershareKit-iOS.h"; sourceTree = "<group>"; };
 		7FEE78A7181ED8FE000F684A /* UIColor+OSKUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+OSKUtility.h"; sourceTree = "<group>"; };
 		7FEE78A8181ED8FE000F684A /* UIColor+OSKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+OSKUtility.m"; sourceTree = "<group>"; };
-		7FEE78A9181ED8FE000F684A /* UIDevice+OSKHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+OSKHardware.h"; sourceTree = "<group>"; };
-		7FEE78AA181ED8FE000F684A /* UIDevice+OSKHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+OSKHardware.m"; sourceTree = "<group>"; };
 		7FEE78AB181ED8FE000F684A /* UIView+OSKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+OSKUtilities.h"; sourceTree = "<group>"; };
 		7FEE78AC181ED8FE000F684A /* UIView+OSKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+OSKUtilities.m"; sourceTree = "<group>"; };
 		7FEE78AD181ED8FE000F684A /* UIViewController+OSKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+OSKUtilities.h"; sourceTree = "<group>"; };
@@ -526,10 +526,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A0223BA19F3501500D68B4A /* JTSHardwareInfo */ = {
+			isa = PBXGroup;
+			children = (
+				1A0223BB19F3503C00D68B4A /* JTSHardwareInfo.h */,
+				1A0223BC19F3503C00D68B4A /* JTSHardwareInfo.m */,
+			);
+			name = JTSHardwareInfo;
+			sourceTree = "<group>";
+		};
 		7F6711F8181EDF870006E037 /* Third-Party Dependencies */ = {
 			isa = PBXGroup;
 			children = (
 				7F6711F9181EDF900006E037 /* ADNLogin */,
+				1A0223BA19F3501500D68B4A /* JTSHardwareInfo */,
 				7F6711FA181EDF960006E037 /* Pocket */,
 			);
 			name = "Third-Party Dependencies";
@@ -816,8 +826,6 @@
 				7FEE78A6181ED8FE000F684A /* OvershareKit-iOS.h */,
 				7FEE78A7181ED8FE000F684A /* UIColor+OSKUtility.h */,
 				7FEE78A8181ED8FE000F684A /* UIColor+OSKUtility.m */,
-				7FEE78A9181ED8FE000F684A /* UIDevice+OSKHardware.h */,
-				7FEE78AA181ED8FE000F684A /* UIDevice+OSKHardware.m */,
 				7FEE78AB181ED8FE000F684A /* UIView+OSKUtilities.h */,
 				7FEE78AC181ED8FE000F684A /* UIView+OSKUtilities.m */,
 				7FEE78AD181ED8FE000F684A /* UIViewController+OSKUtilities.h */,
@@ -1044,7 +1052,7 @@
 				2EA7594318E5831E00078A1D /* OSKSaveToCameraRollActivity.m in Sources */,
 				7FEE78D9181ED8FE000F684A /* OSKMailComposeViewController.m in Sources */,
 				7F55A30C18425C6C004A3BCC /* OSKSession.m in Sources */,
-				7FEE78F9181ED8FE000F684A /* UIDevice+OSKHardware.m in Sources */,
+				1A0223BD19F3503C00D68B4A /* JTSHardwareInfo.m in Sources */,
 				7FEE78EE181ED8FE000F684A /* OSKSystemAccountStore.m in Sources */,
 				7FEE78C9181ED8FE000F684A /* OSKAppDotNetAuthenticationViewController.m in Sources */,
 				7FEE78C3181ED8FE000F684A /* OSKActivitySheetViewController.m in Sources */,
