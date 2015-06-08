@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Overshare Kit. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>            
 #import <Foundation/Foundation.h>
 
 extern const CGFloat OSKTextViewAttachmentViewWidth_Phone;
