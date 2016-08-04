@@ -62,16 +62,22 @@
     [self.delegate sessionController:self willPresentSystemViewController:systemViewController];
     if (self.systemViewController == nil) {
         UIViewController *parentMost = [UIViewController osk_parentMostViewControllerForPresentingViewController:self.presentingViewController];
+        
+        __block UIStatusBarStyle statusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
         if (self.modalNavigationController) {
             // This might occur if an app dev elects to make Email or SMS sharing available only via
             // In app purchase. If so, we'd need to dismiss the purchasing view controller (if its visible)
             // before presenting the system navigation controller.
             [self.modalNavigationController dismissViewControllerAnimated:YES completion:^{
-                [parentMost presentViewController:systemViewController animated:YES completion:nil];
+                [parentMost presentViewController:systemViewController animated:YES completion:^{
+                    [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle];
+                }];
             }];
         } else {
             [self setSystemViewController:systemViewController];
-            [parentMost presentViewController:systemViewController animated:YES completion:nil];
+            [parentMost presentViewController:systemViewController animated:YES completion:^{
+                [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle];
+            }];
         }
     }
 }
